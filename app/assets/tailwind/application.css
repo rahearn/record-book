@@ -1,1 +1,142 @@
 @import "tailwindcss";
+
+/* Design tokens from docs/initial_design.html ("Industry" design system). */
+@theme {
+  --font-heading: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+
+  --color-paper: #f2f2f3;
+  --color-surface: #e9e9ea;
+  --color-ink: #1d1f20;
+
+  --color-accent: #5980a6;
+  --color-accent-100: #eef6ff;
+  --color-accent-200: #d6ebff;
+  --color-accent-300: #b5d9fd;
+  --color-accent-400: #94bce3;
+  --color-accent-500: #749dc4;
+  --color-accent-600: #597ea3;
+  --color-accent-700: #416180;
+  --color-accent-800: #2c455d;
+  --color-accent-900: #1d2d3d;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  /* Wireframe boxes with registration marks drawn outside their border. */
+  .blueprint {
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  }
+  .blueprint > .corner {
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    color: color-mix(in srgb, var(--color-ink) 55%, transparent);
+  }
+  .blueprint > .corner::before,
+  .blueprint > .corner::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+  }
+  .blueprint > .corner::before {
+    left: 5px;
+    top: 0;
+    width: 1px;
+    height: 100%;
+  }
+  .blueprint > .corner::after {
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+  }
+  .blueprint > .corner.tl { top: -6px; left: -6px; }
+  .blueprint > .corner.tr { top: -6px; right: -6px; }
+  .blueprint > .corner.bl { bottom: -6px; left: -6px; }
+  .blueprint > .corner.br { bottom: -6px; right: -6px; }
+
+  .card-kicker {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    padding: 3px 10px;
+  }
+  .tag-accent {
+    background: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+  .tag-neutral {
+    background: #f5f5f8;
+    color: #424244;
+  }
+  .tag-outline {
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--color-ink);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+    padding: 7px 12px;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-600);
+  }
+  .btn-secondary:hover {
+    background: color-mix(in srgb, var(--color-ink) 7%, transparent);
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .table th {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--color-ink) 60%, transparent);
+    padding: 7px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  }
+  .table td {
+    padding: 7px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+  .table tbody tr:hover {
+    background: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  }
+}

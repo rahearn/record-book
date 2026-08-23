@@ -1,0 +1,15 @@
+alice:
+  name: Alice Anders
+  team_name: Anders Aces
+
+bob:
+  name: Bob Barker
+  team_name: Barker Bandits
+
+carol:
+  name: Carol Chen
+  team_name: Chen Chargers
+
+dan:
+  name: Dan Diaz
+  team_name: Diaz Dynamo

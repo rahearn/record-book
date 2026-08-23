@@ -1,0 +1,17 @@
+<%# locals: (name:, entries:) %>
+<div class="blueprint px-4.5 py-4">
+  <%= blueprint_corners %>
+  <div class="mb-2.5 flex items-baseline justify-between">
+    <h4 class="font-heading text-xl font-semibold uppercase tracking-[.06em]"><%= name %></h4>
+    <span class="text-[11px] text-ink/55"><%= pluralize(entries.size, "owner") %></span>
+  </div>
+  <div class="flex flex-col">
+    <% entries.each_with_index do |entry, index| %>
+      <div class="flex items-center gap-2.5 border-t border-ink/10 py-1.5 text-sm">
+        <span class="w-[18px] text-xs text-ink/55"><%= index + 1 %></span>
+        <span class="flex-1"><%= entry.owner.name %></span>
+        <span class="tag <%= movement_tag_class(entry.movement) %>"><%= movement_label(entry.movement) %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

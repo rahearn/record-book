@@ -1,0 +1,29 @@
+g2023_w1_ab:
+  season: y2023
+  week: 1
+  tier: unified
+
+g2023_w1_cd:
+  season: y2023
+  week: 1
+  tier: unified
+
+g2023_w2_ac:
+  season: y2023
+  week: 2
+  tier: unified
+
+g2023_w2_bd:
+  season: y2023
+  week: 2
+  tier: unified
+
+g2024_w1_ab:
+  season: y2024
+  week: 1
+  tier: premier
+
+g2024_w1_cd:
+  season: y2024
+  week: 1
+  tier: challenger

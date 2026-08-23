@@ -1,0 +1,16 @@
+<header class="sticky top-0 z-10 border-b border-ink/15 bg-paper">
+  <div class="mx-auto flex max-w-[1240px] flex-wrap items-center gap-6 px-6 py-3">
+    <div class="mr-auto flex items-baseline gap-2.5">
+      <span class="font-heading text-[21px] font-semibold uppercase tracking-tight">ATO Delta</span>
+      <span class="text-[11px] uppercase tracking-[.14em] text-ink/55">
+        <%= content_for(:tagline) || "Record book" %>
+      </span>
+    </div>
+    <nav class="flex flex-wrap gap-1.5">
+      <%= link_to "League", root_path, class: "btn btn-primary" %>
+      <span class="btn btn-secondary opacity-45" title="Coming soon">Owners</span>
+      <span class="btn btn-secondary opacity-45" title="Coming soon">Head-to-head</span>
+      <span class="btn btn-secondary opacity-45" title="Coming soon">Seasons</span>
+    </nav>
+  </div>
+</header>

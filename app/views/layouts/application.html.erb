@@ -23,8 +23,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="min-h-screen">
+    <%= render "layouts/site_header" %>
+    <main class="mx-auto flex max-w-[1240px] flex-col gap-8 px-6 pt-7 pb-18">
       <%= yield %>
     </main>
   </body>

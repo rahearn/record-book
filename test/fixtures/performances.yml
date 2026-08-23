@@ -1,0 +1,62 @@
+# 2023, week 1
+alice_2023_w1:
+  game: g2023_w1_ab
+  owner: alice
+  points: 100.0
+
+bob_2023_w1:
+  game: g2023_w1_ab
+  owner: bob
+  points: 90.0
+
+carol_2023_w1:
+  game: g2023_w1_cd
+  owner: carol
+  points: 80.0
+
+dan_2023_w1:
+  game: g2023_w1_cd
+  owner: dan
+  points: 70.5
+
+# 2023, week 2
+alice_2023_w2:
+  game: g2023_w2_ac
+  owner: alice
+  points: 110.0
+
+carol_2023_w2:
+  game: g2023_w2_ac
+  owner: carol
+  points: 95.0
+
+bob_2023_w2:
+  game: g2023_w2_bd
+  owner: bob
+  points: 85.0
+
+dan_2023_w2:
+  game: g2023_w2_bd
+  owner: dan
+  points: 105.0
+
+# 2024, week 1 — first tiered season
+alice_2024_w1:
+  game: g2024_w1_ab
+  owner: alice
+  points: 120.0
+
+bob_2024_w1:
+  game: g2024_w1_ab
+  owner: bob
+  points: 95.0
+
+carol_2024_w1:
+  game: g2024_w1_cd
+  owner: carol
+  points: 90.0
+
+dan_2024_w1:
+  game: g2024_w1_cd
+  owner: dan
+  points: 80.0

@@ -1,0 +1,123 @@
+<% content_for :title, "ATO Delta · Record Book" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<section class="grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-5">
+  <%= render "fact_card", kicker: "Seasons played", value: @almanac.season_count,
+        note: @almanac.empty? ? "None on record yet" : "#{@almanac.first_year} through #{@almanac.latest_year}" %>
+  <%= render "fact_card", kicker: "Owners all time", value: @almanac.owner_count,
+        note: founders_note(@almanac.founders_remaining) %>
+  <%= render "fact_card", kicker: "Games on record", value: @almanac.game_count,
+        note: @almanac.empty? ? "None on record yet" : "#{@almanac.weeks_per_season}-week regular seasons" %>
+  <% if @almanac.ladder %>
+    <%= render "fact_card", kicker: "Tiers since #{@almanac.tiered_since}", value: 2,
+          note: "#{@almanac.ladder.premier.size} Premier / #{@almanac.ladder.challenger.size} Challenger · " \
+                "#{@almanac.promotion_count} up, #{@almanac.relegation_count} down" %>
+  <% end %>
+</section>
+
+<% if @almanac.empty? %>
+  <p class="text-ink/55">No games on record yet.</p>
+<% else %>
+  <section>
+    <div class="mb-3.5 flex flex-wrap items-baseline gap-3.5">
+      <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">All-time by owner</h2>
+      <span class="max-w-[520px] text-xs text-ink/55">
+        Regular-season games only. Luck is the average points an opponent scored
+        below (+) or above (−) their own season average.
+      </span>
+    </div>
+    <div class="blueprint px-4 py-3.5">
+      <%= blueprint_corners %>
+      <div class="overflow-x-auto">
+        <table class="table min-w-[900px]">
+          <thead>
+            <tr>
+              <th class="w-[34px]">#</th>
+              <th>Owner</th>
+              <th>Sea</th>
+              <th>W–L</th>
+              <th>Win%</th>
+              <th>PF/g</th>
+              <th>PA/g</th>
+              <th>Luck</th>
+              <th>Titles</th>
+              <% if @almanac.ladder %>
+                <th><%= @almanac.ladder.year %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @almanac.all_time_standings.each do |career| %>
+              <tr>
+                <td class="text-ink/55"><%= career.rank %></td>
+                <td>
+                  <div class="flex items-center gap-2.5">
+                    <span class="blueprint grid h-[26px] w-[26px] flex-none place-items-center font-heading text-[11px] tracking-[.04em] text-accent-700">
+                      <%= career.owner.initials %>
+                    </span>
+                    <span class="flex flex-col leading-[1.15]">
+                      <span class="font-medium"><%= career.owner.name %></span>
+                      <span class="text-[11px] text-ink/55"><%= career.owner.team_name %></span>
+                    </span>
+                  </div>
+                </td>
+                <td class="text-ink/55"><%= career.seasons_played %></td>
+                <td><%= record_display(career) %></td>
+                <td><%= win_percentage_display(career.win_percentage) %></td>
+                <td><%= points_display(career.points_for_per_game) %></td>
+                <td><%= points_display(career.points_against_per_game) %></td>
+                <td><%= signed_points_display(career.luck_per_game) %></td>
+                <td><%= titles_display(career.titles) %></td>
+                <% if @almanac.ladder %>
+                  <td>
+                    <% if career.next_tier %>
+                      <span class="tag <%= tier_tag_class(career.next_tier) %>"><%= tier_label(career.next_tier) %></span>
+                    <% else %>
+                      <span class="text-ink/55">—</span>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <% records = @almanac.game_records %>
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
+    <%= render "record_card", kicker: "Highest score, any week",
+          value: points_display(records.highest_score.points),
+          who: records.highest_score.owner.name,
+          detail: "#{records.highest_score.year} · Week #{records.highest_score.week}" %>
+    <%= render "record_card", kicker: "Lowest score, any week",
+          value: points_display(records.lowest_score.points),
+          who: records.lowest_score.owner.name,
+          detail: "#{records.lowest_score.year} · Week #{records.lowest_score.week}" %>
+    <%= render "record_card", kicker: "Biggest blowout",
+          value: points_display(records.biggest_blowout.margin),
+          who: "#{records.biggest_blowout.winner.name} over #{records.biggest_blowout.loser.name}",
+          detail: "#{records.biggest_blowout.year} · Week #{records.biggest_blowout.week}" %>
+    <%= render "record_card", kicker: "Highest combined game",
+          value: points_display(records.highest_combined.total),
+          who: records.highest_combined.owners.map(&:name).join(" vs "),
+          detail: "#{records.highest_combined.year} · Week #{records.highest_combined.week}" %>
+  </section>
+
+  <% if (ladder = @almanac.ladder) %>
+    <section>
+      <div class="mb-3.5 flex items-baseline gap-3.5">
+        <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]"><%= ladder.year %> ladder</h2>
+        <span class="text-xs text-ink/55">
+          After <%= @almanac.promotion_count %> up, <%= @almanac.relegation_count %> down
+          from <%= @almanac.latest_year %>.
+        </span>
+      </div>
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-5">
+        <%= render "ladder_tier", name: "Premier", entries: ladder.premier %>
+        <%= render "ladder_tier", name: "Challenger", entries: ladder.challenger %>
+      </div>
+    </section>
+  <% end %>
+<% end %>

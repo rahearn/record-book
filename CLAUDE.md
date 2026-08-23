@@ -11,9 +11,34 @@ mockup with mock data illustrating the target screens (home/league overview, per
 per-season view, head-to-head comparisons, standings with "luck" and tier indicators). Open it in a
 browser to see the UI direction — it is not wired to real data or to this Rails app.
 
-The Rails application itself is currently just the generated skeleton (no models, controllers, or
-routes beyond Rails defaults yet), so there is no existing domain architecture to describe — treat
-`docs/initial_design.html` as the spec for what to build.
+Treat `docs/initial_design.html` as the spec for screens not yet built.
+
+## Architecture
+
+The domain model is intentionally minimal and normalized for aggregate queries; a future loading
+layer will import historical data into it:
+
+- `Owner` (name, team_name) — a league member, constant across eras.
+- `Season` (year) — one league year.
+- `Game` (season, week, tier) — one regular-season matchup. `tier` is an enum: `unified` (single
+  league, pre-2025), `premier`, `challenger`.
+- `Performance` (game, owner, points) — one owner's score in a game; every game has exactly two.
+
+All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` — that constant is the
+application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).
+`Almanac` loads every game once and computes: per-season standings (wins desc, points-for
+tiebreak), career aggregates, "luck" (average points opponents scored below/above their own season
+average), titles (first-place finishes excluding the Challenger tier), single-game extremes, and
+the next season's promotion/relegation ladder (bottom 4 of Premier ↔ top 4 of Challenger). Value
+objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotion_count:`, and
+`relegation_count:` keywords, which tests use to build small in-memory scenarios.
+
+The League home page is `league#show` (root route), rendered from partials in `app/views/league/`.
+Design tokens and component classes (`.blueprint`, `.tag-*`, `.btn`, `.table`) translated from the
+design doc live in `app/assets/tailwind/application.css`.
+
+`db/seeds.rb` generates a deterministic demo league (20 owners, 2011–2025) matching the design
+mockup's data; it skips seeding when games already exist, and CI replants it in the test env.
 
 ## Stack
 
