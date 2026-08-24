@@ -87,18 +87,35 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: record_book_production
-    username: record_book
-    password: <%= ENV["RECORD_BOOK_DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
+    pool: <%= ENV["PUMA_WORKER_DB_POOL"] || ENV["RAILS_MAX_THREADS"] || 5 %>
   cache:
     <<: *primary_production
-    database: record_book_production_cache
+    url: <%= ENV["CACHE_DATABASE_URL"] %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: record_book_production_queue
+    url: <%= ENV["QUEUE_DATABASE_URL"] %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: record_book_production_cable
+    url: <%= ENV["CABLE_DATABASE_URL"] %>
     migrations_paths: db/cable_migrate
+# production:
+#   primary: &primary_production
+#     <<: *default
+#     database: record_book_production
+#     username: record_book
+#     password: <%= ENV["RECORD_BOOK_DATABASE_PASSWORD"] %>
+#   cache:
+#     <<: *primary_production
+#     database: record_book_production_cache
+#     migrations_paths: db/cache_migrate
+#   queue:
+#     <<: *primary_production
+#     database: record_book_production_queue
+#     migrations_paths: db/queue_migrate
+#   cable:
+#     <<: *primary_production
+#     database: record_book_production_cable
+#     migrations_paths: db/cable_migrate
