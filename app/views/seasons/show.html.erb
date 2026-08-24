@@ -85,8 +85,7 @@
         <% end %>
       </div>
       <div class="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] gap-5">
-        <% @playoff_rounds.each_with_index do |((week, round_name), games), index| %>
-          <% final_round = index == @playoff_rounds.size - 1 %>
+        <% @playoff_rounds.each do |(week, round_name), games| %>
           <div class="blueprint px-4.5 py-4">
             <%= blueprint_corners %>
             <div class="mb-2.5 flex items-baseline justify-between">
@@ -100,7 +99,7 @@
                   <div class="flex items-baseline justify-between gap-2">
                     <span class="flex min-w-0 items-baseline gap-2">
                       <%= link_to winner.owner.name, owner_path(winner.owner), class: "truncate font-medium text-accent" %>
-                      <% if final_round && games.size == 1 %>
+                      <% if game.championship? && games.size == 1 %>
                         <span class="tag tag-accent">CHAMPION</span>
                       <% end %>
                     </span>

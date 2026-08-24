@@ -33,6 +33,13 @@ class GameTest < ActiveSupport::TestCase
     assert_not games(:g2024_w1_ab).playoff?
   end
 
+  test "championship and third place rounds are recognized by name" do
+    assert_predicate games(:g2024_final_premier), :championship?
+    assert_not games(:g2024_final_premier).third_place?
+    assert_predicate Game.new(round_name: "Third Place"), :third_place?
+    assert_not Game.new(round_name: "Semifinal").championship?
+  end
+
   test "playoff-week games must carry a round name" do
     game = Game.new(season: seasons(:y2024), tier: :premier, week: 2)
     assert_not game.valid?

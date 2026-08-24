@@ -79,7 +79,7 @@ ActiveRecord::Base.transaction do
           tally[home[:owner].id][:wins] += 1 if home_points > away_points
           tally[away[:owner].id][:wins] += 1 if away_points > home_points
         end
-        home_points >= away_points ? home : away
+        home_points >= away_points ? [ home, away ] : [ away, home ]
       end
 
       1.upto(regular_weeks) do |week|
@@ -91,16 +91,17 @@ ActiveRecord::Base.transaction do
       seeds = members.sort_by { |entry| t = tally[entry[:owner].id]; [ -t[:wins], -t[:points] ] }
         .first(team_count)
       if team_count == 4
-        finalist_one = play.call(playoff_start, seeds[0], seeds[3], round_name: "Semifinal")
-        finalist_two = play.call(playoff_start, seeds[1], seeds[2], round_name: "Semifinal")
-        play.call(playoff_start + 1, finalist_one, finalist_two, round_name: "Championship")
+        semi_week = playoff_start
       else
-        quarter_one = play.call(playoff_start, seeds[2], seeds[5], round_name: "Quarterfinal")
-        quarter_two = play.call(playoff_start, seeds[3], seeds[4], round_name: "Quarterfinal")
-        finalist_one = play.call(playoff_start + 1, seeds[0], quarter_one, round_name: "Semifinal")
-        finalist_two = play.call(playoff_start + 1, seeds[1], quarter_two, round_name: "Semifinal")
-        play.call(playoff_start + 2, finalist_one, finalist_two, round_name: "Championship")
+        quarter_one, = play.call(playoff_start, seeds[2], seeds[5], round_name: "Quarterfinal")
+        quarter_two, = play.call(playoff_start, seeds[3], seeds[4], round_name: "Quarterfinal")
+        seeds = [ seeds[0], seeds[1], quarter_one, quarter_two ]
+        semi_week = playoff_start + 1
       end
+      semi_one_winner, semi_one_loser = play.call(semi_week, seeds[0], seeds[3], round_name: "Semifinal")
+      semi_two_winner, semi_two_loser = play.call(semi_week, seeds[1], seeds[2], round_name: "Semifinal")
+      play.call(semi_week + 1, semi_one_winner, semi_two_winner, round_name: Game::CHAMPIONSHIP)
+      play.call(semi_week + 1, semi_one_loser, semi_two_loser, round_name: Game::THIRD_PLACE)
     end
   end
 end

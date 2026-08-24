@@ -314,12 +314,77 @@ class AlmanacTest < ActiveSupport::TestCase
 
     two_finals = [
       build_game(year: 2031, week: 2, scores: { owner_a => 90.0, owner_b => 80.0 },
-                 round_name: "Semifinal"),
+                 round_name: "Championship"),
       build_game(year: 2031, week: 2, scores: { owner_b => 85.0, owner_a => 70.0 },
-                 round_name: "Semifinal")
+                 round_name: "Championship")
     ]
     book = Almanac.new(games: [ regular ] + two_finals)
     assert book.all_time_standings.all? { |career| career.titles.zero? }
+  end
+
+  test "a third-place game in the final week does not affect the title" do
+    owner_a, owner_b, owner_c, owner_d = %w[A B C D].map { |n| Owner.new(name: "Owner #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, scores: { owner_a => 100.0, owner_b => 90.0 }),
+      build_game(year: 2030, week: 1, scores: { owner_c => 80.0, owner_d => 70.0 }),
+      build_game(year: 2030, week: 2, scores: { owner_b => 95.0, owner_a => 80.0 },
+                 round_name: "Championship"),
+      build_game(year: 2030, week: 2, scores: { owner_c => 70.0, owner_d => 60.0 },
+                 round_name: "Third Place")
+    ]
+
+    book = Almanac.new(games: games)
+    assert_equal 1, book.career_for(owner_b).titles
+    assert_equal 0, book.career_for(owner_c).titles
+  end
+
+  test "promotion takes the points leader, championship participants, and third-place winner" do
+    premier = %w[P1 P2].map { |n| Owner.new(name: n) }
+    c1, c2, c3, c4, c5, c6 = challenger = %w[C1 C2 C3 C4 C5 C6].map { |n| Owner.new(name: n) }
+
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { premier[0] => 100.0, premier[1] => 90.0 }),
+      # Challenger: C5 racks up the most points while losing every game.
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c1 => 160.0, c5 => 150.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c2 => 95.0, c6 => 50.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c3 => 90.0, c4 => 80.0 }),
+      build_game(year: 2030, week: 2, tier: :challenger, scores: { c2 => 158.0, c5 => 155.0 }),
+      build_game(year: 2030, week: 2, tier: :challenger, scores: { c3 => 92.0, c6 => 55.0 }),
+      build_game(year: 2030, week: 2, tier: :challenger, scores: { c4 => 92.0, c1 => 85.0 }),
+      # Challenger playoffs: C2 beats C1 for the championship, C4 wins third place.
+      build_game(year: 2030, week: 3, tier: :challenger, scores: { c2 => 100.0, c4 => 90.0 },
+                 round_name: "Semifinal"),
+      build_game(year: 2030, week: 3, tier: :challenger, scores: { c1 => 99.0, c3 => 95.0 },
+                 round_name: "Semifinal"),
+      build_game(year: 2030, week: 4, tier: :challenger, scores: { c2 => 105.0, c1 => 101.0 },
+                 round_name: "Championship"),
+      build_game(year: 2030, week: 4, tier: :challenger, scores: { c4 => 92.0, c3 => 88.0 },
+                 round_name: "Third Place")
+    ]
+
+    book = Almanac.new(games: games, promotion_count: 4, relegation_count: 1)
+    ladder = book.ladder
+    promoted = ladder.premier.select { |entry| entry.movement == :promoted }.map(&:owner)
+    assert_equal [ c5, c2, c1, c4 ], promoted
+    assert_equal [ premier[1] ], ladder.challenger.select { |e| e.movement == :relegated }.map(&:owner)
+    assert_equal [ c3, c6 ], ladder.challenger.select { |e| e.movement == :held }.map(&:owner)
+  end
+
+  test "promotion falls back to standings order without playoff results" do
+    premier = %w[P1 P2].map { |n| Owner.new(name: n) }
+    c1, c2, c3 = challenger = %w[C1 C2 C3].map { |n| Owner.new(name: n) }
+
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { premier[0] => 100.0, premier[1] => 90.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c1 => 100.0, c2 => 90.0 }),
+      build_game(year: 2030, week: 2, tier: :challenger, scores: { c1 => 95.0, c3 => 85.0 }),
+      build_game(year: 2030, week: 2, tier: :challenger, scores: { c2 => 88.0, c3 => 70.0 })
+    ]
+
+    book = Almanac.new(games: games, promotion_count: 2, relegation_count: 1)
+    promoted = book.ladder.premier.select { |entry| entry.movement == :promoted }.map(&:owner)
+    # C1 leads on points (195) and standings order fills the second spot.
+    assert_equal [ c1, c2 ], promoted
   end
 
   test "ladder is absent when the latest season lacks two tiers" do

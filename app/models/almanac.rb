@@ -246,30 +246,53 @@ class Almanac
     return if empty?
 
     premier = standings_for(latest_year, :premier).map(&:owner)
-    challenger = standings_for(latest_year, :challenger).map(&:owner)
+    challenger = standings_for(latest_year, :challenger)
     return if premier.empty? || challenger.empty?
 
-    Ladder.new(year: latest_year + 1, premier_owners: premier, challenger_owners: challenger,
-               promotion_count:, relegation_count:)
+    Ladder.new(year: latest_year + 1,
+               premier_owners: premier, challenger_owners: challenger.map(&:owner),
+               promoted: promoted_owners(challenger), relegated: premier.last(relegation_count))
   end
 
   # Titles per owner: playoff championships won in the unified league or the
-  # Premier tier. The championship is the single game of a tier's last
-  # playoff week; tied or ambiguous finals crown no one.
+  # Premier tier. A season/tier with anything other than exactly one
+  # Championship-round game, or a tied final, crowns no one.
   def championship_counts
     @championship_counts ||= @playoff_games.reject(&:challenger?)
+      .select(&:championship?)
       .group_by { |game| [ game.season.year, game.tier ] }
-      .filter_map { |_season_tier, games| championship_winner(games) }
+      .filter_map { |_season_tier, finals| decisive_winner(finals) }
       .tally
   end
 
-  def championship_winner(games)
-    final_week = games.map(&:week).max
-    finals = games.select { |game| game.week == final_week }
+  def decisive_winner(finals)
     return unless finals.size == 1
 
     winner, runner_up = finals.first.performances.sort_by { |performance| -performance.points }
     winner.owner unless winner.points == runner_up.points
+  end
+
+  # Playoff finishing order for a season/tier: championship winner and
+  # loser, then third-place game winner and loser. Rounds that are absent
+  # or ambiguous contribute nothing.
+  def playoff_finishers(year, tier)
+    games = @playoff_games.select { |game| game.season.year == year && game.tier == tier.to_s }
+    [ games.select(&:championship?), games.select(&:third_place?) ].flat_map do |round|
+      next [] unless round.size == 1
+
+      round.first.performances.sort_by { |performance| -performance.points }.map(&:owner)
+    end
+  end
+
+  # Promotion: the challenger regular-season points leader, then the top
+  # playoff finishers, with standings order filling any gap left by
+  # missing playoff data.
+  def promoted_owners(challenger_records)
+    leader = challenger_records.max_by(&:points_for).owner
+    candidates = [ leader ] +
+      (playoff_finishers(latest_year, :challenger) - [ leader ]) +
+      (challenger_records.map(&:owner) - [ leader ])
+    candidates.uniq.first(promotion_count)
   end
 
   def all_owners

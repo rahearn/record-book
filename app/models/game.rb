@@ -1,6 +1,11 @@
 class Game < ApplicationRecord
   include Tiered
 
+  # Round names with rule significance: the Championship decides the title
+  # and, with the Third Place game, the playoff finishing order.
+  CHAMPIONSHIP = "Championship".freeze
+  THIRD_PLACE = "Third Place".freeze
+
   belongs_to :season
   has_many :performances, dependent: :destroy
   has_many :owners, through: :performances
@@ -17,6 +22,14 @@ class Game < ApplicationRecord
 
   def regular_season?
     !playoff?
+  end
+
+  def championship?
+    round_name == CHAMPIONSHIP
+  end
+
+  def third_place?
+    round_name == THIRD_PLACE
   end
 
   private

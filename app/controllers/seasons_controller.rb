@@ -24,7 +24,8 @@ class SeasonsController < ApplicationController
     params[:tier] == "challenger" ? :challenger : :premier
   end
 
-  # Playoff games for the displayed tier, grouped into rounds in week order.
+  # Playoff games for the displayed tier, grouped into rounds in week
+  # order, with the Championship after its week's other games.
   def playoff_rounds(season)
     return {} unless season
 
@@ -32,5 +33,6 @@ class SeasonsController < ApplicationController
       .includes(performances: :owner)
       .order(:week, :id)
       .group_by { |game| [ game.week, game.round_name ] }
+      .sort_by { |(week, round_name), _games| [ week, round_name == Game::CHAMPIONSHIP ? 1 : 0 ] }
   end
 end

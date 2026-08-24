@@ -1,14 +1,13 @@
 class Almanac
-  # Next season's tier assignments: the bottom of Premier swaps places with
-  # the top of Challenger, based on the latest season's final standings.
+  # Next season's tier assignments. Relegation takes the bottom of the
+  # Premier standings; promotion takes the Challenger points leader plus the
+  # top playoff finishers (see Almanac#promoted_owners).
   class Ladder
     Entry = Data.define(:owner, :movement)
 
     attr_reader :year, :premier, :challenger
 
-    def initialize(year:, premier_owners:, challenger_owners:, promotion_count:, relegation_count:)
-      relegated = premier_owners.last(relegation_count)
-      promoted = challenger_owners.first(promotion_count)
+    def initialize(year:, premier_owners:, challenger_owners:, promoted:, relegated:)
       @year = year
       @premier = entries(premier_owners - relegated, :held) + entries(promoted, :promoted)
       @challenger = entries(relegated, :relegated) + entries(challenger_owners - promoted, :held)
