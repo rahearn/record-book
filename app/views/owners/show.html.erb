@@ -82,9 +82,13 @@
           <tbody>
             <% @career.season_records.each do |record| %>
               <tr>
-                <td class="font-medium"><%= record.year %></td>
+                <td class="font-medium">
+                  <%= link_to record.year,
+                        season_path(record.year, tier: (record.tier unless record.tier == "unified")),
+                        class: "text-accent" %>
+                </td>
                 <td><span class="tag <%= tier_tag_class(record.tier) %>"><%= tier_label(record.tier) %></span></td>
-                <td><%= finish_display(record.rank) %></td>
+                <td><%= finish_display(record.final_rank) %></td>
                 <td><%= record_display(record) %></td>
                 <td><%= points_display(record.average_points) %></td>
                 <td><%= points_display(record.average_points_against) %></td>

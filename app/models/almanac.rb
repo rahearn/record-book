@@ -197,6 +197,7 @@ class Almanac
       records[[ year, side_b.owner ]].add_luck(records[[ year, side_a.owner ]].average_points - side_a.points)
     end
     rank_by_season(records.values)
+    assign_final_ranks(records.values)
     records
   end
 
@@ -209,6 +210,15 @@ class Almanac
     records.group_by { |record| [ record.year, record.tier ] }.each_value do |group|
       group.sort_by { |record| [ -record.wins, -record.points_for ] }
         .each_with_index { |record, index| record.rank = index + 1 }
+    end
+  end
+
+  def assign_final_ranks(records)
+    records.group_by { |record| [ record.year, record.tier ] }.each do |(year, tier), group|
+      by_owner = group.index_by(&:owner)
+      playoff_top = playoff_finishers(year, tier).filter_map { |owner| by_owner[owner] }
+      rest = group.sort_by(&:rank) - playoff_top
+      (playoff_top + rest).each_with_index { |record, index| record.final_rank = index + 1 }
     end
   end
 

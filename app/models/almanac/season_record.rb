@@ -15,7 +15,10 @@ class Almanac
 
     attr_reader :owner, :year, :tier, :games_played, :wins, :losses, :ties,
       :points_for, :points_against, :luck_total
-    attr_accessor :rank
+    # rank orders the regular season (and drives relegation and zone
+    # shading); final_rank folds the playoffs in — finishers take the top
+    # spots, everyone else keeps their regular-season order.
+    attr_accessor :rank, :final_rank
 
     def initialize(owner:, year:, tier:)
       @owner = owner

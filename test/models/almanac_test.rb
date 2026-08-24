@@ -457,6 +457,35 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 2, history.active_playoff_drought
   end
 
+  test "final rank places playoff finishers first, then regular-season order" do
+    a, b, c, d, e, f = %w[A B C D E F].map { |n| Owner.new(name: "Final #{n}") }
+    games = [
+      # Regular season standings: A(1st, 100), C(2nd, 95), E(3rd, 85),
+      # then the losers by points: B(4th, 90), D(5th, 80), F(6th, 70).
+      build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, scores: { c => 95.0, d => 80.0 }),
+      build_game(year: 2030, week: 1, scores: { e => 85.0, f => 70.0 }),
+      # Playoffs: E upsets its way to the title; C takes third.
+      build_game(year: 2030, week: 2, scores: { a => 100.0, b => 90.0 }, round_name: "Semifinal"),
+      build_game(year: 2030, week: 2, scores: { e => 99.0, c => 80.0 }, round_name: "Semifinal"),
+      build_game(year: 2030, week: 3, scores: { e => 105.0, a => 100.0 }, round_name: "Championship"),
+      build_game(year: 2030, week: 3, scores: { c => 88.0, b => 77.0 }, round_name: "Third Place")
+    ]
+
+    book = Almanac.new(games: games)
+    rows = book.standings_for(2030, :unified)
+    assert_equal [ a, c, e, b, d, f ], rows.map(&:owner) # regular-season order intact
+    final = rows.index_by(&:owner)
+    assert_equal [ 1, 2, 3, 4, 5, 6 ],
+      [ e, a, c, b, d, f ].map { |owner| final[owner].final_rank }
+    assert_equal 1, book.career_for(e).best_finish
+  end
+
+  test "final rank matches regular-season rank when playoff data is absent" do
+    rows = @book.standings_for(2023, :unified)
+    assert_equal rows.map(&:rank), rows.map(&:final_rank)
+  end
+
   test "ladder is absent when the latest season lacks two tiers" do
     owner_a = Owner.new(name: "Solo A")
     owner_b = Owner.new(name: "Solo B")

@@ -48,7 +48,7 @@ class Almanac
     end
 
     def best_finish
-      season_records.map(&:rank).min
+      season_records.map(&:final_rank).min
     end
 
     def win_percentage

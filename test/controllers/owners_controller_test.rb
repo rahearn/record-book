@@ -31,6 +31,16 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "—", response.body
   end
 
+  test "season-by-season years link to that season's page and tier" do
+    get owners_url # Alice: 2023 unified, 2024 premier
+    assert_response :success
+    assert_select "a[href=?]", "/seasons/2023", text: "2023"
+    assert_select "a[href=?]", "/seasons/2024?tier=premier", text: "2024"
+
+    get owner_url(owners(:dan))
+    assert_select "a[href=?]", "/seasons/2024?tier=challenger", text: "2024"
+  end
+
   test "shows a requested owner" do
     get owner_url(owners(:bob))
     assert_response :success
