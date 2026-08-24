@@ -43,14 +43,22 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_in_delta 110.0, alice.points_for_per_game
     assert_in_delta 93.33, alice.points_against_per_game, 0.01
     assert_in_delta(-3.33, alice.luck_per_game, 0.01)
-    assert_equal 2, alice.titles
+    assert_equal 1, alice.titles
   end
 
-  test "challenger first place does not count as a title" do
+  test "titles count playoff championships, not standings finishes" do
+    # Alice topped the 2023 standings, but 2023 has no playoff games on
+    # record — her one title is the 2024 Premier championship win.
+    assert_equal 1, career_for(:alice).titles
+    assert_equal 0, career_for(:bob).titles
+    assert_equal 0, career_for(:dan).titles
+  end
+
+  test "challenger championships do not count as titles" do
     carol = career_for(:carol)
     assert_equal 2, carol.wins
     assert_equal 1, carol.losses
-    assert_equal 0, carol.titles
+    assert_equal 0, carol.titles # won the 2024 Challenger final
     assert_in_delta 4.08, carol.luck_per_game, 0.01
   end
 
@@ -280,6 +288,40 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_nil series.winner_of(series.meetings.first)
   end
 
+  test "a unified season's championship winner earns a title" do
+    owner_a = Owner.new(name: "Solo A")
+    owner_b = Owner.new(name: "Solo B")
+    games = [
+      build_game(year: 2030, week: 1, scores: { owner_a => 100.0, owner_b => 90.0 }),
+      build_game(year: 2030, week: 2, scores: { owner_a => 80.0, owner_b => 95.0 },
+                 round_name: "Championship")
+    ]
+
+    book = Almanac.new(games: games)
+    assert_equal 1, book.career_for(owner_b).titles
+    assert_equal 0, book.career_for(owner_a).titles
+  end
+
+  test "tied or ambiguous finals crown no champion" do
+    owner_a = Owner.new(name: "Solo A")
+    owner_b = Owner.new(name: "Solo B")
+    regular = build_game(year: 2030, week: 1, scores: { owner_a => 100.0, owner_b => 90.0 })
+
+    tied_final = build_game(year: 2030, week: 2, scores: { owner_a => 95.0, owner_b => 95.0 },
+                            round_name: "Championship")
+    book = Almanac.new(games: [ regular, tied_final ])
+    assert book.all_time_standings.all? { |career| career.titles.zero? }
+
+    two_finals = [
+      build_game(year: 2031, week: 2, scores: { owner_a => 90.0, owner_b => 80.0 },
+                 round_name: "Semifinal"),
+      build_game(year: 2031, week: 2, scores: { owner_b => 85.0, owner_a => 70.0 },
+                 round_name: "Semifinal")
+    ]
+    book = Almanac.new(games: [ regular ] + two_finals)
+    assert book.all_time_standings.all? { |career| career.titles.zero? }
+  end
+
   test "ladder is absent when the latest season lacks two tiers" do
     owner_a = Owner.new(name: "Solo A")
     owner_b = Owner.new(name: "Solo B")
@@ -307,8 +349,8 @@ class AlmanacTest < ActiveSupport::TestCase
     @book.all_time_standings.find { |career| career.owner == owners(fixture_name) }
   end
 
-  def build_game(year:, week:, scores:, tier: :unified)
-    game = Game.new(season: Season.new(year: year), week: week, tier: tier)
+  def build_game(year:, week:, scores:, tier: :unified, round_name: nil)
+    game = Game.new(season: Season.new(year: year), week: week, tier: tier, round_name: round_name)
     scores.each { |owner, points| game.performances.build(owner: owner, points: points) }
     game
   end

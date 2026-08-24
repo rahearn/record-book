@@ -37,7 +37,8 @@ All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` —
 application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).
 `Almanac` loads every game once and computes: per-season standings (wins desc, points-for
 tiebreak), career aggregates, "luck" (average points opponents scored below/above their own season
-average), titles (first-place finishes excluding the Challenger tier), single-game extremes, and
+average), titles (playoff championships won in the unified league or Premier tier — the single game
+of the tier's last playoff week; tied or ambiguous finals crown no one), single-game extremes, and
 the next season's promotion/relegation ladder (bottom 4 of Premier ↔ top 4 of Challenger). Value
 objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotion_count:`, and
 `relegation_count:` keywords, which tests use to build small in-memory scenarios.

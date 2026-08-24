@@ -4,7 +4,8 @@
 #
 # All statistics cover regular-season games only, and "luck" is the average
 # number of points an opponent scored below (+) or above (−) their own
-# season average.
+# season average. The exception is titles, which count playoff
+# championships won in the unified league or the Premier tier.
 class Almanac
   PROMOTION_COUNT = 4
   RELEGATION_COUNT = 4
@@ -19,7 +20,9 @@ class Almanac
 
   def initialize(games: Game.includes(:season, performances: { owner: { teams: :season } }).to_a,
                  promotion_count: PROMOTION_COUNT, relegation_count: RELEGATION_COUNT)
-    @games = games.select { |game| game.regular_season? && game.performances.size == 2 }
+    playable = games.select { |game| game.performances.size == 2 }
+    @games = playable.select(&:regular_season?)
+    @playoff_games = playable.select(&:playoff?)
     @promotion_count = promotion_count
     @relegation_count = relegation_count
   end
@@ -98,7 +101,8 @@ class Almanac
 
   def all_time_standings
     @all_time_standings ||= season_records.values.group_by(&:owner).map do |owner, records|
-      CareerRecord.new(owner: owner, season_records: records, next_tier: ladder&.tier_for(owner))
+      CareerRecord.new(owner: owner, season_records: records, next_tier: ladder&.tier_for(owner),
+                       titles: championship_counts[owner] || 0)
     end.sort_by { |career| [ -career.win_percentage, -career.points_for ] }
       .each_with_index { |career, index| career.rank = index + 1 }
   end
@@ -247,6 +251,25 @@ class Almanac
 
     Ladder.new(year: latest_year + 1, premier_owners: premier, challenger_owners: challenger,
                promotion_count:, relegation_count:)
+  end
+
+  # Titles per owner: playoff championships won in the unified league or the
+  # Premier tier. The championship is the single game of a tier's last
+  # playoff week; tied or ambiguous finals crown no one.
+  def championship_counts
+    @championship_counts ||= @playoff_games.reject(&:challenger?)
+      .group_by { |game| [ game.season.year, game.tier ] }
+      .filter_map { |_season_tier, games| championship_winner(games) }
+      .tally
+  end
+
+  def championship_winner(games)
+    final_week = games.map(&:week).max
+    finals = games.select { |game| game.week == final_week }
+    return unless finals.size == 1
+
+    winner, runner_up = finals.first.performances.sort_by { |performance| -performance.points }
+    winner.owner unless winner.points == runner_up.points
   end
 
   def all_owners

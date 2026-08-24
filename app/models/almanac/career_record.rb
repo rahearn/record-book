@@ -1,13 +1,14 @@
 class Almanac
   # One owner's all-time aggregate across their season records.
   class CareerRecord
-    attr_reader :owner, :season_records, :next_tier
+    attr_reader :owner, :season_records, :next_tier, :titles
     attr_accessor :rank
 
-    def initialize(owner:, season_records:, next_tier: nil)
+    def initialize(owner:, season_records:, next_tier: nil, titles: 0)
       @owner = owner
       @season_records = season_records.sort_by(&:year)
       @next_tier = next_tier
+      @titles = titles
     end
 
     def seasons_played
@@ -44,10 +45,6 @@ class Almanac
 
     def luck_total
       season_records.sum(&:luck_total)
-    end
-
-    def titles
-      season_records.count(&:champion?)
     end
 
     def best_finish

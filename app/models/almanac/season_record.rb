@@ -81,10 +81,5 @@ class Almanac
     def win_percentage
       (wins + ties * 0.5) / games_played
     end
-
-    # Challenger-tier first places don't count as league titles.
-    def champion?
-      rank == 1 && tier != "challenger"
-    end
   end
 end
