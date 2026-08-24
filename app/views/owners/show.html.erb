@@ -33,8 +33,6 @@
           note: league_rank_note(@almanac.points_against_rank(@career), @almanac.owner_count) %>
     <%= render "plate", kicker: "Luck", value: signed_points_display(@career.luck_per_game),
           note: luck_note(@career.luck_per_game) %>
-    <%= render "plate", kicker: "Titles", value: @career.titles,
-          note: best_finish_note(@career) %>
   </section>
 
   <section>
@@ -44,10 +42,11 @@
         Unified league and Premier only — Challenger seasons count as missed playoffs.
       </span>
     </div>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
+    <div class="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-4">
       <%= render "playoff_stat", label: "Playoff appearances", value: @playoff_history.appearances %>
       <%= render "playoff_stat", label: "Playoff game wins", value: @playoff_history.playoff_wins %>
       <%= render "playoff_stat", label: "Runner-up finishes", value: @playoff_history.runner_up_finishes %>
+      <%= render "playoff_stat", label: "Titles", value: @career.titles, note: best_finish_note(@career) %>
       <%= render "playoff_stat", label: "Longest playoff streak", value: @playoff_history.longest_playoff_streak %>
       <%= render "playoff_stat", label: "Active playoff streak", value: @playoff_history.active_playoff_streak %>
       <%= render "playoff_stat", label: "Longest playoff drought", value: @playoff_history.longest_playoff_drought %>

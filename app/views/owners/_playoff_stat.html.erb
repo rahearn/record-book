@@ -1,6 +1,9 @@
-<%# locals: (label:, value:) %>
+<%# locals: (label:, value:, note: nil) %>
 <div class="blueprint flex flex-col gap-px px-3 py-2.5">
   <%= blueprint_corners %>
   <span class="card-kicker"><%= label %></span>
   <span class="font-heading text-2xl font-semibold leading-tight"><%= value %></span>
+  <% if note %>
+    <span class="text-[11px] text-ink/55"><%= note %></span>
+  <% end %>
 </div>

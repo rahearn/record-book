@@ -22,11 +22,13 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "Playoff history", response.body
     assert_match "Challenger seasons count as missed playoffs", response.body
     %w[
-      Playoff\ appearances Playoff\ game\ wins Runner-up\ finishes
+      Playoff\ appearances Playoff\ game\ wins Runner-up\ finishes Titles
       Longest\ playoff\ streak Active\ playoff\ streak
       Longest\ playoff\ drought Active\ playoff\ drought
       Last\ playoff\ berth Last\ playoff\ win Last\ semifinal Last\ final
     ].each { |label| assert_match label, response.body }
+    # Titles moved here from the career plates, note included.
+    assert_match "Best finish: 1st", response.body
     # Alice never played a semifinal, so that tile dashes out.
     assert_match "—", response.body
   end
