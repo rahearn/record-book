@@ -1,0 +1,14 @@
+<div class="flex items-center gap-2.5">
+  <span class="flex min-w-0 flex-1 flex-col leading-[1.2]">
+    <span class="truncate <%= scoreboard_side_class(matchup, side) %>"><%= side.owner.name %></span>
+    <span class="text-[11px] text-ink/55">
+      <%= side.owner.team_name_in(matchup.year) %> · <%= vs_season_average_display(side) %> vs season avg
+    </span>
+  </span>
+  <% if (badge = scoreboard_badge(scoreboard, side)) %>
+    <span class="tag <%= badge.last %> flex-none"><%= badge.first %></span>
+  <% end %>
+  <span class="flex-none font-heading text-[26px] leading-none <%= scoreboard_side_class(matchup, side) %>">
+    <%= points_display(side.points) %>
+  </span>
+</div>

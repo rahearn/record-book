@@ -1,0 +1,49 @@
+<% content_for :title, "ATO Delta · #{week_title(@year, @week)}" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<section class="flex flex-wrap items-end gap-4.5">
+  <div>
+    <div class="card-kicker">Scoreboard</div>
+    <h1 class="font-heading text-[52px] font-semibold leading-tight tracking-[-0.015em]">
+      <%= week_title(@year, @week) %>
+    </h1>
+    <div class="text-[13px] text-ink/55"><%= week_summary(@scoreboard, split: @split) %></div>
+  </div>
+  <%= link_to "#{@year} season",
+        season_path(@year, tier: (@tier unless @tier == :unified)),
+        class: "btn btn-ghost ml-auto" %>
+  <% if @split %>
+    <div class="seg">
+      <%= link_to "Premier", week_path(@year, @week, tier: :premier),
+            class: "seg-opt #{'seg-on' if @tier == :premier}" %>
+      <%= link_to "Challenger", week_path(@year, @week, tier: :challenger),
+            class: "seg-opt #{'seg-on' if @tier == :challenger}" %>
+    </div>
+  <% end %>
+</section>
+
+<section class="flex flex-wrap items-center gap-1.5">
+  <span class="mr-1.5 text-[11px] uppercase tracking-[.14em] text-ink/55">Week</span>
+  <% @weeks.each do |week| %>
+    <%= link_to week, week_path(@year, week, tier: (@tier unless @tier == :unified)),
+          class: week_button_class(week, @week) %>
+  <% end %>
+</section>
+
+<section class="grid grid-cols-[repeat(auto-fit,minmax(330px,1fr))] gap-4.5">
+  <% @scoreboard.matchups.each do |matchup| %>
+    <%= link_to matchup_path(matchup.game), class: "blueprint flex flex-col gap-2.5 px-4.5 py-4 hover:bg-accent/6" do %>
+      <%= blueprint_corners %>
+      <% if matchup.playoff? %>
+        <span class="card-kicker"><%= matchup.round_name %></span>
+      <% end %>
+      <% matchup.sides.each do |side| %>
+        <%= render "scoreboard_side", matchup: matchup, side: side, scoreboard: @scoreboard %>
+      <% end %>
+      <div class="flex justify-between border-t border-ink/10 pt-2 text-[11px] text-ink/55">
+        <span>Margin <%= points_display(matchup.margin) %></span>
+        <span>View matchup →</span>
+      </div>
+    <% end %>
+  <% end %>
+</section>

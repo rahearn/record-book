@@ -54,22 +54,23 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_match "Alice Anders", response.body
   end
 
-  test "links out to the season and the series" do
+  test "links out to the week scoreboard and the series" do
     get matchup_url(games(:g2023_w1_ab), owner: owners(:alice).id)
     assert_response :success
 
-    assert_select "a[href=?]", "/seasons/2023", text: "← 2023 season"
+    assert_select "a[href=?]", "/seasons/2023/weeks/1", text: "← Week 1 scoreboard"
     assert_select "a[href=?]",
       "/head-to-head?a=#{owners(:alice).id}&b=#{owners(:bob).id}", text: "Series history"
     assert_select "a[href=?]", "/owners/#{owners(:alice).id}", text: "Alice Anders"
   end
 
-  test "a tiered matchup links back to its tier and names it" do
+  test "a tiered matchup links back to its own tier's scoreboard" do
     get matchup_url(games(:g2024_w1_cd))
     assert_response :success
 
     assert_match "Challenger", response.body
-    assert_select "a[href=?]", "/seasons/2024?tier=challenger", text: "← 2024 season"
+    assert_select "a[href=?]", "/seasons/2024/weeks/1?tier=challenger",
+      text: "← Week 1 scoreboard"
   end
 
   test "playoff matchups name the round" do

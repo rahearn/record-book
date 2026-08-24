@@ -574,6 +574,62 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal owners(:carol), matchup.winner
   end
 
+  test "scoreboard_for collects one week of a season and tier" do
+    board = @book.scoreboard_for(2023, 1, :unified)
+
+    assert_not board.empty?
+    assert_equal 2023, board.year
+    assert_equal 1, board.week
+    assert_equal "unified", board.tier
+    assert_equal 2, board.matchups.size
+    assert_equal [ owners(:alice), owners(:bob), owners(:carol), owners(:dan) ].to_set,
+      board.sides.map(&:owner).to_set
+  end
+
+  test "scoreboard marks the week's high and low scores" do
+    board = @book.scoreboard_for(2023, 1, :unified)
+    by_owner = board.sides.index_by(&:owner)
+
+    assert_in_delta 100.0, board.highest_score
+    assert_in_delta 70.5, board.lowest_score
+    assert_in_delta 85.125, board.average_score
+
+    assert board.highest?(by_owner[owners(:alice)])
+    assert board.lowest?(by_owner[owners(:dan)])
+    assert_not board.highest?(by_owner[owners(:bob)])
+    assert_not board.lowest?(by_owner[owners(:bob)])
+  end
+
+  test "scoreboards keep the tiers of a split season apart" do
+    premier = @book.scoreboard_for(2024, 1, :premier)
+    challenger = @book.scoreboard_for(2024, 1, :challenger)
+
+    assert_equal [ owners(:alice), owners(:bob) ].to_set, premier.sides.map(&:owner).to_set
+    assert_equal [ owners(:carol), owners(:dan) ].to_set, challenger.sides.map(&:owner).to_set
+    assert_in_delta 120.0, premier.highest_score
+    assert_in_delta 90.0, challenger.highest_score
+  end
+
+  test "scoreboards cover playoff weeks too" do
+    board = @book.scoreboard_for(2024, 2, :premier)
+
+    assert_equal 1, board.matchups.size
+    assert board.matchups.first.playoff?
+    assert_equal "Championship", board.matchups.first.round_name
+  end
+
+  test "scoreboard_for is empty for a week nobody played" do
+    assert @book.scoreboard_for(2023, 9, :unified).empty?
+    assert @book.scoreboard_for(2023, 1, :premier).empty?
+  end
+
+  test "weeks_in lists the weeks on record, playoffs included" do
+    assert_equal [ 1, 2 ], @book.weeks_in(2023, :unified)
+    assert_equal [ 1, 2 ], @book.weeks_in(2024, :premier)
+    assert_equal [ 1, 3 ], @book.weeks_in(2024, :challenger)
+    assert_empty @book.weeks_in(2023, :premier)
+  end
+
   test "matchup sides fall back gracefully without a season on record" do
     owner_a = Owner.new(name: "Solo A")
     owner_b = Owner.new(name: "Solo B")

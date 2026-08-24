@@ -168,6 +168,19 @@ class Almanac
     Matchup.new(game: game, side_a: sides.first, side_b: sides.last)
   end
 
+  # Every matchup of one week, playoffs included — the scoreboard is a
+  # record of what was played, not a regular-season statistic.
+  def scoreboard_for(year, week, tier)
+    games = games_in(year, tier).select { |game| game.week == week }
+    Scoreboard.new(year: year, week: week, tier: tier.to_s,
+                   matchups: games.map { |game| matchup_for(game) })
+  end
+
+  # The weeks a season and tier have games on record for, in order.
+  def weeks_in(year, tier)
+    games_in(year, tier).map(&:week).uniq.sort
+  end
+
   def playoff_history_for(owner)
     (@playoff_histories ||= {})[owner] ||= build_playoff_history(owner)
   end
@@ -183,6 +196,12 @@ class Almanac
   end
 
   private
+
+  def games_in(year, tier)
+    (@games + @playoff_games).select do |game|
+      game.season.year == year && game.tier == tier.to_s
+    end
+  end
 
   def matchup_side(game, performance)
     Matchup::Side.new(performance: performance,

@@ -128,7 +128,11 @@
             <tr>
               <th>Owner</th>
               <% @matrix.weeks.each do |week| %>
-                <th class="text-center">W<%= week %></th>
+                <th class="text-center">
+                  <%= link_to "W#{week}",
+                        week_path(@year, week, tier: (@tier unless @tier == :unified)),
+                        class: "hover:text-ink" %>
+                </th>
               <% end %>
             </tr>
           </thead>

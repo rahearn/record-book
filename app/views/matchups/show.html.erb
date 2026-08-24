@@ -2,8 +2,9 @@
 <% content_for :tagline, league_tagline(@almanac) %>
 
 <section class="flex flex-wrap items-center gap-2.5">
-  <%= link_to "← #{@matchup.year} season",
-        season_path(@matchup.year, tier: (@matchup.tier unless @matchup.tier == "unified")),
+  <%= link_to "← Week #{@matchup.week} scoreboard",
+        week_path(@matchup.year, @matchup.week,
+                  tier: (@matchup.tier unless @matchup.tier == "unified")),
         class: "btn btn-ghost" %>
   <span class="tag <%= tier_tag_class(@matchup.tier) %>"><%= tier_label(@matchup.tier) %></span>
   <span class="text-xs text-ink/55"><%= matchup_title(@matchup) %></span>
