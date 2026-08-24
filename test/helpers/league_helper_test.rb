@@ -50,6 +50,21 @@ class LeagueHelperTest < ActionView::TestCase
     assert_equal "tag-outline", movement_tag_class(:held)
   end
 
+  test "sortable_header marks the active column and toggles direction" do
+    inactive = sortable_header("PF/g", "pfg", active_sort: "win_pct", direction: "desc")
+    assert_includes inactive, ">PF/g</a>"
+    assert_includes inactive, "sort=pfg"
+    assert_includes inactive, "direction=desc"
+
+    active = sortable_header("PF/g", "pfg", active_sort: "pfg", direction: "desc")
+    assert_includes active, "PF/g ▼"
+    assert_includes active, "direction=asc"
+
+    flipped = sortable_header("PF/g", "pfg", active_sort: "pfg", direction: "asc")
+    assert_includes flipped, "PF/g ▲"
+    assert_includes flipped, "direction=desc"
+  end
+
   test "league_tagline covers the recorded era" do
     assert_equal "Record book", league_tagline(Almanac.new(games: []))
     assert_equal "Record book · 2011—2025", league_tagline(FakeBook.new(2011, 2025))

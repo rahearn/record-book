@@ -22,8 +22,8 @@
     <div class="mb-3.5 flex flex-wrap items-baseline gap-3.5">
       <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">All-time by owner</h2>
       <span class="max-w-[520px] text-xs text-ink/55">
-        Regular-season games only. Luck is the average points an opponent scored
-        below (+) or above (−) their own season average.
+        Records and scoring cover regular-season games only; titles and
+        runner-up finishes come from the playoffs.
       </span>
     </div>
     <div class="blueprint px-4 py-3.5">
@@ -36,18 +36,18 @@
               <th>Owner</th>
               <th>Sea</th>
               <th>W–L</th>
-              <th>Win%</th>
-              <th>PF/g</th>
-              <th>PA/g</th>
-              <th>Luck</th>
-              <th>Titles</th>
+              <th><%= sortable_header "Win%", "win_pct", active_sort: @sort, direction: @direction %></th>
+              <th><%= sortable_header "PF/g", "pfg", active_sort: @sort, direction: @direction %></th>
+              <th><%= sortable_header "PA/g", "pag", active_sort: @sort, direction: @direction %></th>
+              <th><%= sortable_header "Titles", "titles", active_sort: @sort, direction: @direction %></th>
+              <th><%= sortable_header "Runner-up", "runner_up", active_sort: @sort, direction: @direction %></th>
               <% if @almanac.ladder %>
                 <th><%= @almanac.ladder.year %></th>
               <% end %>
             </tr>
           </thead>
           <tbody>
-            <% @almanac.all_time_standings.each do |career| %>
+            <% @standings.each do |career| %>
               <tr>
                 <td class="text-ink/55"><%= career.rank %></td>
                 <td>
@@ -66,8 +66,8 @@
                 <td><%= win_percentage_display(career.win_percentage) %></td>
                 <td><%= points_display(career.points_for_per_game) %></td>
                 <td><%= points_display(career.points_against_per_game) %></td>
-                <td><%= signed_points_display(career.luck_per_game) %></td>
                 <td><%= titles_display(career.titles) %></td>
+                <td><%= titles_display(@almanac.playoff_history_for(career.owner).runner_up_finishes) %></td>
                 <% if @almanac.ladder %>
                   <td>
                     <% if career.next_tier %>
