@@ -20,6 +20,9 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
     assert_match "2–0", response.body
     assert_match "2 regular-season meetings since 2023", response.body
     assert_select "tbody tr", count: 2
+    # Each meeting row is addressable so week-by-week chart links can target it.
+    assert_select "tr#meeting-2024-w1"
+    assert_select "tr#meeting-2023-w1"
     assert_match "Career PF/g", response.body
     assert_match "Avg in series", response.body
     # 2024 meeting: 120.0 to 95.0, margin 25.0.

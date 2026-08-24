@@ -40,6 +40,17 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "Bob Barker", response.body # week 1 opponent
   end
 
+  test "week-by-week rows link to that matchup on the head-to-head page" do
+    get owner_url(owners(:alice), season: 2023)
+    assert_response :success
+
+    alice = owners(:alice)
+    assert_select "a[href=?]",
+      "/head-to-head?a=#{alice.id}&b=#{owners(:bob).id}#meeting-2023-w1"
+    assert_select "a[href=?]",
+      "/head-to-head?a=#{alice.id}&b=#{owners(:carol).id}#meeting-2023-w2"
+  end
+
   test "falls back to the latest season for unplayed chart years" do
     get owner_url(owners(:alice), season: 1999)
     assert_response :success

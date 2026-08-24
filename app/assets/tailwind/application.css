@@ -198,6 +198,15 @@
     background: color-mix(in srgb, var(--color-ink) 4%, transparent);
   }
 
+  /* The meeting row a link jumped to (e.g. from an owner's week-by-week
+     chart) gets picked out until the next navigation. */
+  .table tbody tr:target {
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+  .table tbody tr:target > td:first-child {
+    box-shadow: inset 3px 0 0 var(--color-accent);
+  }
+
   /* Promotion/relegation zones in season standings. */
   .table tbody tr.zone-up {
     background: color-mix(in srgb, var(--color-accent) 7%, transparent);

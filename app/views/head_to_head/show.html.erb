@@ -78,7 +78,7 @@
             </thead>
             <tbody>
               <% @series.meetings.each do |meeting| %>
-                <tr>
+                <tr id="meeting-<%= meeting.year %>-w<%= meeting.week %>">
                   <td><%= meeting.year %></td>
                   <td class="text-ink/55">W<%= meeting.week %></td>
                   <td><span class="tag <%= tier_tag_class(meeting.tier) %>"><%= tier_label(meeting.tier) %></span></td>
