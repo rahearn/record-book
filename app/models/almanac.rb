@@ -154,11 +154,18 @@ class Almanac
         theirs = sides[owner_b]
         next unless mine && theirs
 
-        meetings << Series::Meeting.new(year: game.season.year, week: game.week, tier: game.tier,
-                                        points_a: mine.points, points_b: theirs.points)
+        meetings << Series::Meeting.new(game: game, points_a: mine.points, points_b: theirs.points)
       end
     end
     Series.new(owner_a: owner_a, owner_b: owner_b, meetings: meetings)
+  end
+
+  # One game with both owners' seasons attached. When first_owner is given
+  # and played in the game, that owner takes the left-hand side.
+  def matchup_for(game, first_owner: nil)
+    sides = game.performances.map { |performance| matchup_side(game, performance) }
+    sides.reverse! if first_owner && sides.last.owner == first_owner
+    Matchup.new(game: game, side_a: sides.first, side_b: sides.last)
   end
 
   def playoff_history_for(owner)
@@ -177,6 +184,11 @@ class Almanac
 
   private
 
+  def matchup_side(game, performance)
+    Matchup::Side.new(performance: performance,
+                      season_record: season_records[[ game.season.year, performance.owner ]])
+  end
+
   def season_records
     @season_records ||= build_season_records
   end
@@ -185,10 +197,10 @@ class Almanac
     records = {}
     each_matchup do |game, side_a, side_b|
       record_for(records, game, side_a.owner).record_result(
-        week: game.week, points: side_a.points,
+        game: game, points: side_a.points,
         opponent: side_b.owner, opponent_points: side_b.points)
       record_for(records, game, side_b.owner).record_result(
-        week: game.week, points: side_b.points,
+        game: game, points: side_b.points,
         opponent: side_a.owner, opponent_points: side_a.points)
     end
     each_matchup do |game, side_a, side_b|

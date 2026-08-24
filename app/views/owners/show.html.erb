@@ -116,10 +116,9 @@
     <div class="blueprint flex flex-col gap-[7px] px-4.5 py-4">
       <%= blueprint_corners %>
       <% @chart_record.weekly_scores.each do |score| %>
-        <a href="<%= head_to_head_path(a: @owner.id, b: score.opponent.id,
-                       anchor: "meeting-#{@chart_record.year}-w#{score.week}") %>"
+        <a href="<%= matchup_path(score.game, owner: @owner.id) %>"
            class="-mx-1.5 flex flex-wrap items-center gap-2.5 gap-y-1 px-1.5 text-[13px] hover:bg-ink/5"
-           aria-label="Week <%= score.week %> vs <%= score.opponent.name %> — view head-to-head">
+           aria-label="Week <%= score.week %> vs <%= score.opponent.name %> — view the matchup">
           <span class="w-8 flex-none text-ink/55">W<%= score.week %></span>
           <span class="w-[52px] flex-none font-medium"><%= points_display(score.points) %></span>
           <span class="relative h-4 min-w-[100px] flex-[1_1_130px] bg-ink/5">

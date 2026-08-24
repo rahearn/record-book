@@ -1,0 +1,74 @@
+<% content_for :title, "ATO Delta · #{matchup_title(@matchup)}" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<section class="flex flex-wrap items-center gap-2.5">
+  <%= link_to "← #{@matchup.year} season",
+        season_path(@matchup.year, tier: (@matchup.tier unless @matchup.tier == "unified")),
+        class: "btn btn-ghost" %>
+  <span class="tag <%= tier_tag_class(@matchup.tier) %>"><%= tier_label(@matchup.tier) %></span>
+  <span class="text-xs text-ink/55"><%= matchup_title(@matchup) %></span>
+  <%= link_to "Series history",
+        head_to_head_path(a: @matchup.side_a.owner.id, b: @matchup.side_b.owner.id),
+        class: "btn btn-secondary ml-auto" %>
+</section>
+
+<section class="blueprint grid grid-cols-[1fr_auto_1fr] items-center gap-5 px-6 py-6">
+  <%= blueprint_corners %>
+  <%= render "score_side", side: @matchup.side_a, matchup: @matchup, align: "items-start text-left" %>
+  <div class="text-center font-heading text-[15px] tracking-[.14em] text-ink/55">VS</div>
+  <%= render "score_side", side: @matchup.side_b, matchup: @matchup, align: "items-end text-right" %>
+</section>
+
+<section>
+  <div class="mb-3 flex flex-wrap items-baseline gap-3.5">
+    <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Starting lineups</h2>
+    <span class="text-xs text-ink/55">
+      <%= matchup_result_note(@matchup) %>
+      <% if @matchup.lineups? %>Bars compare the two players at each slot.<% end %>
+    </span>
+  </div>
+
+  <% if @matchup.lineups? %>
+    <div class="blueprint flex flex-col px-4 py-3.5">
+      <%= blueprint_corners %>
+      <% @matchup.slot_rows.each do |row| %>
+        <div class="grid grid-cols-[1fr_46px_1fr] items-center gap-3 border-t border-ink/10 py-2">
+          <div class="grid min-w-0 grid-cols-[1fr_92px_46px] items-center gap-2">
+            <span class="truncate text-right text-[13px]"><%= row.entry_a&.player&.name %></span>
+            <span class="relative h-2.5 bg-ink/5">
+              <% if row.entry_a %>
+                <span class="absolute inset-y-0 right-0 <%= lineup_bar_class(row.a_leads?) %>"
+                      style="width: <%= lineup_bar_percent(row.entry_a.points, @matchup.best_starter_points) %>"></span>
+              <% end %>
+            </span>
+            <span class="text-right font-heading text-base">
+              <%= points_display(row.entry_a.points) if row.entry_a %>
+            </span>
+          </div>
+          <span class="tag tag-outline justify-center"><%= slot_label(row.slot) %></span>
+          <div class="grid min-w-0 grid-cols-[46px_92px_1fr] items-center gap-2">
+            <span class="font-heading text-base">
+              <%= points_display(row.entry_b.points) if row.entry_b %>
+            </span>
+            <span class="relative h-2.5 bg-ink/5">
+              <% if row.entry_b %>
+                <span class="absolute inset-y-0 left-0 <%= lineup_bar_class(row.b_leads?) %>"
+                      style="width: <%= lineup_bar_percent(row.entry_b.points, @matchup.best_starter_points) %>"></span>
+              <% end %>
+            </span>
+            <span class="truncate text-[13px]"><%= row.entry_b&.player&.name %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-ink/55">No lineups are on record for this matchup.</p>
+  <% end %>
+</section>
+
+<% if @matchup.lineups? %>
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4.5">
+    <%= render "bench", side: @matchup.side_a %>
+    <%= render "bench", side: @matchup.side_b %>
+  </section>
+<% end %>

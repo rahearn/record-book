@@ -12,6 +12,8 @@ module ActiveSupport
 
     # Empty the league in foreign-key order, for tests of the no-data state.
     def wipe_league_data
+      LineupSlot.delete_all
+      Player.delete_all
       Performance.delete_all
       PlayoffFormat.delete_all
       Team.delete_all

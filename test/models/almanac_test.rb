@@ -507,6 +507,87 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, book.game_count
   end
 
+  test "matchup_for pairs both sides with the season each owner was having" do
+    matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
+
+    assert_equal 2023, matchup.year
+    assert_equal 1, matchup.week
+    assert_equal "unified", matchup.tier
+    assert_not matchup.playoff?
+    assert_equal [ owners(:alice), owners(:bob) ], matchup.sides.map(&:owner)
+    assert_equal owners(:alice), matchup.winner
+    assert_in_delta 10.0, matchup.margin
+    assert_not matchup.tied?
+
+    alice = matchup.side_a
+    assert_in_delta 105.0, alice.average_points # 100.0 and 110.0 that season
+    assert_in_delta(-5.0, alice.points_vs_average)
+    assert_in_delta 8.0, alice.points_left_on_bench
+  end
+
+  test "matchup_for puts the owner arrived from on the left" do
+    game = games(:g2023_w1_ab)
+    assert_equal [ owners(:bob), owners(:alice) ],
+      @book.matchup_for(game, first_owner: owners(:bob)).sides.map(&:owner)
+    assert_equal [ owners(:alice), owners(:bob) ],
+      @book.matchup_for(game, first_owner: owners(:alice)).sides.map(&:owner)
+
+    # An owner who did not play leaves the recorded order alone.
+    recorded = @book.matchup_for(game).sides.map(&:owner)
+    assert_equal recorded, @book.matchup_for(game, first_owner: owners(:carol)).sides.map(&:owner)
+  end
+
+  test "matchup_for reads playoff games too" do
+    matchup = @book.matchup_for(games(:g2024_final_premier))
+
+    assert matchup.playoff?
+    assert_equal "Championship", matchup.round_name
+    assert_equal owners(:alice), matchup.winner
+  end
+
+  test "matchup slot rows pair the two lineups and mark the leader" do
+    matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
+
+    assert matchup.lineups?
+    assert_in_delta 22.5, matchup.best_starter_points
+    rows = matchup.slot_rows
+    assert_equal 9, rows.size
+    assert_equal %w[qb rb rb wr wr te flex k dst], rows.map(&:slot)
+
+    quarterbacks = rows.first
+    assert quarterbacks.a_leads? # 22.5 to 20.0
+    assert_not quarterbacks.b_leads?
+    assert_equal players(:alice_qb), quarterbacks.entry_a.player
+    assert_equal players(:bob_qb), quarterbacks.entry_b.player
+
+    second_receiver = rows[4] # 9.0 to 11.0
+    assert_not second_receiver.a_leads?
+    assert second_receiver.b_leads?
+  end
+
+  test "matchups without lineups on record still report the score" do
+    matchup = @book.matchup_for(games(:g2023_w1_cd))
+
+    assert_not matchup.lineups?
+    assert_empty matchup.slot_rows
+    assert_equal 0, matchup.best_starter_points
+    assert_equal owners(:carol), matchup.winner
+  end
+
+  test "matchup sides fall back gracefully without a season on record" do
+    owner_a = Owner.new(name: "Solo A")
+    owner_b = Owner.new(name: "Solo B")
+    final = build_game(year: 2030, week: 2, scores: { owner_a => 100.0, owner_b => 100.0 },
+                       round_name: Game::CHAMPIONSHIP)
+
+    matchup = Almanac.new(games: [ final ]).matchup_for(final)
+    assert matchup.tied?
+    assert_nil matchup.winner
+    assert_nil matchup.side_a.season_record
+    assert_nil matchup.side_a.average_points
+    assert_nil matchup.side_a.points_vs_average
+  end
+
   private
 
   def career_for(fixture_name)

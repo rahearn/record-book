@@ -9,7 +9,8 @@ class Game < ApplicationRecord
   SEMIFINAL = "Semifinal".freeze
 
   belongs_to :season
-  has_many :performances, dependent: :destroy
+  # Ordered so the two sides of a matchup always render in the same order.
+  has_many :performances, -> { order(:id) }, dependent: :destroy, inverse_of: :game
   has_many :owners, through: :performances
 
   validates :week, presence: true, numericality: { only_integer: true, greater_than: 0 }

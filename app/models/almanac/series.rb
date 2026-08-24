@@ -1,7 +1,19 @@
 class Almanac
   # Every meeting between two owners, viewed from owner A's side.
   class Series
-    Meeting = Data.define(:year, :week, :tier, :points_a, :points_b) do
+    Meeting = Data.define(:game, :points_a, :points_b) do
+      def year
+        game.season.year
+      end
+
+      def week
+        game.week
+      end
+
+      def tier
+        game.tier
+      end
+
       def margin
         (points_a - points_b).abs
       end

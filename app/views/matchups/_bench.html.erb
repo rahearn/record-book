@@ -1,0 +1,15 @@
+<div class="blueprint px-4 py-3.5">
+  <%= blueprint_corners %>
+  <div class="card-kicker mb-2"><%= side.owner.name %> — bench</div>
+  <table class="table">
+    <tbody>
+      <% side.bench.each do |entry| %>
+        <tr>
+          <td class="w-11 text-ink/55"><%= position_label(entry.player.position) %></td>
+          <td><%= entry.player.name %></td>
+          <td class="text-right"><%= points_display(entry.points) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

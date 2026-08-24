@@ -1,7 +1,11 @@
 class Almanac
   # One owner's accumulated results within a single season (and tier).
   class SeasonRecord
-    WeeklyScore = Data.define(:week, :points, :opponent, :opponent_points) do
+    WeeklyScore = Data.define(:game, :points, :opponent, :opponent_points) do
+      def week
+        game.week
+      end
+
       def result
         if points > opponent_points
           :win
@@ -34,11 +38,11 @@ class Almanac
       @weekly_scores = []
     end
 
-    def record_result(week:, points:, opponent:, opponent_points:)
+    def record_result(game:, points:, opponent:, opponent_points:)
       @games_played += 1
       @points_for += points
       @points_against += opponent_points
-      @weekly_scores << WeeklyScore.new(week: week, points: points,
+      @weekly_scores << WeeklyScore.new(game: game, points: points,
                                         opponent: opponent, opponent_points: opponent_points)
       if points > opponent_points
         @wins += 1

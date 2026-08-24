@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "owners/:id", to: "owners#show", as: :owner, constraints: { id: /\d+/ }
 
   get "head-to-head", to: "head_to_head#show", as: :head_to_head
+
+  get "matchups/:id", to: "matchups#show", as: :matchup, constraints: { id: /\d+/ }
 end

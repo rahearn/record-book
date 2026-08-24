@@ -74,6 +74,7 @@
                 <th><%= @owner_b.name %></th>
                 <th>Margin</th>
                 <th>Winner</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -86,6 +87,10 @@
                   <td><%= points_display(meeting.points_b) %></td>
                   <td class="text-ink/55"><%= points_display(meeting.margin) %></td>
                   <td class="font-medium"><%= @series.winner_of(meeting)&.name || "Tie" %></td>
+                  <td class="text-right">
+                    <%= link_to "Matchup", matchup_path(meeting.game, owner: @owner_a.id),
+                          class: "text-accent" %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

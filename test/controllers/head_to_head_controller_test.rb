@@ -23,6 +23,11 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
     # Each meeting row is addressable so week-by-week chart links can target it.
     assert_select "tr#meeting-2024-w1"
     assert_select "tr#meeting-2023-w1"
+    # Every meeting opens on its own matchup page, from owner A's side.
+    assert_select "a[href=?]",
+      "/matchups/#{games(:g2023_w1_ab).id}?owner=#{owners(:alice).id}", text: "Matchup"
+    assert_select "a[href=?]",
+      "/matchups/#{games(:g2024_w1_ab).id}?owner=#{owners(:alice).id}", text: "Matchup"
     assert_match "Career PF/g", response.body
     assert_match "Avg in series", response.body
     # 2024 meeting: 120.0 to 95.0, margin 25.0.

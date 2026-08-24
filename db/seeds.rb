@@ -32,6 +32,38 @@ demo_owners = [
   [ "Priya Raman", "Lame Duck FC", 2025, 103 ]
 ]
 
+# A player pool big enough to give every owner in the biggest season a full
+# 13-man roster, drafted fresh each year so nobody shares a player.
+player_first_names = %w[
+  Colt Damon Ellis Rowan Judd Casey Marlon Dex Nico Sully Wyatt Rashad Tobin Elton
+  Cyrus Marquis Trey Isaiah Kip Deonte Levi Omar Jamal Corey Nash Amari Tevin Silas
+  Donnell Rico Malik Chase Zeke Terrance Brant Emeka Ruben Colby Gus Byron Abel Reggie
+  Tanner Milo Deshawn Vance Anders Kellen Miguel Otto Lars Quentin Micah Grant Wade Rex
+]
+player_last_names = %w[
+  Reneau Fitch Vandermeer Osgood Pike Merriweather Bellinger Trask Halloran Braddock
+  Kranz Ferris Ellery Mackey Alcaraz Reyes Winslow Nadel Bollinger Fontenot Sandoval
+  Marsh Stipe Petrie Ibarra Dorsey Leclair Whitfield Boone Pace Santangelo Kessler
+  Vidrine Ranallo Adeyemi Sheffield Kuhn Nwosu Sarto Feltz Lindahl Marlowe Vaughn Ochs
+  Craven Pellegrino Kirkby Vogel Cardoso Rask Arriaga Lindqvist Pardo Whitcomb Rowen
+  Calloway Kemper
+]
+defense_teams = %w[
+  Bears Ravens Broncos Jets Saints Bills Steelers Chargers Titans Packers Vikings
+  Chiefs Eagles Cowboys Browns Texans Colts Lions Rams Dolphins Falcons Seahawks
+  Giants Panthers Cardinals Jaguars Raiders Bengals Commanders Patriots Buccaneers 49ers
+]
+
+# One roster: a quarterback, four backs, four receivers, two tight ends, a
+# kicker and a defense. Nine start; the rest ride the bench.
+roster_template = { "qb" => 1, "rb" => 4, "wr" => 4, "te" => 2, "k" => 1, "dst" => 1 }
+starting_slots = [
+  [ :qb, "qb", 0, 0.175 ], [ :rb, "rb", 0, 0.130 ], [ :rb, "rb", 1, 0.105 ],
+  [ :wr, "wr", 0, 0.125 ], [ :wr, "wr", 1, 0.105 ], [ :te, "te", 0, 0.085 ],
+  [ :flex, "rb", 2, 0.095 ], [ :k, "k", 0, 0.060 ], [ :dst, "dst", 0, 0.070 ]
+]
+bench_spots = [ [ "rb", 3 ], [ "wr", 2 ], [ "wr", 3 ], [ "te", 1 ] ]
+
 first_year = 2011
 last_year = 2025
 premier_size = 12
@@ -44,12 +76,61 @@ ActiveRecord::Base.transaction do
     { owner: Owner.create!(name:), team_name:, joined:, base: }
   end
 
+  skater_names = player_first_names.product(player_last_names).shuffle(random: rng)
+  player_ids = roster_template.to_h do |position, per_roster|
+    names = if position == "dst"
+      defense_teams.shuffle(random: rng).map { |team| "#{team} D/ST" }
+    else
+      skater_names.shift(per_roster * demo_owners.size).map { |parts| parts.join(" ") }
+    end
+    [ position, Player.insert_all!(names.map { |name| { name:, position: Player.positions[position] } },
+                                   returning: :id).rows.flatten ]
+  end
+
+  lineup_rows = []
+  flush_lineups = lambda do
+    LineupSlot.insert_all!(lineup_rows) if lineup_rows.any?
+    lineup_rows.clear
+  end
+
+  # Split a week's total across the nine starters, weighted by slot, then
+  # give the bench some of what it might have been worth.
+  build_lineup = lambda do |performance, roster_players, total|
+    weights = starting_slots.map { |_, _, _, weight| [ 0.02, weight * (0.55 + rng.rand * 0.95) ].max }
+    scale = weights.sum
+    points = weights.map { |weight| (total * weight / scale).round(1) }
+    points[0] = (points[0] + (total - points.sum)).round(1)
+    starters = starting_slots.each_with_index.map do |(slot, position, index, _), spot|
+      { performance_id: performance.id, player_id: roster_players[position][index],
+        slot: LineupSlot.slots[slot.to_s], sequence: spot + 1, points: points[spot] }
+    end
+    starters + bench_spots.each_with_index.map do |(position, index), spot|
+      { performance_id: performance.id, player_id: roster_players[position][index],
+        slot: LineupSlot.slots["bench"], sequence: starting_slots.size + spot + 1,
+        points: (total * (0.02 + rng.rand * 0.085)).round(1) }
+    end
+  end
+
   (first_year..last_year).each do |year|
     season = Season.create!(year:)
     active = roster.select { |entry| entry[:joined] <= year }
     active.each do |entry|
       Team.create!(owner: entry[:owner], season: season, name: entry[:team_name])
     end
+
+    # One league-wide snake draft a season, so every player belongs to
+    # exactly one roster for the whole year.
+    available = player_ids.transform_values { |ids| ids.shuffle(random: rng) }
+    rosters = active.to_h do |entry|
+      [ entry[:owner].id, Hash.new { |slots, position| slots[position] = [] } ]
+    end
+    draft_order = active.shuffle(random: rng)
+    roster_template.flat_map { |position, count| [ position ] * count }
+      .each_with_index do |position, round|
+        picking = round.odd? ? draft_order.reverse : draft_order
+        picking.each { |entry| rosters[entry[:owner].id][position] << available[position].shift }
+      end
+
     tiers = if year >= last_year
       { premier: active.first(premier_size), challenger: active.drop(premier_size) }
     else
@@ -70,7 +151,8 @@ ActiveRecord::Base.transaction do
         game = season.games.create!(week:, tier:, round_name:)
         home_points, away_points = [ home, away ].map do |entry|
           points = (entry[:base] + noise.call * 20 + (year - first_year) * 0.4).round(1)
-          game.performances.create!(owner: entry[:owner], points:)
+          performance = game.performances.create!(owner: entry[:owner], points:)
+          lineup_rows.concat(build_lineup.call(performance, rosters[entry[:owner].id], points))
           points
         end
         unless round_name
@@ -103,8 +185,11 @@ ActiveRecord::Base.transaction do
       play.call(semi_week + 1, semi_one_winner, semi_two_winner, round_name: Game::CHAMPIONSHIP)
       play.call(semi_week + 1, semi_one_loser, semi_two_loser, round_name: Game::THIRD_PLACE)
     end
+
+    flush_lineups.call
   end
 end
 
 puts "Seeded #{Owner.count} owners, #{Season.count} seasons, #{Game.count} games " \
-     "(#{Game.where.not(round_name: nil).count} playoff)."
+     "(#{Game.where.not(round_name: nil).count} playoff), " \
+     "#{Player.count} players and #{LineupSlot.count} lineup slots."

@@ -1,0 +1,160 @@
+# Alice's starters total her 100.0; Rex Calloway's 18.0 on the bench beats
+# two of her starting backs, leaving 8.0 on the bench. Bob's starters total
+# his 90.0 and nothing on his bench would have helped.
+alice_slot_qb:
+  performance: alice_2023_w1
+  player: alice_qb
+  slot: qb
+  sequence: 1
+  points: 22.5
+alice_slot_rb1:
+  performance: alice_2023_w1
+  player: alice_rb1
+  slot: rb
+  sequence: 2
+  points: 15.0
+alice_slot_rb2:
+  performance: alice_2023_w1
+  player: alice_rb2
+  slot: rb
+  sequence: 3
+  points: 11.0
+alice_slot_wr1:
+  performance: alice_2023_w1
+  player: alice_wr1
+  slot: wr
+  sequence: 4
+  points: 13.5
+alice_slot_wr2:
+  performance: alice_2023_w1
+  player: alice_wr2
+  slot: wr
+  sequence: 5
+  points: 9.0
+alice_slot_te:
+  performance: alice_2023_w1
+  player: alice_te1
+  slot: te
+  sequence: 6
+  points: 8.0
+alice_slot_flex:
+  performance: alice_2023_w1
+  player: alice_rb3
+  slot: flex
+  sequence: 7
+  points: 10.0
+alice_slot_k:
+  performance: alice_2023_w1
+  player: alice_k
+  slot: k
+  sequence: 8
+  points: 6.0
+alice_slot_dst:
+  performance: alice_2023_w1
+  player: alice_dst
+  slot: dst
+  sequence: 9
+  points: 5.0
+alice_bench_rb:
+  performance: alice_2023_w1
+  player: alice_rb4
+  slot: bench
+  sequence: 10
+  points: 18.0
+alice_bench_wr1:
+  performance: alice_2023_w1
+  player: alice_wr3
+  slot: bench
+  sequence: 11
+  points: 4.0
+alice_bench_wr2:
+  performance: alice_2023_w1
+  player: alice_wr4
+  slot: bench
+  sequence: 12
+  points: 3.5
+alice_bench_te:
+  performance: alice_2023_w1
+  player: alice_te2
+  slot: bench
+  sequence: 13
+  points: 2.0
+
+bob_slot_qb:
+  performance: bob_2023_w1
+  player: bob_qb
+  slot: qb
+  sequence: 1
+  points: 20.0
+bob_slot_rb1:
+  performance: bob_2023_w1
+  player: bob_rb1
+  slot: rb
+  sequence: 2
+  points: 14.0
+bob_slot_rb2:
+  performance: bob_2023_w1
+  player: bob_rb2
+  slot: rb
+  sequence: 3
+  points: 10.0
+bob_slot_wr1:
+  performance: bob_2023_w1
+  player: bob_wr1
+  slot: wr
+  sequence: 4
+  points: 12.0
+bob_slot_wr2:
+  performance: bob_2023_w1
+  player: bob_wr2
+  slot: wr
+  sequence: 5
+  points: 11.0
+bob_slot_te:
+  performance: bob_2023_w1
+  player: bob_te1
+  slot: te
+  sequence: 6
+  points: 7.0
+bob_slot_flex:
+  performance: bob_2023_w1
+  player: bob_wr3
+  slot: flex
+  sequence: 7
+  points: 9.0
+bob_slot_k:
+  performance: bob_2023_w1
+  player: bob_k
+  slot: k
+  sequence: 8
+  points: 4.0
+bob_slot_dst:
+  performance: bob_2023_w1
+  player: bob_dst
+  slot: dst
+  sequence: 9
+  points: 3.0
+bob_bench_rb:
+  performance: bob_2023_w1
+  player: bob_rb3
+  slot: bench
+  sequence: 10
+  points: 5.0
+bob_bench_wr1:
+  performance: bob_2023_w1
+  player: bob_wr4
+  slot: bench
+  sequence: 11
+  points: 2.0
+bob_bench_wr2:
+  performance: bob_2023_w1
+  player: bob_wr5
+  slot: bench
+  sequence: 12
+  points: 1.5
+bob_bench_te:
+  performance: bob_2023_w1
+  player: bob_te2
+  slot: bench
+  sequence: 13
+  points: 1.0

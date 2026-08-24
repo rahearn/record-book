@@ -20,4 +20,32 @@ class PerformanceTest < ActiveSupport::TestCase
     assert_not duplicate.valid?
     assert_includes duplicate.errors[:owner_id], "has already been taken"
   end
+
+  test "the lineup splits into starters and a bench ranked by points" do
+    performance = performances(:alice_2023_w1)
+    assert performance.lineup?
+    assert_equal %w[qb rb rb wr wr te flex k dst], performance.starters.map(&:slot)
+    assert_equal [ 18.0, 4.0, 3.5, 2.0 ], performance.bench.map { |entry| entry.points.to_f }
+    assert_in_delta 100.0, performance.starters.sum(&:points)
+  end
+
+  test "optimal points fill each slot with the best eligible player, flex last" do
+    # Alice's 18.0 bench back beats two starting backs; the better of the
+    # two they displace slides down into the flex.
+    assert_in_delta 108.0, performances(:alice_2023_w1).optimal_points
+    assert_in_delta 8.0, performances(:alice_2023_w1).points_left_on_bench
+  end
+
+  test "a lineup nothing on the bench could improve leaves nothing behind" do
+    assert_in_delta 90.0, performances(:bob_2023_w1).optimal_points
+    assert_in_delta 0.0, performances(:bob_2023_w1).points_left_on_bench
+  end
+
+  test "performances without a lineup on record leave nothing on the bench" do
+    performance = performances(:carol_2023_w1)
+    assert_not performance.lineup?
+    assert_empty performance.starters
+    assert_empty performance.bench
+    assert_equal 0, performance.points_left_on_bench
+  end
 end

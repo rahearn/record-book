@@ -1,0 +1,81 @@
+# The two 13-man rosters behind the 2023 week 1 Alice/Bob matchup — the one
+# game with lineups on record, so other fixtures exercise the empty path.
+alice_qb:
+  name: Grant Feltz
+  position: qb
+alice_rb1:
+  name: Micah Rowen
+  position: rb
+alice_rb2:
+  name: Dez Halloran
+  position: rb
+alice_rb3:
+  name: Tobin Pike
+  position: rb
+alice_rb4:
+  name: Rex Calloway
+  position: rb
+alice_wr1:
+  name: Silas Marsh
+  position: wr
+alice_wr2:
+  name: Otis Kemper
+  position: wr
+alice_wr3:
+  name: Wade Lindqvist
+  position: wr
+alice_wr4:
+  name: Cyrus Pardo
+  position: wr
+alice_te1:
+  name: Bo Ranallo
+  position: te
+alice_te2:
+  name: Emeka Vidrine
+  position: te
+alice_k:
+  name: Nico Sarto
+  position: k
+alice_dst:
+  name: Ravens D/ST
+  position: dst
+
+bob_qb:
+  name: Judd Trask
+  position: qb
+bob_rb1:
+  name: Elton Bellinger
+  position: rb
+bob_rb2:
+  name: Rico Osgood
+  position: rb
+bob_rb3:
+  name: Kip Fontenot
+  position: rb
+bob_wr1:
+  name: Amari Whitfield
+  position: wr
+bob_wr2:
+  name: Levi Sandoval
+  position: wr
+bob_wr3:
+  name: Nash Ferris
+  position: wr
+bob_wr4:
+  name: Gus Kranz
+  position: wr
+bob_wr5:
+  name: Byron Ochs
+  position: wr
+bob_te1:
+  name: Milo Craven
+  position: te
+bob_te2:
+  name: Abel Kuhn
+  position: te
+bob_k:
+  name: Quentin Rask
+  position: k
+bob_dst:
+  name: Broncos D/ST
+  position: dst
