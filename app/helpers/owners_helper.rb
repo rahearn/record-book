@@ -29,6 +29,10 @@ module OwnersHelper
     "Best finish: #{career.best_finish.ordinalize}"
   end
 
+  def year_or_dash(year)
+    year&.to_s || "—"
+  end
+
   def bar_percent(value, max)
     format("%.1f%%", value.to_f / max * 100)
   end

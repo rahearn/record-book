@@ -161,6 +161,10 @@ class Almanac
     Series.new(owner_a: owner_a, owner_b: owner_b, meetings: meetings)
   end
 
+  def playoff_history_for(owner)
+    (@playoff_histories ||= {})[owner] ||= build_playoff_history(owner)
+  end
+
   def game_records
     return if empty?
 
@@ -293,6 +297,23 @@ class Almanac
       (playoff_finishers(latest_year, :challenger) - [ leader ]) +
       (challenger_records.map(&:owner) - [ leader ])
     candidates.uniq.first(promotion_count)
+  end
+
+  def build_playoff_history(owner)
+    results = @playoff_games.reject(&:challenger?).filter_map do |game|
+      mine = game.performances.detect { |performance| performance.owner == owner }
+      next unless mine
+
+      theirs = (game.performances - [ mine ]).first
+      PlayoffHistory::Result.new(year: game.season.year, round_name: game.round_name,
+                                 won: mine.points > theirs.points,
+                                 tied: mine.points == theirs.points)
+    end
+    appearance_years = results.map(&:year).uniq
+    season_flags = (career_for(owner)&.season_records || []).map do |record|
+      record.tier != "challenger" && appearance_years.include?(record.year)
+    end
+    PlayoffHistory.new(season_flags: season_flags, results: results)
   end
 
   def all_owners

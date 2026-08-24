@@ -43,6 +43,11 @@ class OwnersHelperTest < ActionView::TestCase
     assert_equal "Opponents get up for me", luck_note(-1.5)
   end
 
+  test "year_or_dash shows the year or an em dash" do
+    assert_equal "2024", year_or_dash(2024)
+    assert_equal "—", year_or_dash(nil)
+  end
+
   test "bar_percent scales against the maximum" do
     assert_equal "50.0%", bar_percent(60, 120)
     assert_equal "83.3%", bar_percent(100, 120)

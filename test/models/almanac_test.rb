@@ -387,6 +387,76 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal [ c1, c2 ], promoted
   end
 
+  test "playoff history from fixture data" do
+    alice = @book.playoff_history_for(owners(:alice))
+    assert_equal 1, alice.appearances
+    assert_equal 1, alice.playoff_wins
+    assert_equal 0, alice.runner_up_finishes
+    assert_equal 2024, alice.last_playoff_win_year
+    assert_equal 2024, alice.last_final_year
+    assert_equal 2024, alice.last_appearance_year
+    assert_nil alice.last_semifinal_year
+    assert_equal 1, alice.longest_playoff_streak   # missed 2023, made 2024
+    assert_equal 1, alice.active_playoff_streak
+    assert_equal 1, alice.longest_playoff_drought
+    assert_equal 0, alice.active_playoff_drought
+
+    bob = @book.playoff_history_for(owners(:bob))
+    assert_equal 1, bob.appearances
+    assert_equal 0, bob.playoff_wins
+    assert_equal 1, bob.runner_up_finishes
+    assert_nil bob.last_playoff_win_year
+    assert_equal 1, bob.active_playoff_streak
+  end
+
+  test "challenger playoff runs count for nothing in playoff history" do
+    carol = @book.playoff_history_for(owners(:carol))
+    assert_equal 0, carol.appearances
+    assert_equal 0, carol.playoff_wins
+    assert_nil carol.last_appearance_year
+    # Both her seasons — 2023 unified without a berth, 2024 in Challenger —
+    # count as missed playoffs.
+    assert_equal 2, carol.longest_playoff_drought
+    assert_equal 2, carol.active_playoff_drought
+    assert_equal 0, carol.longest_playoff_streak
+  end
+
+  test "playoff history streaks and last-year stats across a career" do
+    owner_a = Owner.new(name: "Streak A")
+    owner_b = Owner.new(name: "Streak B")
+    pair = ->(a, b) { { owner_a => a, owner_b => b } }
+    games = [
+      # 2030 unified: semifinal win, championship loss (runner-up).
+      build_game(year: 2030, week: 1, scores: pair.(100.0, 90.0)),
+      build_game(year: 2030, week: 2, scores: pair.(95.0, 90.0), round_name: "Semifinal"),
+      build_game(year: 2030, week: 3, scores: pair.(80.0, 92.0), round_name: "Championship"),
+      # 2031 unified: championship win.
+      build_game(year: 2031, week: 1, scores: pair.(100.0, 90.0)),
+      build_game(year: 2031, week: 2, scores: pair.(99.0, 90.0), round_name: "Championship"),
+      # 2032 premier: third-place win.
+      build_game(year: 2032, week: 1, tier: :premier, scores: pair.(100.0, 90.0)),
+      build_game(year: 2032, week: 2, tier: :premier, scores: pair.(88.0, 70.0), round_name: "Third Place"),
+      # 2033 challenger: even a championship win counts as missed playoffs.
+      build_game(year: 2033, week: 1, tier: :challenger, scores: pair.(100.0, 90.0)),
+      build_game(year: 2033, week: 2, tier: :challenger, scores: pair.(99.0, 90.0), round_name: "Championship"),
+      # 2034 unified: no playoff berth.
+      build_game(year: 2034, week: 1, scores: pair.(100.0, 90.0))
+    ]
+
+    history = Almanac.new(games: games).playoff_history_for(owner_a)
+    assert_equal 3, history.appearances
+    assert_equal 3, history.playoff_wins          # 2030 SF, 2031 final, 2032 third place
+    assert_equal 1, history.runner_up_finishes    # 2030
+    assert_equal 2032, history.last_playoff_win_year
+    assert_equal 2030, history.last_semifinal_year
+    assert_equal 2031, history.last_final_year
+    assert_equal 2032, history.last_appearance_year
+    assert_equal 3, history.longest_playoff_streak
+    assert_equal 0, history.active_playoff_streak
+    assert_equal 2, history.longest_playoff_drought
+    assert_equal 2, history.active_playoff_drought
+  end
+
   test "ladder is absent when the latest season lacks two tiers" do
     owner_a = Owner.new(name: "Solo A")
     owner_b = Owner.new(name: "Solo B")

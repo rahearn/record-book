@@ -15,6 +15,22 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "2–0", response.body # series vs Bob
   end
 
+  test "shows playoff history stats" do
+    get owners_url # Alice
+    assert_response :success
+
+    assert_match "Playoff history", response.body
+    assert_match "Challenger seasons count as missed playoffs", response.body
+    %w[
+      Playoff\ appearances Playoff\ game\ wins Runner-up\ finishes
+      Longest\ playoff\ streak Active\ playoff\ streak
+      Longest\ playoff\ drought Active\ playoff\ drought
+      Last\ playoff\ berth Last\ playoff\ win Last\ semifinal Last\ final
+    ].each { |label| assert_match label, response.body }
+    # Alice never played a semifinal, so that tile dashes out.
+    assert_match "—", response.body
+  end
+
   test "shows a requested owner" do
     get owner_url(owners(:bob))
     assert_response :success

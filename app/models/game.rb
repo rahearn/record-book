@@ -2,9 +2,11 @@ class Game < ApplicationRecord
   include Tiered
 
   # Round names with rule significance: the Championship decides the title
-  # and, with the Third Place game, the playoff finishing order.
+  # and, with the Third Place game, the playoff finishing order; the
+  # Semifinal feeds the owners' playoff-history stats.
   CHAMPIONSHIP = "Championship".freeze
   THIRD_PLACE = "Third Place".freeze
+  SEMIFINAL = "Semifinal".freeze
 
   belongs_to :season
   has_many :performances, dependent: :destroy

@@ -38,6 +38,28 @@
   </section>
 
   <section>
+    <div class="mb-3 flex flex-wrap items-baseline gap-3.5">
+      <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Playoff history</h2>
+      <span class="text-xs text-ink/55">
+        Unified league and Premier only — Challenger seasons count as missed playoffs.
+      </span>
+    </div>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
+      <%= render "playoff_stat", label: "Playoff appearances", value: @playoff_history.appearances %>
+      <%= render "playoff_stat", label: "Playoff game wins", value: @playoff_history.playoff_wins %>
+      <%= render "playoff_stat", label: "Runner-up finishes", value: @playoff_history.runner_up_finishes %>
+      <%= render "playoff_stat", label: "Longest playoff streak", value: @playoff_history.longest_playoff_streak %>
+      <%= render "playoff_stat", label: "Active playoff streak", value: @playoff_history.active_playoff_streak %>
+      <%= render "playoff_stat", label: "Longest playoff drought", value: @playoff_history.longest_playoff_drought %>
+      <%= render "playoff_stat", label: "Active playoff drought", value: @playoff_history.active_playoff_drought %>
+      <%= render "playoff_stat", label: "Last playoff berth", value: year_or_dash(@playoff_history.last_appearance_year) %>
+      <%= render "playoff_stat", label: "Last playoff win", value: year_or_dash(@playoff_history.last_playoff_win_year) %>
+      <%= render "playoff_stat", label: "Last semifinal", value: year_or_dash(@playoff_history.last_semifinal_year) %>
+      <%= render "playoff_stat", label: "Last final", value: year_or_dash(@playoff_history.last_final_year) %>
+    </div>
+  </section>
+
+  <section>
     <h2 class="mb-3 font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Season by season</h2>
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
