@@ -73,6 +73,28 @@ class Almanac
       .sort_by(&:rank)
   end
 
+  # Whether the given season was played in Premier/Challenger tiers.
+  def split_season?(year)
+    tiers = tiers_in(year)
+    tiers.include?("premier") && tiers.include?("challenger")
+  end
+
+  # Bottom of Premier: drops to Challenger next season.
+  def relegation_zone?(record)
+    record.tier == "premier" && split_season?(record.year) &&
+      record.rank > standings_for(record.year, :premier).size - relegation_count
+  end
+
+  # Top of Challenger: rises to Premier next season.
+  def promotion_zone?(record)
+    record.tier == "challenger" && split_season?(record.year) &&
+      record.rank <= promotion_count
+  end
+
+  def week_matrix(year, tier)
+    WeekMatrix.new(records: standings_for(year, tier))
+  end
+
   def all_time_standings
     @all_time_standings ||= season_records.values.group_by(&:owner).map do |owner, records|
       CareerRecord.new(owner: owner, season_records: records, next_tier: ladder&.tier_for(owner))
@@ -99,8 +121,10 @@ class Almanac
   def build_season_records
     records = {}
     each_matchup do |game, side_a, side_b|
-      record_for(records, game, side_a.owner).record_result(side_a.points, side_b.points)
-      record_for(records, game, side_b.owner).record_result(side_b.points, side_a.points)
+      record_for(records, game, side_a.owner)
+        .record_result(week: game.week, points: side_a.points, opponent_points: side_b.points)
+      record_for(records, game, side_b.owner)
+        .record_result(week: game.week, points: side_b.points, opponent_points: side_a.points)
     end
     each_matchup do |game, side_a, side_b|
       year = game.season.year
@@ -175,5 +199,9 @@ class Almanac
   def owners_in_year(year)
     @games.select { |game| game.season.year == year }
       .flat_map { |game| game.performances.map(&:owner) }.uniq
+  end
+
+  def tiers_in(year)
+    @games.select { |game| game.season.year == year }.map(&:tier).uniq
   end
 end

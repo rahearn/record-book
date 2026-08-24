@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "league#show"
+
+  get "seasons", to: "seasons#show", as: :seasons
+  get "seasons/:year", to: "seasons#show", as: :season, constraints: { year: /\d{4}/ }
 end

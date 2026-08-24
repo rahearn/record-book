@@ -34,8 +34,10 @@ objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotio
 `relegation_count:` keywords, which tests use to build small in-memory scenarios.
 
 The League home page is `league#show` (root route), rendered from partials in `app/views/league/`.
-Design tokens and component classes (`.blueprint`, `.tag-*`, `.btn`, `.table`) translated from the
-design doc live in `app/assets/tailwind/application.css`.
+The Seasons page is `seasons#show` (`/seasons` and `/seasons/:year`, with a `tier` query param for
+split seasons); it navigates via a GET form whose year select auto-submits through the `autosubmit`
+Stimulus controller. Design tokens and component classes (`.blueprint`, `.tag-*`, `.btn`, `.seg`,
+`.table`, zone shading) translated from the design doc live in `app/assets/tailwind/application.css`.
 
 `db/seeds.rb` generates a deterministic demo league (20 owners, 2011–2025) matching the design
 mockup's data; it skips seeding when games already exist, and CI replants it in the test env.

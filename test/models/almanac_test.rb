@@ -67,6 +67,56 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal [ 2, 1, 1, 0 ], rows.map(&:wins)
   end
 
+  test "season records track weekly scores and extremes" do
+    alice = @book.standings_for(2023, :unified).first
+    assert_equal [ [ 1, 100.0 ], [ 2, 110.0 ] ],
+      alice.weekly_scores.map { |score| [ score.week, score.points.to_f ] }
+    assert_in_delta 110.0, alice.highest_score
+    assert_in_delta 100.0, alice.lowest_score
+    assert_in_delta 100.0, alice.score_in(1)
+    assert_nil alice.score_in(3)
+
+    dan = @book.standings_for(2023, :unified).second
+    assert_in_delta 70.5, dan.lowest_score
+  end
+
+  test "split_season? detects tiered years" do
+    assert_not @book.split_season?(2023)
+    assert @book.split_season?(2024)
+  end
+
+  test "promotion and relegation zones follow rank within split seasons" do
+    premier = @book.standings_for(2024, :premier)
+    assert_not @book.relegation_zone?(premier.first)
+    assert @book.relegation_zone?(premier.second)
+
+    challenger = @book.standings_for(2024, :challenger)
+    assert @book.promotion_zone?(challenger.first)
+    assert_not @book.promotion_zone?(challenger.second)
+
+    unified = @book.standings_for(2023, :unified)
+    assert unified.none? { |record| @book.relegation_zone?(record) }
+    assert unified.none? { |record| @book.promotion_zone?(record) }
+  end
+
+  test "week matrix flags each week's high and low" do
+    matrix = @book.week_matrix(2023, :unified)
+    assert_equal [ 1, 2 ], matrix.weeks
+    assert_equal [ owners(:alice), owners(:dan), owners(:carol), owners(:bob) ],
+      matrix.rows.map { |row| row.record.owner }
+
+    alice_row = matrix.rows.first
+    assert alice_row.cells.all?(&:highest)
+    assert alice_row.cells.none?(&:lowest)
+
+    dan_cells = matrix.rows.second.cells
+    assert dan_cells.first.lowest   # 70.5, week 1's low
+    assert_not dan_cells.second.lowest
+
+    bob_cells = matrix.rows.fourth.cells
+    assert bob_cells.second.lowest  # 85.0, week 2's low
+  end
+
   test "game records capture single-game extremes" do
     records = @book.game_records
 

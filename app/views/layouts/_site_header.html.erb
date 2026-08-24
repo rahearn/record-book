@@ -7,10 +7,10 @@
       </span>
     </div>
     <nav class="flex flex-wrap gap-1.5">
-      <%= link_to "League", root_path, class: "btn btn-primary" %>
+      <%= nav_button "League", root_path, active: controller_name == "league" %>
       <span class="btn btn-secondary opacity-45" title="Coming soon">Owners</span>
       <span class="btn btn-secondary opacity-45" title="Coming soon">Head-to-head</span>
-      <span class="btn btn-secondary opacity-45" title="Coming soon">Seasons</span>
+      <%= nav_button "Seasons", seasons_path, active: controller_name == "seasons" %>
     </nav>
   </div>
 </header>

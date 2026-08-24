@@ -1,0 +1,114 @@
+<% content_for :title, "ATO Delta · Seasons" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<% if @almanac.empty? %>
+  <p class="text-ink/55">No games on record yet.</p>
+<% else %>
+  <section class="flex flex-wrap items-end gap-4.5">
+    <div>
+      <div class="card-kicker">Season</div>
+      <h1 class="font-heading text-[52px] font-semibold leading-tight tracking-[-0.015em]"><%= @year %></h1>
+      <div class="text-[13px] text-ink/55">
+        <%= season_summary(@almanac, @year, owner_count: @standings.size, week_count: @matrix.weeks.size) %>
+      </div>
+    </div>
+    <%= form_with url: seasons_path, method: :get, class: "ml-auto min-w-[150px]",
+          data: { controller: "autosubmit" } do |form| %>
+      <%= form.label :year, "Year", for: "season_year", class: "mb-1 block text-xs text-ink/70" %>
+      <%= form.select :year, @almanac.years.reverse, { selected: @year },
+            id: "season_year", class: "input", data: { action: "change->autosubmit#submit" } %>
+      <noscript><%= form.submit "View", class: "btn btn-secondary mt-1" %></noscript>
+    <% end %>
+    <% if @split %>
+      <div class="seg">
+        <%= link_to "Premier", season_path(@year, tier: :premier),
+              class: "seg-opt #{'seg-on' if @tier == :premier}" %>
+        <%= link_to "Challenger", season_path(@year, tier: :challenger),
+              class: "seg-opt #{'seg-on' if @tier == :challenger}" %>
+      </div>
+    <% end %>
+  </section>
+
+  <section>
+    <h2 class="mb-3 font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">
+      <%= @split ? tier_label(@tier) : "League" %> standings
+    </h2>
+    <div class="blueprint px-4 py-3.5">
+      <%= blueprint_corners %>
+      <div class="overflow-x-auto">
+        <table class="table min-w-[800px]">
+          <thead>
+            <tr>
+              <th class="w-[34px]">#</th>
+              <th>Owner</th>
+              <th>W–L</th>
+              <th>PF</th>
+              <th>PA</th>
+              <th>PF/g</th>
+              <th>PA/g</th>
+              <th>Luck</th>
+              <th>High</th>
+              <th>Low</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @standings.each do |record| %>
+              <tr class="<%= season_zone_class(@almanac, record) %>">
+                <td class="text-ink/55"><%= record.rank %></td>
+                <td>
+                  <span class="font-medium"><%= record.owner.name %></span>
+                  <span class="text-[11px] text-ink/55"><%= record.owner.team_name %></span>
+                </td>
+                <td><%= record_display(record) %></td>
+                <td><%= points_display(record.points_for) %></td>
+                <td><%= points_display(record.points_against) %></td>
+                <td><%= points_display(record.average_points) %></td>
+                <td><%= points_display(record.average_points_against) %></td>
+                <td><%= signed_points_display(record.luck_per_game) %></td>
+                <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
+                <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-2.5 text-[11px] text-ink/55"><%= season_zone_note(@almanac, @year, @tier) %></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="mb-3 font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Scores by week</h2>
+    <div class="blueprint px-4 py-3.5">
+      <%= blueprint_corners %>
+      <div class="overflow-x-auto">
+        <table class="table min-w-[900px]">
+          <thead>
+            <tr>
+              <th>Owner</th>
+              <% @matrix.weeks.each do |week| %>
+                <th class="text-center">W<%= week %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @matrix.rows.each do |row| %>
+              <tr>
+                <td class="whitespace-nowrap"><%= row.record.owner.name %></td>
+                <% row.cells.each do |cell| %>
+                  <td class="text-center">
+                    <% if cell.points %>
+                      <span class="<%= matrix_cell_class(cell) %>"><%= points_display(cell.points) %></span>
+                    <% else %>
+                      <span class="text-ink/55">—</span>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-2.5 text-[11px] text-ink/55">Filled = week's high score · outlined = week's low.</div>
+    </div>
+  </section>
+<% end %>

@@ -118,6 +118,45 @@
     background: color-mix(in srgb, var(--color-ink) 7%, transparent);
   }
 
+  .input {
+    width: 100%;
+    min-height: 36px;
+    padding: 6px 10px;
+    font: inherit;
+    font-size: 14px;
+    color: var(--color-ink);
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  }
+  .input:hover {
+    border-color: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  }
+
+  /* Segmented control rendered as links. */
+  .seg {
+    display: inline-flex;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  }
+  .seg-opt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    font-size: 13px;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .seg-opt + .seg-opt {
+    border-left: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  }
+  .seg-opt:not(.seg-on):hover {
+    background: color-mix(in srgb, var(--color-ink) 7%, transparent);
+  }
+  .seg-on {
+    background: var(--color-accent);
+    color: var(--color-paper);
+  }
+
   .table {
     width: 100%;
     border-collapse: collapse;
@@ -138,5 +177,19 @@
   }
   .table tbody tr:hover {
     background: color-mix(in srgb, var(--color-ink) 4%, transparent);
+  }
+
+  /* Promotion/relegation zones in season standings. */
+  .table tbody tr.zone-up {
+    background: color-mix(in srgb, var(--color-accent) 7%, transparent);
+  }
+  .table tbody tr.zone-up > td:first-child {
+    box-shadow: inset 3px 0 0 var(--color-accent);
+  }
+  .table tbody tr.zone-down {
+    background: color-mix(in srgb, var(--color-ink) 5%, transparent);
+  }
+  .table tbody tr.zone-down > td:first-child {
+    box-shadow: inset 3px 0 0 #b7b7ba;
   }
 }
