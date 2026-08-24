@@ -19,4 +19,37 @@ class GameTest < ActiveSupport::TestCase
     assert_not game.valid?
     assert_includes game.errors[:week], "must be greater than 0"
   end
+
+  test "a round name marks a game as a playoff game" do
+    assert_predicate games(:g2024_final_premier), :playoff?
+    assert_not games(:g2024_final_premier).regular_season?
+    assert_predicate games(:g2024_w1_ab), :regular_season?
+    assert_not games(:g2024_w1_ab).playoff?
+  end
+
+  test "playoff-week games must carry a round name" do
+    game = Game.new(season: seasons(:y2024), tier: :premier, week: 2)
+    assert_not game.valid?
+    assert_includes game.errors[:round_name], "must be set for playoff week 2 and later"
+
+    game.round_name = "Championship"
+    assert game.valid?
+  end
+
+  test "round names are not allowed before the playoff start week" do
+    game = Game.new(season: seasons(:y2024), tier: :premier, week: 1, round_name: "Semifinal")
+    assert_not game.valid?
+    assert_includes game.errors[:round_name], "cannot be set before playoff week 2"
+  end
+
+  test "each tier follows its own playoff format" do
+    # Challenger playoffs start week 3, so its week 2 is still regular season.
+    assert_predicate Game.new(season: seasons(:y2024), tier: :challenger, week: 2), :valid?
+    assert_not Game.new(season: seasons(:y2024), tier: :challenger, week: 3).valid?
+  end
+
+  test "seasons without a playoff format are unconstrained" do
+    assert_predicate Game.new(season: seasons(:y2023), week: 9), :valid?
+    assert_predicate Game.new(season: seasons(:y2023), week: 3, round_name: "Championship"), :valid?
+  end
 end

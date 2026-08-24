@@ -23,9 +23,15 @@ layer will import historical data into it:
 - `Team` (owner, season, name) — the team an owner fielded in one season; owners often rename
   season to season. `Owner#team_name` gives the most recent season's name (use it outside a season
   context); `Owner#team_name_in(year)` gives that season's name, falling back to the most recent.
-- `Game` (season, week, tier) — one regular-season matchup. `tier` is an enum: `unified` (single
-  league, pre-2025), `premier`, `challenger`.
+- `Game` (season, week, tier, round_name) — one matchup. `tier` is an enum (`unified` pre-2025,
+  `premier`, `challenger`; shared via the `Tiered` concern). A present `round_name` (e.g.
+  "Semifinal") marks a playoff game; regular-season games have none.
+- `PlayoffFormat` (season, tier, team_count, start_week) — playoff configuration per season *and*
+  tier (Premier and Challenger differ, and both have changed over history). When a format exists,
+  `Game` validates that games from `start_week` on carry a round name and earlier games don't.
 - `Performance` (game, owner, points) — one owner's score in a game; every game has exactly two.
+
+All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
 
 All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` — that constant is the
 application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).

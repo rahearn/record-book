@@ -1,9 +1,34 @@
 class Game < ApplicationRecord
+  include Tiered
+
   belongs_to :season
   has_many :performances, dependent: :destroy
   has_many :owners, through: :performances
 
-  enum :tier, { unified: 0, premier: 1, challenger: 2 }, default: :unified
-
   validates :week, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validate :round_name_consistent_with_playoff_format
+
+  def playoff?
+    round_name.present?
+  end
+
+  def regular_season?
+    !playoff?
+  end
+
+  private
+
+  # When the season/tier has a configured playoff format, games from the
+  # start week on are playoff games and earlier games are not.
+  def round_name_consistent_with_playoff_format
+    return unless season
+    format = season.playoff_format_for(tier)
+    return unless format
+
+    if playoff? && week && week < format.start_week
+      errors.add(:round_name, "cannot be set before playoff week #{format.start_week}")
+    elsif regular_season? && week && week >= format.start_week
+      errors.add(:round_name, "must be set for playoff week #{format.start_week} and later")
+    end
+  end
 end

@@ -10,6 +10,14 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    # Add more helper methods to be used by all tests here...
+    # Empty the league in foreign-key order, for tests of the no-data state.
+    def wipe_league_data
+      Performance.delete_all
+      PlayoffFormat.delete_all
+      Team.delete_all
+      Game.delete_all
+      Season.delete_all
+      Owner.delete_all
+    end
   end
 end

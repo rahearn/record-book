@@ -19,11 +19,7 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "renders an empty state when no games are on record" do
-    Performance.delete_all
-    Team.delete_all
-    Game.delete_all
-    Season.delete_all
-    Owner.delete_all
+    wipe_league_data
 
     get root_url
     assert_response :success

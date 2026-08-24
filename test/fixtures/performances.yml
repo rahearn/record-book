@@ -60,3 +60,24 @@ dan_2024_w1:
   game: g2024_w1_cd
   owner: dan
   points: 80.0
+
+# 2024 playoff finals
+alice_2024_final:
+  game: g2024_final_premier
+  owner: alice
+  points: 130.0
+
+bob_2024_final:
+  game: g2024_final_premier
+  owner: bob
+  points: 100.0
+
+carol_2024_final:
+  game: g2024_final_challenger
+  owner: carol
+  points: 99.0
+
+dan_2024_final:
+  game: g2024_final_challenger
+  owner: dan
+  points: 88.0

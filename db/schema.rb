@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_000100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.string "round_name"
     t.bigint "season_id", null: false
     t.integer "tier", default: 0, null: false
     t.datetime "updated_at", null: false
@@ -42,6 +43,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
     t.index ["owner_id"], name: "index_performances_on_owner_id"
   end
 
+  create_table "playoff_formats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "season_id", null: false
+    t.integer "start_week", null: false
+    t.integer "team_count", null: false
+    t.integer "tier", default: 0, null: false
+    t.datetime "updated_at", null: false
+    t.index ["season_id", "tier"], name: "index_playoff_formats_on_season_id_and_tier", unique: true
+    t.index ["season_id"], name: "index_playoff_formats_on_season_id"
+  end
+
   create_table "seasons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,6 +75,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   add_foreign_key "games", "seasons"
   add_foreign_key "performances", "games"
   add_foreign_key "performances", "owners"
+  add_foreign_key "playoff_formats", "seasons"
   add_foreign_key "teams", "owners"
   add_foreign_key "teams", "seasons"
 end

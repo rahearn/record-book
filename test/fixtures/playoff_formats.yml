@@ -1,0 +1,13 @@
+# 2024's tiers configure playoffs differently: Premier starts week 2,
+# Challenger week 3. 2023 predates any recorded playoff format.
+premier_2024:
+  season: y2024
+  tier: premier
+  team_count: 2
+  start_week: 2
+
+challenger_2024:
+  season: y2024
+  tier: challenger
+  team_count: 2
+  start_week: 3

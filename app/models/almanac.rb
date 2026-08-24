@@ -19,7 +19,7 @@ class Almanac
 
   def initialize(games: Game.includes(:season, performances: { owner: { teams: :season } }).to_a,
                  promotion_count: PROMOTION_COUNT, relegation_count: RELEGATION_COUNT)
-    @games = games.select { |game| game.performances.size == 2 }
+    @games = games.select { |game| game.regular_season? && game.performances.size == 2 }
     @promotion_count = promotion_count
     @relegation_count = relegation_count
   end

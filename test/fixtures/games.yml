@@ -27,3 +27,16 @@ g2024_w1_cd:
   season: y2024
   week: 1
   tier: challenger
+
+# Playoffs — excluded from all regular-season statistics.
+g2024_final_premier:
+  season: y2024
+  week: 2
+  tier: premier
+  round_name: Championship
+
+g2024_final_challenger:
+  season: y2024
+  week: 3
+  tier: challenger
+  round_name: Championship

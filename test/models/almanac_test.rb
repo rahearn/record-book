@@ -196,6 +196,17 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, @book.series_between(owners(:alice), owners(:alice)).games_played
   end
 
+  test "playoff games are excluded from every statistic" do
+    # The fixtures include 2024 Championship games — Alice 130.0 over Bob,
+    # Carol 99.0 over Dan — none of which may leak into regular-season stats.
+    assert_equal 6, @book.game_count
+    assert_equal 3, career_for(:alice).games_played
+    assert_equal 2, @book.weeks_per_season
+    assert_in_delta 120.0, @book.game_records.highest_score.points
+    assert_equal 2, @book.series_between(owners(:alice), owners(:bob)).games_played
+    assert_equal [ 1 ], @book.week_matrix(2024, :premier).weeks
+  end
+
   test "game records capture single-game extremes" do
     records = @book.game_records
 

@@ -10,6 +10,11 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_match "Alice Anders", response.body
     assert_match "Scores by week", response.body
     assert_no_match "Carol Chen", response.body
+
+    # The week-2 Championship is a playoff game and stays out of the
+    # regular-season matrix.
+    assert_select "th", text: "W1"
+    assert_select "th", text: "W2", count: 0
   end
 
   test "shows the challenger tier when requested" do
@@ -67,11 +72,7 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "renders an empty state when no games are on record" do
-    Performance.delete_all
-    Team.delete_all
-    Game.delete_all
-    Season.delete_all
-    Owner.delete_all
+    wipe_league_data
 
     get seasons_url
     assert_response :success

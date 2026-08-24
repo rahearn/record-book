@@ -34,7 +34,6 @@ demo_owners = [
 
 first_year = 2011
 last_year = 2025
-weeks = 14
 premier_size = 12
 
 rng = Random.new(20_260_823)
@@ -57,20 +56,54 @@ ActiveRecord::Base.transaction do
       { unified: active }
     end
 
-    tiers.each do |tier, members|
-      1.upto(weeks) do |week|
-        members.shuffle(random: rng).each_slice(2) do |home, away|
-          next unless away
+    # The league moved from a 13-week regular season to 14 in 2015, and from
+    # 4-team playoffs to 6 in 2019. The Challenger tier keeps a 4-team field.
+    regular_weeks = year <= 2014 ? 13 : 14
+    playoff_start = regular_weeks + 1
 
-          game = season.games.create!(week:, tier:)
-          [ home, away ].each do |entry|
-            points = (entry[:base] + noise.call * 20 + (year - first_year) * 0.4).round(1)
-            game.performances.create!(owner: entry[:owner], points:)
-          end
+    tiers.each do |tier, members|
+      team_count = tier == :challenger || year < 2019 ? 4 : 6
+      PlayoffFormat.create!(season:, tier:, team_count:, start_week: playoff_start)
+
+      tally = Hash.new { |hash, owner_id| hash[owner_id] = { wins: 0, points: 0 } }
+      play = lambda do |week, home, away, round_name: nil|
+        game = season.games.create!(week:, tier:, round_name:)
+        home_points, away_points = [ home, away ].map do |entry|
+          points = (entry[:base] + noise.call * 20 + (year - first_year) * 0.4).round(1)
+          game.performances.create!(owner: entry[:owner], points:)
+          points
         end
+        unless round_name
+          tally[home[:owner].id][:points] += home_points
+          tally[away[:owner].id][:points] += away_points
+          tally[home[:owner].id][:wins] += 1 if home_points > away_points
+          tally[away[:owner].id][:wins] += 1 if away_points > home_points
+        end
+        home_points >= away_points ? home : away
+      end
+
+      1.upto(regular_weeks) do |week|
+        members.shuffle(random: rng).each_slice(2) do |home, away|
+          play.call(week, home, away) if away
+        end
+      end
+
+      seeds = members.sort_by { |entry| t = tally[entry[:owner].id]; [ -t[:wins], -t[:points] ] }
+        .first(team_count)
+      if team_count == 4
+        finalist_one = play.call(playoff_start, seeds[0], seeds[3], round_name: "Semifinal")
+        finalist_two = play.call(playoff_start, seeds[1], seeds[2], round_name: "Semifinal")
+        play.call(playoff_start + 1, finalist_one, finalist_two, round_name: "Championship")
+      else
+        quarter_one = play.call(playoff_start, seeds[2], seeds[5], round_name: "Quarterfinal")
+        quarter_two = play.call(playoff_start, seeds[3], seeds[4], round_name: "Quarterfinal")
+        finalist_one = play.call(playoff_start + 1, seeds[0], quarter_one, round_name: "Semifinal")
+        finalist_two = play.call(playoff_start + 1, seeds[1], quarter_two, round_name: "Semifinal")
+        play.call(playoff_start + 2, finalist_one, finalist_two, round_name: "Championship")
       end
     end
   end
 end
 
-puts "Seeded #{Owner.count} owners, #{Season.count} seasons, #{Game.count} games."
+puts "Seeded #{Owner.count} owners, #{Season.count} seasons, #{Game.count} games " \
+     "(#{Game.where.not(round_name: nil).count} playoff)."
