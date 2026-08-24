@@ -11,7 +11,8 @@ mockup with mock data illustrating the target screens (home/league overview, per
 per-season view, head-to-head comparisons, standings with "luck" and tier indicators). Open it in a
 browser to see the UI direction — it is not wired to real data or to this Rails app.
 
-Treat `docs/initial_design.html` as the spec for screens not yet built.
+Treat `docs/record_book_design.html` as the spec for screens not yet built. New features not run through
+a design phase will result in drift between the desired state of the app and the design spec.
 
 ## Architecture
 

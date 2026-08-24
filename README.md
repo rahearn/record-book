@@ -4,7 +4,7 @@ This application is the official history book of the ATO Delta fantasy football 
 
 ## Design
 
-The initial design doc is given by [docs/initial_design.html](./docs/initial_design.html)
+The design doc is given by [docs/record_book_design.html](./docs/record_book_design.html).
 
 ## Implementation
 
