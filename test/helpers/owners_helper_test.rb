@@ -20,8 +20,8 @@ class OwnersHelperTest < ActionView::TestCase
   end
 
   test "owner_blurb omits the tier without a ladder" do
-    owner_a = Owner.new(name: "Solo A", team_name: "Team A")
-    owner_b = Owner.new(name: "Solo B", team_name: "Team B")
+    owner_a = Owner.new(name: "Solo A")
+    owner_b = Owner.new(name: "Solo B")
     game = Game.new(season: Season.new(year: 2030), week: 1)
     game.performances.build(owner: owner_a, points: 100)
     game.performances.build(owner: owner_b, points: 90)

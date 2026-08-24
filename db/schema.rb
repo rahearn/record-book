@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_23_000004) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -27,7 +27,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000004) do
   create_table "owners", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
-    t.string "team_name", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_owners_on_name", unique: true
   end
@@ -50,7 +49,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_23_000004) do
     t.index ["year"], name: "index_seasons_on_year", unique: true
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.bigint "owner_id", null: false
+    t.bigint "season_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id", "season_id"], name: "index_teams_on_owner_id_and_season_id", unique: true
+    t.index ["owner_id"], name: "index_teams_on_owner_id"
+    t.index ["season_id"], name: "index_teams_on_season_id"
+  end
+
   add_foreign_key "games", "seasons"
   add_foreign_key "performances", "games"
   add_foreign_key "performances", "owners"
+  add_foreign_key "teams", "owners"
+  add_foreign_key "teams", "seasons"
 end

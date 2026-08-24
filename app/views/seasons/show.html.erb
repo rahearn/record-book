@@ -57,7 +57,7 @@
                 <td class="text-ink/55"><%= record.rank %></td>
                 <td>
                   <%= link_to record.owner.name, owner_path(record.owner), class: "font-medium text-accent" %>
-                  <span class="text-[11px] text-ink/55"><%= record.owner.team_name %></span>
+                  <span class="text-[11px] text-ink/55"><%= record.owner.team_name_in(record.year) %></span>
                 </td>
                 <td><%= record_display(record) %></td>
                 <td><%= points_display(record.points_for) %></td>

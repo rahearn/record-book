@@ -31,6 +31,16 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_select "tr.zone-down"
   end
 
+  test "standings show that season's team name" do
+    get season_url(2023)
+    assert_match "Anders Originals", response.body
+    assert_no_match "Anders Aces", response.body
+
+    get season_url(2024)
+    assert_match "Anders Aces", response.body
+    assert_no_match "Anders Originals", response.body
+  end
+
   test "shows a unified season without tier tabs" do
     get season_url(2023)
     assert_response :success
@@ -58,6 +68,7 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
 
   test "renders an empty state when no games are on record" do
     Performance.delete_all
+    Team.delete_all
     Game.delete_all
     Season.delete_all
     Owner.delete_all

@@ -18,8 +18,11 @@ Treat `docs/initial_design.html` as the spec for screens not yet built.
 The domain model is intentionally minimal and normalized for aggregate queries; a future loading
 layer will import historical data into it:
 
-- `Owner` (name, team_name) — a league member, constant across eras.
+- `Owner` (name) — a league member, constant across eras.
 - `Season` (year) — one league year.
+- `Team` (owner, season, name) — the team an owner fielded in one season; owners often rename
+  season to season. `Owner#team_name` gives the most recent season's name (use it outside a season
+  context); `Owner#team_name_in(year)` gives that season's name, falling back to the most recent.
 - `Game` (season, week, tier) — one regular-season matchup. `tier` is an enum: `unified` (single
   league, pre-2025), `premier`, `challenger`.
 - `Performance` (game, owner, points) — one owner's score in a game; every game has exactly two.

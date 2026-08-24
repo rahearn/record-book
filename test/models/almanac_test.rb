@@ -119,7 +119,7 @@ class AlmanacTest < ActiveSupport::TestCase
 
   test "career_for finds an owner's career" do
     assert_equal owners(:alice), @book.career_for(owners(:alice)).owner
-    assert_nil @book.career_for(Owner.new(name: "Outsider", team_name: "Out"))
+    assert_nil @book.career_for(Owner.new(name: "Outsider"))
   end
 
   test "best_finish is the owner's highest placement" do
@@ -160,7 +160,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal [ [ owners(:bob), 1, 0 ], [ owners(:carol), 0, 2 ] ],
       dan.map { |series| [ series.opponent, series.wins, series.losses ] }
 
-    assert_empty @book.head_to_head_for(Owner.new(name: "Outsider", team_name: "Out"))
+    assert_empty @book.head_to_head_for(Owner.new(name: "Outsider"))
   end
 
   test "series_between logs every meeting, newest first" do
@@ -230,7 +230,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal :premier, @book.ladder.tier_for(owners(:carol))
     assert_equal :challenger, @book.ladder.tier_for(owners(:bob))
     assert_equal :challenger, @book.ladder.tier_for(owners(:dan))
-    assert_nil @book.ladder.tier_for(Owner.new(name: "Outsider", team_name: "Out"))
+    assert_nil @book.ladder.tier_for(Owner.new(name: "Outsider"))
 
     assert_equal %i[premier premier challenger challenger],
       %i[alice carol bob dan].map { |name| career_for(name).next_tier }
@@ -252,8 +252,8 @@ class AlmanacTest < ActiveSupport::TestCase
   end
 
   test "tied games count as half a win" do
-    owner_a = Owner.new(name: "Tie A", team_name: "Team A")
-    owner_b = Owner.new(name: "Tie B", team_name: "Team B")
+    owner_a = Owner.new(name: "Tie A")
+    owner_b = Owner.new(name: "Tie B")
     game = build_game(year: 2030, week: 1, scores: { owner_a => 100.0, owner_b => 100.0 })
 
     book = Almanac.new(games: [ game ])
@@ -270,8 +270,8 @@ class AlmanacTest < ActiveSupport::TestCase
   end
 
   test "ladder is absent when the latest season lacks two tiers" do
-    owner_a = Owner.new(name: "Solo A", team_name: "Team A")
-    owner_b = Owner.new(name: "Solo B", team_name: "Team B")
+    owner_a = Owner.new(name: "Solo A")
+    owner_b = Owner.new(name: "Solo B")
 
     unified = build_game(year: 2030, week: 1, scores: { owner_a => 100.0, owner_b => 90.0 })
     assert_nil Almanac.new(games: [ unified ]).ladder
@@ -283,7 +283,7 @@ class AlmanacTest < ActiveSupport::TestCase
 
   test "games without exactly two performances are ignored" do
     game = Game.new(season: Season.new(year: 2030), week: 1)
-    game.performances.build(owner: Owner.new(name: "Solo", team_name: "Solo FC"), points: 100)
+    game.performances.build(owner: Owner.new(name: "Solo"), points: 100)
 
     book = Almanac.new(games: [ game ])
     assert book.empty?

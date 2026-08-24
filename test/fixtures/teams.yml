@@ -1,0 +1,40 @@
+# Alice renamed her team between seasons; the others kept theirs.
+alice_2023:
+  owner: alice
+  season: y2023
+  name: Anders Originals
+
+alice_2024:
+  owner: alice
+  season: y2024
+  name: Anders Aces
+
+bob_2023:
+  owner: bob
+  season: y2023
+  name: Barker Bandits
+
+bob_2024:
+  owner: bob
+  season: y2024
+  name: Barker Bandits
+
+carol_2023:
+  owner: carol
+  season: y2023
+  name: Chen Chargers
+
+carol_2024:
+  owner: carol
+  season: y2024
+  name: Chen Chargers
+
+dan_2023:
+  owner: dan
+  season: y2023
+  name: Diaz Dynamo
+
+dan_2024:
+  owner: dan
+  season: y2024
+  name: Diaz Dynamo

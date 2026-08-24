@@ -43,13 +43,14 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "owners without games 404" do
-    idle = Owner.create!(name: "Idle Ivan", team_name: "Idle FC")
+    idle = Owner.create!(name: "Idle Ivan")
     get head_to_head_url(a: idle.id, b: owners(:bob).id)
     assert_response :not_found
   end
 
   test "renders an empty state when no games are on record" do
     Performance.delete_all
+    Team.delete_all
     Game.delete_all
     Season.delete_all
     Owner.delete_all

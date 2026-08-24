@@ -42,12 +42,15 @@ noise = -> { (rng.rand + rng.rand + rng.rand - 1.5) * 2 }
 
 ActiveRecord::Base.transaction do
   roster = demo_owners.map do |name, team_name, joined, base|
-    { owner: Owner.create!(name:, team_name:), joined:, base: }
+    { owner: Owner.create!(name:), team_name:, joined:, base: }
   end
 
   (first_year..last_year).each do |year|
     season = Season.create!(year:)
     active = roster.select { |entry| entry[:joined] <= year }
+    active.each do |entry|
+      Team.create!(owner: entry[:owner], season: season, name: entry[:team_name])
+    end
     tiers = if year >= last_year
       { premier: active.first(premier_size), challenger: active.drop(premier_size) }
     else
