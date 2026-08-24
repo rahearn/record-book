@@ -32,6 +32,17 @@ module SeasonsHelper
     end
   end
 
+  # A playoff game's performances, winner first.
+  def playoff_sides(game)
+    game.performances.sort_by { |performance| -performance.points }
+  end
+
+  def playoff_note(format)
+    return unless format
+
+    "Top #{format.team_count} · from week #{format.start_week}"
+  end
+
   def matrix_cell_class(cell)
     if cell.highest
       "tag tag-accent"

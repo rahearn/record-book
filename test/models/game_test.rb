@@ -20,6 +20,12 @@ class GameTest < ActiveSupport::TestCase
     assert_includes game.errors[:week], "must be greater than 0"
   end
 
+  test "playoff and regular_season scopes partition games" do
+    assert_equal 2, Game.playoff.count
+    assert_equal Game.count - 2, Game.regular_season.count
+    assert Game.playoff.all?(&:playoff?)
+  end
+
   test "a round name marks a game as a playoff game" do
     assert_predicate games(:g2024_final_premier), :playoff?
     assert_not games(:g2024_final_premier).regular_season?

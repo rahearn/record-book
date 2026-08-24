@@ -36,6 +36,30 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_select "tr.zone-down"
   end
 
+  test "shows the playoff bracket for the displayed tier" do
+    get season_url(2024)
+    assert_response :success
+
+    assert_match "Playoffs", response.body
+    assert_match "Top 2 · from week 2", response.body
+    assert_match "Championship", response.body
+    assert_match "130.0", response.body
+    assert_match "CHAMPION", response.body
+    # The challenger final stays off the premier page.
+    assert_no_match "99.0", response.body
+
+    get season_url(2024, tier: "challenger")
+    assert_match "Top 2 · from week 3", response.body
+    assert_match "99.0", response.body
+    assert_no_match "130.0", response.body
+  end
+
+  test "seasons without playoff games have no playoff section" do
+    get season_url(2023)
+    assert_response :success
+    assert_no_match "Playoffs", response.body
+  end
+
   test "standings show that season's team name" do
     get season_url(2023)
     assert_match "Anders Originals", response.body

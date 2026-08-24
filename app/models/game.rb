@@ -8,6 +8,9 @@ class Game < ApplicationRecord
   validates :week, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :round_name_consistent_with_playoff_format
 
+  scope :playoff, -> { where.not(round_name: nil) }
+  scope :regular_season, -> { where(round_name: nil) }
+
   def playoff?
     round_name.present?
   end
