@@ -1,0 +1,129 @@
+<% content_for :title, "ATO Delta · Owners" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<% if @almanac.empty? %>
+  <p class="text-ink/55">No games on record yet.</p>
+<% else %>
+  <section class="flex flex-wrap items-end justify-between gap-5">
+    <div class="flex items-center gap-4">
+      <span class="blueprint grid h-16 w-16 flex-none place-items-center font-heading text-[22px] text-accent-700">
+        <%= @owner.initials %>
+      </span>
+      <div>
+        <div class="card-kicker"><%= @owner.team_name %></div>
+        <h1 class="font-heading text-[46px] font-semibold leading-tight tracking-[-0.015em]"><%= @owner.name %></h1>
+        <div class="text-[13px] text-ink/55"><%= owner_blurb(@almanac, @career) %></div>
+      </div>
+    </div>
+    <%= form_with url: owners_path, method: :get, class: "min-w-[220px]",
+          data: { controller: "autosubmit" } do |form| %>
+      <%= form.label :id, "Owner", for: "owner_id", class: "mb-1 block text-xs text-ink/70" %>
+      <%= form.select :id,
+            @almanac.all_time_standings
+              .sort_by { |career| career.owner.name }
+              .map { |career| [ "#{career.owner.name} — #{career.owner.team_name}", career.owner.id ] },
+            { selected: @owner.id },
+            id: "owner_id", class: "input", data: { action: "change->autosubmit#submit" } %>
+      <noscript><%= form.submit "View", class: "btn btn-secondary mt-1" %></noscript>
+    <% end %>
+  </section>
+
+  <section class="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-4.5">
+    <%= render "plate", kicker: "All-time record", value: record_display(@career),
+          note: "#{win_percentage_display(@career.win_percentage)} across #{@career.games_played} games" %>
+    <%= render "plate", kicker: "Points for / game", value: points_display(@career.points_for_per_game),
+          note: league_rank_note(@almanac.points_for_rank(@career), @almanac.owner_count) %>
+    <%= render "plate", kicker: "Points against / game", value: points_display(@career.points_against_per_game),
+          note: league_rank_note(@almanac.points_against_rank(@career), @almanac.owner_count) %>
+    <%= render "plate", kicker: "Luck", value: signed_points_display(@career.luck_per_game),
+          note: luck_note(@career.luck_per_game) %>
+    <%= render "plate", kicker: "Titles", value: @career.titles,
+          note: best_finish_note(@career) %>
+  </section>
+
+  <section>
+    <h2 class="mb-3 font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Season by season</h2>
+    <div class="blueprint px-4 py-3.5">
+      <%= blueprint_corners %>
+      <div class="overflow-x-auto">
+        <table class="table min-w-[760px]">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>League</th>
+              <th>Finish</th>
+              <th>W–L</th>
+              <th>PF/g</th>
+              <th>PA/g</th>
+              <th>Luck</th>
+              <th>High</th>
+              <th>Low</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @career.season_records.each do |record| %>
+              <tr>
+                <td class="font-medium"><%= record.year %></td>
+                <td><span class="tag <%= tier_tag_class(record.tier) %>"><%= tier_label(record.tier) %></span></td>
+                <td><%= finish_display(record.rank) %></td>
+                <td><%= record_display(record) %></td>
+                <td><%= points_display(record.average_points) %></td>
+                <td><%= points_display(record.average_points_against) %></td>
+                <td><%= signed_points_display(record.luck_per_game) %></td>
+                <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
+                <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
+                <td class="text-right">
+                  <%= link_to "Weeks", owner_path(@owner, season: record.year, anchor: "weeks"),
+                        class: "text-accent" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="weeks">
+    <div class="mb-3 flex items-baseline gap-3.5">
+      <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">
+        <%= @chart_record.year %> week by week · <%= tier_label(@chart_record.tier) %>
+      </h2>
+      <span class="text-xs text-ink/55">Bar is points for; the tick is the opponent.</span>
+    </div>
+    <div class="blueprint flex flex-col gap-[7px] px-4.5 py-4">
+      <%= blueprint_corners %>
+      <% @chart_record.weekly_scores.each do |score| %>
+        <div class="flex flex-wrap items-center gap-2.5 gap-y-1 text-[13px]">
+          <span class="w-8 flex-none text-ink/55">W<%= score.week %></span>
+          <span class="w-[52px] flex-none font-medium"><%= points_display(score.points) %></span>
+          <span class="relative h-4 min-w-[100px] flex-[1_1_130px] bg-ink/5">
+            <span class="absolute inset-y-0 left-0 <%= score.result == :win ? "bg-accent" : "bg-neutral-400" %>"
+                  style="width: <%= bar_percent(score.points, @chart_max) %>"></span>
+            <span class="absolute -top-[3px] -bottom-[3px] w-[2px] bg-ink opacity-55"
+                  style="left: <%= bar_percent(score.opponent_points, @chart_max) %>"></span>
+          </span>
+          <span class="tag <%= week_result_tag_class(score) %> w-8 flex-none justify-center"><%= week_result_label(score) %></span>
+          <span class="flex min-w-0 flex-[1_1_150px] items-baseline gap-2">
+            <span class="flex-none text-ink/55"><%= points_display(score.opponent_points) %></span>
+            <span class="min-w-0 flex-1 truncate"><%= score.opponent.name %></span>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="mb-3 font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">Head-to-head, all time</h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-3">
+      <% @head_to_head.each do |series| %>
+        <div class="blueprint flex items-center gap-2.5 px-3 py-2.5">
+          <%= blueprint_corners %>
+          <span class="min-w-0 flex-1 truncate text-[13px]"><%= series.opponent.name %></span>
+          <span class="font-heading text-base"><%= record_display(series) %></span>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>

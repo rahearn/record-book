@@ -117,6 +117,52 @@ class AlmanacTest < ActiveSupport::TestCase
     assert bob_cells.second.lowest  # 85.0, week 2's low
   end
 
+  test "career_for finds an owner's career" do
+    assert_equal owners(:alice), @book.career_for(owners(:alice)).owner
+    assert_nil @book.career_for(Owner.new(name: "Outsider", team_name: "Out"))
+  end
+
+  test "best_finish is the owner's highest placement" do
+    assert_equal 1, career_for(:alice).best_finish
+    assert_equal 2, career_for(:bob).best_finish   # 4th in 2023, 2nd in 2024 premier
+    assert_equal 2, career_for(:dan).best_finish
+  end
+
+  test "league ranks by points per game" do
+    # PF/g: Alice 110.0, Bob 90.0, Carol 88.3, Dan 85.2
+    assert_equal 1, @book.points_for_rank(career_for(:alice))
+    assert_equal 2, @book.points_for_rank(career_for(:bob))
+    assert_equal 4, @book.points_for_rank(career_for(:dan))
+
+    # PA/g ascending: Dan 85.0, Carol 86.8, Alice 93.3, Bob 108.3
+    assert_equal 1, @book.points_against_rank(career_for(:dan))
+    assert_equal 3, @book.points_against_rank(career_for(:alice))
+    assert_equal 4, @book.points_against_rank(career_for(:bob))
+  end
+
+  test "weekly scores carry the opponent and result" do
+    alice = @book.standings_for(2023, :unified).first
+    week_one = alice.weekly_scores.first
+    assert_equal owners(:bob), week_one.opponent
+    assert_in_delta 90.0, week_one.opponent_points
+    assert_equal :win, week_one.result
+
+    bob = @book.standings_for(2023, :unified).fourth
+    assert_equal %i[loss loss], bob.weekly_scores.map(&:result)
+  end
+
+  test "head_to_head_for aggregates series records, best first" do
+    alice = @book.head_to_head_for(owners(:alice))
+    assert_equal [ [ owners(:bob), 2, 0 ], [ owners(:carol), 1, 0 ] ],
+      alice.map { |series| [ series.opponent, series.wins, series.losses ] }
+
+    dan = @book.head_to_head_for(owners(:dan))
+    assert_equal [ [ owners(:bob), 1, 0 ], [ owners(:carol), 0, 2 ] ],
+      dan.map { |series| [ series.opponent, series.wins, series.losses ] }
+
+    assert_empty @book.head_to_head_for(Owner.new(name: "Outsider", team_name: "Out"))
+  end
+
   test "game records capture single-game extremes" do
     records = @book.game_records
 
@@ -183,6 +229,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, career.losses
     assert_equal 1, career.ties
     assert_in_delta 0.5, career.win_percentage
+    assert_equal 1, book.head_to_head_for(owner_a).first.ties
   end
 
   test "ladder is absent when the latest season lacks two tiers" do

@@ -50,6 +50,10 @@ class Almanac
       season_records.count(&:champion?)
     end
 
+    def best_finish
+      season_records.map(&:rank).min
+    end
+
     def win_percentage
       (wins + ties * 0.5) / games_played
     end

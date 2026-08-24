@@ -19,6 +19,17 @@
   --color-accent-700: #416180;
   --color-accent-800: #2c455d;
   --color-accent-900: #1d2d3d;
+
+  /* The design's neutral ramp replaces Tailwind's default neutral scale. */
+  --color-neutral-100: #f5f5f8;
+  --color-neutral-200: #e7e7ea;
+  --color-neutral-300: #d4d4d7;
+  --color-neutral-400: #b7b7ba;
+  --color-neutral-500: #98989b;
+  --color-neutral-600: #7a7a7d;
+  --color-neutral-700: #5d5d60;
+  --color-neutral-800: #424244;
+  --color-neutral-900: #2b2b2d;
 }
 
 @layer base {
@@ -84,8 +95,8 @@
     color: var(--color-accent-800);
   }
   .tag-neutral {
-    background: #f5f5f8;
-    color: #424244;
+    background: var(--color-neutral-100);
+    color: var(--color-neutral-800);
   }
   .tag-outline {
     border: 1px solid var(--color-accent);
@@ -190,6 +201,6 @@
     background: color-mix(in srgb, var(--color-ink) 5%, transparent);
   }
   .table tbody tr.zone-down > td:first-child {
-    box-shadow: inset 3px 0 0 #b7b7ba;
+    box-shadow: inset 3px 0 0 var(--color-neutral-400);
   }
 }

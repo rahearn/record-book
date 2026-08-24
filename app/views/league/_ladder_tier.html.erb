@@ -9,7 +9,7 @@
     <% entries.each_with_index do |entry, index| %>
       <div class="flex items-center gap-2.5 border-t border-ink/10 py-1.5 text-sm">
         <span class="w-[18px] text-xs text-ink/55"><%= index + 1 %></span>
-        <span class="flex-1"><%= entry.owner.name %></span>
+        <%= link_to entry.owner.name, owner_path(entry.owner), class: "flex-1 text-accent" %>
         <span class="tag <%= movement_tag_class(entry.movement) %>"><%= movement_label(entry.movement) %></span>
       </div>
     <% end %>

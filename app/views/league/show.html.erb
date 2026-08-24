@@ -56,7 +56,7 @@
                       <%= career.owner.initials %>
                     </span>
                     <span class="flex flex-col leading-[1.15]">
-                      <span class="font-medium"><%= career.owner.name %></span>
+                      <%= link_to career.owner.name, owner_path(career.owner), class: "font-medium text-accent" %>
                       <span class="text-[11px] text-ink/55"><%= career.owner.team_name %></span>
                     </span>
                   </div>

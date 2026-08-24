@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   get "seasons", to: "seasons#show", as: :seasons
   get "seasons/:year", to: "seasons#show", as: :season, constraints: { year: /\d{4}/ }
+
+  get "owners", to: "owners#show", as: :owners
+  get "owners/:id", to: "owners#show", as: :owner, constraints: { id: /\d+/ }
 end

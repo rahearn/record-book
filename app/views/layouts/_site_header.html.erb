@@ -8,7 +8,7 @@
     </div>
     <nav class="flex flex-wrap gap-1.5">
       <%= nav_button "League", root_path, active: controller_name == "league" %>
-      <span class="btn btn-secondary opacity-45" title="Coming soon">Owners</span>
+      <%= nav_button "Owners", owners_path, active: controller_name == "owners" %>
       <span class="btn btn-secondary opacity-45" title="Coming soon">Head-to-head</span>
       <%= nav_button "Seasons", seasons_path, active: controller_name == "seasons" %>
     </nav>

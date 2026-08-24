@@ -56,7 +56,7 @@
               <tr class="<%= season_zone_class(@almanac, record) %>">
                 <td class="text-ink/55"><%= record.rank %></td>
                 <td>
-                  <span class="font-medium"><%= record.owner.name %></span>
+                  <%= link_to record.owner.name, owner_path(record.owner), class: "font-medium text-accent" %>
                   <span class="text-[11px] text-ink/55"><%= record.owner.team_name %></span>
                 </td>
                 <td><%= record_display(record) %></td>

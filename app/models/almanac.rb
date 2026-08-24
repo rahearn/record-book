@@ -9,6 +9,7 @@ class Almanac
   PROMOTION_COUNT = 4
   RELEGATION_COUNT = 4
 
+  HeadToHead = Data.define(:opponent, :wins, :losses, :ties)
   ScoreRecord = Data.define(:points, :owner, :year, :week)
   BlowoutRecord = Data.define(:margin, :winner, :loser, :year, :week)
   ShootoutRecord = Data.define(:total, :owners, :year, :week)
@@ -102,6 +103,44 @@ class Almanac
       .each_with_index { |career, index| career.rank = index + 1 }
   end
 
+  def career_for(owner)
+    all_time_standings.find { |career| career.owner == owner }
+  end
+
+  # League position by career points for per game (1 = highest scoring).
+  def points_for_rank(career)
+    all_time_standings.sort_by { |other| -other.points_for_per_game }.index(career) + 1
+  end
+
+  # League position by career points against per game (1 = stingiest schedule).
+  def points_against_rank(career)
+    all_time_standings.sort_by(&:points_against_per_game).index(career) + 1
+  end
+
+  # All-time record against every opponent faced, best series first.
+  def head_to_head_for(owner)
+    totals = Hash.new { |hash, opponent| hash[opponent] = { wins: 0, losses: 0, ties: 0 } }
+    each_matchup do |_game, side_a, side_b|
+      mine, theirs = if side_a.owner == owner
+        [ side_a, side_b ]
+      elsif side_b.owner == owner
+        [ side_b, side_a ]
+      end
+      next unless mine
+
+      tally = totals[theirs.owner]
+      if mine.points > theirs.points
+        tally[:wins] += 1
+      elsif mine.points < theirs.points
+        tally[:losses] += 1
+      else
+        tally[:ties] += 1
+      end
+    end
+    totals.map { |opponent, tally| HeadToHead.new(opponent: opponent, **tally) }
+      .sort_by { |series| [ -(series.wins - series.losses), series.opponent.name ] }
+  end
+
   def game_records
     return if empty?
 
@@ -121,10 +160,12 @@ class Almanac
   def build_season_records
     records = {}
     each_matchup do |game, side_a, side_b|
-      record_for(records, game, side_a.owner)
-        .record_result(week: game.week, points: side_a.points, opponent_points: side_b.points)
-      record_for(records, game, side_b.owner)
-        .record_result(week: game.week, points: side_b.points, opponent_points: side_a.points)
+      record_for(records, game, side_a.owner).record_result(
+        week: game.week, points: side_a.points,
+        opponent: side_b.owner, opponent_points: side_b.points)
+      record_for(records, game, side_b.owner).record_result(
+        week: game.week, points: side_b.points,
+        opponent: side_a.owner, opponent_points: side_a.points)
     end
     each_matchup do |game, side_a, side_b|
       year = game.season.year
