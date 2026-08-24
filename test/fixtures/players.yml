@@ -3,79 +3,105 @@
 alice_qb:
   name: Grant Feltz
   position: qb
+  nfl_team: BUF
 alice_rb1:
   name: Micah Rowen
   position: rb
+  nfl_team: BAL
 alice_rb2:
   name: Dez Halloran
   position: rb
+  nfl_team: DET
 alice_rb3:
   name: Tobin Pike
   position: rb
+  nfl_team: GB
 alice_rb4:
   name: Rex Calloway
   position: rb
+  nfl_team: SF
 alice_wr1:
   name: Silas Marsh
   position: wr
+  nfl_team: MIA
 alice_wr2:
   name: Otis Kemper
   position: wr
+  nfl_team: CIN
 alice_wr3:
   name: Wade Lindqvist
   position: wr
+  nfl_team: NYJ
 alice_wr4:
   name: Cyrus Pardo
   position: wr
+  nfl_team: SEA
 alice_te1:
   name: Bo Ranallo
   position: te
+  nfl_team: KC
 alice_te2:
   name: Emeka Vidrine
   position: te
+  nfl_team: ATL
 alice_k:
   name: Nico Sarto
   position: k
+  nfl_team: DAL
 alice_dst:
   name: Ravens D/ST
   position: dst
+  nfl_team: BAL
 
 bob_qb:
   name: Judd Trask
   position: qb
+  nfl_team: PHI
 bob_rb1:
   name: Elton Bellinger
   position: rb
+  nfl_team: TEN
 bob_rb2:
   name: Rico Osgood
   position: rb
+  nfl_team: CLE
 bob_rb3:
   name: Kip Fontenot
   position: rb
+  nfl_team: NO
 bob_wr1:
   name: Amari Whitfield
   position: wr
+  nfl_team: LAR
 bob_wr2:
   name: Levi Sandoval
   position: wr
+  nfl_team: HOU
 bob_wr3:
   name: Nash Ferris
   position: wr
+  nfl_team: MIN
 bob_wr4:
   name: Gus Kranz
   position: wr
+  nfl_team: ARI
 bob_wr5:
   name: Byron Ochs
   position: wr
+  nfl_team: CHI
 bob_te1:
   name: Milo Craven
   position: te
+  nfl_team: PIT
 bob_te2:
   name: Abel Kuhn
   position: te
+  nfl_team: LV
 bob_k:
   name: Quentin Rask
   position: k
+  nfl_team: TB
 bob_dst:
   name: Broncos D/ST
   position: dst
+  nfl_team: DEN

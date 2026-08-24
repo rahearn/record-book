@@ -12,6 +12,12 @@ module MatchupsHelper
     SLOT_LABELS.fetch(slot.to_s)
   end
 
+  # A player as they read in a lineup: their name, then the NFL team they
+  # played for — which is also what tells two same-named players apart.
+  def player_with_team(player)
+    safe_join([ player.name, tag.span(player.nfl_team, class: "text-ink/55") ], " ")
+  end
+
   # "Week 3 · 2024", with the round name added for playoff games.
   def matchup_title(matchup)
     title = "Week #{matchup.week} · #{matchup.year}"

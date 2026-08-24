@@ -14,6 +14,13 @@ class MatchupsHelperTest < ActionView::TestCase
     assert_equal "RB", slot_label(:rb)
   end
 
+  test "player_with_team mutes the NFL team after the name" do
+    assert_equal %(Grant Feltz <span class="text-ink/55">BUF</span>),
+      player_with_team(players(:alice_qb))
+    assert_equal %(Ravens D/ST <span class="text-ink/55">BAL</span>),
+      player_with_team(players(:alice_dst))
+  end
+
   test "matchup_title names the week and adds the playoff round" do
     assert_equal "Week 1 · 2023", matchup_title(@book.matchup_for(games(:g2023_w1_ab)))
     assert_equal "Week 2 · 2024 · Championship",

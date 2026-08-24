@@ -17,12 +17,15 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_select "div.grid.grid-cols-\\[1fr_46px_1fr\\]", count: 9
     assert_match "Grant Feltz", response.body
     assert_match "Judd Trask", response.body
+    # Each player carries the NFL team they played for.
+    assert_select "span.truncate", html: %r{Grant Feltz <span class="text-ink/55">BUF</span>}
     assert_match "FLEX", response.body
     assert_match "D/ST", response.body
 
     # Benches, best score first, and the points they cost her.
     assert_match "Alice Anders — bench", response.body
     assert_match "Rex Calloway", response.body
+    assert_select "td", html: %r{Rex Calloway <span class="text-ink/55">SF</span>}
     assert_select ".blueprint", count: 4 # scoreboard, lineups, two benches
     assert_match "8.0 left on the bench", response.body
     assert_match "0.0 left on the bench", response.body

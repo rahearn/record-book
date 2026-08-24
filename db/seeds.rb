@@ -48,11 +48,16 @@ player_last_names = %w[
   Craven Pellegrino Kirkby Vogel Cardoso Rask Arriaga Lindqvist Pardo Whitcomb Rowen
   Calloway Kemper
 ]
-defense_teams = %w[
-  Bears Ravens Broncos Jets Saints Bills Steelers Chargers Titans Packers Vikings
-  Chiefs Eagles Cowboys Browns Texans Colts Lions Rams Dolphins Falcons Seahawks
-  Giants Panthers Cardinals Jaguars Raiders Bengals Commanders Patriots Buccaneers 49ers
-]
+nfl_teams = {
+  "Bears" => "CHI", "Ravens" => "BAL", "Broncos" => "DEN", "Jets" => "NYJ",
+  "Saints" => "NO", "Bills" => "BUF", "Steelers" => "PIT", "Chargers" => "LAC",
+  "Titans" => "TEN", "Packers" => "GB", "Vikings" => "MIN", "Chiefs" => "KC",
+  "Eagles" => "PHI", "Cowboys" => "DAL", "Browns" => "CLE", "Texans" => "HOU",
+  "Colts" => "IND", "Lions" => "DET", "Rams" => "LAR", "Dolphins" => "MIA",
+  "Falcons" => "ATL", "Seahawks" => "SEA", "Giants" => "NYG", "Panthers" => "CAR",
+  "Cardinals" => "ARI", "Jaguars" => "JAX", "Raiders" => "LV", "Bengals" => "CIN",
+  "Commanders" => "WAS", "Patriots" => "NE", "Buccaneers" => "TB", "49ers" => "SF"
+}
 
 # One roster: a quarterback, four backs, four receivers, two tight ends, a
 # kicker and a defense. Nine start; the rest ride the bench.
@@ -77,14 +82,19 @@ ActiveRecord::Base.transaction do
   end
 
   skater_names = player_first_names.product(player_last_names).shuffle(random: rng)
+  abbreviations = nfl_teams.values
   player_ids = roster_template.to_h do |position, per_roster|
-    names = if position == "dst"
-      defense_teams.shuffle(random: rng).map { |team| "#{team} D/ST" }
+    players = if position == "dst"
+      nfl_teams.to_a.shuffle(random: rng).map do |nickname, abbreviation|
+        { name: "#{nickname} D/ST", nfl_team: abbreviation }
+      end
     else
-      skater_names.shift(per_roster * demo_owners.size).map { |parts| parts.join(" ") }
+      skater_names.shift(per_roster * demo_owners.size).map do |parts|
+        { name: parts.join(" "), nfl_team: abbreviations.sample(random: rng) }
+      end
     end
-    [ position, Player.insert_all!(names.map { |name| { name:, position: Player.positions[position] } },
-                                   returning: :id).rows.flatten ]
+    rows = players.map { |player| player.merge(position: Player.positions[position]) }
+    [ position, Player.insert_all!(rows, returning: :id).rows.flatten ]
   end
 
   lineup_rows = []

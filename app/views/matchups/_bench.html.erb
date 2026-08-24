@@ -6,7 +6,7 @@
       <% side.bench.each do |entry| %>
         <tr>
           <td class="w-11 text-ink/55"><%= position_label(entry.player.position) %></td>
-          <td><%= entry.player.name %></td>
+          <td><%= player_with_team(entry.player) %></td>
           <td class="text-right"><%= points_display(entry.points) %></td>
         </tr>
       <% end %>
