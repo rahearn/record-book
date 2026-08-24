@@ -163,6 +163,39 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_empty @book.head_to_head_for(Owner.new(name: "Outsider", team_name: "Out"))
   end
 
+  test "series_between logs every meeting, newest first" do
+    series = @book.series_between(owners(:alice), owners(:bob))
+    assert_equal 2, series.games_played
+    assert_equal 2, series.wins_a
+    assert_equal 0, series.wins_b
+    assert_equal 2023, series.first_year
+    assert_in_delta 110.0, series.average_points_a
+    assert_in_delta 92.5, series.average_points_b
+
+    newest = series.meetings.first
+    assert_equal [ 2024, 1, "premier" ], [ newest.year, newest.week, newest.tier ]
+    assert_in_delta 25.0, newest.margin
+    assert_equal owners(:alice), series.winner_of(newest)
+  end
+
+  test "series_between is directional" do
+    series = @book.series_between(owners(:dan), owners(:carol))
+    assert_equal 0, series.wins_a
+    assert_equal 2, series.wins_b
+    assert_equal owners(:carol), series.winner_of(series.meetings.first)
+  end
+
+  test "series_between owners who never met is empty" do
+    series = @book.series_between(owners(:alice), owners(:dan))
+    assert_equal 0, series.games_played
+    assert_nil series.first_year
+    assert_equal 0, series.average_points_a
+  end
+
+  test "series_between the same owner is empty" do
+    assert_equal 0, @book.series_between(owners(:alice), owners(:alice)).games_played
+  end
+
   test "game records capture single-game extremes" do
     records = @book.game_records
 
@@ -230,6 +263,10 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 1, career.ties
     assert_in_delta 0.5, career.win_percentage
     assert_equal 1, book.head_to_head_for(owner_a).first.ties
+
+    series = book.series_between(owner_a, owner_b)
+    assert_equal 1, series.ties
+    assert_nil series.winner_of(series.meetings.first)
   end
 
   test "ladder is absent when the latest season lacks two tiers" do

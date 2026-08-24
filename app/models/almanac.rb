@@ -141,6 +141,22 @@ class Almanac
       .sort_by { |series| [ -(series.wins - series.losses), series.opponent.name ] }
   end
 
+  def series_between(owner_a, owner_b)
+    meetings = []
+    if owner_a != owner_b
+      each_matchup do |game, side_a, side_b|
+        sides = { side_a.owner => side_a, side_b.owner => side_b }
+        mine = sides[owner_a]
+        theirs = sides[owner_b]
+        next unless mine && theirs
+
+        meetings << Series::Meeting.new(year: game.season.year, week: game.week, tier: game.tier,
+                                        points_a: mine.points, points_b: theirs.points)
+      end
+    end
+    Series.new(owner_a: owner_a, owner_b: owner_b, meetings: meetings)
+  end
+
   def game_records
     return if empty?
 

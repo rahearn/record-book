@@ -9,7 +9,7 @@
     <nav class="flex flex-wrap gap-1.5">
       <%= nav_button "League", root_path, active: controller_name == "league" %>
       <%= nav_button "Owners", owners_path, active: controller_name == "owners" %>
-      <span class="btn btn-secondary opacity-45" title="Coming soon">Head-to-head</span>
+      <%= nav_button "Head-to-head", head_to_head_path, active: controller_name == "head_to_head" %>
       <%= nav_button "Seasons", seasons_path, active: controller_name == "seasons" %>
     </nav>
   </div>

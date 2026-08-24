@@ -1,4 +1,10 @@
 module OwnersHelper
+  def owner_select_options(almanac)
+    almanac.all_time_standings
+      .sort_by { |career| career.owner.name }
+      .map { |career| [ "#{career.owner.name} — #{career.owner.team_name}", career.owner.id ] }
+  end
+
   def finish_display(rank)
     rank == 1 ? "1st ★" : rank.ordinalize
   end

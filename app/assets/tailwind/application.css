@@ -128,6 +128,14 @@
   .btn-secondary:hover {
     background: color-mix(in srgb, var(--color-ink) 7%, transparent);
   }
+  .btn-ghost {
+    border-color: transparent;
+    color: var(--color-accent);
+    padding-inline: 4px;
+  }
+  .btn-ghost:hover {
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
 
   .input {
     width: 100%;

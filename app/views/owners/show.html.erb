@@ -18,11 +18,7 @@
     <%= form_with url: owners_path, method: :get, class: "min-w-[220px]",
           data: { controller: "autosubmit" } do |form| %>
       <%= form.label :id, "Owner", for: "owner_id", class: "mb-1 block text-xs text-ink/70" %>
-      <%= form.select :id,
-            @almanac.all_time_standings
-              .sort_by { |career| career.owner.name }
-              .map { |career| [ "#{career.owner.name} — #{career.owner.team_name}", career.owner.id ] },
-            { selected: @owner.id },
+      <%= form.select :id, owner_select_options(@almanac), { selected: @owner.id },
             id: "owner_id", class: "input", data: { action: "change->autosubmit#submit" } %>
       <noscript><%= form.submit "View", class: "btn btn-secondary mt-1" %></noscript>
     <% end %>
@@ -122,6 +118,8 @@
           <%= blueprint_corners %>
           <span class="min-w-0 flex-1 truncate text-[13px]"><%= series.opponent.name %></span>
           <span class="font-heading text-base"><%= record_display(series) %></span>
+          <%= link_to "→", head_to_head_path(a: @owner.id, b: series.opponent.id),
+                class: "btn btn-ghost", "aria-label": "Head-to-head vs #{series.opponent.name}" %>
         </div>
       <% end %>
     </div>

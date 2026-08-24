@@ -36,10 +36,13 @@ objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotio
 The League home page is `league#show` (root route), rendered from partials in `app/views/league/`.
 The Seasons page is `seasons#show` (`/seasons` and `/seasons/:year`, with a `tier` query param for
 split seasons). The Owners page is `owners#show` (`/owners` defaults to the all-time leader,
-`/owners/:id`, with a `season` query param selecting the week-by-week chart). Both navigate via GET
-forms whose selects auto-submit through the `autosubmit` Stimulus controller. Design tokens and
-component classes (`.blueprint`, `.tag-*`, `.btn`, `.seg`, `.table`, zone shading) translated from
-the design doc live in `app/assets/tailwind/application.css`.
+`/owners/:id`, with a `season` query param selecting the week-by-week chart). The Head-to-head page
+is `head_to_head#show` (`/head-to-head?a=&b=`, defaulting to the top two all-time owners). These
+pages navigate via GET forms whose selects auto-submit through the `autosubmit` Stimulus
+controller. Design tokens and component classes (`.blueprint`, `.tag-*`, `.btn`, `.seg`, `.table`,
+zone shading) translated from the design doc live in `app/assets/tailwind/application.css`.
+Avoid Tailwind arbitrary-value classes inside ERB expressions (e.g. `bg-[#hex]` in a ternary) —
+the Tailwind scanner misses them; use theme utilities like `bg-neutral-400` instead.
 
 `db/seeds.rb` generates a deterministic demo league (20 owners, 2011–2025) matching the design
 mockup's data; it skips seeding when games already exist, and CI replants it in the test env.
