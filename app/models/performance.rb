@@ -6,6 +6,7 @@ class Performance < ApplicationRecord
 
   validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :owner_id, uniqueness: { scope: :game_id }
+  validate :lineup_matches_roster_format
 
   # The optimal lineup is memoized, so a reload has to drop it along with
   # the association cache it was computed from.
@@ -57,6 +58,18 @@ class Performance < ApplicationRecord
   end
 
   private
+
+  # A recorded lineup has to carry the slots the season was played with —
+  # the right number of each, in whatever order they were written down.
+  # Performances with no lineup on record are left alone; most of the
+  # league's history is scores only.
+  def lineup_matches_roster_format
+    format = game&.season&.roster_format
+    entries = lineup_slots.reject(&:marked_for_destruction?)
+    return if format.nil? || entries.empty? || entries.map(&:slot).tally == format.slot_counts
+
+    errors.add(:lineup_slots, "do not match the #{game.season.year} roster")
+  end
 
   # Every way this player could improve on the lineups found so far, plus
   # the option of leaving them out. `openings` are the slots they are

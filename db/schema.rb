@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_000100) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_25_004720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,6 +76,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000100) do
     t.index ["season_id"], name: "index_playoff_formats_on_season_id"
   end
 
+  create_table "roster_formats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "season_id", null: false
+    t.string "slots", default: [], null: false, array: true
+    t.datetime "updated_at", null: false
+    t.index ["season_id"], name: "index_roster_formats_on_season_id", unique: true
+  end
+
   create_table "seasons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,6 +108,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000100) do
   add_foreign_key "performances", "games"
   add_foreign_key "performances", "owners"
   add_foreign_key "playoff_formats", "seasons"
+  add_foreign_key "roster_formats", "seasons"
   add_foreign_key "teams", "owners"
   add_foreign_key "teams", "seasons"
 end

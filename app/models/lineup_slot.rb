@@ -3,12 +3,15 @@
 # would have scored, which is what makes "left on the bench" measurable.
 class LineupSlot < ApplicationRecord
   ANY_POSITION = %w[qb rb wr te k dst].freeze
+  RESERVE_SLOTS = %w[bench ir].freeze
 
-  # Which player positions each slot accepts. FLEX takes a running back,
-  # receiver, or tight end; the reserve slots take anyone.
+  # Which player positions each slot accepts. The league has run two flex
+  # spots over the years: W/R took a back or receiver, and W/R/T, which
+  # replaced it in 2009, opened up to tight ends. Reserves take anyone.
   ELIGIBLE_POSITIONS = {
     "qb" => %w[qb], "rb" => %w[rb], "wr" => %w[wr], "te" => %w[te],
-    "flex" => %w[rb wr te], "k" => %w[k], "dst" => %w[dst],
+    "wr_rb" => %w[rb wr], "wr_rb_te" => %w[rb wr te],
+    "k" => %w[k], "dst" => %w[dst],
     "bench" => ANY_POSITION, "ir" => ANY_POSITION
   }.freeze
 
@@ -17,8 +20,8 @@ class LineupSlot < ApplicationRecord
 
   # Injured reserve only existed in some seasons; it is a reserve slot like
   # the bench, except its occupant could not have been started.
-  enum :slot, { qb: 0, rb: 1, wr: 2, te: 3, flex: 4, k: 5, dst: 6, bench: 7, ir: 8 },
-    default: :bench
+  enum :slot, { qb: 0, rb: 1, wr: 2, te: 3, wr_rb_te: 4, k: 5, dst: 6,
+                bench: 7, ir: 8, wr_rb: 9 }, default: :bench
 
   validates :points, presence: true, numericality: true
   validates :sequence, presence: true,
@@ -30,7 +33,7 @@ class LineupSlot < ApplicationRecord
 
   # Reserve slots do not score.
   def reserve?
-    bench? || ir?
+    RESERVE_SLOTS.include?(slot)
   end
 
   def starter?
@@ -57,6 +60,8 @@ class LineupSlot < ApplicationRecord
   def player_eligible_for_slot
     return unless player && slot
 
-    errors.add(:player, "cannot fill the #{slot} slot") unless accepts?(player)
+    return if accepts?(player)
+
+    errors.add(:player, "cannot fill a #{slot.upcase.tr('_', '/')} slot")
   end
 end

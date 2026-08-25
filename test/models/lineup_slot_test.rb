@@ -39,14 +39,14 @@ class LineupSlotTest < ActiveSupport::TestCase
 
     slot.player = players(:alice_qb)
     assert_not slot.valid?
-    assert_includes slot.errors[:player], "cannot fill the flex slot"
+    assert_includes slot.errors[:player], "cannot fill a WR/RB/TE slot"
   end
 
   test "a dedicated slot only takes its own position" do
     slot = lineup_slots(:alice_slot_rb1)
     slot.player = players(:alice_wr1)
     assert_not slot.valid?
-    assert_includes slot.errors[:player], "cannot fill the rb slot"
+    assert_includes slot.errors[:player], "cannot fill a RB slot"
   end
 
   test "one matching position is enough for a dual-eligible player" do
@@ -75,7 +75,7 @@ class LineupSlotTest < ActiveSupport::TestCase
     assert_includes duplicate.errors[:sequence], "has already been taken"
 
     duplicate.performance = performances(:bob_2023_w1)
-    duplicate.sequence = 14
+    duplicate.sequence = 15
     assert duplicate.valid?
   end
 

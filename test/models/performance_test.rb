@@ -24,7 +24,7 @@ class PerformanceTest < ActiveSupport::TestCase
   test "the lineup splits into starters and reserves, the bench ranked by points" do
     performance = performances(:alice_2023_w1)
     assert performance.lineup?
-    assert_equal %w[qb rb rb wr wr te flex k dst], performance.starters.map(&:slot)
+    assert_equal %w[qb wr wr rb rb te wr_rb_te k dst], performance.starters.map(&:slot)
     assert_in_delta 100.0, performance.starters.sum(&:points)
 
     # Bench best first, then injured reserve however well it scored.
@@ -65,7 +65,7 @@ class PerformanceTest < ActiveSupport::TestCase
 
   test "a slot only opens to a player eligible for it" do
     performance = performances(:alice_2023_w1)
-    flex = performance.starters.find(&:flex?)
+    flex = performance.starters.find(&:wr_rb_te?)
 
     assert flex.accepts?(players(:alice_rb4)) # RB/WR
     assert flex.accepts?(players(:alice_te2))
@@ -75,6 +75,30 @@ class PerformanceTest < ActiveSupport::TestCase
   test "a lineup nothing on the bench could improve leaves nothing behind" do
     assert_in_delta 90.0, performances(:bob_2023_w1).optimal_points
     assert_in_delta 0.0, performances(:bob_2023_w1).points_left_on_bench
+  end
+
+  test "a recorded lineup must carry the slots the season was played with" do
+    performance = performances(:alice_2023_w1)
+    assert performance.valid?
+
+    # 2023 was played with a kicker; dropping him leaves the lineup short.
+    performance.lineup_slots.find(&:k?).mark_for_destruction
+    assert_not performance.valid?
+    assert_includes performance.errors[:lineup_slots], "do not match the 2023 roster"
+  end
+
+  test "the order a lineup was written down in does not matter" do
+    performance = performances(:alice_2023_w1)
+    performance.lineup_slots.each { |entry| entry.sequence = 15 - entry.sequence }
+    assert performance.valid?
+  end
+
+  test "seasons without a format on record accept any lineup" do
+    roster_formats(:y2023).destroy!
+    performance = performances(:alice_2023_w1).reload
+
+    performance.lineup_slots.first.destroy!
+    assert performance.reload.valid?
   end
 
   test "performances without a lineup on record leave nothing on the bench" do

@@ -105,6 +105,11 @@ bob_te2:
   name: Abel Kuhn
   positions: [ te ]
   nfl_team: LV
+# Hurt, and parked on IR where he scored nothing.
+bob_ir:
+  name: Dallas Nwosu
+  positions: [ te ]
+  nfl_team: JAX
 bob_k:
   name: Quentin Rask
   positions: [ k ]

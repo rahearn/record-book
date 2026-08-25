@@ -10,22 +10,22 @@ end
 
 demo_owners = [
   # [ name, team name, joined, base strength ]
-  [ "Dave Kroll", "Ozark Mudcats", 2011, 119 ],
-  [ "Tim Brossard", "Vandal Kings", 2011, 115 ],
-  [ "Marcy Ostrander", "Bitter Creek FC", 2011, 117 ],
-  [ "Paul Devereaux", "Nine Volt Nation", 2011, 112 ],
-  [ "Gil Amaya", "Hot Route Heroes", 2011, 116 ],
-  [ "Rana Pilcher", "Blue Ridge Bandits", 2011, 110 ],
-  [ "Sam Deitrick", "Ironhead Collective", 2011, 114 ],
-  [ "Nate Whitlow", "Quarry Dogs", 2011, 108 ],
-  [ "Esther Vang", "Corner Blitz Co.", 2013, 118 ],
-  [ "Marcus Held", "The Toe Drag", 2013, 111 ],
-  [ "Keith Amundsen", "Pylon Society", 2016, 113 ],
-  [ "Dana Rooke", "Silt Runners", 2016, 109 ],
-  [ "Joel Pratt", "Meridian Mules", 2019, 107 ],
-  [ "Alicia Nunn", "Cold Front", 2019, 110 ],
-  [ "Bobby Sarnicola", "Third & Long", 2019, 105 ],
-  [ "Wes Okafor", "Halfback Hotel", 2019, 112 ],
+  [ "Dave Kroll", "Ozark Mudcats", 2005, 119 ],
+  [ "Tim Brossard", "Vandal Kings", 2005, 115 ],
+  [ "Marcy Ostrander", "Bitter Creek FC", 2005, 117 ],
+  [ "Paul Devereaux", "Nine Volt Nation", 2005, 112 ],
+  [ "Gil Amaya", "Hot Route Heroes", 2005, 116 ],
+  [ "Rana Pilcher", "Blue Ridge Bandits", 2005, 110 ],
+  [ "Sam Deitrick", "Ironhead Collective", 2005, 114 ],
+  [ "Nate Whitlow", "Quarry Dogs", 2005, 108 ],
+  [ "Esther Vang", "Corner Blitz Co.", 2008, 118 ],
+  [ "Marcus Held", "The Toe Drag", 2008, 111 ],
+  [ "Keith Amundsen", "Pylon Society", 2012, 113 ],
+  [ "Dana Rooke", "Silt Runners", 2012, 109 ],
+  [ "Joel Pratt", "Meridian Mules", 2017, 107 ],
+  [ "Alicia Nunn", "Cold Front", 2017, 110 ],
+  [ "Bobby Sarnicola", "Third & Long", 2017, 105 ],
+  [ "Wes Okafor", "Halfback Hotel", 2017, 112 ],
   [ "Trish Landry", "Grain Belt Ghosts", 2025, 106 ],
   [ "Andre Boisvert", "Slot Machine", 2025, 104 ],
   [ "Kenny Rue", "Dust Bowl Deuce", 2025, 108 ],
@@ -59,24 +59,61 @@ nfl_teams = {
   "Commanders" => "WAS", "Patriots" => "NE", "Buccaneers" => "TB", "49ers" => "SF"
 }
 
-# One roster: a quarterback, four backs, four receivers, two tight ends, a
-# kicker and a defense. Nine start; the rest ride the bench.
-roster_template = { "qb" => 1, "rb" => 4, "wr" => 4, "te" => 2, "k" => 1, "dst" => 1 }
-starting_slots = [
-  [ :qb, "qb", 0, 0.175 ], [ :rb, "rb", 0, 0.130 ], [ :rb, "rb", 1, 0.105 ],
-  [ :wr, "wr", 0, 0.125 ], [ :wr, "wr", 1, 0.105 ], [ :te, "te", 0, 0.085 ],
-  [ :flex, "rb", 2, 0.095 ], [ :k, "k", 0, 0.060 ], [ :dst, "dst", 0, 0.070 ]
-]
-bench_spots = [ [ "rb", 3 ], [ "wr", 2 ], [ "wr", 3 ], [ "te", 1 ] ]
+# The lineup the league has played, year by year: two backs and two
+# receivers throughout, a flex added in 2006 that opened to tight ends in
+# 2009, kickers dropped after 2009, an injured reserve spot for 2021 only,
+# and a bench that fell from seven to three before settling at four.
+roster_progression = {
+  2005 => %w[qb wr wr rb rb te k dst] + %w[bench] * 6,
+  2006..2008 => %w[qb wr wr rb rb te wr_rb k dst] + %w[bench] * 6,
+  2009 => %w[qb wr wr rb rb te wr_rb_te k dst] + %w[bench] * 6,
+  2010..2012 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 7,
+  2013 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 6,
+  2014..2017 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 5,
+  2018..2020 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 3,
+  2021 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 3 + %w[ir],
+  2022..2024 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 3,
+  2025..2026 => %w[qb wr wr rb rb te wr_rb_te dst] + %w[bench] * 4
+}
+
+# The position drafted for each slot: flex spots take a back, and the
+# reserves are stocked with depth where depth matters.
+slot_positions = { "qb" => "qb", "wr" => "wr", "rb" => "rb", "te" => "te",
+                   "k" => "k", "dst" => "dst", "wr_rb" => "rb", "wr_rb_te" => "rb" }
+bench_depth = %w[rb wr rb wr te qb wr]
+# Relative scoring weight per slot; a repeated slot gets the lesser option.
+slot_weights = { "qb" => 0.175, "wr" => 0.125, "rb" => 0.130, "te" => 0.085,
+                 "k" => 0.060, "dst" => 0.070, "wr_rb" => 0.095, "wr_rb_te" => 0.095 }
 
 # Now and then a back, receiver or tight end is eligible somewhere else too,
 # which is what makes the optimal-lineup search worth running.
 flex_positions = %w[rb wr te]
 dual_eligible_odds = 0.06
 
-first_year = 2011
+first_year = 2005
 last_year = 2025
 premier_size = 12
+
+format_for = ->(year) { roster_progression.find { |years, _| years === year }.last }
+
+# One roster laid out slot by slot, each paired with the position drafted
+# to fill it, so a season's draft and its lineups read off the same plan.
+roster_plan = lambda do |year|
+  depth = bench_depth.cycle
+  format_for.call(year).map do |slot|
+    position = case slot
+    when "bench" then depth.next
+    when "ir" then "wr"
+    else slot_positions.fetch(slot)
+    end
+    [ slot, position ]
+  end
+end
+
+# Deep enough for the hungriest season in range.
+roster_template = (first_year..last_year)
+  .map { |year| roster_plan.call(year).map(&:last).tally }
+  .reduce { |deepest, needed| deepest.merge(needed) { |_, a, b| [ a, b ].max } }
 
 rng = Random.new(20_260_823)
 noise = -> { (rng.rand + rng.rand + rng.rand - 1.5) * 2 }
@@ -110,21 +147,30 @@ ActiveRecord::Base.transaction do
     lineup_rows.clear
   end
 
-  # Split a week's total across the nine starters, weighted by slot, then
-  # give the bench some of what it might have been worth.
-  build_lineup = lambda do |performance, roster_players, total|
-    weights = starting_slots.map { |_, _, _, weight| [ 0.02, weight * (0.55 + rng.rand * 0.95) ].max }
+  # Split a week's total across the starters, weighted by slot and thinned
+  # for a repeated one, then give the bench some of what it might have been
+  # worth. A player on injured reserve did not play, so they scored nothing.
+  build_lineup = lambda do |performance, plan, roster_players, total|
+    seen = Hash.new(0)
+    weights = plan.map do |slot, _|
+      next 0.0 if LineupSlot::RESERVE_SLOTS.include?(slot)
+
+      weight = slot_weights.fetch(slot) * (seen[slot].zero? ? 1.0 : 0.8)
+      seen[slot] += 1
+      [ 0.02, weight * (0.55 + rng.rand * 0.95) ].max
+    end
     scale = weights.sum
     points = weights.map { |weight| (total * weight / scale).round(1) }
     points[0] = (points[0] + (total - points.sum)).round(1)
-    starters = starting_slots.each_with_index.map do |(slot, position, index, _), spot|
-      { performance_id: performance.id, player_id: roster_players[position][index],
-        slot: LineupSlot.slots[slot.to_s], sequence: spot + 1, points: points[spot] }
-    end
-    starters + bench_spots.each_with_index.map do |(position, index), spot|
-      { performance_id: performance.id, player_id: roster_players[position][index],
-        slot: LineupSlot.slots["bench"], sequence: starting_slots.size + spot + 1,
-        points: (total * (0.02 + rng.rand * 0.085)).round(1) }
+
+    plan.each_with_index.map do |(slot, _), spot|
+      scored = case slot
+      when "bench" then (total * (0.02 + rng.rand * 0.085)).round(1)
+      when "ir" then 0.0
+      else points[spot]
+      end
+      { performance_id: performance.id, player_id: roster_players[spot],
+        slot: LineupSlot.slots.fetch(slot), sequence: spot + 1, points: scored }
     end
   end
 
@@ -135,18 +181,19 @@ ActiveRecord::Base.transaction do
       Team.create!(owner: entry[:owner], season: season, name: entry[:team_name])
     end
 
+    plan = roster_plan.call(year)
+    RosterFormat.create!(season:, slots: plan.map(&:first))
+
     # One league-wide snake draft a season, so every player belongs to
-    # exactly one roster for the whole year.
+    # exactly one roster for the whole year. A roster comes out in plan
+    # order: the player at each index fills the slot at the same index.
     available = player_ids.transform_values { |ids| ids.shuffle(random: rng) }
-    rosters = active.to_h do |entry|
-      [ entry[:owner].id, Hash.new { |slots, position| slots[position] = [] } ]
-    end
+    rosters = active.to_h { |entry| [ entry[:owner].id, [] ] }
     draft_order = active.shuffle(random: rng)
-    roster_template.flat_map { |position, count| [ position ] * count }
-      .each_with_index do |position, round|
-        picking = round.odd? ? draft_order.reverse : draft_order
-        picking.each { |entry| rosters[entry[:owner].id][position] << available[position].shift }
-      end
+    plan.each_with_index do |(_slot, position), round|
+      picking = round.odd? ? draft_order.reverse : draft_order
+      picking.each { |entry| rosters[entry[:owner].id] << available[position].shift }
+    end
 
     tiers = if year >= last_year
       { premier: active.first(premier_size), challenger: active.drop(premier_size) }
@@ -169,7 +216,7 @@ ActiveRecord::Base.transaction do
         home_points, away_points = [ home, away ].map do |entry|
           points = (entry[:base] + noise.call * 20 + (year - first_year) * 0.4).round(1)
           performance = game.performances.create!(owner: entry[:owner], points:)
-          lineup_rows.concat(build_lineup.call(performance, rosters[entry[:owner].id], points))
+          lineup_rows.concat(build_lineup.call(performance, plan, rosters[entry[:owner].id], points))
           points
         end
         unless round_name
@@ -209,4 +256,5 @@ end
 
 puts "Seeded #{Owner.count} owners, #{Season.count} seasons, #{Game.count} games " \
      "(#{Game.where.not(round_name: nil).count} playoff), " \
-     "#{Player.count} players and #{LineupSlot.count} lineup slots."
+     "#{Player.count} players and #{LineupSlot.count} lineup slots across " \
+     "#{RosterFormat.distinct.count(:slots)} roster formats."

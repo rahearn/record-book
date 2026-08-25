@@ -552,7 +552,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_in_delta 22.5, matchup.best_starter_points
     rows = matchup.slot_rows
     assert_equal 9, rows.size
-    assert_equal %w[qb rb rb wr wr te flex k dst], rows.map(&:slot)
+    assert_equal %w[qb wr wr rb rb te wr_rb_te k dst], rows.map(&:slot)
 
     quarterbacks = rows.first
     assert quarterbacks.a_leads? # 22.5 to 20.0
@@ -560,7 +560,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal players(:alice_qb), quarterbacks.entry_a.player
     assert_equal players(:bob_qb), quarterbacks.entry_b.player
 
-    second_receiver = rows[4] # 9.0 to 11.0
+    second_receiver = rows[2] # 9.0 to 11.0
     assert_not second_receiver.a_leads?
     assert second_receiver.b_leads?
   end

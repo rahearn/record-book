@@ -9,7 +9,9 @@ class MatchupsHelperTest < ActionView::TestCase
   test "position and slot labels" do
     assert_equal "QB", position_label("qb")
     assert_equal "D/ST", position_label(:dst)
-    assert_equal "FLEX", slot_label("flex")
+    assert_equal "W/R/T", slot_label("wr_rb_te")
+    assert_equal "W/R", slot_label("wr_rb")
+    assert_equal "IR", slot_label(:ir)
     assert_equal "BN", slot_label("bench")
     assert_equal "RB", slot_label(:rb)
   end

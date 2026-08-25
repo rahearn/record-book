@@ -2,7 +2,9 @@ module MatchupsHelper
   POSITION_LABELS = {
     "qb" => "QB", "rb" => "RB", "wr" => "WR", "te" => "TE", "k" => "K", "dst" => "D/ST"
   }.freeze
-  SLOT_LABELS = POSITION_LABELS.merge("flex" => "FLEX", "bench" => "BN").freeze
+  SLOT_LABELS = POSITION_LABELS.merge(
+    "wr_rb" => "W/R", "wr_rb_te" => "W/R/T", "bench" => "BN", "ir" => "IR"
+  ).freeze
 
   def position_label(position)
     POSITION_LABELS.fetch(position.to_s)

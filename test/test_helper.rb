@@ -16,6 +16,7 @@ module ActiveSupport
       Player.delete_all
       Performance.delete_all
       PlayoffFormat.delete_all
+      RosterFormat.delete_all
       Team.delete_all
       Game.delete_all
       Season.delete_all

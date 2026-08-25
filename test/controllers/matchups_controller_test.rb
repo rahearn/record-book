@@ -19,7 +19,7 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_match "Judd Trask", response.body
     # Each player carries the NFL team they played for.
     assert_select "span.truncate", html: %r{Grant Feltz <span class="text-ink/55">BUF</span>}
-    assert_match "FLEX", response.body
+    assert_match "W/R/T", response.body
     assert_match "D/ST", response.body
 
     # Benches, best score first, and the points they cost her.

@@ -1,0 +1,11 @@
+# Test shapes, not the league's real ones: 2023 carries a kicker and an
+# injured reserve spot the league had dropped by then, so one fixture game
+# can exercise every kind of slot at once. 2024 is a modern eight-starter
+# lineup whose performances have no lineups on record.
+y2023:
+  season: y2023
+  slots: [ qb, wr, wr, rb, rb, te, wr_rb_te, k, dst, bench, bench, bench, bench, ir ]
+
+y2024:
+  season: y2024
+  slots: [ qb, wr, wr, rb, rb, te, wr_rb_te, dst, bench, bench, bench ]
