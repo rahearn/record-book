@@ -18,12 +18,13 @@ The design doc is given by [docs/record_book_design.html](./docs/record_book_des
 
 Prod data import:
 
-* Games (import matchups)
 * LineupSlots (import players)
-* Performances (import matchups)
 * Players (import players)
   * Potential issue: positions list could change season to season
+  * Obvious issue: nfl team definitely changes season to season
 
 ### Done
 
 * Teams (import teams from old history project csv)
+* Games (import matchups)
+* Performances (import matchups)

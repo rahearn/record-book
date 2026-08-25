@@ -70,6 +70,19 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
   CSV.open(Rails.root.join("docs", "yahoo", "teams.csv")).each do |row|
     Team.find_or_create_by!(season: Season.find_by(year: row[0]), name: row[1], owner: Owner.find_by!(name: row[2]))
   end
+
+  (2005..2024).each do |year|
+    CSV.open(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")).each do |row|
+      season = Season.find_by(year:)
+      week = row[0].to_i
+      playoff_start = year <= 2020 ? 14 : 15
+      game = season.games.create!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
+      team_1 = Team.find_by(season:, name: row[1])
+      team_2 = Team.find_by(season:, name: row[3])
+      game.performances.create!(owner: team_1.owner, points: row[2])
+      game.performances.create!(owner: team_2.owner, points: row[4])
+    end
+  end
 else
   if Game.exists?
     puts "Games already on record - skipping demo seed data"
