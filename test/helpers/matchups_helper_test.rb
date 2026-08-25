@@ -17,16 +17,16 @@ class MatchupsHelperTest < ActionView::TestCase
   end
 
   test "player_positions_label lists every position, primary first" do
-    assert_equal "QB", player_positions_label(players(:alice_qb))
-    assert_equal "RB/WR", player_positions_label(players(:alice_rb4))
-    assert_equal "D/ST", player_positions_label(players(:alice_dst))
+    assert_equal "QB", player_positions_label(lineup_slots(:alice_slot_qb))
+    assert_equal "RB/WR", player_positions_label(lineup_slots(:alice_bench_rb))
+    assert_equal "D/ST", player_positions_label(lineup_slots(:alice_slot_dst))
   end
 
   test "player_with_team mutes the NFL team after the name" do
     assert_equal %(Grant Feltz <span class="text-ink/55">BUF</span>),
-      player_with_team(players(:alice_qb))
+      player_with_team(lineup_slots(:alice_slot_qb))
     assert_equal %(Ravens D/ST <span class="text-ink/55">BAL</span>),
-      player_with_team(players(:alice_dst))
+      player_with_team(lineup_slots(:alice_slot_dst))
   end
 
   test "matchup_title names the week and adds the playoff round" do

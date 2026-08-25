@@ -189,7 +189,9 @@ else
 
     skater_names = player_first_names.product(player_last_names).shuffle(random: rng)
     abbreviations = nfl_teams.values
-    player_ids = roster_template.to_h do |position, per_roster|
+    # The pool is plain Ruby: a player is only ever written down as part of a
+    # lineup slot, so these exist to be drafted, not to be saved.
+    player_pool = roster_template.to_h do |position, per_roster|
       players = if position == "dst"
         nfl_teams.to_a.shuffle(random: rng).map do |nickname, abbreviation|
           { name: "#{nickname} D/ST", nfl_team: abbreviation, positions: [ position ] }
@@ -202,7 +204,7 @@ else
           { name: parts.join(" "), nfl_team: abbreviations.sample(random: rng), positions: }
         end
       end
-      [ position, Player.insert_all!(players, returning: :id).rows.flatten ]
+      [ position, players ]
     end
 
     lineup_rows = []
@@ -233,7 +235,9 @@ else
         when "ir" then 0.0
         else points[spot]
         end
-        { performance_id: performance.id, player_id: roster_players[spot],
+        player = roster_players[spot]
+        { performance_id: performance.id, player_name: player[:name],
+          player_nfl_team: player[:nfl_team], player_positions: player[:positions],
           slot: LineupSlot.slots.fetch(slot), sequence: spot + 1, points: scored }
       end
     end
@@ -251,7 +255,7 @@ else
       # One league-wide snake draft a season, so every player belongs to
       # exactly one roster for the whole year. A roster comes out in plan
       # order: the player at each index fills the slot at the same index.
-      available = player_ids.transform_values { |ids| ids.shuffle(random: rng) }
+      available = player_pool.transform_values { |players| players.shuffle(random: rng) }
       rosters = active.to_h { |entry| [ entry[:owner].id, [] ] }
       draft_order = active.shuffle(random: rng)
       plan.each_with_index do |(_slot, position), round|
@@ -320,5 +324,6 @@ end
 
 puts "Seeded #{Owner.count} owners, #{Season.count} seasons, #{Game.count} games " \
      "(#{Game.where.not(round_name: nil).count} playoff), " \
-     "#{Player.count} players and #{LineupSlot.count} lineup slots across " \
+     "#{LineupSlot.distinct.count(:player_name)} players and " \
+     "#{LineupSlot.count} lineup slots across " \
      "#{RosterFormat.distinct.count(:slots)} roster formats."

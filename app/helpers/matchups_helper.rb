@@ -10,9 +10,10 @@ module MatchupsHelper
     POSITION_LABELS.fetch(position.to_s)
   end
 
-  # Every position a player is eligible at, primary first: "RB" or "RB/WR".
-  def player_positions_label(player)
-    player.positions.map { |position| position_label(position) }.join("/")
+  # Every position the player in this slot was eligible at that week,
+  # primary first: "RB" or "RB/WR".
+  def player_positions_label(entry)
+    entry.player_positions.map { |position| position_label(position) }.join("/")
   end
 
   def slot_label(slot)
@@ -20,9 +21,10 @@ module MatchupsHelper
   end
 
   # A player as they read in a lineup: their name, then the NFL team they
-  # played for — which is also what tells two same-named players apart.
-  def player_with_team(player)
-    safe_join([ player.name, tag.span(player.nfl_team, class: "text-ink/55") ], " ")
+  # played for that week — which is also what tells two same-named players
+  # apart.
+  def player_with_team(entry)
+    safe_join([ entry.player_name, tag.span(entry.player_nfl_team, class: "text-ink/55") ], " ")
   end
 
   # "Week 3 · 2024", with the round name added for playoff games.

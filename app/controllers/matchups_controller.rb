@@ -1,7 +1,7 @@
 class MatchupsController < ApplicationController
   def show
     @game = Game.includes(:season,
-                          performances: [ { owner: { teams: :season } }, { lineup_slots: :player } ])
+                          performances: [ { owner: { teams: :season } }, :lineup_slots ])
       .find(params[:id])
     unless @game.performances.size == 2
       raise ActiveRecord::RecordNotFound, "Game #{@game.id} has no opposing sides on record"

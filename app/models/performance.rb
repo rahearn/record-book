@@ -2,7 +2,6 @@ class Performance < ApplicationRecord
   belongs_to :game
   belongs_to :owner
   has_many :lineup_slots, -> { ordered }, dependent: :destroy, inverse_of: :performance
-  has_many :players, through: :lineup_slots
 
   validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :owner_id, uniqueness: { scope: :game_id }
@@ -47,7 +46,7 @@ class Performance < ApplicationRecord
       best = Array.new(complete + 1)
       best[0] = 0
       lineup_slots.select(&:startable?).each do |entry|
-        openings = slots.each_index.select { |index| slots[index].accepts?(entry.player) }
+        openings = slots.each_index.select { |index| slots[index].accepts?(entry) }
         best = seat(entry, openings, best)
       end
       best[complete] || slots.sum(&:points)

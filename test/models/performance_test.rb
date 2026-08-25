@@ -57,7 +57,7 @@ class PerformanceTest < ActiveSupport::TestCase
   end
 
   test "optimal points never fall short of the lineup actually started" do
-    Performance.includes(lineup_slots: :player).select(&:lineup?).each do |performance|
+    Performance.includes(:lineup_slots).select(&:lineup?).each do |performance|
       assert_operator performance.optimal_points, :>=, performance.starters.sum(&:points),
         "#{performance.owner.name} could not have done worse than they did"
     end
@@ -67,9 +67,9 @@ class PerformanceTest < ActiveSupport::TestCase
     performance = performances(:alice_2023_w1)
     flex = performance.starters.find(&:wr_rb_te?)
 
-    assert flex.accepts?(players(:alice_rb4)) # RB/WR
-    assert flex.accepts?(players(:alice_te2))
-    assert_not flex.accepts?(players(:alice_k))
+    assert flex.accepts?(lineup_slots(:alice_bench_rb)) # RB/WR
+    assert flex.accepts?(lineup_slots(:alice_bench_te))
+    assert_not flex.accepts?(lineup_slots(:alice_slot_k))
   end
 
   test "a lineup nothing on the bench could improve leaves nothing behind" do

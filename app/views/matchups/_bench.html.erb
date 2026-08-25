@@ -5,9 +5,9 @@
     <tbody>
       <% side.reserves.each do |entry| %>
         <tr>
-          <td class="w-16 whitespace-nowrap text-ink/55"><%= player_positions_label(entry.player) %></td>
+          <td class="w-16 whitespace-nowrap text-ink/55"><%= player_positions_label(entry) %></td>
           <td>
-            <%= player_with_team(entry.player) %>
+            <%= player_with_team(entry) %>
             <% if entry.ir? %><span class="tag tag-outline ml-1">IR</span><% end %>
           </td>
           <td class="text-right"><%= points_display(entry.points) %></td>

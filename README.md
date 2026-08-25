@@ -19,12 +19,12 @@ The design doc is given by [docs/record_book_design.html](./docs/record_book_des
 Prod data import:
 
 * LineupSlots (import players)
-* Players (import players)
-  * Potential issue: positions list could change season to season
-  * Obvious issue: nfl team definitely changes season to season
 
 ### Done
 
+* Players — dropped as a model; a player's name, NFL team and eligible positions
+  are recorded on each LineupSlot, since all three are only true of one roster in
+  one week
 * Teams (import teams from old history project csv)
 * Games (import matchups)
 * Performances (import matchups)

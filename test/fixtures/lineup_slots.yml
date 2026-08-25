@@ -7,196 +7,256 @@
 
 alice_slot_qb:
   performance: alice_2023_w1
-  player: alice_qb
+  player_name: Grant Feltz
+  player_nfl_team: BUF
+  player_positions: [ qb ]
   slot: qb
   sequence: 1
   points: 22.5
 
 alice_slot_wr1:
   performance: alice_2023_w1
-  player: alice_wr1
+  player_name: Silas Marsh
+  player_nfl_team: MIA
+  player_positions: [ wr ]
   slot: wr
   sequence: 2
   points: 13.5
 
 alice_slot_wr2:
   performance: alice_2023_w1
-  player: alice_wr2
+  player_name: Otis Kemper
+  player_nfl_team: CIN
+  player_positions: [ wr ]
   slot: wr
   sequence: 3
   points: 9.0
 
 alice_slot_rb1:
   performance: alice_2023_w1
-  player: alice_rb1
+  player_name: Micah Rowen
+  player_nfl_team: BAL
+  player_positions: [ rb ]
   slot: rb
   sequence: 4
   points: 15.0
 
 alice_slot_rb2:
   performance: alice_2023_w1
-  player: alice_rb2
+  player_name: Dez Halloran
+  player_nfl_team: DET
+  player_positions: [ rb ]
   slot: rb
   sequence: 5
   points: 11.0
 
 alice_slot_te:
   performance: alice_2023_w1
-  player: alice_te1
+  player_name: Bo Ranallo
+  player_nfl_team: KC
+  player_positions: [ te ]
   slot: te
   sequence: 6
   points: 8.0
 
 alice_slot_flex:
   performance: alice_2023_w1
-  player: alice_rb3
+  player_name: Tobin Pike
+  player_nfl_team: GB
+  player_positions: [ rb ]
   slot: wr_rb_te
   sequence: 7
   points: 10.0
 
 alice_slot_k:
   performance: alice_2023_w1
-  player: alice_k
+  player_name: Nico Sarto
+  player_nfl_team: DAL
+  player_positions: [ k ]
   slot: k
   sequence: 8
   points: 6.0
 
 alice_slot_dst:
   performance: alice_2023_w1
-  player: alice_dst
+  player_name: Ravens D/ST
+  player_nfl_team: BAL
+  player_positions: [ dst ]
   slot: dst
   sequence: 9
   points: 5.0
 
 alice_bench_rb:
   performance: alice_2023_w1
-  player: alice_rb4
+  # Eligible at two positions, which is what stops the optimal lineup
+  # from being found one slot at a time.
+  player_name: Rex Calloway
+  player_nfl_team: SF
+  player_positions: [ rb, wr ]
   slot: bench
   sequence: 10
   points: 18.0
 
 alice_bench_wr1:
   performance: alice_2023_w1
-  player: alice_wr3
+  player_name: Wade Lindqvist
+  player_nfl_team: NYJ
+  player_positions: [ wr ]
   slot: bench
   sequence: 11
   points: 4.0
 
 alice_bench_wr2:
   performance: alice_2023_w1
-  player: alice_wr4
+  player_name: Cyrus Pardo
+  player_nfl_team: SEA
+  player_positions: [ wr ]
   slot: bench
   sequence: 12
   points: 3.5
 
 alice_bench_te:
   performance: alice_2023_w1
-  player: alice_te2
+  player_name: Emeka Vidrine
+  player_nfl_team: ATL
+  player_positions: [ te ]
   slot: bench
   sequence: 13
   points: 2.0
 
 alice_ir_wr:
   performance: alice_2023_w1
-  player: alice_ir
+  # Alice's best receiver by a distance, and hurt — parked on IR,
+  # where hindsight cannot reach him.
+  player_name: Vance Ibarra
+  player_nfl_team: NYG
+  player_positions: [ wr ]
   slot: ir
   sequence: 14
   points: 25.0
 
 bob_slot_qb:
   performance: bob_2023_w1
-  player: bob_qb
+  player_name: Judd Trask
+  player_nfl_team: PHI
+  player_positions: [ qb ]
   slot: qb
   sequence: 1
   points: 20.0
 
 bob_slot_wr1:
   performance: bob_2023_w1
-  player: bob_wr1
+  player_name: Amari Whitfield
+  player_nfl_team: LAR
+  player_positions: [ wr ]
   slot: wr
   sequence: 2
   points: 12.0
 
 bob_slot_wr2:
   performance: bob_2023_w1
-  player: bob_wr2
+  player_name: Levi Sandoval
+  player_nfl_team: HOU
+  player_positions: [ wr ]
   slot: wr
   sequence: 3
   points: 11.0
 
 bob_slot_rb1:
   performance: bob_2023_w1
-  player: bob_rb1
+  player_name: Elton Bellinger
+  player_nfl_team: TEN
+  player_positions: [ rb ]
   slot: rb
   sequence: 4
   points: 14.0
 
 bob_slot_rb2:
   performance: bob_2023_w1
-  player: bob_rb2
+  player_name: Rico Osgood
+  player_nfl_team: CLE
+  player_positions: [ rb ]
   slot: rb
   sequence: 5
   points: 10.0
 
 bob_slot_te:
   performance: bob_2023_w1
-  player: bob_te1
+  player_name: Milo Craven
+  player_nfl_team: PIT
+  player_positions: [ te ]
   slot: te
   sequence: 6
   points: 7.0
 
 bob_slot_flex:
   performance: bob_2023_w1
-  player: bob_wr3
+  player_name: Nash Ferris
+  player_nfl_team: MIN
+  player_positions: [ wr ]
   slot: wr_rb_te
   sequence: 7
   points: 9.0
 
 bob_slot_k:
   performance: bob_2023_w1
-  player: bob_k
+  player_name: Quentin Rask
+  player_nfl_team: TB
+  player_positions: [ k ]
   slot: k
   sequence: 8
   points: 4.0
 
 bob_slot_dst:
   performance: bob_2023_w1
-  player: bob_dst
+  player_name: Broncos D/ST
+  player_nfl_team: DEN
+  player_positions: [ dst ]
   slot: dst
   sequence: 9
   points: 3.0
 
 bob_bench_rb:
   performance: bob_2023_w1
-  player: bob_rb3
+  player_name: Kip Fontenot
+  player_nfl_team: NO
+  player_positions: [ rb ]
   slot: bench
   sequence: 10
   points: 5.0
 
 bob_bench_wr1:
   performance: bob_2023_w1
-  player: bob_wr4
+  player_name: Gus Kranz
+  player_nfl_team: ARI
+  player_positions: [ wr ]
   slot: bench
   sequence: 11
   points: 2.0
 
 bob_bench_wr2:
   performance: bob_2023_w1
-  player: bob_wr5
+  player_name: Byron Ochs
+  player_nfl_team: CHI
+  player_positions: [ wr ]
   slot: bench
   sequence: 12
   points: 1.5
 
 bob_bench_te:
   performance: bob_2023_w1
-  player: bob_te2
+  player_name: Abel Kuhn
+  player_nfl_team: LV
+  player_positions: [ te ]
   slot: bench
   sequence: 13
   points: 1.0
 
 bob_ir_te:
   performance: bob_2023_w1
-  player: bob_ir
+  player_name: Dallas Nwosu
+  player_nfl_team: JAX
+  player_positions: [ te ]
   slot: ir
   sequence: 14
   points: 0.0

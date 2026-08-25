@@ -36,7 +36,7 @@
         <div class="grid grid-cols-[1fr_46px_1fr] items-center gap-3 border-t border-ink/10 py-2">
           <div class="grid min-w-0 grid-cols-[1fr_92px_46px] items-center gap-2">
             <span class="truncate text-right text-[13px]">
-              <%= player_with_team(row.entry_a.player) if row.entry_a %>
+              <%= player_with_team(row.entry_a) if row.entry_a %>
             </span>
             <span class="relative h-2.5 bg-ink/5">
               <% if row.entry_a %>
@@ -60,7 +60,7 @@
               <% end %>
             </span>
             <span class="truncate text-[13px]">
-              <%= player_with_team(row.entry_b.player) if row.entry_b %>
+              <%= player_with_team(row.entry_b) if row.entry_b %>
             </span>
           </div>
         </div>

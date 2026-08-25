@@ -557,8 +557,8 @@ class AlmanacTest < ActiveSupport::TestCase
     quarterbacks = rows.first
     assert quarterbacks.a_leads? # 22.5 to 20.0
     assert_not quarterbacks.b_leads?
-    assert_equal players(:alice_qb), quarterbacks.entry_a.player
-    assert_equal players(:bob_qb), quarterbacks.entry_b.player
+    assert_equal lineup_slots(:alice_slot_qb), quarterbacks.entry_a
+    assert_equal lineup_slots(:bob_slot_qb), quarterbacks.entry_b
 
     second_receiver = rows[2] # 9.0 to 11.0
     assert_not second_receiver.a_leads?

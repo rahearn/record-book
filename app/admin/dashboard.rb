@@ -11,7 +11,6 @@ ActiveAdmin.register_page "Dashboard" do
             [ "Owners", Owner.count, admin_owners_path ],
             [ "Games", Game.count, admin_games_path ],
             [ "Performances", Performance.count, admin_performances_path ],
-            [ "Players", Player.count, admin_players_path ],
             [ "Lineup slots", LineupSlot.count, admin_lineup_slots_path ]
           ] do
             column("Records") { |(label, _count, _path)| label }

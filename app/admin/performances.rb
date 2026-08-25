@@ -33,11 +33,11 @@ ActiveAdmin.register Performance do
     # Slots are edited one at a time: autosaving a whole lineup from here would
     # validate every persisted slot against the rest, which a reshuffle trips.
     panel "Lineup" do
-      table_for performance.lineup_slots.includes(:player) do
+      table_for performance.lineup_slots do
         column("#", &:sequence)
         column("Slot") { |entry| entry.slot.upcase.tr("_", "/") }
-        column("Player") { |entry| link_to entry.player.display_name, admin_player_path(entry.player) }
-        column("Points") { |entry| link_to entry.points, admin_lineup_slot_path(entry) }
+        column("Player") { |entry| link_to entry.player_display_name, admin_lineup_slot_path(entry) }
+        column("Points", &:points)
       end
     end
 

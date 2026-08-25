@@ -1,7 +1,7 @@
 require "test_helper"
 
 class AdminConsoleTest < ActionDispatch::IntegrationTest
-  RESOURCES = %w[owners seasons teams games performances players playoff_formats roster_formats
+  RESOURCES = %w[owners seasons teams games performances playoff_formats roster_formats
                  lineup_slots].freeze
 
   test "the console is closed without credentials" do
@@ -62,17 +62,19 @@ class AdminConsoleTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "a player's positions are entered as one comma-separated field" do
-    post admin_players_path,
-      params: { player: { name: "Flex Guy", nfl_team: "sea", positions: "wr, rb" } },
-      headers: auth_header
+  test "a lineup slot's player positions are entered as one comma-separated field" do
+    post admin_lineup_slots_path, params: { lineup_slot: {
+      performance_id: performances(:carol_2023_w1).id, slot: "bench", sequence: 1, points: 4.5,
+      player_name: "Flex Guy", player_nfl_team: "sea", player_positions: "wr, rb"
+    } }, headers: auth_header
 
-    player = Player.find_by(name: "Flex Guy")
-    assert_equal %w[wr rb], player.positions
-    assert_equal "SEA", player.nfl_team
+    slot = LineupSlot.find_by(player_name: "Flex Guy")
+    assert_equal %w[wr rb], slot.player_positions
+    assert_equal "SEA", slot.player_nfl_team
 
-    patch admin_player_path(player), params: { player: { positions: "rb" } }, headers: auth_header
-    assert_equal %w[rb], player.reload.positions
+    patch admin_lineup_slot_path(slot),
+      params: { lineup_slot: { player_positions: "rb" } }, headers: auth_header
+    assert_equal %w[rb], slot.reload.player_positions
   end
 
   test "a roster format's slots keep their order and repeats" do

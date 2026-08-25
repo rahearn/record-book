@@ -31,6 +31,13 @@ layer will import historical data into it:
   tier (Premier and Challenger differ, and both have changed over history). When a format exists,
   `Game` validates that games from `start_week` on carry a round name and earlier games don't.
 - `Performance` (game, owner, points) — one owner's score in a game; every game has exactly two.
+- `LineupSlot` (performance, slot, sequence, points, player_name, player_nfl_team,
+  player_positions) — one spot in one week's lineup. There is deliberately **no** `Player` model:
+  an NFL team and a set of eligible positions are only true of one roster in one week, and both
+  move within a season as readily as between them, so they are recorded on the slot. `accepts?`
+  takes another slot and asks whether this one could have taken that player.
+- `RosterFormat` (season, slots) — the lineup a season was played with, starters in reading order
+  and reserves behind them; `Performance` holds a recorded lineup to its shape.
 
 All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
 
@@ -67,7 +74,7 @@ which checks a single HTTP basic username/password held in
 Two things the console needs live outside `app/admin/`: `ApplicationRecord` opens every column and
 association to Ransack (Active Admin's filters), and six models carry a `display_name` that Active
 Admin uses for links, page titles, and select options. The array columns whose order matters
-(`Player#positions`, `RosterFormat#slots`) are edited as one comma-separated text box and split back
+(`LineupSlot#player_positions`, `RosterFormat#slots`) are edited as one comma-separated text box and split back
 apart by `ListColumnParams`. `Game` accepts nested `performances_attributes` so a matchup can be
 written with both sides at once; `Performance` deliberately does *not* accept nested lineup slots,
 because autosaving a whole lineup validates every persisted slot at once and a reshuffle trips the
