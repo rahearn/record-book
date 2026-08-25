@@ -2,18 +2,23 @@
 # filled and what they scored there. Bench players carry the points they
 # would have scored, which is what makes "left on the bench" measurable.
 class LineupSlot < ApplicationRecord
+  ANY_POSITION = %w[qb rb wr te k dst].freeze
+
   # Which player positions each slot accepts. FLEX takes a running back,
-  # receiver, or tight end; the bench takes anyone.
+  # receiver, or tight end; the reserve slots take anyone.
   ELIGIBLE_POSITIONS = {
     "qb" => %w[qb], "rb" => %w[rb], "wr" => %w[wr], "te" => %w[te],
     "flex" => %w[rb wr te], "k" => %w[k], "dst" => %w[dst],
-    "bench" => %w[qb rb wr te k dst]
+    "bench" => ANY_POSITION, "ir" => ANY_POSITION
   }.freeze
 
   belongs_to :performance
   belongs_to :player
 
-  enum :slot, { qb: 0, rb: 1, wr: 2, te: 3, flex: 4, k: 5, dst: 6, bench: 7 }, default: :bench
+  # Injured reserve only existed in some seasons; it is a reserve slot like
+  # the bench, except its occupant could not have been started.
+  enum :slot, { qb: 0, rb: 1, wr: 2, te: 3, flex: 4, k: 5, dst: 6, bench: 7, ir: 8 },
+    default: :bench
 
   validates :points, presence: true, numericality: true
   validates :sequence, presence: true,
@@ -23,8 +28,19 @@ class LineupSlot < ApplicationRecord
 
   scope :ordered, -> { order(:sequence) }
 
+  # Reserve slots do not score.
+  def reserve?
+    bench? || ir?
+  end
+
   def starter?
-    !bench?
+    !reserve?
+  end
+
+  # An injured player could not have been started, so hindsight cannot
+  # seat them either.
+  def startable?
+    !ir?
   end
 
   def eligible_positions

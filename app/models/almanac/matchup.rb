@@ -18,8 +18,8 @@ class Almanac
         performance.starters
       end
 
-      def bench
-        performance.bench
+      def reserves
+        performance.reserves
       end
 
       def lineup?

@@ -1,6 +1,7 @@
 # Alice's starters total her 100.0; Rex Calloway's 18.0 on the bench beats
-# two of her starting backs, leaving 8.0 on the bench. Bob's starters total
-# his 90.0 and nothing on his bench would have helped.
+# two of her starting backs, leaving 9.0 on the bench. Vance Ibarra would
+# have been worth far more, but he is on IR and so does not count. Bob's
+# starters total his 90.0 and nothing on his bench would have helped.
 alice_slot_qb:
   performance: alice_2023_w1
   player: alice_qb
@@ -79,6 +80,12 @@ alice_bench_te:
   slot: bench
   sequence: 13
   points: 2.0
+alice_ir_wr:
+  performance: alice_2023_w1
+  player: alice_ir
+  slot: ir
+  sequence: 14
+  points: 25.0
 
 bob_slot_qb:
   performance: bob_2023_w1

@@ -5,11 +5,29 @@ class LineupSlotTest < ActiveSupport::TestCase
     assert lineup_slots(:alice_slot_flex).valid?
   end
 
-  test "starters are everything off the bench" do
+  test "starters are everything off the bench and injured reserve" do
     assert lineup_slots(:alice_slot_qb).starter?
-    assert_not lineup_slots(:alice_slot_qb).bench?
+    assert_not lineup_slots(:alice_slot_qb).reserve?
+
+    assert lineup_slots(:alice_bench_rb).reserve?
     assert_not lineup_slots(:alice_bench_rb).starter?
-    assert lineup_slots(:alice_bench_rb).bench?
+
+    assert lineup_slots(:alice_ir_wr).reserve?
+    assert_not lineup_slots(:alice_ir_wr).starter?
+  end
+
+  test "only an injured reserve slot is unstartable" do
+    assert lineup_slots(:alice_slot_qb).startable?
+    assert lineup_slots(:alice_bench_rb).startable?
+    assert_not lineup_slots(:alice_ir_wr).startable?
+  end
+
+  test "injured reserve takes any position" do
+    slot = lineup_slots(:alice_ir_wr)
+    assert_equal LineupSlot::ANY_POSITION, slot.eligible_positions
+
+    slot.player = players(:alice_dst)
+    assert slot.valid?
   end
 
   test "flex takes a back, receiver or tight end but not a quarterback" do
@@ -73,6 +91,6 @@ class LineupSlotTest < ActiveSupport::TestCase
   end
 
   test "ordered reads the lineup top to bottom" do
-    assert_equal (1..13).to_a, performances(:alice_2023_w1).lineup_slots.map(&:sequence)
+    assert_equal (1..14).to_a, performances(:alice_2023_w1).lineup_slots.map(&:sequence)
   end
 end

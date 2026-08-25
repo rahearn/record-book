@@ -3,10 +3,13 @@
   <div class="card-kicker mb-2"><%= side.owner.name %> — bench</div>
   <table class="table">
     <tbody>
-      <% side.bench.each do |entry| %>
+      <% side.reserves.each do |entry| %>
         <tr>
           <td class="w-16 whitespace-nowrap text-ink/55"><%= player_positions_label(entry.player) %></td>
-          <td><%= player_with_team(entry.player) %></td>
+          <td>
+            <%= player_with_team(entry.player) %>
+            <% if entry.ir? %><span class="tag tag-outline ml-1">IR</span><% end %>
+          </td>
           <td class="text-right"><%= points_display(entry.points) %></td>
         </tr>
       <% end %>

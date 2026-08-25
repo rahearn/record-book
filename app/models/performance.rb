@@ -7,6 +7,13 @@ class Performance < ApplicationRecord
   validates :points, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :owner_id, uniqueness: { scope: :game_id }
 
+  # The optimal lineup is memoized, so a reload has to drop it along with
+  # the association cache it was computed from.
+  def reload(...)
+    @optimal_points = nil
+    super
+  end
+
   def lineup?
     lineup_slots.any?
   end
@@ -15,9 +22,10 @@ class Performance < ApplicationRecord
     lineup_slots.select(&:starter?)
   end
 
-  # Bench players, best score first — the ones that hurt to leave out.
-  def bench
-    lineup_slots.select(&:bench?).sort_by { |entry| -entry.points }
+  # Everyone who did not score: the bench best score first — the ones that
+  # hurt to leave out — and then anyone on injured reserve.
+  def reserves
+    lineup_slots.select(&:reserve?).sort_by { |entry| [ entry.ir? ? 1 : 0, -entry.points ] }
   end
 
   # The most the roster could have scored with hindsight. Filling the most
@@ -32,7 +40,7 @@ class Performance < ApplicationRecord
       complete = (1 << slots.size) - 1
       best = Array.new(complete + 1)
       best[0] = 0
-      lineup_slots.each do |entry|
+      lineup_slots.select(&:startable?).each do |entry|
         openings = slots.each_index.select { |index| slots[index].accepts?(entry.player) }
         best = seat(entry, openings, best)
       end

@@ -21,12 +21,30 @@ class PerformanceTest < ActiveSupport::TestCase
     assert_includes duplicate.errors[:owner_id], "has already been taken"
   end
 
-  test "the lineup splits into starters and a bench ranked by points" do
+  test "the lineup splits into starters and reserves, the bench ranked by points" do
     performance = performances(:alice_2023_w1)
     assert performance.lineup?
     assert_equal %w[qb rb rb wr wr te flex k dst], performance.starters.map(&:slot)
-    assert_equal [ 18.0, 4.0, 3.5, 2.0 ], performance.bench.map { |entry| entry.points.to_f }
     assert_in_delta 100.0, performance.starters.sum(&:points)
+
+    # Bench best first, then injured reserve however well it scored.
+    assert_equal [ 18.0, 4.0, 3.5, 2.0, 25.0 ], performance.reserves.map { |entry| entry.points.to_f }
+    assert_equal %w[bench bench bench bench ir], performance.reserves.map(&:slot)
+  end
+
+  test "injured reserve is beyond the reach of hindsight" do
+    performance = performances(:alice_2023_w1)
+    injured = performance.reserves.last
+
+    assert injured.ir?
+    assert_not injured.startable?
+    # Ibarra's 25.0 would have been her best receiver by seven points, but
+    # a player on IR could not have been started.
+    assert_in_delta 109.0, performance.optimal_points
+    assert_in_delta 9.0, performance.points_left_on_bench
+
+    injured.update!(slot: :bench)
+    assert_in_delta 124.0, performance.reload.optimal_points
   end
 
   test "optimal points weigh a dual-eligible player against every slot" do
@@ -63,7 +81,7 @@ class PerformanceTest < ActiveSupport::TestCase
     performance = performances(:carol_2023_w1)
     assert_not performance.lineup?
     assert_empty performance.starters
-    assert_empty performance.bench
+    assert_empty performance.reserves
     assert_equal 0, performance.points_left_on_bench
   end
 end

@@ -46,6 +46,12 @@ alice_te2:
   name: Emeka Vidrine
   positions: [ te ]
   nfl_team: ATL
+# Alice's best receiver by a distance, and hurt — parked on IR, where
+# hindsight cannot reach him.
+alice_ir:
+  name: Vance Ibarra
+  positions: [ wr ]
+  nfl_team: NYG
 alice_k:
   name: Nico Sarto
   positions: [ k ]

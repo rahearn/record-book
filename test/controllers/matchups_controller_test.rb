@@ -28,6 +28,10 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_select "td", html: %r{Rex Calloway <span class="text-ink/55">SF</span>}
     # He is eligible at two positions, and the bench says so.
     assert_select "td", text: "RB/WR"
+    # An injured player is still listed, marked, and left out of the total.
+    assert_select "td", html: %r{Vance Ibarra .*<span class="tag tag-outline ml-1">IR</span>}m
+    assert_match "9.0 left on the bench", response.body
+    assert_no_match(/24\.0 left on the bench/, response.body)
     assert_select ".blueprint", count: 4 # scoreboard, lineups, two benches
     assert_match "9.0 left on the bench", response.body
     assert_match "0.0 left on the bench", response.body
