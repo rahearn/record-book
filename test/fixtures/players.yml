@@ -2,106 +2,108 @@
 # game with lineups on record, so other fixtures exercise the empty path.
 alice_qb:
   name: Grant Feltz
-  position: qb
+  positions: [ qb ]
   nfl_team: BUF
 alice_rb1:
   name: Micah Rowen
-  position: rb
+  positions: [ rb ]
   nfl_team: BAL
 alice_rb2:
   name: Dez Halloran
-  position: rb
+  positions: [ rb ]
   nfl_team: DET
 alice_rb3:
   name: Tobin Pike
-  position: rb
+  positions: [ rb ]
   nfl_team: GB
+# Eligible at two positions, which is what stops the optimal lineup from
+# being found one slot at a time.
 alice_rb4:
   name: Rex Calloway
-  position: rb
+  positions: [ rb, wr ]
   nfl_team: SF
 alice_wr1:
   name: Silas Marsh
-  position: wr
+  positions: [ wr ]
   nfl_team: MIA
 alice_wr2:
   name: Otis Kemper
-  position: wr
+  positions: [ wr ]
   nfl_team: CIN
 alice_wr3:
   name: Wade Lindqvist
-  position: wr
+  positions: [ wr ]
   nfl_team: NYJ
 alice_wr4:
   name: Cyrus Pardo
-  position: wr
+  positions: [ wr ]
   nfl_team: SEA
 alice_te1:
   name: Bo Ranallo
-  position: te
+  positions: [ te ]
   nfl_team: KC
 alice_te2:
   name: Emeka Vidrine
-  position: te
+  positions: [ te ]
   nfl_team: ATL
 alice_k:
   name: Nico Sarto
-  position: k
+  positions: [ k ]
   nfl_team: DAL
 alice_dst:
   name: Ravens D/ST
-  position: dst
+  positions: [ dst ]
   nfl_team: BAL
 
 bob_qb:
   name: Judd Trask
-  position: qb
+  positions: [ qb ]
   nfl_team: PHI
 bob_rb1:
   name: Elton Bellinger
-  position: rb
+  positions: [ rb ]
   nfl_team: TEN
 bob_rb2:
   name: Rico Osgood
-  position: rb
+  positions: [ rb ]
   nfl_team: CLE
 bob_rb3:
   name: Kip Fontenot
-  position: rb
+  positions: [ rb ]
   nfl_team: NO
 bob_wr1:
   name: Amari Whitfield
-  position: wr
+  positions: [ wr ]
   nfl_team: LAR
 bob_wr2:
   name: Levi Sandoval
-  position: wr
+  positions: [ wr ]
   nfl_team: HOU
 bob_wr3:
   name: Nash Ferris
-  position: wr
+  positions: [ wr ]
   nfl_team: MIN
 bob_wr4:
   name: Gus Kranz
-  position: wr
+  positions: [ wr ]
   nfl_team: ARI
 bob_wr5:
   name: Byron Ochs
-  position: wr
+  positions: [ wr ]
   nfl_team: CHI
 bob_te1:
   name: Milo Craven
-  position: te
+  positions: [ te ]
   nfl_team: PIT
 bob_te2:
   name: Abel Kuhn
-  position: te
+  positions: [ te ]
   nfl_team: LV
 bob_k:
   name: Quentin Rask
-  position: k
+  positions: [ k ]
   nfl_team: TB
 bob_dst:
   name: Broncos D/ST
-  position: dst
+  positions: [ dst ]
   nfl_team: DEN

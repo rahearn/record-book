@@ -14,6 +14,12 @@ class MatchupsHelperTest < ActionView::TestCase
     assert_equal "RB", slot_label(:rb)
   end
 
+  test "player_positions_label lists every position, primary first" do
+    assert_equal "QB", player_positions_label(players(:alice_qb))
+    assert_equal "RB/WR", player_positions_label(players(:alice_rb4))
+    assert_equal "D/ST", player_positions_label(players(:alice_dst))
+  end
+
   test "player_with_team mutes the NFL team after the name" do
     assert_equal %(Grant Feltz <span class="text-ink/55">BUF</span>),
       player_with_team(players(:alice_qb))
@@ -45,7 +51,7 @@ class MatchupsHelperTest < ActionView::TestCase
 
   test "bench_note reports what a better lineup was worth" do
     matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
-    assert_equal "8.0 left on the bench", bench_note(matchup.side_a)
+    assert_equal "9.0 left on the bench", bench_note(matchup.side_a)
     assert_equal "0.0 left on the bench", bench_note(matchup.side_b)
   end
 

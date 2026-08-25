@@ -8,6 +8,11 @@ module MatchupsHelper
     POSITION_LABELS.fetch(position.to_s)
   end
 
+  # Every position a player is eligible at, primary first: "RB" or "RB/WR".
+  def player_positions_label(player)
+    player.positions.map { |position| position_label(position) }.join("/")
+  end
+
   def slot_label(slot)
     SLOT_LABELS.fetch(slot.to_s)
   end

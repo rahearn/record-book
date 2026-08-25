@@ -26,8 +26,10 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_match "Alice Anders — bench", response.body
     assert_match "Rex Calloway", response.body
     assert_select "td", html: %r{Rex Calloway <span class="text-ink/55">SF</span>}
+    # He is eligible at two positions, and the bench says so.
+    assert_select "td", text: "RB/WR"
     assert_select ".blueprint", count: 4 # scoreboard, lineups, two benches
-    assert_match "8.0 left on the bench", response.body
+    assert_match "9.0 left on the bench", response.body
     assert_match "0.0 left on the bench", response.body
   end
 

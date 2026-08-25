@@ -29,11 +29,29 @@ class PerformanceTest < ActiveSupport::TestCase
     assert_in_delta 100.0, performance.starters.sum(&:points)
   end
 
-  test "optimal points fill each slot with the best eligible player, flex last" do
-    # Alice's 18.0 bench back beats two starting backs; the better of the
-    # two they displace slides down into the flex.
-    assert_in_delta 108.0, performances(:alice_2023_w1).optimal_points
-    assert_in_delta 8.0, performances(:alice_2023_w1).points_left_on_bench
+  test "optimal points weigh a dual-eligible player against every slot" do
+    # Rex Calloway (18.0, RB/WR) is Alice's best back and her second-best
+    # receiver. Filling slots one at a time seats him at running back for
+    # 108.0; starting him at receiver instead, so Halloran takes the back
+    # slot and Pike the flex, is worth a point more.
+    assert_in_delta 109.0, performances(:alice_2023_w1).optimal_points
+    assert_in_delta 9.0, performances(:alice_2023_w1).points_left_on_bench
+  end
+
+  test "optimal points never fall short of the lineup actually started" do
+    Performance.includes(lineup_slots: :player).select(&:lineup?).each do |performance|
+      assert_operator performance.optimal_points, :>=, performance.starters.sum(&:points),
+        "#{performance.owner.name} could not have done worse than they did"
+    end
+  end
+
+  test "a slot only opens to a player eligible for it" do
+    performance = performances(:alice_2023_w1)
+    flex = performance.starters.find(&:flex?)
+
+    assert flex.accepts?(players(:alice_rb4)) # RB/WR
+    assert flex.accepts?(players(:alice_te2))
+    assert_not flex.accepts?(players(:alice_k))
   end
 
   test "a lineup nothing on the bench could improve leaves nothing behind" do

@@ -60,9 +60,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_000100) do
     t.datetime "created_at", null: false
     t.string "name", null: false
     t.string "nfl_team", null: false
-    t.integer "position", default: 0, null: false
+    t.string "positions", default: [], null: false, array: true
     t.datetime "updated_at", null: false
-    t.index ["position", "name", "nfl_team"], name: "index_players_on_position_and_name_and_nfl_team", unique: true
+    t.index ["name", "nfl_team"], name: "index_players_on_name_and_nfl_team", unique: true
   end
 
   create_table "playoff_formats", force: :cascade do |t|

@@ -31,13 +31,16 @@ class LineupSlot < ApplicationRecord
     ELIGIBLE_POSITIONS.fetch(slot)
   end
 
+  # A player only needs one of their positions to match.
+  def accepts?(candidate)
+    eligible_positions.intersect?(candidate.positions)
+  end
+
   private
 
   def player_eligible_for_slot
     return unless player && slot
 
-    unless eligible_positions.include?(player.position)
-      errors.add(:player, "cannot fill the #{slot} slot")
-    end
+    errors.add(:player, "cannot fill the #{slot} slot") unless accepts?(player)
   end
 end

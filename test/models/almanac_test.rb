@@ -522,7 +522,7 @@ class AlmanacTest < ActiveSupport::TestCase
     alice = matchup.side_a
     assert_in_delta 105.0, alice.average_points # 100.0 and 110.0 that season
     assert_in_delta(-5.0, alice.points_vs_average)
-    assert_in_delta 8.0, alice.points_left_on_bench
+    assert_in_delta 9.0, alice.points_left_on_bench
   end
 
   test "matchup_for puts the owner arrived from on the left" do

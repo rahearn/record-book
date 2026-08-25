@@ -69,6 +69,11 @@ starting_slots = [
 ]
 bench_spots = [ [ "rb", 3 ], [ "wr", 2 ], [ "wr", 3 ], [ "te", 1 ] ]
 
+# Now and then a back, receiver or tight end is eligible somewhere else too,
+# which is what makes the optimal-lineup search worth running.
+flex_positions = %w[rb wr te]
+dual_eligible_odds = 0.06
+
 first_year = 2011
 last_year = 2025
 premier_size = 12
@@ -86,15 +91,17 @@ ActiveRecord::Base.transaction do
   player_ids = roster_template.to_h do |position, per_roster|
     players = if position == "dst"
       nfl_teams.to_a.shuffle(random: rng).map do |nickname, abbreviation|
-        { name: "#{nickname} D/ST", nfl_team: abbreviation }
+        { name: "#{nickname} D/ST", nfl_team: abbreviation, positions: [ position ] }
       end
     else
       skater_names.shift(per_roster * demo_owners.size).map do |parts|
-        { name: parts.join(" "), nfl_team: abbreviations.sample(random: rng) }
+        second = flex_positions - [ position ] if flex_positions.include?(position)
+        positions = [ position ]
+        positions << second.sample(random: rng) if second && rng.rand < dual_eligible_odds
+        { name: parts.join(" "), nfl_team: abbreviations.sample(random: rng), positions: }
       end
     end
-    rows = players.map { |player| player.merge(position: Player.positions[position]) }
-    [ position, Player.insert_all!(rows, returning: :id).rows.flatten ]
+    [ position, Player.insert_all!(players, returning: :id).rows.flatten ]
   end
 
   lineup_rows = []

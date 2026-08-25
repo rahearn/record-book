@@ -31,6 +31,19 @@ class LineupSlotTest < ActiveSupport::TestCase
     assert_includes slot.errors[:player], "cannot fill the rb slot"
   end
 
+  test "one matching position is enough for a dual-eligible player" do
+    swing = players(:alice_rb4) # RB/WR
+
+    assert lineup_slots(:alice_slot_rb1).accepts?(swing)
+    assert lineup_slots(:alice_slot_wr1).accepts?(swing)
+    assert lineup_slots(:alice_slot_flex).accepts?(swing)
+    assert_not lineup_slots(:alice_slot_te).accepts?(swing)
+
+    slot = lineup_slots(:alice_slot_wr1)
+    slot.player = swing
+    assert slot.valid?
+  end
+
   test "the bench takes anyone" do
     slot = lineup_slots(:alice_bench_rb)
     slot.player = players(:alice_qb)
