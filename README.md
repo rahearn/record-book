@@ -13,3 +13,17 @@ The design doc is given by [docs/record_book_design.html](./docs/record_book_des
 * Server-rendered HTML, minimal javascript
 * Tailwind CSS
 * Full test coverage
+
+## Todo:
+
+Prod data import:
+
+* Games (import matchups)
+* LineupSlots (import players)
+* Performances (import matchups)
+* Players (import players)
+  * Potential issue: positions list could change season to season
+
+### Done
+
+* Teams (import teams from old history project csv)

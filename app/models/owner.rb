@@ -12,10 +12,10 @@ class Owner < ApplicationRecord
   # Team names change season to season; outside a season context, the most
   # recent season's name represents the owner.
   def team_name
-    teams.max_by { |team| team.season.year }&.name
+    teams.joins(:season).order(seasons: { year: :desc }).first&.name
   end
 
   def team_name_in(year)
-    teams.detect { |team| team.season.year == year }&.name || team_name
+    teams.joins(:season).where(season: { year: }).first&.name || team_name
   end
 end
