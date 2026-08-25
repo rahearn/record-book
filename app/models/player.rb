@@ -22,6 +22,12 @@ class Player < ApplicationRecord
     positions.include?(position.to_s)
   end
 
+  # How the record reads in the admin console's links, titles, and selects.
+  # The NFL team is what tells two same-named players apart.
+  def display_name
+    "#{name} (#{nfl_team})"
+  end
+
   private
 
   def positions_are_known

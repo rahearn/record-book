@@ -13,6 +13,10 @@ class Game < ApplicationRecord
   has_many :performances, -> { order(:id) }, dependent: :destroy, inverse_of: :game
   has_many :owners, through: :performances
 
+  # A game is only meaningful with both sides on it, so the two performances
+  # are written with it rather than after it.
+  accepts_nested_attributes_for :performances, allow_destroy: true
+
   validates :week, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validate :round_name_consistent_with_playoff_format
 
@@ -33,6 +37,11 @@ class Game < ApplicationRecord
 
   def third_place?
     round_name == THIRD_PLACE
+  end
+
+  # How the record reads in the admin console's links, titles, and selects.
+  def display_name
+    [ "#{season.year} Week #{week}", (tier.titleize unless unified?), round_name ].compact.join(" · ")
   end
 
   private

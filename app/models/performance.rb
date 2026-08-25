@@ -19,6 +19,11 @@ class Performance < ApplicationRecord
     lineup_slots.any?
   end
 
+  # How the record reads in the admin console's links, titles, and selects.
+  def display_name
+    "#{owner.name} — #{game.display_name}"
+  end
+
   def starters
     lineup_slots.select(&:starter?)
   end

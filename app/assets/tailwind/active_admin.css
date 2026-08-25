@@ -1,0 +1,7 @@
+/* Entry point for the admin console's stylesheet, built to
+   app/assets/builds/active_admin.css by `rails tailwindcss:build`.
+   Kept out of app/assets/stylesheets so Propshaft serves the built file
+   rather than this source. */
+@import "tailwindcss";
+
+@config "../../../tailwind-active_admin.config.js";

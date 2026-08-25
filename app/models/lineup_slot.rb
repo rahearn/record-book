@@ -50,6 +50,11 @@ class LineupSlot < ApplicationRecord
     ELIGIBLE_POSITIONS.fetch(slot)
   end
 
+  # How the record reads in the admin console's links, titles, and selects.
+  def display_name
+    "#{slot.upcase.tr('_', '/')} · #{player.display_name}"
+  end
+
   # A player only needs one of their positions to match.
   def accepts?(candidate)
     eligible_positions.intersect?(candidate.positions)

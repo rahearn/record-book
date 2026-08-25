@@ -36,6 +36,11 @@ class RosterFormat < ApplicationRecord
     slots.size
   end
 
+  # How the record reads in the admin console's links, titles, and selects.
+  def display_name
+    "#{season.year} roster"
+  end
+
   private
 
   def slots_are_known

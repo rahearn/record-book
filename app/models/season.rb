@@ -9,6 +9,11 @@ class Season < ApplicationRecord
 
   scope :chronological, -> { order(:year) }
 
+  # How the record reads in the admin console's links, titles, and selects.
+  def display_name
+    year.to_s
+  end
+
   def playoff_format_for(tier)
     playoff_formats.detect { |format| format.tier == tier.to_s }
   end

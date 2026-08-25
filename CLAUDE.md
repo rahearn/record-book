@@ -59,6 +59,20 @@ zone shading) translated from the design doc live in `app/assets/tailwind/applic
 Avoid Tailwind arbitrary-value classes inside ERB expressions (e.g. `bg-[#hex]` in a ternary) —
 the Tailwind scanner misses them; use theme utilities like `bg-neutral-400` instead.
 
+The admin console is Active Admin 4, mounted at `/admin` and registered in `app/admin/` — one
+resource file per model, plus a dashboard. It has no user model: `config.authentication_method`
+points at `authenticate_admin!` (the `AdminAuthentication` concern on `ApplicationController`),
+which checks a single HTTP basic username/password held in
+`Rails.application.credentials.active_admin`. Comments are off, since they need an author.
+Two things the console needs live outside `app/admin/`: `ApplicationRecord` opens every column and
+association to Ransack (Active Admin's filters), and six models carry a `display_name` that Active
+Admin uses for links, page titles, and select options. The array columns whose order matters
+(`Player#positions`, `RosterFormat#slots`) are edited as one comma-separated text box and split back
+apart by `ListColumnParams`. `Game` accepts nested `performances_attributes` so a matchup can be
+written with both sides at once; `Performance` deliberately does *not* accept nested lineup slots,
+because autosaving a whole lineup validates every persisted slot at once and a reshuffle trips the
+per-performance `sequence` uniqueness — lineup slots are edited through their own resource.
+
 `db/seeds.rb` generates a deterministic demo league (20 owners, 2011–2025) matching the design
 mockup's data; it skips seeding when games already exist, and CI replants it in the test env.
 
@@ -68,6 +82,9 @@ mockup's data; it skips seeding when games already exist, and CI replants it in 
 - PostgreSQL (via `pg`), including Solid Cache / Solid Queue / Solid Cable (DB-backed, no Redis)
 - Server-rendered HTML with Propshaft + Tailwind CSS; Hotwire (Turbo + Stimulus) for interactivity,
   minimal hand-written JavaScript, no Node/npm toolchain (JS is managed via importmap-rails)
+- Active Admin 4 for the admin console at `/admin` (Tailwind- and importmap-based, so it needs no
+  Node either — `tailwind-active_admin.config.js` finds Active Admin's Tailwind plugin through
+  Bundler rather than through `node_modules`)
 - Deployed as a Docker container via Kamal (see `config/deploy.yml`, `.kamal/`)
 
 ## Commands
@@ -75,7 +92,15 @@ mockup's data; it skips seeding when games already exist, and CI replants it in 
 Setup:
 - `bin/setup` — installs gems, prepares the dev database, clears logs/tmp, then starts the dev server.
   Add `--skip-server` to skip the server, `--reset` to reset the database.
-- `bin/dev` — starts the dev server (Rails server + Tailwind watcher, via `Procfile.dev`)
+- `bin/dev` — starts the dev server (Rails server + Tailwind watchers, via `Procfile.dev`)
+
+Stylesheets (two separate Tailwind builds, so Active Admin's form styling stays off the public site):
+- `bin/rails tailwindcss:build` — builds `app/assets/tailwind/application.css` into
+  `app/assets/builds/tailwind.css`, then runs `active_admin:tailwindcss:build` for
+  `app/assets/tailwind/active_admin.css` into `app/assets/builds/active_admin.css`
+  (see `lib/tasks/active_admin.rake`). `assets:precompile` and `test:prepare` build both.
+- The public layout links its stylesheets by name rather than with `stylesheet_link_tag :app`,
+  which would also pull in the admin console's build.
 
 Testing:
 - `bin/rails test` — run the full test suite (Minitest, parallelized across CPUs; see `test/test_helper.rb`)
