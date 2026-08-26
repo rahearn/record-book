@@ -11,9 +11,22 @@ class Almanac
   RELEGATION_COUNT = 4
 
   HeadToHead = Data.define(:opponent, :wins, :losses, :ties)
-  ScoreRecord = Data.define(:points, :owner, :year, :week)
-  BlowoutRecord = Data.define(:margin, :winner, :loser, :year, :week)
-  ShootoutRecord = Data.define(:total, :owners, :year, :week)
+
+  # Every single-game record keeps the game it was set in, so the record
+  # book can date it and link back to the matchup.
+  module SetInGame
+    def year
+      game.season.year
+    end
+
+    def week
+      game.week
+    end
+  end
+
+  ScoreRecord = Data.define(:points, :owner, :game) { include SetInGame }
+  BlowoutRecord = Data.define(:margin, :winner, :loser, :game) { include SetInGame }
+  ShootoutRecord = Data.define(:total, :owners, :game) { include SetInGame }
   GameRecords = Data.define(:highest_score, :lowest_score, :biggest_blowout, :highest_combined)
 
   attr_reader :promotion_count, :relegation_count
@@ -271,24 +284,22 @@ class Almanac
   def build_game_records
     highest = lowest = blowout = shootout = nil
     each_matchup do |game, side_a, side_b|
-      year = game.season.year
-      week = game.week
       [ side_a, side_b ].each do |side|
         if highest.nil? || side.points > highest.points
-          highest = ScoreRecord.new(points: side.points, owner: side.owner, year:, week:)
+          highest = ScoreRecord.new(points: side.points, owner: side.owner, game:)
         end
         if lowest.nil? || side.points < lowest.points
-          lowest = ScoreRecord.new(points: side.points, owner: side.owner, year:, week:)
+          lowest = ScoreRecord.new(points: side.points, owner: side.owner, game:)
         end
       end
       margin = (side_a.points - side_b.points).abs
       if blowout.nil? || margin > blowout.margin
         winner, loser = side_a.points >= side_b.points ? [ side_a, side_b ] : [ side_b, side_a ]
-        blowout = BlowoutRecord.new(margin:, winner: winner.owner, loser: loser.owner, year:, week:)
+        blowout = BlowoutRecord.new(margin:, winner: winner.owner, loser: loser.owner, game:)
       end
       total = side_a.points + side_b.points
       if shootout.nil? || total > shootout.total
-        shootout = ShootoutRecord.new(total:, owners: [ side_a.owner, side_b.owner ], year:, week:)
+        shootout = ShootoutRecord.new(total:, owners: [ side_a.owner, side_b.owner ], game:)
       end
     end
     GameRecords.new(highest_score: highest, lowest_score: lowest,

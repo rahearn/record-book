@@ -235,6 +235,15 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal [ owners(:alice), owners(:bob) ], records.highest_combined.owners
   end
 
+  test "game records name the game they were set in" do
+    records = @book.game_records
+
+    assert_equal games(:g2024_w1_ab), records.highest_score.game
+    assert_equal games(:g2023_w1_cd), records.lowest_score.game
+    assert_equal games(:g2024_w1_ab), records.biggest_blowout.game
+    assert_equal games(:g2024_w1_ab), records.highest_combined.game
+  end
+
   test "ladder swaps the bottom of premier with the top of challenger" do
     ladder = @book.ladder
     assert_equal 2025, ladder.year

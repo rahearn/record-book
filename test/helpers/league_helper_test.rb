@@ -71,6 +71,12 @@ class LeagueHelperTest < ActionView::TestCase
     assert_equal "Record book · 2023", league_tagline(FakeBook.new(2023, 2023))
   end
 
+  test "record_date names the season and week" do
+    record = Almanac::ScoreRecord.new(points: 120.0, owner: owners(:alice),
+                                      game: games(:g2024_w1_ab))
+    assert_equal "2024 · Week 1", record_date(record)
+  end
+
   test "founders_note pluralizes" do
     assert_equal "1 founder remains", founders_note(1)
     assert_equal "8 founders remain", founders_note(8)

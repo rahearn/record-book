@@ -56,6 +56,11 @@ module LeagueHelper
     link_to caption, root_path(sort: column, direction: next_direction), class: "hover:text-ink"
   end
 
+  # When a single-game record was set: "2024 · Week 7".
+  def record_date(record)
+    "#{record.year} · Week #{record.week}"
+  end
+
   def league_tagline(record_book)
     return "Record book" if record_book.empty?
 

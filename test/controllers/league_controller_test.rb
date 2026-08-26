@@ -23,6 +23,16 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_match "2025 ladder", response.body
   end
 
+  test "record cards link to the matchup that set them" do
+    get root_url
+    assert_response :success
+
+    # Highest score, biggest blowout, and highest combined all come from
+    # the same 2024 game; the lowest score from 2023.
+    assert_select "a[href=?]", matchup_path(games(:g2024_w1_ab)), count: 3
+    assert_select "a[href=?]", matchup_path(games(:g2023_w1_cd)), count: 1
+  end
+
   test "sortable columns reorder the all-time table" do
     # Ascending PA/g puts Dan (85.0) ahead of Bob (108.3).
     get root_url(sort: "pag", direction: "asc")

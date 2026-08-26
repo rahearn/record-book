@@ -90,19 +90,19 @@
     <%= render "record_card", kicker: "Highest score, any week",
           value: points_display(records.highest_score.points),
           who: records.highest_score.owner.name,
-          detail: "#{records.highest_score.year} · Week #{records.highest_score.week}" %>
+          detail: record_date(records.highest_score), game: records.highest_score.game %>
     <%= render "record_card", kicker: "Lowest score, any week",
           value: points_display(records.lowest_score.points),
           who: records.lowest_score.owner.name,
-          detail: "#{records.lowest_score.year} · Week #{records.lowest_score.week}" %>
+          detail: record_date(records.lowest_score), game: records.lowest_score.game %>
     <%= render "record_card", kicker: "Biggest blowout",
           value: points_display(records.biggest_blowout.margin),
           who: "#{records.biggest_blowout.winner.name} over #{records.biggest_blowout.loser.name}",
-          detail: "#{records.biggest_blowout.year} · Week #{records.biggest_blowout.week}" %>
+          detail: record_date(records.biggest_blowout), game: records.biggest_blowout.game %>
     <%= render "record_card", kicker: "Highest combined game",
           value: points_display(records.highest_combined.total),
           who: records.highest_combined.owners.map(&:name).join(" vs "),
-          detail: "#{records.highest_combined.year} · Week #{records.highest_combined.week}" %>
+          detail: record_date(records.highest_combined), game: records.highest_combined.game %>
   </section>
 
   <% if (ladder = @almanac.ladder) %>

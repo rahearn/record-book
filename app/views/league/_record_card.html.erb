@@ -1,8 +1,11 @@
-<%# locals: (kicker:, value:, who:, detail:) %>
-<div class="blueprint flex flex-col gap-1.5 p-4.5">
+<%# locals: (kicker:, value:, who:, detail:, game:) %>
+<%= link_to matchup_path(game), class: "blueprint flex flex-col gap-1.5 p-4.5 hover:bg-accent/6" do %>
   <%= blueprint_corners %>
   <span class="card-kicker"><%= kicker %></span>
   <span class="font-heading text-[46px] font-semibold leading-none"><%= value %></span>
   <span class="text-sm font-medium"><%= who %></span>
-  <span class="text-xs text-ink/55"><%= detail %></span>
-</div>
+  <span class="flex justify-between gap-2.5 text-xs text-ink/55">
+    <span><%= detail %></span>
+    <span>View matchup →</span>
+  </span>
+<% end %>
