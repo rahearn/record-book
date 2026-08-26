@@ -72,15 +72,27 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
   end
 
   (2005..2024).each do |year|
+    season = Season.find_by(year:)
     CSV.open(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")).each do |row|
-      season = Season.find_by(year:)
       week = row[0].to_i
       playoff_start = year <= 2020 ? 14 : 15
-      game = season.games.create!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
+      game = season.games.find_or_create_by!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
       team_1 = Team.find_by(season:, name: row[1])
       team_2 = Team.find_by(season:, name: row[3])
-      game.performances.create!(owner: team_1.owner, points: row[2])
-      game.performances.create!(owner: team_2.owner, points: row[4])
+      game.performances.find_or_create_by!(owner: team_1.owner, points: row[2])
+      game.performances.find_or_create_by!(owner: team_2.owner, points: row[4])
+    end
+    CSV.open(Rails.root.join("docs", "yahoo", "players_#{year}.csv")).each do |row|
+      week = row[0].to_i
+      points = row[1]
+      team_name = row[2]
+      bench = row[3] != "Starter"
+      player_name = row[4]
+      nfl_team = row[5].upcase
+      eligible_positions = row[6].split("|").reject { |p| p.match?("/") }
+      owner = Owner.joins(:teams).find_by(teams: {name: team_name, season:})
+      performance = owner.performances.joins(:game).find_by(games: {season:, week:})
+      ## TODO build lineup slots legal according to this seasons RosterFormat
     end
   end
 else

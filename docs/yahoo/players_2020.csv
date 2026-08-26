@@ -1,0 +1,2552 @@
+1,14.4,The Wire,Starter,Drew Brees,NO,QB
+1,2.45,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+1,4.7,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+1,12.2,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+1,9.45,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+1,4.55,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+1,2.95,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+1,2.65,The Wire,Non-Starter,Tevin Coleman,SF,RB|W/R/T
+1,0.85,The Wire,Non-Starter,Mecole Hardman,GB,WR|W/R/T
+1,3.5,The Wire,Non-Starter,Darrel Williams,Ari,RB|W/R/T
+1,21.0,The Wire,Starter,New Orleans Saints,NO,DEF
+2,14.48,The Wire,Starter,Drew Brees,NO,QB
+2,11.35,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+2,14.4,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+2,6.1,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+2,3.7,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+2,14.45,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+2,0.65,The Wire,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+2,4.5,The Wire,Non-Starter,Tevin Coleman,SF,RB|W/R/T
+2,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+2,5.1,The Wire,Non-Starter,Jalen Reagor,LAC,WR|W/R/T
+2,7.5,The Wire,Starter,New Orleans Saints,NO,DEF
+3,23.52,The Wire,Starter,Drew Brees,NO,QB
+3,20.45,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+3,6.9,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+3,14.45,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+3,17.1,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+3,6.35,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+3,10.75,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+3,0.0,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+3,7.1,The Wire,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+3,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+3,-1.5,The Wire,Starter,New Orleans Saints,NO,DEF
+4,15.54,The Wire,Starter,Drew Brees,NO,QB
+4,8.2,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+4,34.65,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+4,18.55,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+4,18.35,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+4,6.1,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+4,6.95,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+4,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+4,0.0,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+4,3.95,The Wire,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+4,7.0,The Wire,Starter,New Orleans Saints,NO,DEF
+5,21.1,The Wire,Starter,Drew Brees,NO,QB
+5,9.4,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+5,7.67,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+5,22.0,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+5,23.15,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+5,1.3,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+5,16.35,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+5,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+5,0.0,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+5,3.5,The Wire,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+5,8.0,The Wire,Starter,New Orleans Saints,NO,DEF
+6,14.92,The Wire,Starter,Jared Goff,Det,QB
+6,3.0,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+6,21.1,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+6,7.45,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+6,10.0,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+6,12.7,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+6,13.6,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+6,1.0,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+6,0.0,The Wire,Non-Starter,Keenan Allen,LAC,WR|W/R/T
+6,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+6,15.5,The Wire,Starter,New York Giants,NYG,DEF
+7,16.9,The Wire,Starter,Jared Goff,Det,QB
+7,15.0,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+7,0.0,The Wire,Starter,Odell Beckham,Mia,WR|W/R/T
+7,20.7,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+7,4.85,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+7,8.3,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+7,16.95,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+7,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+7,7.95,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+7,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+7,8.5,The Wire,Starter,New York Giants,NYG,DEF
+8,12.54,The Wire,Starter,Derek Carr,NO,QB
+8,14.95,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+8,0.0,The Wire,Starter,Nelson Agholor,Bal,WR|W/R/T
+8,10.6,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+8,11.05,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+8,6.65,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+8,7.95,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+8,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+8,20.1,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+8,0.0,The Wire,Non-Starter,Christian Kirk,Hou,WR|W/R/T
+8,25.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+9,22.68,The Wire,Starter,Drew Brees,NO,QB
+9,19.55,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+9,6.35,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+9,12.0,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+9,11.3,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+9,7.95,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+9,18.55,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+9,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+9,4.95,The Wire,Non-Starter,Mike Davis,Bal,RB|W/R/T
+9,0.0,The Wire,Non-Starter,Austin Hooper,NE,TE|W/R/T
+9,10.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+10,6.94,The Wire,Starter,Drew Brees,NO,QB
+10,3.7,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+10,10.65,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+10,1.95,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+10,5.4,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+10,1.35,The Wire,Starter,Austin Hooper,NE,TE|W/R/T
+10,3.2,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+10,0.0,The Wire,Non-Starter,Todd Gurley,Atl,RB|W/R/T
+10,0.0,The Wire,Non-Starter,Hayden Hurst,LAC,TE|W/R/T
+10,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+10,10.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+11,7.62,The Wire,Starter,Matthew Stafford,LAR,QB
+11,6.0,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+11,12.65,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+11,14.4,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+11,3.15,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+11,0.0,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+11,22.5,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+11,0.0,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+11,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+11,0.0,The Wire,Non-Starter,David Montgomery,Det,RB|W/R/T
+11,9.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+12,-1.4,The Wire,Starter,Derek Carr,NO,QB
+12,6.1,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+12,13.0,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+12,8.65,The Wire,Starter,Mike Davis,Bal,RB|W/R/T
+12,21.55,The Wire,Starter,David Montgomery,Det,RB|W/R/T
+12,5.8,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+12,2.65,The Wire,Starter,Christian Kirk,Hou,WR|W/R/T
+12,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+12,0.0,The Wire,Non-Starter,Todd Gurley,Atl,RB|W/R/T
+12,7.3,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+12,16.5,The Wire,Starter,Miami Dolphins,Mia,DEF
+13,31.74,The Wire,Starter,Derek Carr,NO,QB
+13,12.75,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+13,6.05,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+13,24.1,The Wire,Starter,David Montgomery,Det,RB|W/R/T
+13,12.6,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+13,1.15,The Wire,Starter,Hayden Hurst,LAC,TE|W/R/T
+13,2.25,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+13,1.65,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+13,2.45,The Wire,Non-Starter,Breshad Perriman,TB,WR|W/R/T
+13,21.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+13,5.5,The Wire,Non-Starter,Arizona,Ari,DEF
+14,21.84,The Wire,Starter,Derek Carr,NO,QB
+14,10.4,The Wire,Starter,Michael Thomas,NO,WR|W/R/T
+14,13.45,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+14,22.25,The Wire,Starter,David Montgomery,Det,RB|W/R/T
+14,6.4,The Wire,Starter,Duke Johnson,Buf,RB|W/R/T
+14,2.8,The Wire,Starter,Jonnu Smith,Pit,TE|W/R/T
+14,3.6,The Wire,Starter,Todd Gurley,Atl,RB|W/R/T
+14,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+14,4.3,The Wire,Non-Starter,Zack Moss,Cin,RB|W/R/T
+14,11.5,The Wire,Starter,Tampa Bay Buccaneers,TB,DEF
+14,15.0,The Wire,Non-Starter,Miami Dolphins,Mia,DEF
+15,2.12,The Wire,Starter,Derek Carr,NO,QB
+15,1.85,The Wire,Starter,Keenan Allen,LAC,WR|W/R/T
+15,0.0,The Wire,Starter,Willie Snead IV,Mia,WR|W/R/T
+15,28.45,The Wire,Starter,David Montgomery,Det,RB|W/R/T
+15,8.1,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+15,6.45,The Wire,Starter,Jonnu Smith,Pit,TE|W/R/T
+15,8.6,The Wire,Starter,Rashard Higgins,Car,WR|W/R/T
+15,0.0,The Wire,Non-Starter,Michael Thomas,NO,WR|W/R/T
+15,1.9,The Wire,Non-Starter,Todd Gurley,Atl,RB|W/R/T
+15,0.0,The Wire,Non-Starter,Myles Gaskin,Bal,RB|W/R/T
+15,12.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+16,18.58,The Wire,Starter,Jalen Hurts,Phi,QB
+16,1.9,The Wire,Starter,Allen Lazard,NYJ,WR|W/R/T
+16,3.75,The Wire,Starter,Jalen Reagor,LAC,WR|W/R/T
+16,18.6,The Wire,Starter,David Montgomery,Det,RB|W/R/T
+16,11.95,The Wire,Starter,Zack Moss,Cin,RB|W/R/T
+16,4.05,The Wire,Starter,Zach Ertz,Was,TE|W/R/T
+16,30.15,The Wire,Starter,Myles Gaskin,Bal,RB|W/R/T
+16,0.0,The Wire,Non-Starter,Keenan Allen,LAC,WR|W/R/T
+16,5.75,The Wire,Non-Starter,Todd Gurley,Atl,RB|W/R/T
+16,10.5,The Wire,Non-Starter,Emmanuel Sanders,Buf,WR|W/R/T
+16,8.0,The Wire,Starter,Miami Dolphins,Mia,DEF
+1,16.18,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+1,26.5,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+1,9.25,AirBudGoldenReceiver,Starter,Julian Edelman,NE,WR|W/R/T
+1,19.95,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+1,4.9,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+1,15.35,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+1,8.25,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+1,4.8,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+1,3.2,AirBudGoldenReceiver,Non-Starter,Chris Herndon,Min,TE|W/R/T
+1,0.0,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+1,22.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+2,14.16,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+2,3.85,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+2,19.9,AirBudGoldenReceiver,Starter,Julian Edelman,NE,WR|W/R/T
+2,31.65,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+2,11.45,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+2,14.7,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+2,2.05,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+2,3.8,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+2,0.75,AirBudGoldenReceiver,Non-Starter,Chris Herndon,Min,TE|W/R/T
+2,2.6,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+2,7.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+3,18.5,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+3,10.05,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+3,2.7,AirBudGoldenReceiver,Starter,Julian Edelman,NE,WR|W/R/T
+3,34.95,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+3,10.75,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+3,5.85,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+3,12.6,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+3,6.75,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+3,17.35,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+3,1.25,AirBudGoldenReceiver,Non-Starter,Dion Lewis,NYG,RB|W/R/T
+3,5.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+4,22.34,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+4,20.2,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+4,10.8,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+4,18.65,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+4,19.8,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+4,4.75,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+4,12.1,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+4,4.25,AirBudGoldenReceiver,Non-Starter,Julian Edelman,NE,WR|W/R/T
+4,20.55,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+4,2.5,AirBudGoldenReceiver,Starter,Arizona,Ari,DEF
+4,6.5,AirBudGoldenReceiver,Non-Starter,Washington Commanders,Was,DEF
+5,27.36,AirBudGoldenReceiver,Starter,Justin Herbert,LAC,QB
+5,22.55,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+5,5.15,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+5,13.9,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+5,6.35,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+5,8.75,AirBudGoldenReceiver,Starter,Evan Engram,Den,TE|W/R/T
+5,6.2,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+5,0.0,AirBudGoldenReceiver,Non-Starter,Julian Edelman,NE,WR|W/R/T
+5,0.0,AirBudGoldenReceiver,Non-Starter,Noah Fant,Cin,TE|W/R/T
+5,0.0,AirBudGoldenReceiver,Non-Starter,Matthew Stafford,LAR,QB
+5,5.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+6,12.32,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+6,11.85,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+6,7.7,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+6,6.5,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+6,9.9,AirBudGoldenReceiver,Starter,J.D. McKissic,Was,RB|W/R/T
+6,15.05,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+6,2.82,AirBudGoldenReceiver,Starter,Julian Edelman,NE,WR|W/R/T
+6,0.0,AirBudGoldenReceiver,Non-Starter,Noah Fant,Cin,TE|W/R/T
+6,0.0,AirBudGoldenReceiver,Non-Starter,Alvin Kamara,NO,RB|W/R/T
+6,0.0,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+6,7.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+7,18.4,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+7,1.55,AirBudGoldenReceiver,Starter,Julian Edelman,NE,WR|W/R/T
+7,5.0,AirBudGoldenReceiver,Starter,Henry Ruggs,LV,WR|W/R/T
+7,18.8,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+7,16.8,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+7,4.55,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+7,5.85,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+7,13.45,AirBudGoldenReceiver,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+7,0.0,AirBudGoldenReceiver,Non-Starter,Adam Thielen,Car,WR|W/R/T
+7,5.6,AirBudGoldenReceiver,Non-Starter,J.D. McKissic,Was,RB|W/R/T
+7,21.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+8,20.44,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+8,3.45,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+8,17.1,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+8,18.55,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+8,3.85,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+8,11.1,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+8,6.45,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+8,1.4,AirBudGoldenReceiver,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+8,0.0,AirBudGoldenReceiver,Non-Starter,Antonio Gibson,NE,RB|W/R/T
+8,-0.5,AirBudGoldenReceiver,Starter,Tennessee Titans,Ten,DEF
+8,0.0,AirBudGoldenReceiver,Non-Starter,Washington Commanders,Was,DEF
+9,8.44,AirBudGoldenReceiver,Starter,Matthew Stafford,LAR,QB
+9,4.3,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+9,10.8,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+9,12.15,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+9,10.25,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+9,0.45,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+9,5.25,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+9,9.1,AirBudGoldenReceiver,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+9,0.0,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+9,4.7,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+9,7.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+10,14.66,AirBudGoldenReceiver,Starter,Tua Tagovailoa,Mia,QB
+10,17.3,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+10,0.75,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+10,29.55,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+10,19.5,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+10,11.6,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+10,2.55,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+10,0.0,AirBudGoldenReceiver,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+10,14.45,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+10,5.7,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+10,2.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+11,5.28,AirBudGoldenReceiver,Starter,Matt Ryan,Ind,QB
+11,26.3,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+11,1.85,AirBudGoldenReceiver,Starter,Jamison Crowder,Was,WR|W/R/T
+11,10.5,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+11,16.65,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+11,3.0,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+11,6.5,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+11,0.0,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+11,7.6,AirBudGoldenReceiver,Non-Starter,Emmanuel Sanders,Buf,WR|W/R/T
+11,9.0,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+11,16.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+12,1.02,AirBudGoldenReceiver,Starter,Jared Goff,Det,QB
+12,0.65,AirBudGoldenReceiver,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+12,7.8,AirBudGoldenReceiver,Starter,Cole Beasley,NYG,WR|W/R/T
+12,5.45,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+12,32.85,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+12,12.1,AirBudGoldenReceiver,Starter,Rob Gronkowski,TB,TE|W/R/T
+12,24.85,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+12,1.55,AirBudGoldenReceiver,Non-Starter,Noah Fant,Cin,TE|W/R/T
+12,0.0,AirBudGoldenReceiver,Non-Starter,Adam Thielen,Car,WR|W/R/T
+12,0.0,AirBudGoldenReceiver,Non-Starter,Brandon Aiyuk,SF,WR|W/R/T
+12,18.0,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+13,24.14,AirBudGoldenReceiver,Starter,Jared Goff,Det,QB
+13,16.75,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+13,15.5,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+13,16.2,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+13,1.4,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+13,6.7,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+13,2.2,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+13,21.25,AirBudGoldenReceiver,Non-Starter,Cole Beasley,NYG,WR|W/R/T
+13,0.0,AirBudGoldenReceiver,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+13,5.15,AirBudGoldenReceiver,Non-Starter,Emmanuel Sanders,Buf,WR|W/R/T
+13,7.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+14,14.58,AirBudGoldenReceiver,Starter,Jared Goff,Det,QB
+14,14.4,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+14,4.65,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+14,17.15,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+14,4.3,AirBudGoldenReceiver,Starter,Kenneth Barber,LV,RB|W/R/T
+14,0.0,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+14,0.95,AirBudGoldenReceiver,Starter,Latavius Murray,Buf,RB|W/R/T
+14,0.0,AirBudGoldenReceiver,Non-Starter,Antonio Gibson,NE,RB|W/R/T
+14,5.35,AirBudGoldenReceiver,Non-Starter,Cole Beasley,NYG,WR|W/R/T
+14,6.45,AirBudGoldenReceiver,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+14,27.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+15,15.26,AirBudGoldenReceiver,Starter,Jared Goff,Det,QB
+15,15.55,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+15,7.6,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+15,16.15,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+15,6.5,AirBudGoldenReceiver,Starter,Kenneth Barber,LV,RB|W/R/T
+15,14.8,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+15,13.2,AirBudGoldenReceiver,Starter,Cole Beasley,NYG,WR|W/R/T
+15,9.4,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+15,0.0,AirBudGoldenReceiver,Non-Starter,Antonio Gibson,NE,RB|W/R/T
+15,3.65,AirBudGoldenReceiver,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+15,5.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+16,9.66,AirBudGoldenReceiver,Starter,Jared Goff,Det,QB
+16,3.35,AirBudGoldenReceiver,Starter,Brandon Aiyuk,SF,WR|W/R/T
+16,17.7,AirBudGoldenReceiver,Starter,Adam Thielen,Car,WR|W/R/T
+16,53.95,AirBudGoldenReceiver,Starter,Alvin Kamara,NO,RB|W/R/T
+16,7.65,AirBudGoldenReceiver,Starter,Antonio Gibson,NE,RB|W/R/T
+16,8.0,AirBudGoldenReceiver,Starter,Noah Fant,Cin,TE|W/R/T
+16,2.45,AirBudGoldenReceiver,Starter,Cole Beasley,NYG,WR|W/R/T
+16,1.0,AirBudGoldenReceiver,Non-Starter,Kenneth Barber,LV,RB|W/R/T
+16,10.35,AirBudGoldenReceiver,Non-Starter,Latavius Murray,Buf,RB|W/R/T
+16,18.3,AirBudGoldenReceiver,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+16,14.5,AirBudGoldenReceiver,Starter,Washington Commanders,Was,DEF
+1,13.0,A Shot and a Chase,Starter,Carson Wentz,Min,QB
+1,9.4,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+1,0.25,A Shot and a Chase,Starter,Christian Kirk,Hou,WR|W/R/T
+1,32.9,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+1,5.1,A Shot and a Chase,Starter,Le'Veon Bell,TB,RB|W/R/T
+1,8.55,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+1,9.25,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+1,5.2,A Shot and a Chase,Non-Starter,Tarik Cohen,Car,RB|W/R/T
+1,0.0,A Shot and a Chase,Non-Starter,Courtland Sutton,Den,WR|W/R/T
+1,2.45,A Shot and a Chase,Non-Starter,Breshad Perriman,TB,WR|W/R/T
+1,-3.0,A Shot and a Chase,Starter,Minnesota Vikings,Min,DEF
+2,12.38,A Shot and a Chase,Starter,Carson Wentz,Min,QB
+2,1.7,A Shot and a Chase,Starter,Scotty Miller,Pit,WR|W/R/T
+2,7.15,A Shot and a Chase,Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+2,11.25,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+2,18.75,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+2,5.45,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+2,2.95,A Shot and a Chase,Starter,Tarik Cohen,Car,RB|W/R/T
+2,0.0,A Shot and a Chase,Non-Starter,Chris Godwin,TB,WR|W/R/T
+2,0.0,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+2,7.35,A Shot and a Chase,Non-Starter,Courtland Sutton,Den,WR|W/R/T
+2,7.0,A Shot and a Chase,Starter,Tennessee Titans,Ten,DEF
+3,21.5,A Shot and a Chase,Starter,Carson Wentz,Min,QB
+3,13.65,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+3,4.6,A Shot and a Chase,Starter,Jarvis Landry,NO,WR|W/R/T
+3,7.05,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+3,26.4,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+3,8.75,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+3,5.3,A Shot and a Chase,Starter,Keelan Cole,LV,WR|W/R/T
+3,0.75,A Shot and a Chase,Non-Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+3,4.85,A Shot and a Chase,Non-Starter,Tarik Cohen,Car,RB|W/R/T
+3,0.0,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+3,10.0,A Shot and a Chase,Starter,Tennessee Titans,Ten,DEF
+4,21.3,A Shot and a Chase,Starter,Ryan Fitzpatrick,Was,QB
+4,11.53,A Shot and a Chase,Starter,Jarvis Landry,NO,WR|W/R/T
+4,5.5,A Shot and a Chase,Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+4,8.05,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+4,11.7,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+4,3.9,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+4,10.0,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+4,5.6,A Shot and a Chase,Non-Starter,Keelan Cole,LV,WR|W/R/T
+4,0.0,A Shot and a Chase,Non-Starter,Chris Godwin,TB,WR|W/R/T
+4,0.0,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+4,7.5,A Shot and a Chase,Starter,Seattle Seahawks,Sea,DEF
+5,19.84,A Shot and a Chase,Starter,Gardner Minshew,KC,QB
+5,9.8,A Shot and a Chase,Starter,Jarvis Landry,NO,WR|W/R/T
+5,7.2,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+5,21.0,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+5,6.25,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+5,0.85,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+5,0.0,A Shot and a Chase,Starter,Damien Harris,Buf,RB|W/R/T
+5,9.2,A Shot and a Chase,Non-Starter,Keelan Cole,LV,WR|W/R/T
+5,0.0,A Shot and a Chase,Non-Starter,Chris Godwin,TB,WR|W/R/T
+5,6.95,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+5,10.0,A Shot and a Chase,Starter,Seattle Seahawks,Sea,DEF
+6,17.37,A Shot and a Chase,Starter,Gardner Minshew,KC,QB
+6,14.2,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+6,6.05,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+6,12.3,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+6,3.55,A Shot and a Chase,Starter,Damien Harris,Buf,RB|W/R/T
+6,4.3,A Shot and a Chase,Starter,Zach Ertz,Was,TE|W/R/T
+6,25.05,A Shot and a Chase,Starter,D'Andre Swift,Chi,RB|W/R/T
+6,4.75,A Shot and a Chase,Non-Starter,Jarvis Landry,NO,WR|W/R/T
+6,0.0,A Shot and a Chase,Non-Starter,Josh Jacobs,GB,RB|W/R/T
+6,0.0,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+6,21.5,A Shot and a Chase,Starter,Miami Dolphins,Mia,DEF
+7,38.48,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+7,15.05,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+7,17.05,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+7,28.7,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+7,3.85,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+7,2.7,A Shot and a Chase,Starter,Dalton Schultz,Hou,TE|W/R/T
+7,11.8,A Shot and a Chase,Starter,D'Andre Swift,Chi,RB|W/R/T
+7,7.25,A Shot and a Chase,Non-Starter,Damien Harris,Buf,RB|W/R/T
+7,7.21,A Shot and a Chase,Non-Starter,Jarvis Landry,NO,WR|W/R/T
+7,3.9,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+7,10.0,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+8,21.22,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+8,9.9,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+8,6.2,A Shot and a Chase,Starter,Jarvis Landry,NO,WR|W/R/T
+8,12.9,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+8,4.55,A Shot and a Chase,Starter,Le'Veon Bell,TB,RB|W/R/T
+8,6.8,A Shot and a Chase,Starter,Dalton Schultz,Hou,TE|W/R/T
+8,3.05,A Shot and a Chase,Starter,D'Andre Swift,Chi,RB|W/R/T
+8,0.0,A Shot and a Chase,Non-Starter,Chris Godwin,TB,WR|W/R/T
+8,0.0,A Shot and a Chase,Non-Starter,James Robinson,NO,RB|W/R/T
+8,16.2,A Shot and a Chase,Non-Starter,Damien Harris,Buf,RB|W/R/T
+8,7.0,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+9,23.44,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+9,4.85,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+9,2.85,A Shot and a Chase,Starter,Randall Cobb,NYJ,WR|W/R/T
+9,13.05,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+9,15.9,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+9,0.85,A Shot and a Chase,Starter,Trey Burton,Ind,TE|W/R/T
+9,10.45,A Shot and a Chase,Starter,D'Andre Swift,Chi,RB|W/R/T
+9,0.0,A Shot and a Chase,Non-Starter,Tee Higgins,Cin,WR|W/R/T
+9,0.55,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+9,7.1,A Shot and a Chase,Non-Starter,Damien Harris,Buf,RB|W/R/T
+9,3.0,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+10,20.48,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+10,10.7,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+10,17.25,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+10,26.6,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+10,11.7,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+10,3.15,A Shot and a Chase,Starter,Trey Burton,Ind,TE|W/R/T
+10,22.15,A Shot and a Chase,Starter,D'Andre Swift,Chi,RB|W/R/T
+10,4.85,A Shot and a Chase,Non-Starter,Randall Cobb,NYJ,WR|W/R/T
+10,0.0,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+10,12.1,A Shot and a Chase,Non-Starter,Damien Harris,Buf,RB|W/R/T
+10,3.5,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+11,27.74,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+11,13.05,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+11,3.35,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+11,12.65,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+11,9.9,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+11,9.0,A Shot and a Chase,Starter,Trey Burton,Ind,TE|W/R/T
+11,11.65,A Shot and a Chase,Starter,Damien Harris,Buf,RB|W/R/T
+11,0.0,A Shot and a Chase,Non-Starter,D'Andre Swift,Chi,RB|W/R/T
+11,7.2,A Shot and a Chase,Non-Starter,Randall Cobb,NYJ,WR|W/R/T
+11,9.85,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+11,11.0,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+12,16.44,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+12,11.7,A Shot and a Chase,Starter,Chris Godwin,TB,WR|W/R/T
+12,11.65,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+12,3.15,A Shot and a Chase,Starter,Josh Jacobs,GB,RB|W/R/T
+12,23.15,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+12,10.95,A Shot and a Chase,Starter,Trey Burton,Ind,TE|W/R/T
+12,4.7,A Shot and a Chase,Starter,Damien Harris,Buf,RB|W/R/T
+12,0.0,A Shot and a Chase,Non-Starter,D'Andre Swift,Chi,RB|W/R/T
+12,3.7,A Shot and a Chase,Non-Starter,Le'Veon Bell,TB,RB|W/R/T
+12,8.55,A Shot and a Chase,Non-Starter,Sterling Shepard,TB,WR|W/R/T
+12,13.5,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+13,4.36,A Shot and a Chase,Starter,Justin Herbert,LAC,QB
+13,6.85,A Shot and a Chase,Starter,Tee Higgins,Cin,WR|W/R/T
+13,14.44,A Shot and a Chase,Starter,Jarvis Landry,NO,WR|W/R/T
+13,18.3,A Shot and a Chase,Starter,James Robinson,NO,RB|W/R/T
+13,9.75,A Shot and a Chase,Starter,Damien Harris,Buf,RB|W/R/T
+13,1.35,A Shot and a Chase,Starter,Trey Burton,Ind,TE|W/R/T
+13,6.0,A Shot and a Chase,Starter,Le'Veon Bell,TB,RB|W/R/T
+13,0.0,A Shot and a Chase,Non-Starter,Josh Jacobs,GB,RB|W/R/T
+13,0.0,A Shot and a Chase,Non-Starter,Chris Godwin,TB,WR|W/R/T
+13,0.0,A Shot and a Chase,Non-Starter,D'Andre Swift,Chi,RB|W/R/T
+13,0.0,A Shot and a Chase,Starter,Los Angeles Chargers,LAC,DEF
+1,20.82,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+1,18.6,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+1,6.4,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+1,6.55,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+1,19.8,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+1,1.4,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+1,5.95,Chili Con Cussion,Starter,James White,NE,RB|W/R/T
+1,1.1,Chili Con Cussion,Non-Starter,Chris Thompson,SF,RB|W/R/T
+1,19.25,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+1,20.9,Chili Con Cussion,Non-Starter,Robbie Chosen,SF,WR|W/R/T
+1,6.5,Chili Con Cussion,Starter,Denver Broncos,Den,DEF
+2,14.7,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+2,14.8,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+2,14.0,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+2,8.1,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+2,8.5,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+2,8.0,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+2,11.15,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+2,0.0,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+2,0.0,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+2,9.45,Chili Con Cussion,Non-Starter,Chris Thompson,SF,RB|W/R/T
+2,9.5,Chili Con Cussion,Starter,Denver Broncos,Den,DEF
+3,17.06,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+3,16.2,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+3,7.0,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+3,13.1,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+3,14.65,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+3,2.95,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+3,5.05,Chili Con Cussion,Starter,Chris Thompson,SF,RB|W/R/T
+3,6.75,Chili Con Cussion,Non-Starter,Robbie Chosen,SF,WR|W/R/T
+3,0.0,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+3,0.0,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+3,8.5,Chili Con Cussion,Starter,Los Angeles Chargers,LAC,DEF
+4,20.9,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+4,5.85,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+4,5.9,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+4,14.95,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+4,0.0,Chili Con Cussion,Starter,Chris Thompson,SF,RB|W/R/T
+4,10.65,Chili Con Cussion,Starter,Austin Hooper,NE,TE|W/R/T
+4,11.9,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+4,9.85,Chili Con Cussion,Non-Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+4,12.15,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+4,7.65,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+4,16.0,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+5,24.86,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+5,20.6,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+5,16.3,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+5,3.55,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+5,8.75,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+5,6.95,Chili Con Cussion,Starter,Austin Hooper,NE,TE|W/R/T
+5,13.5,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+5,4.95,Chili Con Cussion,Non-Starter,Chris Thompson,SF,RB|W/R/T
+5,19.6,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+5,0.0,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+5,20.5,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+6,32.0,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+6,7.8,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+6,10.55,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+6,4.75,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+6,17.9,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+6,6.45,Chili Con Cussion,Starter,Austin Hooper,NE,TE|W/R/T
+6,8.7,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+6,2.25,Chili Con Cussion,Non-Starter,Chris Thompson,SF,RB|W/R/T
+6,6.55,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+6,9.3,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+6,2.0,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+7,24.16,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+7,16.8,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+7,22.3,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+7,5.2,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+7,12.55,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+7,13.0,Chili Con Cussion,Starter,Logan Thomas,SF,TE|W/R/T
+7,8.9,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+7,0.0,Chili Con Cussion,Non-Starter,Chris Thompson,SF,RB|W/R/T
+7,0.0,Chili Con Cussion,Non-Starter,Jamison Crowder,Was,WR|W/R/T
+7,0.55,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+7,18.5,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+8,18.86,Chili Con Cussion,Starter,Joe Burrow,Cin,QB
+8,6.0,Chili Con Cussion,Starter,D.J. Moore,Chi,WR|W/R/T
+8,9.45,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+8,9.45,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+8,3.85,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+8,8.25,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+8,6.05,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+8,0.0,Chili Con Cussion,Non-Starter,Deshaun Watson,Cle,QB
+8,0.0,Chili Con Cussion,Non-Starter,DeAndre Hopkins,Bal,WR|W/R/T
+8,4.0,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+8,8.0,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+9,24.24,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+9,9.3,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+9,3.75,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+9,4.15,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+9,10.15,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+9,12.05,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+9,8.55,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+9,2.3,Chili Con Cussion,Non-Starter,D.J. Moore,Chi,WR|W/R/T
+9,3.4,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+9,8.0,Chili Con Cussion,Starter,Seattle Seahawks,Sea,DEF
+9,0.0,Chili Con Cussion,Non-Starter,Los Angeles Rams,LAR,DEF
+10,14.12,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+10,18.3,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+10,20.45,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+10,1.25,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+10,0.2,Chili Con Cussion,Starter,Phillip Lindsay,Ind,RB|W/R/T
+10,2.0,Chili Con Cussion,Starter,Evan Engram,Den,TE|W/R/T
+10,3.1,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+10,1.3,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+10,0.0,Chili Con Cussion,Non-Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+10,16.6,Chili Con Cussion,Non-Starter,D.J. Moore,Chi,WR|W/R/T
+10,16.5,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+11,31.36,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+11,12.9,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+11,6.35,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+11,8.2,Chili Con Cussion,Starter,Phillip Lindsay,Ind,RB|W/R/T
+11,19.95,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+11,0.85,Chili Con Cussion,Starter,Jared Cook,LAC,TE|W/R/T
+11,6.35,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+11,0.0,Chili Con Cussion,Non-Starter,Devin Singletary,NYG,RB|W/R/T
+11,9.8,Chili Con Cussion,Non-Starter,James White,NE,RB|W/R/T
+11,16.55,Chili Con Cussion,Non-Starter,D.J. Moore,Chi,WR|W/R/T
+11,6.5,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+12,33.12,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+12,6.7,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+12,6.75,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+12,4.15,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+12,13.95,Chili Con Cussion,Starter,James White,NE,RB|W/R/T
+12,0.0,Chili Con Cussion,Starter,Jared Cook,LAC,TE|W/R/T
+12,16.4,Chili Con Cussion,Starter,Robbie Chosen,SF,WR|W/R/T
+12,2.0,Chili Con Cussion,Non-Starter,Phillip Lindsay,Ind,RB|W/R/T
+12,8.95,Chili Con Cussion,Non-Starter,Devin Singletary,NYG,RB|W/R/T
+12,7.1,Chili Con Cussion,Non-Starter,D.J. Moore,Chi,WR|W/R/T
+12,19.5,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+13,19.44,Chili Con Cussion,Starter,Deshaun Watson,Cle,QB
+13,4.3,Chili Con Cussion,Starter,Chase Claypool,Buf,WR|W/R/T
+13,13.2,Chili Con Cussion,Starter,DeAndre Hopkins,Bal,WR|W/R/T
+13,0.0,Chili Con Cussion,Starter,Clyde Edwards-Helaire,NO,RB|W/R/T
+13,0.85,Chili Con Cussion,Starter,James White,NE,RB|W/R/T
+13,9.55,Chili Con Cussion,Starter,Jared Cook,LAC,TE|W/R/T
+13,9.05,Chili Con Cussion,Starter,Devin Singletary,NYG,RB|W/R/T
+13,0.0,Chili Con Cussion,Non-Starter,Robbie Chosen,SF,WR|W/R/T
+13,2.6,Chili Con Cussion,Non-Starter,Phillip Lindsay,Ind,RB|W/R/T
+13,0.0,Chili Con Cussion,Non-Starter,D.J. Moore,Chi,WR|W/R/T
+13,14.0,Chili Con Cussion,Starter,Los Angeles Rams,LAR,DEF
+1,26.3,Football Team,Starter,Kyler Murray,Ari,QB
+1,11.85,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+1,13.4,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+1,0.0,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+1,22.1,Football Team,Starter,Raheem Mostert,LV,RB|W/R/T
+1,8.55,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+1,9.7,Football Team,Starter,Sony Michel,LAC,RB|W/R/T
+1,6.35,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+1,16.25,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+1,19.26,Football Team,Non-Starter,Jimmy Garoppolo,LAR,QB
+1,13.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+2,32.14,Football Team,Starter,Kyler Murray,Ari,QB
+2,18.05,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+2,9.8,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+2,17.2,Football Team,Starter,Raheem Mostert,LV,RB|W/R/T
+2,17.85,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+2,9.8,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+2,3.65,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+2,1.9,Football Team,Non-Starter,Sony Michel,LAC,RB|W/R/T
+2,1.35,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+2,13.24,Football Team,Non-Starter,Jimmy Garoppolo,LAR,QB
+2,4.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+3,21.7,Football Team,Starter,Kyler Murray,Ari,QB
+3,17.45,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+3,17.65,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+3,11.7,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+3,14.5,Football Team,Starter,Sony Michel,LAC,RB|W/R/T
+3,6.25,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+3,4.85,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+3,0.0,Football Team,Non-Starter,Raheem Mostert,LV,RB|W/R/T
+3,7.95,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+3,19.65,Football Team,Non-Starter,Jeff Wilson,SF,RB|W/R/T
+3,7.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+4,23.12,Football Team,Starter,Kyler Murray,Ari,QB
+4,13.4,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+4,5.3,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+4,8.1,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+4,2.15,Football Team,Starter,Jeff Wilson,SF,RB|W/R/T
+4,4.4,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+4,0.55,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+4,0.0,Football Team,Non-Starter,Sony Michel,LAC,RB|W/R/T
+4,0.0,Football Team,Non-Starter,Raheem Mostert,LV,RB|W/R/T
+4,3.3,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+4,9.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+5,26.3,Football Team,Starter,Kyler Murray,Ari,QB
+5,16.05,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+5,14.1,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+5,22.4,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+5,12.65,Football Team,Starter,Raheem Mostert,LV,RB|W/R/T
+5,9.3,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+5,8.9,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+5,0.0,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+5,2.7,Football Team,Non-Starter,Jeff Wilson,SF,RB|W/R/T
+5,-1.0,Football Team,Non-Starter,Ke'Shawn Vaughn,SF,RB|W/R/T
+5,-3.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+6,28.92,Football Team,Starter,Kyler Murray,Ari,QB
+6,3.25,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+6,11.0,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+6,11.45,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+6,8.1,Football Team,Starter,Raheem Mostert,LV,RB|W/R/T
+6,4.65,Football Team,Starter,Jimmy Graham,NO,TE|W/R/T
+6,1.3,Football Team,Starter,Marvin Jones,Det,WR|W/R/T
+6,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+6,0.0,Football Team,Non-Starter,Hunter Henry,NE,TE|W/R/T
+6,11.6,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+6,5.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+7,37.1,Football Team,Starter,Kyler Murray,Ari,QB
+7,13.0,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+7,3.25,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+7,2.35,Football Team,Starter,Corey Clement,Ari,RB|W/R/T
+7,12.1,Football Team,Starter,La'Mical Perine,Pit,RB|W/R/T
+7,3.05,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+7,9.95,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+7,0.0,Football Team,Non-Starter,Raheem Mostert,LV,RB|W/R/T
+7,0.0,Football Team,Non-Starter,Miles Sanders,Dal,RB|W/R/T
+7,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+7,17.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+8,8.62,Football Team,Starter,Carson Wentz,Min,QB
+8,22.8,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+8,23.15,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+8,3.8,Football Team,Starter,La'Mical Perine,Pit,RB|W/R/T
+8,14.7,Football Team,Starter,Gus Edwards,LAC,RB|W/R/T
+8,4.3,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+8,2.4,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+8,0.0,Football Team,Non-Starter,Kyler Murray,Ari,QB
+8,0.0,Football Team,Non-Starter,Miles Sanders,Dal,RB|W/R/T
+8,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+8,6.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+9,37.92,Football Team,Starter,Kyler Murray,Ari,QB
+9,26.35,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+9,0.15,Football Team,Starter,Laviska Shenault,Buf,WR|W/R/T
+9,4.3,Football Team,Starter,La'Mical Perine,Pit,RB|W/R/T
+9,7.9,Football Team,Starter,Gus Edwards,LAC,RB|W/R/T
+9,4.3,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+9,1.85,Football Team,Starter,Patrick Laird,TB,RB|W/R/T
+9,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+9,0.0,Football Team,Non-Starter,Robert Woods,Pit,WR|W/R/T
+9,0.0,Football Team,Non-Starter,Miles Sanders,Dal,RB|W/R/T
+9,16.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+10,29.9,Football Team,Starter,Kyler Murray,Ari,QB
+10,4.85,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+10,0.0,Football Team,Starter,A.J. Green,Ari,WR|W/R/T
+10,7.55,Football Team,Starter,Gus Edwards,LAC,RB|W/R/T
+10,12.0,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+10,10.0,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+10,6.25,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+10,0.0,Football Team,Non-Starter,La'Mical Perine,Pit,RB|W/R/T
+10,0.0,Football Team,Non-Starter,Tyreek Hill,Mia,WR|W/R/T
+10,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+10,10.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+11,20.26,Football Team,Starter,Kyler Murray,Ari,QB
+11,21.6,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+11,18.75,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+11,6.85,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+11,9.3,Football Team,Starter,La'Mical Perine,Pit,RB|W/R/T
+11,11.8,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+11,7.85,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+11,0.0,Football Team,Non-Starter,Sammy Watkins,Bal,WR|W/R/T
+11,11.1,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+11,8.0,Football Team,Starter,Cincinnati Bengals,Cin,DEF
+11,0.0,Football Team,Non-Starter,Buffalo Bills,Buf,DEF
+12,7.9,Football Team,Starter,Kyler Murray,Ari,QB
+12,10.55,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+12,48.15,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+12,4.7,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+12,13.3,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+12,8.45,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+12,4.8,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+12,0.0,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+12,0.45,Football Team,Non-Starter,Samaje Perine,Cin,RB|W/R/T
+12,18.42,Football Team,Non-Starter,Baker Mayfield,TB,QB
+12,11.0,Football Team,Starter,Buffalo Bills,Buf,DEF
+13,14.42,Football Team,Starter,Kyler Murray,Ari,QB
+13,11.0,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+13,10.3,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+13,3.1,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+13,4.1,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+13,0.75,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+13,4.5,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+13,1.6,Football Team,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+13,0.0,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+13,28.71,Football Team,Non-Starter,Baker Mayfield,TB,QB
+13,5.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+14,18.46,Football Team,Starter,Kyler Murray,Ari,QB
+14,4.35,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+14,23.85,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+14,26.6,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+14,3.8,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+14,5.6,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+14,5.7,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+14,7.55,Football Team,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+14,13.7,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+14,30.02,Football Team,Non-Starter,Baker Mayfield,TB,QB
+14,15.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+15,33.14,Football Team,Starter,Kyler Murray,Ari,QB
+15,17.1,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+15,12.9,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+15,9.25,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+15,2.5,Football Team,Starter,Jamaal Williams,NO,RB|W/R/T
+15,13.75,Football Team,Starter,Hunter Henry,NE,TE|W/R/T
+15,7.0,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+15,4.5,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+15,4.45,Football Team,Non-Starter,Irv Smith,Hou,TE|W/R/T
+15,0.0,Football Team,Non-Starter,DeAndre Washington,Mia,RB|W/R/T
+15,16.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+16,15.38,Football Team,Starter,Kyler Murray,Ari,QB
+16,5.9,Football Team,Starter,Robert Woods,Pit,WR|W/R/T
+16,7.5,Football Team,Starter,Tyreek Hill,Mia,WR|W/R/T
+16,15.4,Football Team,Starter,Miles Sanders,Dal,RB|W/R/T
+16,5.35,Football Team,Starter,Ito Smith,Dal,RB|W/R/T
+16,2.0,Football Team,Starter,Cole Kmet,Chi,TE|W/R/T
+16,-0.1,Football Team,Starter,Sammy Watkins,Bal,WR|W/R/T
+16,0.0,Football Team,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+16,7.4,Football Team,Non-Starter,A.J. Green,Ari,WR|W/R/T
+16,2.1,Football Team,Non-Starter,Lynn Bowden,NO,WR|RB|W/R/T
+16,11.5,Football Team,Starter,Buffalo Bills,Buf,DEF
+1,19.36,Football Nets,Starter,Teddy Bridgewater,TB,QB
+1,27.15,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+1,6.5,Football Nets,Starter,Marvin Jones,Det,WR|W/R/T
+1,14.6,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+1,4.85,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+1,3.75,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+1,4.3,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+1,2.5,Football Nets,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+1,1.4,Football Nets,Non-Starter,A.J. Dillon,Phi,RB|W/R/T
+1,8.3,Football Nets,Non-Starter,Carlos Hyde,Jax,RB|W/R/T
+1,14.5,Football Nets,Starter,New England Patriots,NE,DEF
+2,8.68,Football Nets,Starter,Teddy Bridgewater,TB,QB
+2,24.65,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+2,9.3,Football Nets,Starter,Marvin Jones,Det,WR|W/R/T
+2,42.6,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+2,25.55,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+2,1.35,Football Nets,Starter,O.J. Howard,Hou,TE|W/R/T
+2,14.95,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+2,10.75,Football Nets,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+2,4.2,Football Nets,Non-Starter,Carlos Hyde,Jax,RB|W/R/T
+2,8.3,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+2,7.5,Football Nets,Starter,New England Patriots,NE,DEF
+3,11.99,Football Nets,Starter,Ryan Tannehill,Ten,QB
+3,12.95,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+3,5.85,Football Nets,Starter,Marvin Jones,Det,WR|W/R/T
+3,15.1,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+3,23.25,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+3,7.75,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+3,15.0,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+3,3.05,Football Nets,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+3,1.95,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+3,0.0,Football Nets,Non-Starter,Phillip Lindsay,Ind,RB|W/R/T
+3,16.0,Football Nets,Starter,New England Patriots,NE,DEF
+4,15.1,Football Nets,Starter,Joe Burrow,Cin,QB
+4,0.0,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+4,1.15,Football Nets,Starter,Marvin Jones,Det,WR|W/R/T
+4,18.35,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+4,4.3,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+4,1.75,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+4,11.15,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+4,0.0,Football Nets,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+4,12.5,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+4,0.0,Football Nets,Non-Starter,Phillip Lindsay,Ind,RB|W/R/T
+4,6.5,Football Nets,Starter,New England Patriots,NE,DEF
+5,4.32,Football Nets,Starter,Joe Burrow,Cin,QB
+5,15.6,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+5,9.65,Football Nets,Starter,Laviska Shenault,Buf,WR|W/R/T
+5,0.0,Football Nets,Starter,Phillip Lindsay,Ind,RB|W/R/T
+5,2.5,Football Nets,Starter,Gus Edwards,LAC,RB|W/R/T
+5,10.35,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+5,5.2,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+5,0.0,Football Nets,Non-Starter,Nick Chubb,Hou,RB|W/R/T
+5,0.0,Football Nets,Non-Starter,Aaron Jones,Min,RB|W/R/T
+5,0.0,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+5,0.0,Football Nets,Starter,New England Patriots,NE,DEF
+6,11.04,Football Nets,Starter,Andy Dalton,Car,QB
+6,14.4,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+6,1.85,Football Nets,Starter,Laviska Shenault,Buf,WR|W/R/T
+6,10.1,Football Nets,Starter,Phillip Lindsay,Ind,RB|W/R/T
+6,10.85,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+6,0.0,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+6,9.15,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+6,0.0,Football Nets,Non-Starter,Nick Chubb,Hou,RB|W/R/T
+6,3.4,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+6,0.0,Football Nets,Non-Starter,Mike Williams,Pit,WR|W/R/T
+6,10.5,Football Nets,Starter,New England Patriots,NE,DEF
+7,17.52,Football Nets,Starter,Matt Ryan,Ind,QB
+7,16.15,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+7,0.65,Football Nets,Starter,Mike Williams,Pit,WR|W/R/T
+7,7.9,Football Nets,Starter,Phillip Lindsay,Ind,RB|W/R/T
+7,18.4,Football Nets,Starter,Jamaal Williams,NO,RB|W/R/T
+7,0.0,Football Nets,Starter,Darren Fells,Det,TE|W/R/T
+7,19.49,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+7,0.0,Football Nets,Non-Starter,Aaron Jones,Min,RB|W/R/T
+7,0.0,Football Nets,Non-Starter,Nick Chubb,Hou,RB|W/R/T
+7,22.25,Football Nets,Non-Starter,Diontae Johnson,Cle,WR|W/R/T
+7,8.0,Football Nets,Starter,New England Patriots,NE,DEF
+8,17.94,Football Nets,Starter,Matt Ryan,Ind,QB
+8,4.95,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+8,0.85,Football Nets,Starter,Diontae Johnson,Cle,WR|W/R/T
+8,14.85,Football Nets,Starter,Phillip Lindsay,Ind,RB|W/R/T
+8,13.7,Football Nets,Starter,Jamaal Williams,NO,RB|W/R/T
+8,1.05,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+8,15.1,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+8,0.0,Football Nets,Non-Starter,Aaron Jones,Min,RB|W/R/T
+8,17.25,Football Nets,Non-Starter,Mike Williams,Pit,WR|W/R/T
+8,0.0,Football Nets,Non-Starter,Nick Chubb,Hou,RB|W/R/T
+8,5.5,Football Nets,Starter,New England Patriots,NE,DEF
+9,22.36,Football Nets,Starter,Matt Ryan,Ind,QB
+9,9.6,Football Nets,Starter,Diontae Johnson,Cle,WR|W/R/T
+9,9.35,Football Nets,Starter,Mike Williams,Pit,WR|W/R/T
+9,2.3,Football Nets,Starter,Phillip Lindsay,Ind,RB|W/R/T
+9,9.15,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+9,4.95,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+9,0.0,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+9,0.0,Football Nets,Non-Starter,Jamaal Williams,NO,RB|W/R/T
+9,0.0,Football Nets,Non-Starter,Tyler Boyd,Ten,WR|W/R/T
+9,0.0,Football Nets,Non-Starter,Nick Chubb,Hou,RB|W/R/T
+9,4.0,Football Nets,Starter,New England Patriots,NE,DEF
+10,8.72,Football Nets,Starter,Carson Wentz,Min,QB
+10,19.1,Football Nets,Starter,Diontae Johnson,Cle,WR|W/R/T
+10,4.3,Football Nets,Starter,Mike Williams,Pit,WR|W/R/T
+10,10.75,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+10,18.6,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+10,4.5,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+10,5.6,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+10,0.0,Football Nets,Non-Starter,Calvin Ridley,Ten,WR|W/R/T
+10,0.0,Football Nets,Non-Starter,Kenny Golladay,NYG,WR|W/R/T
+10,0.0,Football Nets,Non-Starter,Raheem Mostert,LV,RB|W/R/T
+10,14.5,Football Nets,Starter,Minnesota Vikings,Min,DEF
+11,12.4,Football Nets,Starter,Carson Wentz,Min,QB
+11,14.1,Football Nets,Starter,Diontae Johnson,Cle,WR|W/R/T
+11,10.25,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+11,14.1,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+11,11.4,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+11,5.3,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+11,10.75,Football Nets,Starter,Tyler Boyd,Ten,WR|W/R/T
+11,0.0,Football Nets,Non-Starter,Kenny Golladay,NYG,WR|W/R/T
+11,14.2,Football Nets,Non-Starter,Mike Williams,Pit,WR|W/R/T
+11,0.0,Football Nets,Non-Starter,Raheem Mostert,LV,RB|W/R/T
+11,5.5,Football Nets,Starter,Minnesota Vikings,Min,DEF
+12,10.42,Football Nets,Starter,Daniel Jones,Ind,QB
+12,12.5,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+12,3.35,Football Nets,Starter,Mike Williams,Pit,WR|W/R/T
+12,9.25,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+12,24.35,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+12,10.0,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+12,8.8,Football Nets,Starter,Raheem Mostert,LV,RB|W/R/T
+12,2.25,Football Nets,Non-Starter,Tyler Boyd,Ten,WR|W/R/T
+12,6.6,Football Nets,Non-Starter,Diontae Johnson,Cle,WR|W/R/T
+12,0.0,Football Nets,Non-Starter,Kenny Golladay,NYG,WR|W/R/T
+12,7.5,Football Nets,Starter,Minnesota Vikings,Min,DEF
+13,26.08,Football Nets,Starter,Matthew Stafford,LAR,QB
+13,12.05,Football Nets,Starter,Calvin Ridley,Ten,WR|W/R/T
+13,15.1,Football Nets,Starter,Diontae Johnson,Cle,WR|W/R/T
+13,21.55,Football Nets,Starter,Aaron Jones,Min,RB|W/R/T
+13,16.85,Football Nets,Starter,Nick Chubb,Hou,RB|W/R/T
+13,17.05,Football Nets,Starter,Mike Gesicki,Cin,TE|W/R/T
+13,4.55,Football Nets,Starter,Raheem Mostert,LV,RB|W/R/T
+13,5.3,Football Nets,Non-Starter,Mike Williams,Pit,WR|W/R/T
+13,13.45,Football Nets,Non-Starter,Tyler Boyd,Ten,WR|W/R/T
+13,0.0,Football Nets,Non-Starter,Kenny Golladay,NYG,WR|W/R/T
+13,15.5,Football Nets,Starter,Minnesota Vikings,Min,DEF
+1,20.44,Hells Wells,Starter,Patrick Mahomes,KC,QB
+1,6.3,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+1,13.2,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+1,21.05,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+1,4.55,Hells Wells,Starter,Cam Akers,NO,RB|W/R/T
+1,9.25,Hells Wells,Starter,Jared Cook,LAC,TE|W/R/T
+1,7.35,Hells Wells,Starter,Jarvis Landry,NO,WR|W/R/T
+1,1.4,Hells Wells,Non-Starter,Duke Johnson,Buf,RB|W/R/T
+1,9.0,Hells Wells,Non-Starter,Alexander Mattison,Mia,RB|W/R/T
+1,3.1,Hells Wells,Non-Starter,Justin Jefferson,Min,WR|W/R/T
+1,7.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+2,27.48,Hells Wells,Starter,Patrick Mahomes,KC,QB
+2,3.55,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+2,0.0,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+2,15.6,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+2,-1.65,Hells Wells,Starter,Benny Snell,Pit,RB|W/R/T
+2,7.8,Hells Wells,Starter,Jared Cook,LAC,TE|W/R/T
+2,1.3,Hells Wells,Starter,Cam Akers,NO,RB|W/R/T
+2,5.35,Hells Wells,Non-Starter,Jarvis Landry,NO,WR|W/R/T
+2,1.85,Hells Wells,Non-Starter,Alexander Mattison,Mia,RB|W/R/T
+2,10.35,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+2,18.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+3,40.0,Hells Wells,Starter,Patrick Mahomes,KC,QB
+3,5.95,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+3,12.4,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+3,24.4,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+3,18.25,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+3,2.6,Hells Wells,Starter,Jared Cook,LAC,TE|W/R/T
+3,3.1,Hells Wells,Starter,Russell Gage,SF,WR|W/R/T
+3,1.1,Hells Wells,Non-Starter,Benny Snell,Pit,RB|W/R/T
+3,0.0,Hells Wells,Non-Starter,Cam Akers,NO,RB|W/R/T
+3,8.15,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+3,29.5,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+4,20.94,Hells Wells,Starter,Gardner Minshew,KC,QB
+4,3.65,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+4,18.3,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+4,27.1,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+4,3.95,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+4,2.5,Hells Wells,Starter,Russell Gage,SF,WR|W/R/T
+4,20.24,Hells Wells,Non-Starter,Patrick Mahomes,KC,QB
+4,0.0,Hells Wells,Non-Starter,Cam Akers,NO,RB|W/R/T
+4,0.0,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+4,2.8,Hells Wells,Non-Starter,Brian Hill,Cle,RB|W/R/T
+4,10.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+5,29.7,Hells Wells,Starter,Patrick Mahomes,KC,QB
+5,8.4,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+5,12.8,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+5,16.15,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+5,19.55,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+5,0.0,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+5,2.1,Hells Wells,Non-Starter,Russell Gage,SF,WR|W/R/T
+5,6.1,Hells Wells,Non-Starter,Cam Akers,NO,RB|W/R/T
+5,0.0,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+5,0.0,Hells Wells,Non-Starter,Robert Tonyan,KC,TE|W/R/T
+5,12.5,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+6,20.6,Hells Wells,Starter,Patrick Mahomes,KC,QB
+6,1.35,Hells Wells,Starter,T.Y. Hilton,Dal,WR|W/R/T
+6,19.8,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+6,9.2,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+6,0.0,Hells Wells,Starter,Cam Akers,NO,RB|W/R/T
+6,3.25,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+6,11.1,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+6,0.0,Hells Wells,Non-Starter,Dalvin Cook,Dal,RB|W/R/T
+6,0.0,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+6,0.0,Hells Wells,Non-Starter,Emmanuel Sanders,Buf,WR|W/R/T
+6,7.5,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+7,12.0,Hells Wells,Starter,Patrick Mahomes,KC,QB
+7,10.25,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+7,0.0,Hells Wells,Starter,Emmanuel Sanders,Buf,WR|W/R/T
+7,8.1,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+7,0.0,Hells Wells,Starter,Darrel Williams,Ari,RB|W/R/T
+7,3.7,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+7,5.15,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+7,11.0,Hells Wells,Non-Starter,Corey Davis,NYJ,WR|W/R/T
+7,0.0,Hells Wells,Non-Starter,Dalvin Cook,Dal,RB|W/R/T
+7,9.5,Hells Wells,Starter,Arizona,Ari,DEF
+7,0.0,Hells Wells,Non-Starter,Indianapolis Colts,Ind,DEF
+8,36.64,Hells Wells,Starter,Patrick Mahomes,KC,QB
+8,20.8,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+8,5.4,Hells Wells,Starter,Josh Reynolds,NYJ,WR|W/R/T
+8,6.05,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+8,47.1,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+8,9.15,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+8,0.0,Hells Wells,Starter,Carlos Hyde,Jax,RB|W/R/T
+8,0.0,Hells Wells,Non-Starter,Tim Patrick,Det,WR|W/R/T
+8,0.0,Hells Wells,Non-Starter,Emmanuel Sanders,Buf,WR|W/R/T
+8,0.0,Hells Wells,Non-Starter,Will Fuller V,Mia,WR|W/R/T
+8,21.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+9,30.88,Hells Wells,Starter,Patrick Mahomes,KC,QB
+9,0.0,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+9,17.25,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+9,37.7,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+9,4.3,Hells Wells,Starter,Jordan Wilkins,Cle,RB|W/R/T
+9,0.75,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+9,9.9,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+9,0.0,Hells Wells,Non-Starter,Carlos Hyde,Jax,RB|W/R/T
+9,0.0,Hells Wells,Non-Starter,Darrell Henderson,LAR,RB|W/R/T
+9,0.0,Hells Wells,Non-Starter,Josh Reynolds,NYJ,WR|W/R/T
+9,11.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+10,12.52,Hells Wells,Starter,Joe Burrow,Cin,QB
+10,7.95,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+10,5.05,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+10,12.2,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+10,2.8,Hells Wells,Starter,Jordan Wilkins,Cle,RB|W/R/T
+10,4.05,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+10,9.55,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+10,7.1,Hells Wells,Non-Starter,Tim Patrick,Det,WR|W/R/T
+10,0.0,Hells Wells,Non-Starter,Patrick Mahomes,KC,QB
+10,0.0,Hells Wells,Non-Starter,Carlos Hyde,Jax,RB|W/R/T
+10,13.5,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+11,21.52,Hells Wells,Starter,Patrick Mahomes,KC,QB
+11,12.55,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+11,9.5,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+11,21.25,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+11,1.4,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+11,11.65,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+11,3.85,Hells Wells,Starter,Jordan Wilkins,Cle,RB|W/R/T
+11,11.32,Hells Wells,Non-Starter,Joe Burrow,Cin,QB
+11,13.15,Hells Wells,Non-Starter,Tim Patrick,Det,WR|W/R/T
+11,4.25,Hells Wells,Non-Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+11,10.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+12,31.28,Hells Wells,Starter,Patrick Mahomes,KC,QB
+12,7.75,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+12,30.6,Hells Wells,Starter,Will Fuller V,Mia,WR|W/R/T
+12,7.2,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+12,1.9,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+12,13.95,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+12,7.0,Hells Wells,Starter,Gus Edwards,LAC,RB|W/R/T
+12,0.0,Hells Wells,Non-Starter,Tim Patrick,Det,WR|W/R/T
+12,0.0,Hells Wells,Non-Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+12,3.4,Hells Wells,Non-Starter,Carlos Hyde,Jax,RB|W/R/T
+12,-2.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+13,19.32,Hells Wells,Starter,Patrick Mahomes,KC,QB
+13,26.95,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+13,17.4,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+13,19.4,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+13,13.9,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+13,10.9,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+13,1.85,Hells Wells,Starter,Carlos Hyde,Jax,RB|W/R/T
+13,10.1,Hells Wells,Non-Starter,Gus Edwards,LAC,RB|W/R/T
+13,-0.4,Hells Wells,Non-Starter,Marquez Valdes-Scantling,Sea,WR|W/R/T
+13,4.8,Hells Wells,Non-Starter,Nelson Agholor,Bal,WR|W/R/T
+13,15.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+14,18.62,Hells Wells,Starter,Patrick Mahomes,KC,QB
+14,2.15,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+14,10.35,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+14,17.5,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+14,0.5,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+14,10.85,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+14,1.6,Hells Wells,Starter,Ty Johnson,Buf,RB|W/R/T
+14,17.25,Hells Wells,Non-Starter,Nelson Agholor,Bal,WR|W/R/T
+14,7.15,Hells Wells,Non-Starter,Keke Coutee,Ind,WR|W/R/T
+14,0.7,Hells Wells,Non-Starter,Alfred Morris,NYG,RB|W/R/T
+14,14.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+15,25.86,Hells Wells,Starter,Patrick Mahomes,KC,QB
+15,18.0,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+15,2.15,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+15,23.15,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+15,0.55,Hells Wells,Starter,Darrell Henderson,LAR,RB|W/R/T
+15,8.55,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+15,13.0,Hells Wells,Starter,Ty Johnson,Buf,RB|W/R/T
+15,5.9,Hells Wells,Non-Starter,Nelson Agholor,Bal,WR|W/R/T
+15,10.55,Hells Wells,Non-Starter,Keke Coutee,Ind,WR|W/R/T
+15,3.9,Hells Wells,Non-Starter,Alfred Morris,NYG,RB|W/R/T
+15,12.0,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+16,19.22,Hells Wells,Starter,Patrick Mahomes,KC,QB
+16,0.0,Hells Wells,Starter,Corey Davis,NYJ,WR|W/R/T
+16,4.65,Hells Wells,Starter,Tim Patrick,Det,WR|W/R/T
+16,15.0,Hells Wells,Starter,Dalvin Cook,Dal,RB|W/R/T
+16,1.3,Hells Wells,Starter,Ty Johnson,Buf,RB|W/R/T
+16,1.95,Hells Wells,Starter,Robert Tonyan,KC,TE|W/R/T
+16,6.65,Hells Wells,Starter,Keke Coutee,Ind,WR|W/R/T
+16,6.2,Hells Wells,Non-Starter,Darrell Henderson,LAR,RB|W/R/T
+16,22.75,Hells Wells,Non-Starter,Nelson Agholor,Bal,WR|W/R/T
+16,1.55,Hells Wells,Non-Starter,Alfred Morris,NYG,RB|W/R/T
+16,3.5,Hells Wells,Starter,Indianapolis Colts,Ind,DEF
+1,27.5,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+1,5.0,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+1,5.15,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+1,5.35,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+1,8.7,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+1,6.0,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+1,5.2,imdrunkrightnow,Starter,Diontae Johnson,Cle,WR|W/R/T
+1,6.6,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+1,23.7,imdrunkrightnow,Non-Starter,Darius Slayton,NYG,WR|W/R/T
+1,11.25,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+1,15.5,imdrunkrightnow,Starter,Los Angeles Chargers,LAC,DEF
+2,17.56,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+2,9.25,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+2,17.2,imdrunkrightnow,Starter,Diontae Johnson,Cle,WR|W/R/T
+2,9.6,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+2,9.2,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+2,19.5,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+2,4.05,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+2,0.0,imdrunkrightnow,Non-Starter,A.J. Brown,Phi,WR|W/R/T
+2,7.2,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+2,2.05,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+2,6.5,imdrunkrightnow,Starter,Cleveland Browns,Cle,DEF
+3,14.18,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+3,18.95,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+3,0.9,imdrunkrightnow,Starter,Diontae Johnson,Cle,WR|W/R/T
+3,7.0,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+3,7.8,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+3,1.4,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+3,4.05,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+3,0.0,imdrunkrightnow,Non-Starter,A.J. Brown,Phi,WR|W/R/T
+3,6.75,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+3,3.9,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+3,17.0,imdrunkrightnow,Starter,Cleveland Browns,Cle,DEF
+4,25.02,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+4,13.95,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+4,12.6,imdrunkrightnow,Starter,Jerry Jeudy,Cle,WR|W/R/T
+4,37.6,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+4,14.3,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+4,9.05,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+4,5.55,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+4,0.0,imdrunkrightnow,Non-Starter,Diontae Johnson,Cle,WR|W/R/T
+4,0.0,imdrunkrightnow,Non-Starter,A.J. Brown,Phi,WR|W/R/T
+4,11.25,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+4,4.5,imdrunkrightnow,Starter,Houston Texans,Hou,DEF
+5,13.5,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+5,7.85,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+5,0.05,imdrunkrightnow,Starter,Diontae Johnson,Cle,WR|W/R/T
+5,10.9,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+5,13.25,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+5,12.05,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+5,14.9,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+5,0.0,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+5,15.95,imdrunkrightnow,Non-Starter,A.J. Brown,Phi,WR|W/R/T
+5,16.45,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+5,10.5,imdrunkrightnow,Starter,Arizona,Ari,DEF
+6,28.24,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+6,1.85,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+6,18.85,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+6,13.4,imdrunkrightnow,Starter,Joe Mixon,Hou,RB|W/R/T
+6,24.6,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+6,3.5,imdrunkrightnow,Starter,Evan Engram,Den,TE|W/R/T
+6,10.3,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+6,0.0,imdrunkrightnow,Non-Starter,Darren Waller,Mia,TE|W/R/T
+6,3.7,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+6,3.15,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+6,3.0,imdrunkrightnow,Starter,Carolina Panthers,Car,DEF
+7,27.76,imdrunkrightnow,Starter,Carson Wentz,Min,QB
+7,22.8,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+7,2.8,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+7,9.85,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+7,16.25,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+7,12.5,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+7,7.4,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+7,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+7,0.0,imdrunkrightnow,Non-Starter,Lamar Jackson,Bal,QB
+7,2.5,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+7,4.5,imdrunkrightnow,Starter,Dallas Cowboys,Dal,DEF
+8,12.82,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+8,9.4,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+8,13.75,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+8,3.6,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+8,6.2,imdrunkrightnow,Starter,Malcolm Brown,LAR,RB|W/R/T
+8,3.95,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+8,6.85,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+8,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+8,0.0,imdrunkrightnow,Non-Starter,Chase Edmonds,TB,RB|W/R/T
+8,8.3,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+8,7.0,imdrunkrightnow,Starter,Denver Broncos,Den,DEF
+9,18.6,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+9,17.1,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+9,20.25,imdrunkrightnow,Starter,Jerry Jeudy,Cle,WR|W/R/T
+9,9.55,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+9,2.55,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+9,9.45,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+9,1.05,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+9,0.0,imdrunkrightnow,Non-Starter,Cooper Kupp,Sea,WR|W/R/T
+9,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+9,7.9,imdrunkrightnow,Non-Starter,Jordan Howard,NO,RB|W/R/T
+9,15.0,imdrunkrightnow,Starter,New York Giants,NYG,DEF
+10,21.46,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+10,2.35,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+10,6.25,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+10,8.45,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+10,24.05,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+10,4.45,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+10,3.65,imdrunkrightnow,Starter,Jarvis Landry,NO,WR|W/R/T
+10,7.8,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+10,10.55,imdrunkrightnow,Non-Starter,Darius Slayton,NYG,WR|W/R/T
+10,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+10,6.5,imdrunkrightnow,Starter,New York Giants,NYG,DEF
+11,16.54,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+11,13.2,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+11,17.25,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+11,11.9,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+11,2.4,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+11,16.55,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+11,3.1,imdrunkrightnow,Starter,Jarvis Landry,NO,WR|W/R/T
+11,4.45,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+11,0.0,imdrunkrightnow,Non-Starter,Darius Slayton,NYG,WR|W/R/T
+11,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+11,24.5,imdrunkrightnow,Starter,Cleveland Browns,Cle,DEF
+12,13.9,imdrunkrightnow,Starter,Matt Ryan,Ind,QB
+12,22.8,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+12,4.6,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+12,5.3,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+12,16.55,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+12,3.3,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+12,0.0,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+12,0.0,imdrunkrightnow,Non-Starter,Lamar Jackson,Bal,QB
+12,0.0,imdrunkrightnow,Non-Starter,Jerry Jeudy,Cle,WR|W/R/T
+12,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+12,0.5,imdrunkrightnow,Starter,Cleveland Browns,Cle,DEF
+13,12.92,imdrunkrightnow,Starter,Matt Ryan,Ind,QB
+13,7.7,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+13,9.3,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+13,4.8,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+13,5.35,imdrunkrightnow,Starter,Devontae Booker,NYG,RB|W/R/T
+13,35.25,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+13,1.65,imdrunkrightnow,Starter,Darius Slayton,NYG,WR|W/R/T
+13,0.0,imdrunkrightnow,Non-Starter,Ronald Jones,Dal,RB|W/R/T
+13,25.68,imdrunkrightnow,Non-Starter,Lamar Jackson,Bal,QB
+13,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+13,6.5,imdrunkrightnow,Starter,Baltimore Ravens,Bal,DEF
+14,34.92,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+14,18.95,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+14,10.55,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+14,6.3,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+14,14.65,imdrunkrightnow,Starter,Ronald Jones,Dal,RB|W/R/T
+14,9.25,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+14,21.85,imdrunkrightnow,Starter,T.Y. Hilton,Dal,WR|W/R/T
+14,3.85,imdrunkrightnow,Non-Starter,Darius Slayton,NYG,WR|W/R/T
+14,7.26,imdrunkrightnow,Non-Starter,Matt Ryan,Ind,QB
+14,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+14,3.5,imdrunkrightnow,Starter,Carolina Panthers,Car,DEF
+15,29.22,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+15,11.65,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+15,5.15,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+15,13.35,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+15,8.3,imdrunkrightnow,Starter,Gus Edwards,LAC,RB|W/R/T
+15,23.25,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+15,8.1,imdrunkrightnow,Starter,T.Y. Hilton,Dal,WR|W/R/T
+15,0.0,imdrunkrightnow,Non-Starter,Ronald Jones,Dal,RB|W/R/T
+15,0.0,imdrunkrightnow,Non-Starter,Joe Mixon,Hou,RB|W/R/T
+15,17.45,imdrunkrightnow,Non-Starter,Benny Snell,Pit,RB|W/R/T
+15,14.5,imdrunkrightnow,Starter,Baltimore Ravens,Bal,DEF
+16,21.32,imdrunkrightnow,Starter,Lamar Jackson,Bal,QB
+16,5.3,imdrunkrightnow,Starter,A.J. Brown,Phi,WR|W/R/T
+16,8.6,imdrunkrightnow,Starter,Cooper Kupp,Sea,WR|W/R/T
+16,1.3,imdrunkrightnow,Starter,Chase Edmonds,TB,RB|W/R/T
+16,12.7,imdrunkrightnow,Starter,Gus Edwards,LAC,RB|W/R/T
+16,12.45,imdrunkrightnow,Starter,Darren Waller,Mia,TE|W/R/T
+16,6.75,imdrunkrightnow,Starter,T.Y. Hilton,Dal,WR|W/R/T
+16,0.0,imdrunkrightnow,Non-Starter,Benny Snell,Pit,RB|W/R/T
+16,10.2,imdrunkrightnow,Non-Starter,George Kittle,SF,TE|W/R/T
+16,6.9,imdrunkrightnow,Non-Starter,Sony Michel,LAC,RB|W/R/T
+16,14.5,imdrunkrightnow,Starter,Baltimore Ravens,Bal,DEF
+1,30.76,QAaron,Starter,Aaron Rodgers,Pit,QB
+1,17.95,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+1,11.2,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+1,13.35,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+1,23.75,QAaron,Starter,Malcolm Brown,LAR,RB|W/R/T
+1,12.85,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+1,7.35,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+1,0.0,QAaron,Non-Starter,Ryquell Armstead,NO,RB|W/R/T
+1,2.05,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+1,4.4,QAaron,Non-Starter,Larry Fitzgerald,Ari,WR|W/R/T
+1,16.5,QAaron,Starter,Baltimore Ravens,Bal,DEF
+2,18.45,QAaron,Starter,Aaron Rodgers,Pit,QB
+2,14.45,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+2,20.25,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+2,14.9,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+2,4.7,QAaron,Starter,Malcolm Brown,LAR,RB|W/R/T
+2,7.2,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+2,2.9,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+2,5.05,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+2,6.75,QAaron,Non-Starter,Larry Fitzgerald,Ari,WR|W/R/T
+2,0.1,QAaron,Non-Starter,Kenneth Barber,LV,RB|W/R/T
+2,17.5,QAaron,Starter,Baltimore Ravens,Bal,DEF
+3,24.52,QAaron,Starter,Aaron Rodgers,Pit,QB
+3,30.25,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+3,9.6,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+3,4.8,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+3,14.45,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+3,6.3,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+3,1.9,QAaron,Starter,Malcolm Brown,LAR,RB|W/R/T
+3,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+3,12.45,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+3,0.25,QAaron,Non-Starter,Larry Fitzgerald,Ari,WR|W/R/T
+3,8.5,QAaron,Starter,Baltimore Ravens,Bal,DEF
+4,29.58,QAaron,Starter,Aaron Rodgers,Pit,QB
+4,4.4,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+4,14.3,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+4,24.3,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+4,17.45,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+4,9.4,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+4,4.2,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+4,6.95,QAaron,Non-Starter,Malcolm Brown,LAR,RB|W/R/T
+4,0.0,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+4,0.9,QAaron,Non-Starter,Larry Fitzgerald,Ari,WR|W/R/T
+4,10.0,QAaron,Starter,Baltimore Ravens,Bal,DEF
+5,14.16,QAaron,Starter,Kirk Cousins,Atl,QB
+5,5.4,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+5,3.35,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+5,1.0,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+5,2.65,QAaron,Starter,Malcolm Brown,LAR,RB|W/R/T
+5,3.55,QAaron,Starter,Eric Ebron,Pit,TE|W/R/T
+5,0.0,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+5,0.0,QAaron,Non-Starter,Melvin Gordon,Bal,RB|W/R/T
+5,0.0,QAaron,Non-Starter,Aaron Rodgers,Pit,QB
+5,0.0,QAaron,Non-Starter,T.J. Hockenson,Min,TE|W/R/T
+5,32.0,QAaron,Starter,Baltimore Ravens,Bal,DEF
+6,1.8,QAaron,Starter,Aaron Rodgers,Pit,QB
+6,9.15,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+6,15.05,QAaron,Starter,Brandin Cooks,NO,WR|W/R/T
+6,3.3,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+6,1.9,QAaron,Starter,Brian Hill,Cle,RB|W/R/T
+6,8.2,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+6,27.7,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+6,0.0,QAaron,Non-Starter,Melvin Gordon,Bal,RB|W/R/T
+6,1.4,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+6,0.0,QAaron,Non-Starter,Tyler Lockett,Ten,WR|W/R/T
+6,14.0,QAaron,Starter,Baltimore Ravens,Bal,DEF
+7,27.32,QAaron,Starter,Aaron Rodgers,Pit,QB
+7,41.75,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+7,11.7,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+7,-0.1,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+7,10.5,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+7,13.15,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+7,16.75,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+7,7.75,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+7,6.5,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+7,2.5,QAaron,Starter,New Orleans Saints,NO,DEF
+7,0.0,QAaron,Non-Starter,Baltimore Ravens,Bal,DEF
+8,22.54,QAaron,Starter,Aaron Rodgers,Pit,QB
+8,4.3,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+8,15.45,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+8,10.9,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+8,6.2,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+8,8.25,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+8,16.65,QAaron,Starter,Marvin Jones,Det,WR|W/R/T
+8,11.8,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+8,0.0,QAaron,Non-Starter,Terry McLaurin,Was,WR|W/R/T
+8,0.0,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+8,6.5,QAaron,Starter,Baltimore Ravens,Bal,DEF
+9,28.9,QAaron,Starter,Aaron Rodgers,Pit,QB
+9,5.0,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+9,19.25,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+9,13.55,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+9,2.95,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+9,11.15,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+9,12.65,QAaron,Starter,Julio Jones,Phi,WR|W/R/T
+9,8.95,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+9,11.05,QAaron,Non-Starter,Marvin Jones,Det,WR|W/R/T
+9,15.05,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+9,15.5,QAaron,Starter,Baltimore Ravens,Bal,DEF
+10,25.4,QAaron,Starter,Aaron Rodgers,Pit,QB
+10,7.85,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+10,11.95,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+10,4.85,QAaron,Starter,Jerick McKinnon,KC,RB|W/R/T
+10,4.6,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+10,4.3,QAaron,Starter,Eric Ebron,Pit,TE|W/R/T
+10,5.4,QAaron,Starter,Brandin Cooks,NO,WR|W/R/T
+10,1.8,QAaron,Non-Starter,T.J. Hockenson,Min,TE|W/R/T
+10,17.6,QAaron,Non-Starter,Marvin Jones,Det,WR|W/R/T
+10,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+10,4.0,QAaron,Starter,Baltimore Ravens,Bal,DEF
+11,21.74,QAaron,Starter,Aaron Rodgers,Pit,QB
+11,14.95,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+11,9.65,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+11,18.4,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+11,4.25,QAaron,Starter,Duke Johnson,Buf,RB|W/R/T
+11,7.8,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+11,6.1,QAaron,Starter,Marvin Jones,Det,WR|W/R/T
+11,9.5,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+11,10.6,QAaron,Non-Starter,Eric Ebron,Pit,TE|W/R/T
+11,4.4,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+11,6.0,QAaron,Starter,Baltimore Ravens,Bal,DEF
+12,25.64,QAaron,Starter,Aaron Rodgers,Pit,QB
+12,3.05,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+12,10.95,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+12,3.1,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+12,14.75,QAaron,Starter,Duke Johnson,Buf,RB|W/R/T
+12,10.15,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+12,5.5,QAaron,Starter,Brian Hill,Cle,RB|W/R/T
+12,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+12,9.75,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+12,6.3,QAaron,Non-Starter,Marvin Jones,Det,WR|W/R/T
+12,7.0,QAaron,Starter,Kansas City Chiefs,KC,DEF
+13,23.5,QAaron,Starter,Aaron Rodgers,Pit,QB
+13,1.9,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+13,7.8,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+13,14.45,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+13,1.5,QAaron,Starter,Benny Snell,Pit,RB|W/R/T
+13,10.15,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+13,7.75,QAaron,Starter,Brandin Cooks,NO,WR|W/R/T
+13,10.9,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+13,1.8,QAaron,Non-Starter,Brian Hill,Cle,RB|W/R/T
+13,19.6,QAaron,Non-Starter,Marvin Jones,Det,WR|W/R/T
+13,5.5,QAaron,Starter,Kansas City Chiefs,KC,DEF
+14,30.9,QAaron,Starter,Aaron Rodgers,Pit,QB
+14,2.9,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+14,6.45,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+14,9.85,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+14,22.55,QAaron,Starter,Mike Davis,Bal,RB|W/R/T
+14,11.8,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+14,5.8,QAaron,Starter,Marvin Jones,Det,WR|W/R/T
+14,0.0,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+14,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+14,1.75,QAaron,Non-Starter,Brian Hill,Cle,RB|W/R/T
+14,18.5,QAaron,Starter,Kansas City Chiefs,KC,DEF
+15,18.32,QAaron,Starter,Aaron Rodgers,Pit,QB
+15,9.45,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+15,4.4,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+15,21.1,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+15,6.6,QAaron,Starter,Mike Davis,Bal,RB|W/R/T
+15,0.3,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+15,19.7,QAaron,Starter,Marvin Jones,Det,WR|W/R/T
+15,7.4,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+15,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+15,1.2,QAaron,Non-Starter,Brian Hill,Cle,RB|W/R/T
+15,7.0,QAaron,Starter,Kansas City Chiefs,KC,DEF
+16,25.14,QAaron,Starter,Aaron Rodgers,Pit,QB
+16,0.0,QAaron,Starter,Terry McLaurin,Was,WR|W/R/T
+16,5.15,QAaron,Starter,Tyler Lockett,Ten,WR|W/R/T
+16,7.9,QAaron,Starter,Melvin Gordon,Bal,RB|W/R/T
+16,8.8,QAaron,Starter,Mike Davis,Bal,RB|W/R/T
+16,3.3,QAaron,Starter,T.J. Hockenson,Min,TE|W/R/T
+16,2.65,QAaron,Starter,Marvin Jones,Det,WR|W/R/T
+16,21.85,QAaron,Non-Starter,Brandin Cooks,NO,WR|W/R/T
+16,0.0,QAaron,Non-Starter,Julio Jones,Phi,WR|W/R/T
+16,6.85,QAaron,Non-Starter,Brian Hill,Cle,RB|W/R/T
+16,10.0,QAaron,Starter,Kansas City Chiefs,KC,DEF
+1,25.7,French Fries & Gravy,Starter,Cam Newton,Car,QB
+1,10.6,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+1,5.7,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+1,13.85,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+1,17.65,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+1,6.3,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+1,3.75,French Fries & Gravy,Starter,Phillip Lindsay,Ind,RB|W/R/T
+1,14.6,French Fries & Gravy,Non-Starter,Anthony Miller,Bal,WR|W/R/T
+1,12.15,French Fries & Gravy,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+1,15.2,French Fries & Gravy,Non-Starter,Allen Lazard,NYJ,WR|W/R/T
+1,6.0,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+2,34.58,French Fries & Gravy,Starter,Cam Newton,Car,QB
+2,23.3,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+2,5.25,French Fries & Gravy,Starter,Allen Lazard,NYJ,WR|W/R/T
+2,8.4,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+2,5.5,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+2,3.6,French Fries & Gravy,Starter,Logan Thomas,SF,TE|W/R/T
+2,4.1,French Fries & Gravy,Starter,Adrian Peterson,Sea,RB|W/R/T
+2,0.0,French Fries & Gravy,Non-Starter,George Kittle,SF,TE|W/R/T
+2,0.0,French Fries & Gravy,Non-Starter,Phillip Lindsay,Ind,RB|W/R/T
+2,12.55,French Fries & Gravy,Non-Starter,DeVante Parker,NE,WR|W/R/T
+2,18.0,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+3,11.18,French Fries & Gravy,Starter,Cam Newton,Car,QB
+3,11.9,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+3,8.15,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+3,25.5,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+3,11.1,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+3,2.8,French Fries & Gravy,Starter,Jordan Reed,SF,TE|W/R/T
+3,21.9,French Fries & Gravy,Starter,Allen Lazard,NYJ,WR|W/R/T
+3,8.75,French Fries & Gravy,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+3,0.0,French Fries & Gravy,Non-Starter,George Kittle,SF,TE|W/R/T
+3,1.0,French Fries & Gravy,Non-Starter,Devonta Freeman,Bal,RB|W/R/T
+3,23.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+4,15.2,French Fries & Gravy,Starter,Baker Mayfield,TB,QB
+4,13.0,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+4,13.5,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+4,9.7,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+4,9.6,French Fries & Gravy,Starter,Adrian Peterson,Sea,RB|W/R/T
+4,28.85,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+4,4.1,French Fries & Gravy,Starter,Randall Cobb,NYJ,WR|W/R/T
+4,0.0,French Fries & Gravy,Non-Starter,Cam Newton,Car,QB
+4,0.0,French Fries & Gravy,Non-Starter,Derrick Henry,Bal,RB|W/R/T
+4,7.8,French Fries & Gravy,Non-Starter,Devonta Freeman,Bal,RB|W/R/T
+4,9.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+5,20.82,French Fries & Gravy,Starter,Teddy Bridgewater,TB,QB
+5,13.1,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+5,11.5,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+5,10.8,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+5,18.55,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+5,5.4,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+5,15.2,French Fries & Gravy,Starter,Devonta Freeman,Bal,RB|W/R/T
+5,6.2,French Fries & Gravy,Non-Starter,Randall Cobb,NYJ,WR|W/R/T
+5,0.0,French Fries & Gravy,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+5,0.0,French Fries & Gravy,Non-Starter,Cam Newton,Car,QB
+5,8.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+6,17.73,French Fries & Gravy,Starter,Cam Newton,Car,QB
+6,12.1,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+6,4.25,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+6,13.15,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+6,38.9,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+6,18.65,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+6,5.95,French Fries & Gravy,Starter,Devonta Freeman,Bal,RB|W/R/T
+6,9.44,French Fries & Gravy,Non-Starter,Teddy Bridgewater,TB,QB
+6,8.45,French Fries & Gravy,Non-Starter,Randall Cobb,NYJ,WR|W/R/T
+6,12.05,French Fries & Gravy,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+6,24.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+7,-0.18,French Fries & Gravy,Starter,Cam Newton,Car,QB
+7,6.3,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+7,1.45,French Fries & Gravy,Starter,Keelan Cole,LV,WR|W/R/T
+7,13.4,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+7,13.7,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+7,6.75,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+7,0.8,French Fries & Gravy,Starter,Devonta Freeman,Bal,RB|W/R/T
+7,11.5,French Fries & Gravy,Non-Starter,Randall Cobb,NYJ,WR|W/R/T
+7,0.0,French Fries & Gravy,Non-Starter,DeVante Parker,NE,WR|W/R/T
+7,3.25,French Fries & Gravy,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+7,7.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+8,12.04,French Fries & Gravy,Starter,Teddy Bridgewater,TB,QB
+8,10.7,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+8,6.55,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+8,17.2,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+8,9.35,French Fries & Gravy,Starter,JaMycal Hasty,NE,RB|W/R/T
+8,4.4,French Fries & Gravy,Starter,George Kittle,SF,TE|W/R/T
+8,12.45,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+8,0.0,French Fries & Gravy,Non-Starter,Devonta Freeman,Bal,RB|W/R/T
+8,18.36,French Fries & Gravy,Non-Starter,Cam Newton,Car,QB
+8,0.0,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+8,10.5,French Fries & Gravy,Starter,Tampa Bay Buccaneers,TB,DEF
+9,24.56,French Fries & Gravy,Starter,Cam Newton,Car,QB
+9,14.05,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+9,7.9,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+9,6.8,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+9,1.6,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+9,3.55,French Fries & Gravy,Starter,Logan Thomas,SF,TE|W/R/T
+9,1.8,French Fries & Gravy,Starter,JaMycal Hasty,NE,RB|W/R/T
+9,13.95,French Fries & Gravy,Non-Starter,Wayne Gallman,Sea,RB|W/R/T
+9,0.0,French Fries & Gravy,Non-Starter,Devonta Freeman,Bal,RB|W/R/T
+9,10.4,French Fries & Gravy,Non-Starter,DeeJay Dallas,Ari,RB|W/R/T
+9,19.5,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+10,16.82,French Fries & Gravy,Starter,Cam Newton,Car,QB
+10,17.8,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+10,3.6,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+10,11.15,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+10,18.25,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+10,7.6,French Fries & Gravy,Starter,Logan Thomas,SF,TE|W/R/T
+10,12.11,French Fries & Gravy,Starter,Jakobi Meyers,LV,WR|W/R/T
+10,0.0,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+10,3.6,French Fries & Gravy,Non-Starter,DeeJay Dallas,Ari,RB|W/R/T
+10,0.0,French Fries & Gravy,Non-Starter,Allen Lazard,NYJ,WR|W/R/T
+10,20.0,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+11,19.2,French Fries & Gravy,Starter,Cam Newton,Car,QB
+11,13.6,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+11,4.55,French Fries & Gravy,Starter,Jakobi Meyers,LV,WR|W/R/T
+11,19.45,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+11,1.7,French Fries & Gravy,Starter,Rex Burkhead,Hou,RB|W/R/T
+11,1.3,French Fries & Gravy,Starter,Logan Thomas,SF,TE|W/R/T
+11,2.3,French Fries & Gravy,Starter,Allen Lazard,NYJ,WR|W/R/T
+11,0.0,French Fries & Gravy,Non-Starter,Wayne Gallman,Sea,RB|W/R/T
+11,0.0,French Fries & Gravy,Non-Starter,Stefon Diggs,NE,WR|W/R/T
+11,0.0,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+11,22.0,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+12,3.96,French Fries & Gravy,Starter,Cam Newton,Car,QB
+12,13.9,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+12,5.65,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+12,37.0,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+12,15.85,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+12,12.4,French Fries & Gravy,Starter,Evan Engram,Den,TE|W/R/T
+12,6.45,French Fries & Gravy,Starter,Jakobi Meyers,LV,WR|W/R/T
+12,9.3,French Fries & Gravy,Non-Starter,Allen Lazard,NYJ,WR|W/R/T
+12,0.0,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+12,0.0,French Fries & Gravy,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+12,19.0,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+13,19.4,French Fries & Gravy,Starter,Kirk Cousins,Atl,QB
+13,4.5,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+13,11.7,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+13,5.15,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+13,13.5,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+13,4.2,French Fries & Gravy,Starter,Evan Engram,Den,TE|W/R/T
+13,13.1,French Fries & Gravy,Starter,J.K. Dobbins,Den,RB|W/R/T
+13,5.75,French Fries & Gravy,Non-Starter,Allen Lazard,NYJ,WR|W/R/T
+13,23.56,French Fries & Gravy,Non-Starter,Cam Newton,Car,QB
+13,10.4,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+13,10.5,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+14,17.1,French Fries & Gravy,Starter,Kirk Cousins,Atl,QB
+14,0.0,French Fries & Gravy,Starter,DeVante Parker,NE,WR|W/R/T
+14,21.6,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+14,34.7,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+14,8.05,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+14,2.3,French Fries & Gravy,Starter,Evan Engram,Den,TE|W/R/T
+14,13.3,French Fries & Gravy,Starter,J.K. Dobbins,Den,RB|W/R/T
+14,0.0,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+14,2.4,French Fries & Gravy,Non-Starter,Allen Lazard,NYJ,WR|W/R/T
+14,2.36,French Fries & Gravy,Non-Starter,Cam Newton,Car,QB
+14,3.5,French Fries & Gravy,Starter,New Orleans Saints,NO,DEF
+15,19.34,French Fries & Gravy,Starter,Kirk Cousins,Atl,QB
+15,17.45,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+15,14.05,French Fries & Gravy,Starter,Russell Gage,SF,WR|W/R/T
+15,23.7,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+15,2.9,French Fries & Gravy,Starter,Wayne Gallman,Sea,RB|W/R/T
+15,8.3,French Fries & Gravy,Starter,Jordan Reed,SF,TE|W/R/T
+15,14.35,French Fries & Gravy,Starter,J.K. Dobbins,Den,RB|W/R/T
+15,16.55,French Fries & Gravy,Non-Starter,Antonio Brown,TB,WR|W/R/T
+15,5.6,French Fries & Gravy,Non-Starter,Evan Engram,Den,TE|W/R/T
+15,16.05,French Fries & Gravy,Non-Starter,David Johnson,NO,RB|W/R/T
+15,7.0,French Fries & Gravy,Starter,Tennessee Titans,Ten,DEF
+16,23.64,French Fries & Gravy,Starter,Kirk Cousins,Atl,QB
+16,34.75,French Fries & Gravy,Starter,Stefon Diggs,NE,WR|W/R/T
+16,10.5,French Fries & Gravy,Starter,Antonio Brown,TB,WR|W/R/T
+16,9.8,French Fries & Gravy,Starter,Derrick Henry,Bal,RB|W/R/T
+16,26.65,French Fries & Gravy,Starter,David Johnson,NO,RB|W/R/T
+16,8.75,French Fries & Gravy,Starter,Evan Engram,Den,TE|W/R/T
+16,13.7,French Fries & Gravy,Starter,J.K. Dobbins,Den,RB|W/R/T
+16,0.0,French Fries & Gravy,Non-Starter,Jordan Reed,SF,TE|W/R/T
+16,3.3,French Fries & Gravy,Non-Starter,Russell Gage,SF,WR|W/R/T
+16,5.8,French Fries & Gravy,Non-Starter,Wayne Gallman,Sea,RB|W/R/T
+16,1.5,French Fries & Gravy,Starter,Tennessee Titans,Ten,DEF
+1,22.06,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+1,31.1,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+1,20.4,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+1,13.0,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+1,6.7,LittleStJamesGiants,Starter,Jordan Howard,NO,RB|W/R/T
+1,19.05,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+1,5.75,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+1,1.4,LittleStJamesGiants,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+1,6.35,LittleStJamesGiants,Non-Starter,Marlon Mack,Ari,RB|W/R/T
+1,5.55,LittleStJamesGiants,Non-Starter,Curtis Samuel,Buf,WR|W/R/T
+1,3.0,LittleStJamesGiants,Starter,Detroit Lions,Det,DEF
+2,18.24,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+2,4.35,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+2,6.55,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+2,10.0,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+2,6.4,LittleStJamesGiants,Starter,Jordan Howard,NO,RB|W/R/T
+2,3.15,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+2,6.3,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+2,9.2,LittleStJamesGiants,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+2,4.4,LittleStJamesGiants,Non-Starter,Curtis Samuel,Buf,WR|W/R/T
+2,9.85,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+2,7.5,LittleStJamesGiants,Starter,Los Angeles Rams,LAR,DEF
+3,19.18,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+3,13.3,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+3,5.2,LittleStJamesGiants,Starter,Tre'Quan Smith,Det,WR|W/R/T
+3,8.15,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+3,3.25,LittleStJamesGiants,Starter,Kerryon Johnson,SF,RB|W/R/T
+3,2.95,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+3,21.3,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+3,6.2,LittleStJamesGiants,Non-Starter,Curtis Samuel,Buf,WR|W/R/T
+3,0.0,LittleStJamesGiants,Non-Starter,Davante Adams,LAR,WR|W/R/T
+3,6.1,LittleStJamesGiants,Non-Starter,Jordan Howard,NO,RB|W/R/T
+3,7.0,LittleStJamesGiants,Starter,Los Angeles Rams,LAR,DEF
+4,4.0,LittleStJamesGiants,Starter,Nick Mullens,Jax,QB
+4,18.4,LittleStJamesGiants,Starter,Tre'Quan Smith,Det,WR|W/R/T
+4,0.0,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+4,3.5,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+4,1.45,LittleStJamesGiants,Starter,Kerryon Johnson,SF,RB|W/R/T
+4,18.45,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+4,3.4,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+4,0.0,LittleStJamesGiants,Non-Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+4,0.0,LittleStJamesGiants,Non-Starter,Ben Roethlisberger,Pit,QB
+4,3.85,LittleStJamesGiants,Non-Starter,Frank Gore,NYJ,RB|W/R/T
+4,10.0,LittleStJamesGiants,Starter,Denver Broncos,Den,DEF
+5,21.36,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+5,1.3,LittleStJamesGiants,Starter,Tre'Quan Smith,Det,WR|W/R/T
+5,3.8,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+5,12.45,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+5,14.35,LittleStJamesGiants,Starter,Alexander Mattison,Mia,RB|W/R/T
+5,13.1,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+5,8.3,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+5,3.0,LittleStJamesGiants,Non-Starter,Frank Gore,NYJ,RB|W/R/T
+5,0.0,LittleStJamesGiants,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+5,0.0,LittleStJamesGiants,Non-Starter,Davante Adams,LAR,WR|W/R/T
+5,11.5,LittleStJamesGiants,Starter,Houston Texans,Hou,DEF
+6,10.98,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+6,1.1,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+6,7.6,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+6,28.4,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+6,3.25,LittleStJamesGiants,Starter,Alexander Mattison,Mia,RB|W/R/T
+6,2.6,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+6,2.8,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+6,0.0,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+6,8.0,LittleStJamesGiants,Non-Starter,Frank Gore,NYJ,RB|W/R/T
+6,2.25,LittleStJamesGiants,Non-Starter,Kerryon Johnson,SF,RB|W/R/T
+6,1.5,LittleStJamesGiants,Starter,Tennessee Titans,Ten,DEF
+7,12.62,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+7,10.75,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+7,34.85,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+7,4.35,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+7,15.95,LittleStJamesGiants,Starter,Boston Scott,Pit,RB|W/R/T
+7,9.95,LittleStJamesGiants,Starter,Jared Cook,LAC,TE|W/R/T
+7,0.0,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+7,0.0,LittleStJamesGiants,Non-Starter,Mark Andrews,Bal,TE|W/R/T
+7,0.0,LittleStJamesGiants,Non-Starter,Alexander Mattison,Mia,RB|W/R/T
+7,6.4,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+7,9.0,LittleStJamesGiants,Starter,Cleveland Browns,Cle,DEF
+8,15.28,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+8,8.45,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+8,25.05,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+8,8.4,LittleStJamesGiants,Starter,Boston Scott,Pit,RB|W/R/T
+8,0.8,LittleStJamesGiants,Starter,Alexander Mattison,Mia,RB|W/R/T
+8,3.95,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+8,7.85,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+8,12.35,LittleStJamesGiants,Non-Starter,Jared Cook,LAC,TE|W/R/T
+8,0.0,LittleStJamesGiants,Non-Starter,Kenyan Drake,Bal,RB|W/R/T
+8,5.55,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+8,5.0,LittleStJamesGiants,Starter,Cleveland Browns,Cle,DEF
+9,25.04,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+9,16.8,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+9,25.8,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+9,6.9,LittleStJamesGiants,Starter,Alexander Mattison,Mia,RB|W/R/T
+9,5.05,LittleStJamesGiants,Starter,Adrian Peterson,Sea,RB|W/R/T
+9,2.95,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+9,4.35,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+9,0.0,LittleStJamesGiants,Non-Starter,Kenyan Drake,Bal,RB|W/R/T
+9,1.5,LittleStJamesGiants,Non-Starter,Jared Cook,LAC,TE|W/R/T
+9,7.65,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+9,17.5,LittleStJamesGiants,Starter,Tennessee Titans,Ten,DEF
+10,29.32,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+10,15.95,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+10,12.6,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+10,0.4,LittleStJamesGiants,Starter,Alexander Mattison,Mia,RB|W/R/T
+10,3.25,LittleStJamesGiants,Starter,Adrian Peterson,Sea,RB|W/R/T
+10,7.85,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+10,0.0,LittleStJamesGiants,Starter,Tre'Quan Smith,Det,WR|W/R/T
+10,0.0,LittleStJamesGiants,Non-Starter,Michael Gallup,Was,WR|W/R/T
+10,9.15,LittleStJamesGiants,Non-Starter,Kenyan Drake,Bal,RB|W/R/T
+10,10.48,LittleStJamesGiants,Non-Starter,Jared Goff,Det,QB
+10,1.5,LittleStJamesGiants,Starter,Tennessee Titans,Ten,DEF
+11,16.68,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+11,2.9,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+11,18.35,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+11,13.0,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+11,8.85,LittleStJamesGiants,Starter,Kalen Ballage,Pit,RB|W/R/T
+11,16.85,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+11,8.65,LittleStJamesGiants,Starter,Salvon Ahmed,Ind,RB|W/R/T
+11,0.0,LittleStJamesGiants,Non-Starter,Tre'Quan Smith,Det,WR|W/R/T
+11,1.8,LittleStJamesGiants,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+11,3.4,LittleStJamesGiants,Non-Starter,Michael Gallup,Was,WR|W/R/T
+11,8.5,LittleStJamesGiants,Starter,Seattle Seahawks,Sea,DEF
+12,12.54,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+12,11.7,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+12,13.6,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+12,22.05,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+12,0.0,LittleStJamesGiants,Starter,Kalen Ballage,Pit,RB|W/R/T
+12,0.0,LittleStJamesGiants,Starter,Mark Andrews,Bal,TE|W/R/T
+12,1.85,LittleStJamesGiants,Starter,Tre'Quan Smith,Det,WR|W/R/T
+12,0.0,LittleStJamesGiants,Non-Starter,Salvon Ahmed,Ind,RB|W/R/T
+12,17.5,LittleStJamesGiants,Non-Starter,Adrian Peterson,Sea,RB|W/R/T
+12,5.6,LittleStJamesGiants,Non-Starter,Michael Gallup,Was,WR|W/R/T
+12,14.5,LittleStJamesGiants,Starter,Seattle Seahawks,Sea,DEF
+13,18.2,LittleStJamesGiants,Starter,Ben Roethlisberger,Pit,QB
+13,4.55,LittleStJamesGiants,Starter,JuJu Smith-Schuster,KC,WR|W/R/T
+13,26.6,LittleStJamesGiants,Starter,Davante Adams,LAR,WR|W/R/T
+13,12.3,LittleStJamesGiants,Starter,Kenyan Drake,Bal,RB|W/R/T
+13,17.7,LittleStJamesGiants,Starter,Adrian Peterson,Sea,RB|W/R/T
+13,0.0,LittleStJamesGiants,Starter,Kyle Rudolph,TB,TE|W/R/T
+13,16.35,LittleStJamesGiants,Starter,Michael Gallup,Was,WR|W/R/T
+13,0.0,LittleStJamesGiants,Non-Starter,Mark Andrews,Bal,TE|W/R/T
+13,4.65,LittleStJamesGiants,Non-Starter,Kalen Ballage,Pit,RB|W/R/T
+13,0.0,LittleStJamesGiants,Non-Starter,Salvon Ahmed,Ind,RB|W/R/T
+13,13.0,LittleStJamesGiants,Starter,Seattle Seahawks,Sea,DEF
+1,23.9,DobbinHoodMenNTights,Starter,Matt Ryan,Ind,QB
+1,11.35,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+1,4.6,DobbinHoodMenNTights,Starter,Preston Williams,Car,WR|W/R/T
+1,2.2,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+1,10.4,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+1,12.5,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+1,9.1,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+1,14.2,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+1,9.5,DobbinHoodMenNTights,Non-Starter,Parris Campbell,Phi,WR|W/R/T
+1,1.15,DobbinHoodMenNTights,Non-Starter,Bryan Edwards,KC,WR|W/R/T
+1,7.5,DobbinHoodMenNTights,Starter,Philadelphia Eagles,Phi,DEF
+2,28.52,DobbinHoodMenNTights,Starter,Matt Ryan,Ind,QB
+2,5.45,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+2,4.85,DobbinHoodMenNTights,Starter,Preston Williams,Car,WR|W/R/T
+2,17.5,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+2,22.6,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+2,17.25,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+2,18.6,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+2,6.35,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+2,0.7,DobbinHoodMenNTights,Non-Starter,Parris Campbell,Phi,WR|W/R/T
+2,11.8,DobbinHoodMenNTights,Non-Starter,Joshua Kelley,Ten,RB|W/R/T
+2,13.5,DobbinHoodMenNTights,Starter,Arizona,Ari,DEF
+3,11.42,DobbinHoodMenNTights,Starter,Matt Ryan,Ind,QB
+3,1.8,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+3,7.2,DobbinHoodMenNTights,Starter,Preston Williams,Car,WR|W/R/T
+3,12.45,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+3,12.9,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+3,10.2,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+3,21.9,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+3,5.4,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+3,3.7,DobbinHoodMenNTights,Non-Starter,Joshua Kelley,Ten,RB|W/R/T
+3,5.8,DobbinHoodMenNTights,Non-Starter,Dalton Schultz,Hou,TE|W/R/T
+3,8.0,DobbinHoodMenNTights,Starter,Arizona,Ari,DEF
+4,12.4,DobbinHoodMenNTights,Starter,Matt Ryan,Ind,QB
+4,9.6,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+4,3.75,DobbinHoodMenNTights,Starter,Preston Williams,Car,WR|W/R/T
+4,8.15,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+4,19.1,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+4,7.75,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+4,11.3,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+4,0.0,DobbinHoodMenNTights,Non-Starter,James Conner,Ari,RB|W/R/T
+4,1.95,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+4,2.05,DobbinHoodMenNTights,Non-Starter,Joshua Kelley,Ten,RB|W/R/T
+4,11.5,DobbinHoodMenNTights,Starter,New York Jets,NYJ,DEF
+5,6.94,DobbinHoodMenNTights,Starter,Matt Ryan,Ind,QB
+5,15.3,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+5,3.05,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+5,13.9,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+5,16.05,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+5,18.8,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+5,13.05,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+5,6.25,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+5,4.05,DobbinHoodMenNTights,Non-Starter,Joshua Kelley,Ten,RB|W/R/T
+5,3.85,DobbinHoodMenNTights,Non-Starter,D'Ernest Johnson,Bal,RB|W/R/T
+5,11.5,DobbinHoodMenNTights,Starter,Dallas Cowboys,Dal,DEF
+6,16.04,DobbinHoodMenNTights,Starter,Ryan Fitzpatrick,Was,QB
+6,6.7,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+6,15.1,DobbinHoodMenNTights,Starter,Chase Claypool,Buf,WR|W/R/T
+6,12.5,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+6,6.2,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+6,17.75,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+6,16.45,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+6,32.85,DobbinHoodMenNTights,Non-Starter,Justin Jefferson,Min,WR|W/R/T
+6,3.4,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+6,0.0,DobbinHoodMenNTights,Non-Starter,Drew Brees,NO,QB
+6,4.0,DobbinHoodMenNTights,Starter,Minnesota Vikings,Min,DEF
+7,17.3,DobbinHoodMenNTights,Starter,Ryan Tannehill,Ten,QB
+7,0.05,DobbinHoodMenNTights,Starter,Chase Claypool,Buf,WR|W/R/T
+7,5.35,DobbinHoodMenNTights,Starter,DeSean Jackson,Bal,WR|W/R/T
+7,16.95,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+7,11.85,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+7,3.85,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+7,0.0,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+7,0.0,DobbinHoodMenNTights,Non-Starter,Marquise Brown,KC,WR|W/R/T
+7,0.0,DobbinHoodMenNTights,Non-Starter,Justin Jefferson,Min,WR|W/R/T
+7,0.0,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+7,13.5,DobbinHoodMenNTights,Starter,Philadelphia Eagles,Phi,DEF
+8,17.32,DobbinHoodMenNTights,Starter,Ryan Tannehill,Ten,QB
+8,6.55,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+8,3.35,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+8,7.8,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+8,12.75,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+8,18.9,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+8,3.6,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+8,12.35,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+8,1.65,DobbinHoodMenNTights,Non-Starter,Rashard Higgins,Car,WR|W/R/T
+8,0.0,DobbinHoodMenNTights,Non-Starter,Antonio Brown,TB,WR|W/R/T
+8,25.0,DobbinHoodMenNTights,Starter,Philadelphia Eagles,Phi,DEF
+9,14.62,DobbinHoodMenNTights,Starter,Ryan Tannehill,Ten,QB
+9,4.55,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+9,7.15,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+9,2.5,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+9,4.0,DobbinHoodMenNTights,Starter,J.K. Dobbins,Den,RB|W/R/T
+9,18.4,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+9,7.9,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+9,0.0,DobbinHoodMenNTights,Non-Starter,Kareem Hunt,KC,RB|W/R/T
+9,3.85,DobbinHoodMenNTights,Non-Starter,Antonio Brown,TB,WR|W/R/T
+9,5.5,DobbinHoodMenNTights,Starter,Arizona,Ari,DEF
+9,0.0,DobbinHoodMenNTights,Non-Starter,Philadelphia Eagles,Phi,DEF
+10,10.78,DobbinHoodMenNTights,Starter,Ryan Tannehill,Ten,QB
+10,1.9,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+10,15.5,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+10,5.3,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+10,13.95,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+10,7.45,DobbinHoodMenNTights,Starter,Jordan Reed,SF,TE|W/R/T
+10,4.2,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+10,0.0,DobbinHoodMenNTights,Non-Starter,Travis Kelce,KC,TE|W/R/T
+10,1.65,DobbinHoodMenNTights,Non-Starter,J.K. Dobbins,Den,RB|W/R/T
+10,8.35,DobbinHoodMenNTights,Non-Starter,Antonio Brown,TB,WR|W/R/T
+10,5.5,DobbinHoodMenNTights,Starter,Philadelphia Eagles,Phi,DEF
+11,24.22,DobbinHoodMenNTights,Starter,Taysom Hill,NO,QB
+11,0.0,DobbinHoodMenNTights,Starter,Marquise Brown,KC,WR|W/R/T
+11,15.35,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+11,10.65,DobbinHoodMenNTights,Starter,James Conner,Ari,RB|W/R/T
+11,8.35,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+11,20.86,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+11,13.35,DobbinHoodMenNTights,Starter,Michael Pittman,Ind,WR|W/R/T
+11,21.86,DobbinHoodMenNTights,Non-Starter,Ryan Tannehill,Ten,QB
+11,12.4,DobbinHoodMenNTights,Non-Starter,Jonathan Taylor,Ind,RB|W/R/T
+11,0.6,DobbinHoodMenNTights,Non-Starter,Alexander Mattison,Mia,RB|W/R/T
+11,13.0,DobbinHoodMenNTights,Starter,Philadelphia Eagles,Phi,DEF
+12,17.52,DobbinHoodMenNTights,Starter,Taysom Hill,NO,QB
+12,20.75,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+12,3.3,DobbinHoodMenNTights,Starter,Michael Pittman,Ind,WR|W/R/T
+12,6.2,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+12,10.05,DobbinHoodMenNTights,Starter,Benny Snell,Pit,RB|W/R/T
+12,10.2,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+12,6.45,DobbinHoodMenNTights,Starter,Jordan Wilkins,Cle,RB|W/R/T
+12,0.0,DobbinHoodMenNTights,Non-Starter,Jonathan Taylor,Ind,RB|W/R/T
+12,0.0,DobbinHoodMenNTights,Non-Starter,James Conner,Ari,RB|W/R/T
+12,19.14,DobbinHoodMenNTights,Non-Starter,Ryan Tannehill,Ten,QB
+12,12.5,DobbinHoodMenNTights,Starter,New York Giants,NYG,DEF
+13,23.58,DobbinHoodMenNTights,Starter,Taysom Hill,NO,QB
+13,20.55,DobbinHoodMenNTights,Starter,Justin Jefferson,Min,WR|W/R/T
+13,5.85,DobbinHoodMenNTights,Starter,Michael Pittman,Ind,WR|W/R/T
+13,6.45,DobbinHoodMenNTights,Starter,Kareem Hunt,KC,RB|W/R/T
+13,20.25,DobbinHoodMenNTights,Starter,Jonathan Taylor,Ind,RB|W/R/T
+13,21.6,DobbinHoodMenNTights,Starter,Travis Kelce,KC,TE|W/R/T
+13,15.65,DobbinHoodMenNTights,Starter,Cam Akers,NO,RB|W/R/T
+13,0.0,DobbinHoodMenNTights,Non-Starter,James Conner,Ari,RB|W/R/T
+13,27.56,DobbinHoodMenNTights,Non-Starter,Ryan Tannehill,Ten,QB
+13,0.0,DobbinHoodMenNTights,Non-Starter,Alexander Mattison,Mia,RB|W/R/T
+13,0.5,DobbinHoodMenNTights,Starter,Tennessee Titans,Ten,DEF
+1,17.64,Cock Mirepoix,Starter,Dak Prescott,Dal,QB
+1,0.0,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+1,10.6,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+1,8.1,Cock Mirepoix,Starter,Saquon Barkley,Phi,RB|W/R/T
+1,7.65,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+1,4.75,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+1,2.6,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+1,3.7,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+1,6.2,Cock Mirepoix,Non-Starter,Sterling Shepard,TB,WR|W/R/T
+1,0.4,Cock Mirepoix,Non-Starter,Justin Jackson,Det,RB|W/R/T
+1,15.0,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+2,39.8,Cock Mirepoix,Starter,Dak Prescott,Dal,QB
+2,0.0,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+2,11.5,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+2,2.8,Cock Mirepoix,Starter,Saquon Barkley,Phi,RB|W/R/T
+2,19.45,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+2,24.65,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+2,4.45,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+2,1.15,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+2,4.0,Cock Mirepoix,Non-Starter,Sterling Shepard,TB,WR|W/R/T
+2,0.0,Cock Mirepoix,Non-Starter,Justin Jackson,Det,RB|W/R/T
+2,18.5,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+3,27.48,Cock Mirepoix,Starter,Dak Prescott,Dal,QB
+3,13.2,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+3,10.85,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+3,0.0,Cock Mirepoix,Starter,Saquon Barkley,Phi,RB|W/R/T
+3,5.9,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+3,6.5,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+3,15.9,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+3,-0.25,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+3,0.0,Cock Mirepoix,Non-Starter,Sterling Shepard,TB,WR|W/R/T
+3,0.0,Cock Mirepoix,Non-Starter,Justin Jackson,Det,RB|W/R/T
+3,13.5,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+4,37.28,Cock Mirepoix,Starter,Dak Prescott,Dal,QB
+4,13.2,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+4,24.4,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+4,8.45,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+4,5.25,Cock Mirepoix,Starter,Duke Johnson,Buf,RB|W/R/T
+4,2.75,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+4,6.95,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+4,9.45,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+4,2.6,Cock Mirepoix,Non-Starter,Justin Jackson,Det,RB|W/R/T
+4,9.5,Cock Mirepoix,Starter,Green Bay Packers,GB,DEF
+4,0.0,Cock Mirepoix,Non-Starter,Pittsburgh Steelers,Pit,DEF
+5,10.69,Cock Mirepoix,Starter,Dak Prescott,Dal,QB
+5,2.6,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+5,4.45,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+5,13.65,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+5,2.15,Cock Mirepoix,Starter,Duke Johnson,Buf,RB|W/R/T
+5,1.7,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+5,10.65,Cock Mirepoix,Starter,Justin Jackson,Det,RB|W/R/T
+5,0.0,Cock Mirepoix,Non-Starter,Kenny Golladay,NYG,WR|W/R/T
+5,3.7,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+5,12.5,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+5,0.0,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+6,23.72,Cock Mirepoix,Starter,Kirk Cousins,Atl,QB
+6,15.65,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+6,11.5,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+6,1.35,Cock Mirepoix,Starter,Duke Johnson,Buf,RB|W/R/T
+6,4.5,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+6,6.35,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+6,10.7,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+6,0.0,Cock Mirepoix,Non-Starter,Justin Jackson,Det,RB|W/R/T
+6,0.0,Cock Mirepoix,Non-Starter,Hunter Renfrow,Car,WR|W/R/T
+6,23.0,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+6,1.0,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+7,2.6,Cock Mirepoix,Starter,Andy Dalton,Car,QB
+7,10.25,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+7,12.9,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+7,5.45,Cock Mirepoix,Starter,Duke Johnson,Buf,RB|W/R/T
+7,6.75,Cock Mirepoix,Starter,Justin Jackson,Det,RB|W/R/T
+7,0.0,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+7,8.15,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+7,2.45,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+7,5.2,Cock Mirepoix,Non-Starter,Hunter Renfrow,Car,WR|W/R/T
+7,7.0,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+7,10.5,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+8,1.76,Cock Mirepoix,Starter,Jimmy Garoppolo,LAR,QB
+8,0.75,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+8,0.0,Cock Mirepoix,Starter,Kenny Golladay,NYG,WR|W/R/T
+8,14.95,Cock Mirepoix,Starter,Justin Jackson,Det,RB|W/R/T
+8,6.9,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+8,1.9,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+8,11.0,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+8,0.0,Cock Mirepoix,Non-Starter,Duke Johnson,Buf,RB|W/R/T
+8,9.6,Cock Mirepoix,Non-Starter,Hunter Renfrow,Car,WR|W/R/T
+8,2.0,Cock Mirepoix,Starter,Green Bay Packers,GB,DEF
+8,20.5,Cock Mirepoix,Non-Starter,Pittsburgh Steelers,Pit,DEF
+9,0.0,Cock Mirepoix,Starter,Jimmy Garoppolo,LAR,QB
+9,8.75,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+9,6.5,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+9,0.0,Cock Mirepoix,Starter,Justin Jackson,Det,RB|W/R/T
+9,6.05,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+9,5.8,Cock Mirepoix,Starter,Tyler Eifert,Jax,TE|W/R/T
+9,2.95,Cock Mirepoix,Starter,David Montgomery,Det,RB|W/R/T
+9,0.0,Cock Mirepoix,Non-Starter,Tyler Higbee,LAR,TE|W/R/T
+9,28.3,Cock Mirepoix,Non-Starter,Teddy Bridgewater,TB,QB
+9,8.5,Cock Mirepoix,Starter,Green Bay Packers,GB,DEF
+9,11.0,Cock Mirepoix,Non-Starter,Pittsburgh Steelers,Pit,DEF
+10,19.04,Cock Mirepoix,Starter,Teddy Bridgewater,TB,QB
+10,3.5,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+10,11.3,Cock Mirepoix,Starter,Jakeem Grant,Atl,WR|W/R/T
+10,17.6,Cock Mirepoix,Starter,Malcolm Brown,LAR,RB|W/R/T
+10,1.4,Cock Mirepoix,Starter,JaMycal Hasty,NE,RB|W/R/T
+10,6.75,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+10,0.8,Cock Mirepoix,Starter,Darnell Mooney,Atl,WR|W/R/T
+10,0.0,Cock Mirepoix,Non-Starter,Tony Pollard,Ten,RB|W/R/T
+10,0.0,Cock Mirepoix,Non-Starter,Amari Cooper,Buf,WR|W/R/T
+10,8.5,Cock Mirepoix,Starter,Green Bay Packers,GB,DEF
+10,18.0,Cock Mirepoix,Non-Starter,Pittsburgh Steelers,Pit,DEF
+11,0.0,Cock Mirepoix,Starter,Teddy Bridgewater,TB,QB
+11,4.2,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+11,9.6,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+11,3.05,Cock Mirepoix,Starter,Malcolm Brown,LAR,RB|W/R/T
+11,12.0,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+11,3.0,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+11,2.0,Cock Mirepoix,Starter,Jakeem Grant,Atl,WR|W/R/T
+11,0.0,Cock Mirepoix,Non-Starter,Darnell Mooney,Atl,WR|W/R/T
+11,0.0,Cock Mirepoix,Non-Starter,JaMycal Hasty,NE,RB|W/R/T
+11,20.0,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+11,6.0,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+12,13.88,Cock Mirepoix,Starter,Teddy Bridgewater,TB,QB
+12,9.05,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+12,18.7,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+12,0.4,Cock Mirepoix,Starter,Malcolm Brown,LAR,RB|W/R/T
+12,2.7,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+12,0.85,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+12,2.0,Cock Mirepoix,Starter,Jakeem Grant,Atl,WR|W/R/T
+12,6.15,Cock Mirepoix,Non-Starter,Darnell Mooney,Atl,WR|W/R/T
+12,0.0,Cock Mirepoix,Non-Starter,JaMycal Hasty,NE,RB|W/R/T
+12,20.5,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+12,16.5,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+13,17.6,Cock Mirepoix,Starter,Andy Dalton,Car,QB
+13,5.7,Cock Mirepoix,Starter,Hunter Renfrow,Car,WR|W/R/T
+13,12.55,Cock Mirepoix,Starter,Amari Cooper,Buf,WR|W/R/T
+13,2.95,Cock Mirepoix,Starter,Malcolm Brown,LAR,RB|W/R/T
+13,3.05,Cock Mirepoix,Starter,Tony Pollard,Ten,RB|W/R/T
+13,9.4,Cock Mirepoix,Starter,Tyler Higbee,LAR,TE|W/R/T
+13,4.7,Cock Mirepoix,Starter,Jakeem Grant,Atl,WR|W/R/T
+13,0.0,Cock Mirepoix,Non-Starter,Teddy Bridgewater,TB,QB
+13,5.3,Cock Mirepoix,Non-Starter,Darnell Mooney,Atl,WR|W/R/T
+13,8.5,Cock Mirepoix,Starter,Pittsburgh Steelers,Pit,DEF
+13,13.0,Cock Mirepoix,Non-Starter,Green Bay Packers,GB,DEF
+1,18.46,Where Da Gold At?,Starter,Tom Brady,TB,QB
+1,16.5,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+1,9.25,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+1,8.95,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+1,20.1,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+1,1.6,Where Da Gold At?,Starter,Rob Gronkowski,TB,TE|W/R/T
+1,10.6,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+1,2.2,Where Da Gold At?,Non-Starter,Matt Breida,SF,RB|W/R/T
+1,0.0,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+1,10.5,Where Da Gold At?,Non-Starter,Jared Goff,Det,QB
+1,8.5,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+2,8.68,Where Da Gold At?,Starter,Tom Brady,TB,QB
+2,16.2,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+2,9.4,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+2,15.8,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+2,17.55,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+2,0.0,Where Da Gold At?,Starter,Rob Gronkowski,TB,TE|W/R/T
+2,5.95,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+2,21.4,Where Da Gold At?,Non-Starter,Jonnu Smith,Pit,TE|W/R/T
+2,4.15,Where Da Gold At?,Non-Starter,Matt Breida,SF,RB|W/R/T
+2,23.98,Where Da Gold At?,Non-Starter,Jared Goff,Det,QB
+2,8.0,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+3,23.88,Where Da Gold At?,Starter,Tom Brady,TB,QB
+3,16.0,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+3,0.0,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+3,23.05,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+3,8.35,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+3,7.35,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+3,4.85,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+3,6.3,Where Da Gold At?,Non-Starter,Rob Gronkowski,TB,TE|W/R/T
+3,0.4,Where Da Gold At?,Non-Starter,Matt Breida,SF,RB|W/R/T
+3,27.24,Where Da Gold At?,Non-Starter,Jared Goff,Det,QB
+3,9.0,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+4,30.46,Where Da Gold At?,Starter,Tom Brady,TB,QB
+4,11.6,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+4,23.5,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+4,1.65,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+4,22.75,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+4,3.15,Where Da Gold At?,Starter,Rob Gronkowski,TB,TE|W/R/T
+4,3.0,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+4,0.0,Where Da Gold At?,Non-Starter,Jonnu Smith,Pit,TE|W/R/T
+4,5.55,Where Da Gold At?,Non-Starter,Matt Breida,SF,RB|W/R/T
+4,11.7,Where Da Gold At?,Non-Starter,Jared Goff,Det,QB
+4,23.0,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+5,14.12,Where Da Gold At?,Starter,Tom Brady,TB,QB
+5,22.8,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+5,2.35,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+5,15.4,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+5,6.15,Where Da Gold At?,Starter,Matt Breida,SF,RB|W/R/T
+5,5.95,Where Da Gold At?,Starter,Rob Gronkowski,TB,TE|W/R/T
+5,5.2,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+5,17.25,Where Da Gold At?,Non-Starter,Jonnu Smith,Pit,TE|W/R/T
+5,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+5,24.36,Where Da Gold At?,Non-Starter,Jared Goff,Det,QB
+5,0.5,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+6,14.64,Where Da Gold At?,Starter,Tom Brady,TB,QB
+6,6.25,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+6,1.35,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+6,2.7,Where Da Gold At?,Starter,Matt Breida,SF,RB|W/R/T
+6,3.95,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+6,1.55,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+6,0.0,Where Da Gold At?,Starter,Mecole Hardman,GB,WR|W/R/T
+6,0.0,Where Da Gold At?,Non-Starter,Chris Carson,Sea,RB|W/R/T
+6,0.0,Where Da Gold At?,Non-Starter,DK Metcalf,Pit,WR|W/R/T
+6,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+6,5.5,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+7,36.86,Where Da Gold At?,Starter,Tom Brady,TB,QB
+7,2.85,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+7,2.8,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+7,4.35,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+7,6.55,Where Da Gold At?,Starter,Joshua Kelley,Ten,RB|W/R/T
+7,1.15,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+7,7.5,Where Da Gold At?,Starter,Mecole Hardman,GB,WR|W/R/T
+7,10.15,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+7,0.0,Where Da Gold At?,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+7,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+7,27.5,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+8,19.06,Where Da Gold At?,Starter,Tom Brady,TB,QB
+8,31.1,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+8,10.32,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+8,2.75,Where Da Gold At?,Starter,Joshua Kelley,Ten,RB|W/R/T
+8,18.95,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+8,3.4,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+8,17.35,Where Da Gold At?,Starter,Mecole Hardman,GB,WR|W/R/T
+8,0.0,Where Da Gold At?,Non-Starter,Chris Carson,Sea,RB|W/R/T
+8,0.0,Where Da Gold At?,Non-Starter,DJ Chark,Atl,WR|W/R/T
+8,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+8,13.0,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+9,2.36,Where Da Gold At?,Starter,Tom Brady,TB,QB
+9,18.55,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+9,22.35,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+9,7.15,Where Da Gold At?,Starter,Joshua Kelley,Ten,RB|W/R/T
+9,0.0,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+9,9.7,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+9,5.55,Where Da Gold At?,Starter,Mecole Hardman,GB,WR|W/R/T
+9,0.0,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+9,4.3,Where Da Gold At?,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+9,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+9,2.0,Where Da Gold At?,Starter,Kansas City Chiefs,KC,DEF
+10,31.84,Where Da Gold At?,Starter,Tom Brady,TB,QB
+10,3.3,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+10,6.6,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+10,2.1,Where Da Gold At?,Starter,Joshua Kelley,Ten,RB|W/R/T
+10,5.7,Where Da Gold At?,Starter,Giovani Bernard,TB,RB|W/R/T
+10,8.0,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+10,24.75,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+10,0.0,Where Da Gold At?,Non-Starter,Chris Carson,Sea,RB|W/R/T
+10,4.9,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+10,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+10,9.0,Where Da Gold At?,Starter,Tampa Bay Buccaneers,TB,DEF
+11,12.64,Where Da Gold At?,Starter,Tom Brady,TB,QB
+11,11.35,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+11,5.1,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+11,0.7,Where Da Gold At?,Starter,Joshua Kelley,Ten,RB|W/R/T
+11,6.5,Where Da Gold At?,Starter,Giovani Bernard,TB,RB|W/R/T
+11,9.0,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+11,6.05,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+11,0.0,Where Da Gold At?,Non-Starter,Chris Carson,Sea,RB|W/R/T
+11,0.0,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+11,0.0,Where Da Gold At?,Non-Starter,Austin Ekeler,Was,RB|W/R/T
+11,10.5,Where Da Gold At?,Starter,Tampa Bay Buccaneers,TB,DEF
+12,21.7,Where Da Gold At?,Starter,Tom Brady,TB,QB
+12,20.2,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+12,4.6,Where Da Gold At?,Starter,Golden Tate,Ten,WR|W/R/T
+12,12.4,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+12,15.65,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+12,0.0,Where Da Gold At?,Starter,Jonnu Smith,Pit,TE|W/R/T
+12,11.5,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+12,0.0,Where Da Gold At?,Non-Starter,DJ Chark,Atl,WR|W/R/T
+12,5.4,Where Da Gold At?,Non-Starter,Giovani Bernard,TB,RB|W/R/T
+12,9.5,Where Da Gold At?,Non-Starter,Joshua Kelley,Ten,RB|W/R/T
+12,6.5,Where Da Gold At?,Starter,Tampa Bay Buccaneers,TB,DEF
+13,4.96,Where Da Gold At?,Starter,Carson Wentz,Min,QB
+13,9.25,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+13,4.6,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+13,17.75,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+13,7.8,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+13,8.55,Where Da Gold At?,Starter,Eric Ebron,Pit,TE|W/R/T
+13,3.4,Where Da Gold At?,Starter,Giovani Bernard,TB,RB|W/R/T
+13,0.0,Where Da Gold At?,Non-Starter,Tom Brady,TB,QB
+13,4.0,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+13,9.95,Where Da Gold At?,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+13,3.5,Where Da Gold At?,Starter,San Francisco 49ers,SF,DEF
+14,15.64,Where Da Gold At?,Starter,Tom Brady,TB,QB
+14,13.6,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+14,2.1,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+14,16.55,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+14,16.85,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+14,5.5,Where Da Gold At?,Starter,Eric Ebron,Pit,TE|W/R/T
+14,1.05,Where Da Gold At?,Starter,Giovani Bernard,TB,RB|W/R/T
+14,0.0,Where Da Gold At?,Non-Starter,Carson Wentz,Min,QB
+14,4.15,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+14,8.5,Where Da Gold At?,Non-Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+14,14.0,Where Da Gold At?,Starter,San Francisco 49ers,SF,DEF
+15,23.4,Where Da Gold At?,Starter,Tom Brady,TB,QB
+15,5.55,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+15,6.3,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+15,7.4,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+15,8.9,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+15,0.0,Where Da Gold At?,Starter,Eric Ebron,Pit,TE|W/R/T
+15,5.9,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+15,21.95,Where Da Gold At?,Non-Starter,Giovani Bernard,TB,RB|W/R/T
+15,0.0,Where Da Gold At?,Non-Starter,Carson Wentz,Min,QB
+15,1.8,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+15,2.0,Where Da Gold At?,Starter,San Francisco 49ers,SF,DEF
+16,29.92,Where Da Gold At?,Starter,Tom Brady,TB,QB
+16,7.4,Where Da Gold At?,Starter,DK Metcalf,Pit,WR|W/R/T
+16,13.2,Where Da Gold At?,Starter,DJ Chark,Atl,WR|W/R/T
+16,8.65,Where Da Gold At?,Starter,Chris Carson,Sea,RB|W/R/T
+16,13.55,Where Da Gold At?,Starter,Austin Ekeler,Was,RB|W/R/T
+16,11.95,Where Da Gold At?,Starter,Eric Ebron,Pit,TE|W/R/T
+16,7.4,Where Da Gold At?,Starter,Nyheim Miller-Hines,LAC,RB|W/R/T
+16,14.85,Where Da Gold At?,Non-Starter,Giovani Bernard,TB,RB|W/R/T
+16,0.0,Where Da Gold At?,Non-Starter,Carson Wentz,Min,QB
+16,0.0,Where Da Gold At?,Non-Starter,Golden Tate,Ten,WR|W/R/T
+16,16.5,Where Da Gold At?,Starter,San Francisco 49ers,SF,DEF
+1,31.78,Dew Garita,Starter,Russell Wilson,NYG,QB
+1,5.1,Dew Garita,Starter,DeSean Jackson,Bal,WR|W/R/T
+1,7.15,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+1,25.45,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+1,2.15,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+1,18.1,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+1,9.05,Dew Garita,Starter,D'Andre Swift,Chi,RB|W/R/T
+1,6.45,Dew Garita,Non-Starter,Mike Evans,TB,WR|W/R/T
+1,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+1,7.9,Dew Garita,Non-Starter,Mike Williams,Pit,WR|W/R/T
+1,6.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+2,31.42,Dew Garita,Starter,Russell Wilson,NYG,QB
+2,13.0,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+2,18.15,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+2,17.7,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+2,8.45,Dew Garita,Starter,D'Andre Swift,Chi,RB|W/R/T
+2,4.0,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+2,7.9,Dew Garita,Starter,DeSean Jackson,Bal,WR|W/R/T
+2,24.6,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+2,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+2,1.9,Dew Garita,Non-Starter,Mike Williams,Pit,WR|W/R/T
+2,15.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+3,36.8,Dew Garita,Starter,Russell Wilson,NYG,QB
+3,7.85,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+3,12.7,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+3,13.3,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+3,2.7,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+3,0.95,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+3,1.6,Dew Garita,Starter,DeSean Jackson,Bal,WR|W/R/T
+3,2.15,Dew Garita,Non-Starter,D'Andre Swift,Chi,RB|W/R/T
+3,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+3,1.95,Dew Garita,Non-Starter,Mike Williams,Pit,WR|W/R/T
+3,6.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+4,20.9,Dew Garita,Starter,Russell Wilson,NYG,QB
+4,21.45,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+4,19.95,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+4,14.5,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+4,12.2,Dew Garita,Starter,D'Andre Swift,Chi,RB|W/R/T
+4,7.55,Dew Garita,Starter,Mo Alie-Cox,Ind,TE|W/R/T
+4,5.25,Dew Garita,Starter,Deebo Samuel,Was,WR|W/R/T
+4,0.0,Dew Garita,Non-Starter,DeSean Jackson,Bal,WR|W/R/T
+4,0.0,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+4,0.0,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+4,8.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+5,24.48,Dew Garita,Starter,Russell Wilson,NYG,QB
+5,14.4,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+5,11.35,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+5,22.75,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+5,5.9,Dew Garita,Starter,Brian Hill,Cle,RB|W/R/T
+5,0.0,Dew Garita,Starter,Mo Alie-Cox,Ind,TE|W/R/T
+5,2.7,Dew Garita,Starter,Deebo Samuel,Was,WR|W/R/T
+5,0.0,Dew Garita,Non-Starter,D'Andre Swift,Chi,RB|W/R/T
+5,0.0,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+5,0.0,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+5,10.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+6,28.56,Dew Garita,Starter,Ryan Tannehill,Ten,QB
+6,8.15,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+6,1.25,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+6,6.0,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+6,0.0,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+6,0.55,Dew Garita,Starter,Cameron Brate,TB,TE|W/R/T
+6,15.0,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+6,13.5,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+6,0.0,Dew Garita,Non-Starter,Russell Wilson,NYG,QB
+6,0.0,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+6,14.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+7,29.92,Dew Garita,Starter,Russell Wilson,NYG,QB
+7,0.1,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+7,8.45,Dew Garita,Starter,Deebo Samuel,Was,WR|W/R/T
+7,5.35,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+7,16.85,Dew Garita,Starter,Giovani Bernard,TB,RB|W/R/T
+7,10.0,Dew Garita,Starter,Richard Rodgers,LAC,TE|W/R/T
+7,8.55,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+7,11.2,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+7,4.2,Dew Garita,Non-Starter,Mike Evans,TB,WR|W/R/T
+7,0.0,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+7,16.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+8,28.74,Dew Garita,Starter,Russell Wilson,NYG,QB
+8,5.6,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+8,12.75,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+8,7.55,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+8,7.85,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+8,0.0,Dew Garita,Starter,Richard Rodgers,LAC,TE|W/R/T
+8,15.3,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+8,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+8,20.55,Dew Garita,Non-Starter,Giovani Bernard,TB,RB|W/R/T
+8,1.75,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+8,4.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+9,22.1,Dew Garita,Starter,Russell Wilson,NYG,QB
+9,12.1,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+9,7.4,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+9,7.4,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+9,5.6,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+9,5.95,Dew Garita,Starter,Ross Dwelley,SF,TE|W/R/T
+9,20.05,Dew Garita,Starter,Curtis Samuel,Buf,WR|W/R/T
+9,0.0,Dew Garita,Non-Starter,Travis Fulgham,GB,WR|W/R/T
+9,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+9,0.0,Dew Garita,Non-Starter,Dallas Goedert,Phi,TE|W/R/T
+9,9.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+10,9.92,Dew Garita,Starter,Russell Wilson,NYG,QB
+10,15.2,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+10,1.05,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+10,3.5,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+10,12.65,Dew Garita,Starter,J.D. McKissic,Was,RB|W/R/T
+10,4.3,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+10,1.95,Dew Garita,Starter,Curtis Samuel,Buf,WR|W/R/T
+10,0.0,Dew Garita,Non-Starter,Ezekiel Elliott,Dal,RB|W/R/T
+10,0.0,Dew Garita,Non-Starter,CeeDee Lamb,Dal,WR|W/R/T
+10,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+10,14.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+11,20.08,Dew Garita,Starter,Russell Wilson,NYG,QB
+11,12.15,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+11,1.05,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+11,7.65,Dew Garita,Starter,J.D. McKissic,Was,RB|W/R/T
+11,17.9,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+11,14.95,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+11,15.4,Dew Garita,Starter,Curtis Samuel,Buf,WR|W/R/T
+11,8.85,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+11,13.6,Dew Garita,Non-Starter,CeeDee Lamb,Dal,WR|W/R/T
+11,0.0,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+11,2.0,Dew Garita,Starter,Kansas City Chiefs,KC,DEF
+12,14.4,Dew Garita,Starter,Russell Wilson,NYG,QB
+12,17.75,Dew Garita,Starter,Mike Evans,TB,WR|W/R/T
+12,3.35,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+12,2.15,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+12,2.75,Dew Garita,Starter,Leonard Fournette,Buf,RB|W/R/T
+12,15.25,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+12,8.95,Dew Garita,Starter,Curtis Samuel,Buf,WR|W/R/T
+12,3.2,Dew Garita,Non-Starter,J.D. McKissic,Was,RB|W/R/T
+12,2.1,Dew Garita,Non-Starter,Travis Fulgham,GB,WR|W/R/T
+12,16.05,Dew Garita,Non-Starter,Deebo Samuel,Was,WR|W/R/T
+12,-3.5,Dew Garita,Starter,Chicago Bears,Chi,DEF
+13,15.02,Dew Garita,Starter,Russell Wilson,NYG,QB
+13,6.1,Dew Garita,Starter,CeeDee Lamb,Dal,WR|W/R/T
+13,9.1,Dew Garita,Starter,Deebo Samuel,Was,WR|W/R/T
+13,10.5,Dew Garita,Starter,Ezekiel Elliott,Dal,RB|W/R/T
+13,10.3,Dew Garita,Starter,J.D. McKissic,Was,RB|W/R/T
+13,7.85,Dew Garita,Starter,Dallas Goedert,Phi,TE|W/R/T
+13,0.0,Dew Garita,Starter,Travis Fulgham,GB,WR|W/R/T
+13,0.0,Dew Garita,Non-Starter,Curtis Samuel,Buf,WR|W/R/T
+13,0.0,Dew Garita,Non-Starter,Leonard Fournette,Buf,RB|W/R/T
+13,0.0,Dew Garita,Non-Starter,Mike Evans,TB,WR|W/R/T
+13,4.0,Dew Garita,Starter,Chicago Bears,Chi,DEF
+1,28.18,Why do I bother?!,Starter,Josh Allen,Buf,QB
+1,8.55,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+1,14.5,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+1,26.25,Why do I bother?!,Starter,Christian McCaffrey,SF,RB|W/R/T
+1,2.9,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+1,2.0,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+1,7.35,Why do I bother?!,Starter,Henry Ruggs,LV,WR|W/R/T
+1,3.15,Why do I bother?!,Non-Starter,N'Keal Harry,Sea,WR|W/R/T
+1,5.9,Why do I bother?!,Non-Starter,Boston Scott,Pit,RB|W/R/T
+1,0.0,Why do I bother?!,Non-Starter,Darrynton Evans,Buf,RB|W/R/T
+1,6.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+2,34.5,Why do I bother?!,Starter,Josh Allen,Buf,QB
+2,4.05,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+2,15.2,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+2,21.8,Why do I bother?!,Starter,Christian McCaffrey,SF,RB|W/R/T
+2,14.2,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+2,2.7,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+2,0.65,Why do I bother?!,Starter,Henry Ruggs,LV,WR|W/R/T
+2,9.2,Why do I bother?!,Non-Starter,N'Keal Harry,Sea,WR|W/R/T
+2,5.05,Why do I bother?!,Non-Starter,Boston Scott,Pit,RB|W/R/T
+2,0.0,Why do I bother?!,Non-Starter,Darrynton Evans,Buf,RB|W/R/T
+2,7.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+3,31.24,Why do I bother?!,Starter,Josh Allen,Buf,QB
+3,20.8,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+3,0.0,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+3,3.0,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+3,0.5,Why do I bother?!,Starter,Boston Scott,Pit,RB|W/R/T
+3,3.25,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+3,4.1,Why do I bother?!,Starter,N'Keal Harry,Sea,WR|W/R/T
+3,0.0,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+3,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+3,0.9,Why do I bother?!,Non-Starter,Darrynton Evans,Buf,RB|W/R/T
+3,13.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+4,25.42,Why do I bother?!,Starter,Josh Allen,Buf,QB
+4,17.85,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+4,5.2,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+4,9.95,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+4,1.9,Why do I bother?!,Starter,Giovani Bernard,TB,RB|W/R/T
+4,5.35,Why do I bother?!,Starter,Jordan Akins,Cle,TE|W/R/T
+4,9.95,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+4,8.85,Why do I bother?!,Non-Starter,N'Keal Harry,Sea,WR|W/R/T
+4,0.0,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+4,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+4,11.0,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+5,16.32,Why do I bother?!,Starter,Josh Allen,Buf,QB
+5,11.5,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+5,0.0,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+5,5.7,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+5,0.0,Why do I bother?!,Starter,Rex Burkhead,Hou,RB|W/R/T
+5,11.7,Why do I bother?!,Starter,Jared Cook,LAC,TE|W/R/T
+5,0.0,Why do I bother?!,Starter,N'Keal Harry,Sea,WR|W/R/T
+5,6.8,Why do I bother?!,Non-Starter,Cole Beasley,NYG,WR|W/R/T
+5,18.3,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+5,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+5,1.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+6,15.08,Why do I bother?!,Starter,Josh Allen,Buf,QB
+6,6.55,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+6,0.0,Why do I bother?!,Starter,N'Keal Harry,Sea,WR|W/R/T
+6,2.0,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+6,1.4,Why do I bother?!,Starter,Rex Burkhead,Hou,RB|W/R/T
+6,18.9,Why do I bother?!,Starter,Trey Burton,Ind,TE|W/R/T
+6,11.5,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+6,0.0,Why do I bother?!,Non-Starter,John Brown,Buf,WR|W/R/T
+6,0.0,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+6,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+6,7.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+7,16.38,Why do I bother?!,Starter,Josh Allen,Buf,QB
+7,8.0,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+7,0.85,Why do I bother?!,Starter,N'Keal Harry,Sea,WR|W/R/T
+7,5.45,Why do I bother?!,Starter,Rex Burkhead,Hou,RB|W/R/T
+7,6.0,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+7,4.35,Why do I bother?!,Starter,Jimmy Graham,NO,TE|W/R/T
+7,13.95,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+7,0.0,Why do I bother?!,Non-Starter,Mark Ingram II,NO,RB|W/R/T
+7,0.0,Why do I bother?!,Non-Starter,John Brown,Buf,WR|W/R/T
+7,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+7,19.0,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+8,12.46,Why do I bother?!,Starter,Josh Allen,Buf,QB
+8,2.35,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+8,2.9,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+8,3.35,Why do I bother?!,Starter,Rex Burkhead,Hou,RB|W/R/T
+8,3.0,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+8,1.8,Why do I bother?!,Starter,Jimmy Graham,NO,TE|W/R/T
+8,16.2,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+8,0.0,Why do I bother?!,Non-Starter,N'Keal Harry,Sea,WR|W/R/T
+8,0.0,Why do I bother?!,Non-Starter,Mark Ingram II,NO,RB|W/R/T
+8,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+8,1.5,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+9,36.0,Why do I bother?!,Starter,Josh Allen,Buf,QB
+9,11.9,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+9,4.65,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+9,6.4,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+9,29.6,Why do I bother?!,Starter,Christian McCaffrey,SF,RB|W/R/T
+9,13.0,Why do I bother?!,Starter,Jimmy Graham,NO,TE|W/R/T
+9,9.85,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+9,13.45,Why do I bother?!,Non-Starter,Rex Burkhead,Hou,RB|W/R/T
+9,0.0,Why do I bother?!,Non-Starter,N'Keal Harry,Sea,WR|W/R/T
+9,0.0,Why do I bother?!,Non-Starter,Mark Ingram II,NO,RB|W/R/T
+9,2.0,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+10,26.61,Why do I bother?!,Starter,Josh Allen,Buf,QB
+10,8.7,Why do I bother?!,Starter,John Brown,Buf,WR|W/R/T
+10,19.65,Why do I bother?!,Starter,Cole Beasley,NYG,WR|W/R/T
+10,19.6,Why do I bother?!,Starter,Rex Burkhead,Hou,RB|W/R/T
+10,5.4,Why do I bother?!,Starter,Duke Johnson,Buf,RB|W/R/T
+10,0.0,Why do I bother?!,Starter,Jimmy Graham,NO,TE|W/R/T
+10,5.8,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+10,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+10,0.0,Why do I bother?!,Non-Starter,Frank Gore,NYJ,RB|W/R/T
+10,3.4,Why do I bother?!,Non-Starter,Mark Ingram II,NO,RB|W/R/T
+10,10.0,Why do I bother?!,Starter,San Francisco 49ers,SF,DEF
+11,21.42,Why do I bother?!,Starter,Philip Rivers,Ind,QB
+11,1.95,Why do I bother?!,Starter,Henry Ruggs,LV,WR|W/R/T
+11,6.15,Why do I bother?!,Starter,Zach Pascal,NYG,WR|W/R/T
+11,0.2,Why do I bother?!,Starter,Mark Ingram II,NO,RB|W/R/T
+11,13.6,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+11,4.05,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+11,7.8,Why do I bother?!,Starter,Antonio Brown,TB,WR|W/R/T
+11,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+11,0.0,Why do I bother?!,Non-Starter,Allen Robinson,Det,WR|W/R/T
+11,0.0,Why do I bother?!,Non-Starter,Josh Allen,Buf,QB
+11,2.0,Why do I bother?!,Starter,New England Patriots,NE,DEF
+12,15.48,Why do I bother?!,Starter,Josh Allen,Buf,QB
+12,21.4,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+12,1.6,Why do I bother?!,Starter,Antonio Brown,TB,WR|W/R/T
+12,9.35,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+12,3.7,Why do I bother?!,Starter,Jerick McKinnon,KC,RB|W/R/T
+12,7.8,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+12,2.55,Why do I bother?!,Starter,Zach Pascal,NYG,WR|W/R/T
+12,6.15,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+12,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+12,17.8,Why do I bother?!,Non-Starter,Philip Rivers,Ind,QB
+12,8.5,Why do I bother?!,Starter,Denver Broncos,Den,DEF
+13,30.1,Why do I bother?!,Starter,Josh Allen,Buf,QB
+13,17.95,Why do I bother?!,Starter,Jamison Crowder,Was,WR|W/R/T
+13,9.0,Why do I bother?!,Starter,Allen Robinson,Det,WR|W/R/T
+13,0.2,Why do I bother?!,Starter,Frank Gore,NYJ,RB|W/R/T
+13,6.4,Why do I bother?!,Starter,Jeff Wilson,SF,RB|W/R/T
+13,2.9,Why do I bother?!,Starter,Austin Hooper,NE,TE|W/R/T
+13,11.15,Why do I bother?!,Starter,Marquise Brown,KC,WR|W/R/T
+13,13.15,Why do I bother?!,Non-Starter,Henry Ruggs,LV,WR|W/R/T
+13,0.0,Why do I bother?!,Non-Starter,Christian McCaffrey,SF,RB|W/R/T
+13,19.2,Why do I bother?!,Non-Starter,Philip Rivers,Ind,QB
+13,10.5,Why do I bother?!,Starter,Las Vegas Raiders,LV,DEF
