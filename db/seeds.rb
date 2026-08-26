@@ -67,6 +67,11 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
     end
   end
 
+  if Team.exists?
+    puts "Team records already exist, skipping matchup and performance import"
+    return
+  end
+
   CSV.open(Rails.root.join("docs", "yahoo", "teams.csv")).each do |row|
     Team.find_or_create_by!(season: Season.find_by(year: row[0]), name: row[1], owner: Owner.find_by!(name: row[2]))
   end
@@ -157,8 +162,7 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
 
   # Every lineup a season has on record, written straight in — the roster
   # format decides the shape, so nothing here needs validating one row at a
-  # time. Performances that already carry a lineup are left alone, so this
-  # can be re-run like the rest of the import.
+  # time.
   import_lineups = lambda do |season|
     format = season.roster_format
     owner_ids = season.teams.pluck(:name, :owner_id).to_h
@@ -166,8 +170,6 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
       .pluck(Arel.sql("games.week"), Arel.sql("performances.owner_id"),
              Arel.sql("performances.id"), Arel.sql("performances.points"))
       .to_h { |week, owner_id, id, points| [ [ week, owner_id ], [ id, points.to_f ] ] }
-    already_written = LineupSlot.where(performance_id: recorded.values.map(&:first))
-      .distinct.pluck(:performance_id).to_set
 
     rows = CSV.read(Rails.root.join("docs", "yahoo", "players_#{season.year}.csv"))
       .group_by { |row| [ row[0].to_i, row[2] ] }
@@ -175,7 +177,7 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
         performance_id, points = recorded[[ week, owner_ids[team_name] ]]
         # Some weeks have a lineup on record for a matchup that does not:
         # byes, and teams already out of the playoffs.
-        next [] unless performance_id && already_written.exclude?(performance_id)
+        next [] unless performance_id
 
         build_lineup.call(performance_id, points, lineup, format) || []
       end
@@ -184,14 +186,16 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
 
   (2005..2024).each do |year|
     season = Season.find_by(year:)
-    CSV.open(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")).each do |row|
+    owners = season.teams.includes(:owner).to_h { |team| [ team.name, team.owner ] }
+    playoff_start = year <= 2020 ? 14 : 15
+
+    # A row is a matchup, and a week holds as many of them as the league has
+    # pairs — so every row is its own game.
+    CSV.foreach(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")) do |row|
       week = row[0].to_i
-      playoff_start = year <= 2020 ? 14 : 15
-      game = season.games.find_or_create_by!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
-      team_1 = Team.find_by(season:, name: row[1])
-      team_2 = Team.find_by(season:, name: row[3])
-      game.performances.find_or_create_by!(owner: team_1.owner, points: row[2])
-      game.performances.find_or_create_by!(owner: team_2.owner, points: row[4])
+      game = season.games.create!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
+      game.performances.create!(owner: owners.fetch(row[1]), points: row[2])
+      game.performances.create!(owner: owners.fetch(row[3]), points: row[4])
     end
     import_lineups.call(season)
   end
