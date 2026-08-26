@@ -63,16 +63,34 @@ class Performance < ApplicationRecord
 
   private
 
-  # A recorded lineup has to carry the slots the season was played with —
-  # the right number of each, in whatever order they were written down.
+  # A recorded lineup has to fit the slots the season was played with, in
+  # whatever order they were written down — but it does not have to fill
+  # them. Owners left spots empty, and a starting slot nobody filled frees
+  # its player up to sit on the bench instead. What a lineup cannot do is
+  # carry a slot the season never had, field more of one than there was
+  # room for, or run deeper than the roster. An unused injured-reserve spot
+  # is not a spare bench spot; that slot existed for one purpose.
   # Performances with no lineup on record are left alone; most of the
   # league's history is scores only.
   def lineup_matches_roster_format
     format = game&.season&.roster_format
     entries = lineup_slots.reject(&:marked_for_destruction?)
-    return if format.nil? || entries.empty? || entries.map(&:slot).tally == format.slot_counts
+    return if format.nil? || entries.empty? || fits_roster_format?(entries, format)
 
     errors.add(:lineup_slots, "do not match the #{game.season.year} roster")
+  end
+
+  def fits_roster_format?(entries, format)
+    available = format.slot_counts
+    used = entries.map(&:slot).tally
+    return false unless used.keys.all? { |slot| available.key?(slot) }
+
+    # The bench is the one slot that takes an overflow, and only as deep as
+    # the starting spots left empty — an empty injured-reserve spot is held
+    # back out of the count rather than handed to it.
+    return false unless used.except("bench").all? { |slot, count| count <= available.fetch(slot) }
+
+    entries.size + (available.fetch("ir", 0) - used.fetch("ir", 0)) <= format.size
   end
 
   # Every way this player could improve on the lineups found so far, plus

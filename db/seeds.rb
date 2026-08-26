@@ -71,6 +71,117 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
     Team.find_or_create_by!(season: Season.find_by(year: row[0]), name: row[1], owner: Owner.find_by!(name: row[2]))
   end
 
+  # Yahoo's export records whether a player started, not which slot they
+  # filled, so the slot has to be worked back out of what they were eligible
+  # for. Its flex tokens ("W/R", "W/R/T") describe the spot rather than the
+  # player, and its team defenses come through as DEF.
+  yahoo_positions = lambda do |cell|
+    cell.split("|").reject { |token| token.include?("/") }
+      .map { |token| token == "DEF" ? "dst" : token.downcase }
+  end
+
+  # Seat every starter in a slot they were eligible for. A player eligible
+  # at two positions can be the only one who fits somewhere else, so this
+  # searches for a seating that takes everyone rather than filling slots in
+  # order. Returns the slot index each player took, or nil if one is left
+  # standing. Slots nobody fills stay empty.
+  seat_starters = lambda do |positions, slots|
+    taken = Array.new(slots.size)
+    seat = lambda do |player, tried|
+      slots.each_with_index do |slot, index|
+        next if tried.include?(index)
+        next unless LineupSlot::ELIGIBLE_POSITIONS.fetch(slot).intersect?(positions[player])
+
+        tried << index
+        if taken[index].nil? || seat.call(taken[index], tried)
+          taken[index] = player
+          return true
+        end
+      end
+      false
+    end
+
+    positions.each_index { |player| return nil unless seat.call(player, Set.new) }
+    taken
+  end
+
+  # Seasons with an injured-reserve spot exported it as though its occupant
+  # had started, so a lineup can arrive one "starter" too deep. The odd one
+  # out is whoever the recorded score leaves out — Yahoo kept player scores
+  # to a hundredth and weekly scores to a tenth, so the test is whether the
+  # rest of the lineup rounds back to what was recorded.
+  injured_reserve = lambda do |starters, recorded, slots|
+    return if starters.size <= slots.size
+
+    without = lambda { |entry| starters.reject { |other| other.equal?(entry) } }
+    candidates = starters.select do |entry|
+      (without.call(entry).sum { |other| other[:points] }.round(1) - recorded).abs < 0.001
+    end
+    candidates = starters if candidates.empty?
+    # Several may have scored the same, and nothing but the seating tells
+    # them apart: take one the rest of the lineup can be seated around.
+    candidates.find { |entry| seat_starters.call(without.call(entry).pluck(:positions), slots) } ||
+      candidates.last
+  end
+
+  # One week of one roster, in the order the season's format reads: the
+  # starting slots, then the bench, then injured reserve. A starting slot
+  # left empty is skipped rather than filled, and the player it frees up
+  # sits on the bench instead.
+  build_lineup = lambda do |performance_id, recorded, rows, format|
+    entries = rows.map do |row|
+      { points: row[1].to_f, started: row[3] == "Starter", name: row[4],
+        nfl_team: row[5], positions: yahoo_positions.call(row[6]) }
+    end
+    started, reserves = entries.partition { |entry| entry[:started] }
+
+    starting = format.starting_slots
+    injured = format.injured_reserve? ? injured_reserve.call(started, recorded, starting) : nil
+    started = started.reject { |entry| entry.equal?(injured) } if injured
+
+    taken = seat_starters.call(started.pluck(:positions), starting)
+    return unless taken
+
+    lineup = starting.each_with_index.filter_map do |slot, index|
+      [ slot, started[taken[index]] ] if taken[index]
+    end
+    lineup += reserves.map { |entry| [ "bench", entry ] }
+    lineup << [ "ir", injured ] if injured
+
+    lineup.each_with_index.map do |(slot, entry), spot|
+      { performance_id:, slot: LineupSlot.slots.fetch(slot), sequence: spot + 1,
+        points: entry[:points], player_name: entry[:name],
+        player_nfl_team: entry[:nfl_team], player_positions: entry[:positions] }
+    end
+  end
+
+  # Every lineup a season has on record, written straight in — the roster
+  # format decides the shape, so nothing here needs validating one row at a
+  # time. Performances that already carry a lineup are left alone, so this
+  # can be re-run like the rest of the import.
+  import_lineups = lambda do |season|
+    format = season.roster_format
+    owner_ids = season.teams.pluck(:name, :owner_id).to_h
+    recorded = Performance.joins(:game).where(games: { season_id: season.id })
+      .pluck(Arel.sql("games.week"), Arel.sql("performances.owner_id"),
+             Arel.sql("performances.id"), Arel.sql("performances.points"))
+      .to_h { |week, owner_id, id, points| [ [ week, owner_id ], [ id, points.to_f ] ] }
+    already_written = LineupSlot.where(performance_id: recorded.values.map(&:first))
+      .distinct.pluck(:performance_id).to_set
+
+    rows = CSV.read(Rails.root.join("docs", "yahoo", "players_#{season.year}.csv"))
+      .group_by { |row| [ row[0].to_i, row[2] ] }
+      .flat_map do |(week, team_name), lineup|
+        performance_id, points = recorded[[ week, owner_ids[team_name] ]]
+        # Some weeks have a lineup on record for a matchup that does not:
+        # byes, and teams already out of the playoffs.
+        next [] unless performance_id && already_written.exclude?(performance_id)
+
+        build_lineup.call(performance_id, points, lineup, format) || []
+      end
+    LineupSlot.insert_all!(rows) if rows.any?
+  end
+
   (2005..2024).each do |year|
     season = Season.find_by(year:)
     CSV.open(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")).each do |row|
@@ -82,18 +193,7 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
       game.performances.find_or_create_by!(owner: team_1.owner, points: row[2])
       game.performances.find_or_create_by!(owner: team_2.owner, points: row[4])
     end
-    CSV.open(Rails.root.join("docs", "yahoo", "players_#{year}.csv")).each do |row|
-      week = row[0].to_i
-      points = row[1]
-      team_name = row[2]
-      bench = row[3] != "Starter"
-      player_name = row[4]
-      nfl_team = row[5].upcase
-      eligible_positions = row[6].split("|").reject { |p| p.match?("/") }
-      owner = Owner.joins(:teams).find_by(teams: {name: team_name, season:})
-      performance = owner.performances.joins(:game).find_by(games: {season:, week:})
-      ## TODO build lineup slots legal according to this seasons RosterFormat
-    end
+    import_lineups.call(season)
   end
 else
   if Game.exists?

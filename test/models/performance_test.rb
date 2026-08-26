@@ -77,12 +77,43 @@ class PerformanceTest < ActiveSupport::TestCase
     assert_in_delta 0.0, performances(:bob_2023_w1).points_left_on_bench
   end
 
-  test "a recorded lineup must carry the slots the season was played with" do
+  test "a recorded lineup may leave a spot the season had empty" do
     performance = performances(:alice_2023_w1)
     assert performance.valid?
 
-    # 2023 was played with a kicker; dropping him leaves the lineup short.
+    # 2023 was played with a kicker, but nobody had to field one.
     performance.lineup_slots.find(&:k?).mark_for_destruction
+    assert performance.valid?
+  end
+
+  test "a starting spot left empty frees its player up for the bench" do
+    performance = performances(:alice_2023_w1)
+    performance.lineup_slots.find(&:k?).slot = :bench
+
+    assert performance.valid?
+  end
+
+  test "an unused injured reserve spot is not a spare bench spot" do
+    performance = performances(:alice_2023_w1)
+    performance.lineup_slots.find(&:ir?).slot = :bench
+
+    assert_not performance.valid?
+    assert_includes performance.errors[:lineup_slots], "do not match the 2023 roster"
+  end
+
+  test "a recorded lineup cannot run deeper than the roster" do
+    performance = performances(:alice_2023_w1)
+    performance.lineup_slots.build(slot: :bench, sequence: 15, points: 3.0, player_name: "Extra Man",
+                                   player_nfl_team: "SEA", player_positions: %w[wr])
+
+    assert_not performance.valid?
+    assert_includes performance.errors[:lineup_slots], "do not match the 2023 roster"
+  end
+
+  test "a recorded lineup cannot field more of a slot than the season had" do
+    performance = performances(:alice_2023_w1)
+    performance.lineup_slots.find(&:te?).slot = :k
+
     assert_not performance.valid?
     assert_includes performance.errors[:lineup_slots], "do not match the 2023 roster"
   end
