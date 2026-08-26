@@ -10,7 +10,7 @@ class SeasonsController < ApplicationController
 
     @split = @almanac.split_season?(@year)
     @tier = @split ? requested_tier : :unified
-    @standings = @almanac.standings_for(@year, @tier)
+    @standings = @almanac.final_standings_for(@year, @tier)
     @matrix = @almanac.week_matrix(@year, @tier)
 
     season = Season.find_by(year: @year)

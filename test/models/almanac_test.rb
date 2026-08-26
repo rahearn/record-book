@@ -481,6 +481,24 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 1, book.career_for(e).best_finish
   end
 
+  test "final standings order the season by finish, playoff finishers first" do
+    a, b, c, d, e, f = %w[A B C D E F].map { |n| Owner.new(name: "Order #{n}") }
+    games = [
+      build_game(year: 2031, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2031, week: 1, scores: { c => 95.0, d => 80.0 }),
+      build_game(year: 2031, week: 1, scores: { e => 85.0, f => 70.0 }),
+      build_game(year: 2031, week: 2, scores: { e => 105.0, a => 100.0 }, round_name: "Championship"),
+      build_game(year: 2031, week: 2, scores: { c => 88.0, b => 77.0 }, round_name: "Third Place")
+    ]
+
+    book = Almanac.new(games: games)
+    rows = book.final_standings_for(2031, :unified)
+    assert_equal [ e, a, c, b, d, f ], rows.map(&:owner)
+    assert_equal [ 1, 2, 3, 4, 5, 6 ], rows.map(&:final_rank)
+    # The regular-season view is untouched.
+    assert_equal [ a, c, e, b, d, f ], book.standings_for(2031, :unified).map(&:owner)
+  end
+
   test "final rank matches regular-season rank when playoff data is absent" do
     rows = @book.standings_for(2023, :unified)
     assert_equal rows.map(&:rank), rows.map(&:final_rank)

@@ -64,6 +64,24 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", week_path(2024, 3, tier: "challenger"), text: "W3"
   end
 
+  test "standings put the playoff finishers on top, then regular-season order" do
+    # 2025 regular season: Alice 1st, Carol 2nd, Bob 3rd, Dan 4th. Bob
+    # wins the title over Carol, and Dan takes third from Alice.
+    season = Season.create!(year: 2025)
+    play(season, week: 1, scores: { alice: 100.0, bob: 90.0 })
+    play(season, week: 1, scores: { carol: 95.0, dan: 80.0 })
+    play(season, week: 2, round_name: "Championship", scores: { bob: 120.0, carol: 100.0 })
+    play(season, week: 2, round_name: "Third Place", scores: { dan: 90.0, alice: 80.0 })
+
+    get season_url(2025)
+    assert_response :success
+
+    assert_equal %w[1 2 3 4], css_select("#standings tbody td:first-child").map { |cell| cell.text.strip }
+    assert_equal [ "Bob Barker", "Carol Chen", "Dan Diaz", "Alice Anders" ],
+      css_select("#standings tbody td:nth-child(2) a").map(&:text)
+    assert_match "Ordered by final finish", response.body
+  end
+
   test "seasons without playoff games have no playoff section" do
     get season_url(2023)
     assert_response :success
@@ -111,5 +129,13 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     get seasons_url
     assert_response :success
     assert_match "No games on record yet", response.body
+  end
+
+  private
+
+  def play(season, week:, scores:, round_name: nil)
+    game = season.games.create!(week: week, tier: :unified, round_name: round_name)
+    scores.each { |owner, points| game.performances.create!(owner: owners(owner), points: points) }
+    game
   end
 end

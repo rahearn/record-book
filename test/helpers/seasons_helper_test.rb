@@ -18,13 +18,14 @@ class SeasonsHelperTest < ActionView::TestCase
   end
 
   test "season_zone_note per tier" do
-    assert_equal "Shaded: bottom 1 relegate to Challenger for 2025.",
+    ordering = "Ordered by final finish — playoff finishers first, then regular-season order."
+    assert_equal "#{ordering} Shaded: bottom 1 relegate to Challenger for 2025.",
       season_zone_note(@almanac, 2024, :premier)
-    assert_equal "Shaded: top 1 promote to Premier for 2025.",
+    assert_equal "#{ordering} Shaded: top 1 promote to Premier for 2025.",
       season_zone_note(@almanac, 2024, :challenger)
-    assert_equal "Single-tier season — promotion and relegation began in 2024.",
+    assert_equal "#{ordering} Single-tier season — promotion and relegation began in 2024.",
       season_zone_note(@almanac, 2023, :unified)
-    assert_equal "Single-tier season.",
+    assert_equal "#{ordering} Single-tier season.",
       season_zone_note(Almanac.new(games: []), 2023, :unified)
   end
 

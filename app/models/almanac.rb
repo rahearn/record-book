@@ -71,10 +71,18 @@ class Almanac
     @games.reject(&:unified?).map { |game| game.season.year }.min
   end
 
+  # Regular-season standings: wins, then points for. This is the order
+  # relegation and the zone shading are judged on.
   def standings_for(year, tier)
     season_records.values
       .select { |record| record.year == year && record.tier == tier.to_s }
       .sort_by(&:rank)
+  end
+
+  # The season as it finished: the playoff finishers take the top spots,
+  # everyone else follows in regular-season order.
+  def final_standings_for(year, tier)
+    standings_for(year, tier).sort_by(&:final_rank)
   end
 
   # Whether the given season was played in Premier/Challenger tiers.

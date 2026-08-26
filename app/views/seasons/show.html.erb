@@ -36,7 +36,7 @@
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
       <div class="overflow-x-auto">
-        <table class="table min-w-[800px]">
+        <table id="standings" class="table min-w-[800px]">
           <thead>
             <tr>
               <th class="w-[34px]">#</th>
@@ -54,7 +54,7 @@
           <tbody>
             <% @standings.each do |record| %>
               <tr class="<%= season_zone_class(@almanac, record) %>">
-                <td class="text-ink/55"><%= record.rank %></td>
+                <td class="text-ink/55"><%= record.final_rank %></td>
                 <td>
                   <%= link_to record.owner.name, owner_path(record.owner), class: "font-medium text-accent" %>
                   <span class="text-[11px] text-ink/55"><%= record.owner.team_name_in(record.year) %></span>

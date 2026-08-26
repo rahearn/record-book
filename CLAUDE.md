@@ -43,10 +43,13 @@ All `Almanac` statistics cover regular-season games only — playoff games are f
 
 All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` — that constant is the
 application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).
-`Almanac` loads every game once and computes: per-season standings (wins desc, points-for
-tiebreak), career aggregates, "luck" (average points opponents scored below/above their own season
-average), titles (playoff championships won in the unified league or Premier tier — the single game
-winner of the "Championship"-round game; tied or ambiguous finals crown no one), single-game
+`Almanac` loads every game once and computes: per-season standings (`standings_for`: wins desc,
+points-for tiebreak — the order relegation and the zone shading are judged on) and final standings
+(`final_standings_for`: the playoff finishers take the top four spots, everyone else follows in
+regular-season order — this is what the season page shows), career aggregates, "luck" (average
+points opponents scored below/above their own season average), titles (playoff championships won in
+the unified league or Premier tier — the single game winner of the "Championship"-round game; tied
+or ambiguous finals crown no one), single-game
 extremes, and the next season's promotion/relegation ladder. Relegation: bottom 4 of Premier by
 record with total points as tiebreaker. Promotion: the Challenger regular-season points leader plus
 the next three playoff finishers (finishing order: champion, runner-up, "Third Place"-round winner,

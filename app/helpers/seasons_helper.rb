@@ -10,8 +10,11 @@ module SeasonsHelper
     end
   end
 
+  # Sits under the standings table: how the rows are ordered, and what
+  # the shaded promotion/relegation zones mean.
   def season_zone_note(almanac, year, tier)
-    if almanac.split_season?(year)
+    ordering = "Ordered by final finish — playoff finishers first, then regular-season order."
+    zone = if almanac.split_season?(year)
       if tier.to_s == "premier"
         "Shaded: bottom #{almanac.relegation_count} relegate to Challenger for #{year + 1}."
       else
@@ -22,6 +25,7 @@ module SeasonsHelper
     else
       "Single-tier season."
     end
+    "#{ordering} #{zone}"
   end
 
   def season_zone_class(almanac, record)
