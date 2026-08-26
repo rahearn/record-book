@@ -7,7 +7,7 @@ class WeeksControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "h1", text: "Week 1 · 2023"
     assert_match "Scoreboard", response.body
-    assert_match "League · high 100.0 · low 70.5 · average 85.1", response.body
+    assert_match "League · high 100.00 · low 70.50 · average 85.12", response.body
 
     assert_select ".blueprint", count: 2 # one card per matchup
     assert_match "Alice Anders", response.body
@@ -30,8 +30,8 @@ class WeeksControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "a[href=?]", "/matchups/#{games(:g2023_w1_ab).id}"
     assert_select "a[href=?]", "/matchups/#{games(:g2023_w1_cd).id}"
-    # Alice averaged 105.0 in 2023 and scored 100.0 here.
-    assert_match "Anders Originals · -5.0 vs season avg", response.body
+    # Alice averaged 105.00 in 2023 and scored 100.00 here.
+    assert_match "Anders Originals · -5.00 vs season avg", response.body
   end
 
   test "week buttons cover the weeks on record and mark the current one" do
@@ -47,7 +47,7 @@ class WeeksControllerTest < ActionDispatch::IntegrationTest
     get week_url(2024, 1, tier: :premier)
     assert_response :success
 
-    assert_match "Premier · high 120.0", response.body
+    assert_match "Premier · high 120.00", response.body
     assert_match "Alice Anders", response.body
     assert_no_match(/Carol Chen/, response.body)
     assert_select "a[href=?]", "/seasons/2024/weeks/1?tier=challenger", text: "Challenger"
@@ -61,7 +61,7 @@ class WeeksControllerTest < ActionDispatch::IntegrationTest
   test "split seasons default to Premier" do
     get week_url(2024, 1)
     assert_response :success
-    assert_match "Premier · high 120.0", response.body
+    assert_match "Premier · high 120.00", response.body
   end
 
   test "playoff weeks name the round" do

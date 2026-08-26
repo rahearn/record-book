@@ -10,9 +10,9 @@ class WeeksHelperTest < ActionView::TestCase
   end
 
   test "week_summary reports the league or tier with the week's spread" do
-    assert_equal "League · high 100.0 · low 70.5 · average 85.1",
+    assert_equal "League · high 100.00 · low 70.50 · average 85.12",
       week_summary(@book.scoreboard_for(2023, 1, :unified), split: false)
-    assert_equal "Premier · high 120.0 · low 95.0 · average 107.5",
+    assert_equal "Premier · high 120.00 · low 95.00 · average 107.50",
       week_summary(@book.scoreboard_for(2024, 1, :premier), split: true)
   end
 

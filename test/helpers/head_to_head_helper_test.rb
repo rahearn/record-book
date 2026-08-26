@@ -32,8 +32,8 @@ class HeadToHeadHelperTest < ActionView::TestCase
       rows.map(&:label)
 
     pf = rows.second
-    assert_equal "110.0", pf.a_display
-    assert_equal "90.0", pf.b_display
+    assert_equal "110.00", pf.a_display
+    assert_equal "90.00", pf.b_display
     assert_equal "100%", pf.a_bar
     assert_equal "81%", pf.b_bar
 

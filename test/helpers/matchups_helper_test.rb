@@ -36,16 +36,16 @@ class MatchupsHelperTest < ActionView::TestCase
   end
 
   test "matchup_result_note names the winner or the tie" do
-    assert_equal "Alice Anders wins by 10.0.",
+    assert_equal "Alice Anders wins by 10.00.",
       matchup_result_note(@book.matchup_for(games(:g2023_w1_ab)))
-    assert_equal "Tied at 100.0.", matchup_result_note(tied_matchup)
+    assert_equal "Tied at 100.00.", matchup_result_note(tied_matchup)
   end
 
   test "season context reads the owner's year, or says there is none" do
     matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
-    assert_equal "2–0 that year · season avg 105.0 (-5.0 this week)",
+    assert_equal "2–0 that year · season avg 105.00 (-5.00 this week)",
       season_context_note(matchup.side_a)
-    assert_equal "-5.0", vs_season_average_display(matchup.side_a)
+    assert_equal "-5.00", vs_season_average_display(matchup.side_a)
 
     assert_equal "No season on record", season_context_note(tied_matchup.side_a)
     assert_equal "—", vs_season_average_display(tied_matchup.side_a)
@@ -53,8 +53,8 @@ class MatchupsHelperTest < ActionView::TestCase
 
   test "bench_note reports what a better lineup was worth" do
     matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
-    assert_equal "9.0 left on the bench", bench_note(matchup.side_a)
-    assert_equal "0.0 left on the bench", bench_note(matchup.side_b)
+    assert_equal "9.00 left on the bench", bench_note(matchup.side_a)
+    assert_equal "0.00 left on the bench", bench_note(matchup.side_b)
   end
 
   test "bars fill toward the leader and survive a scoreless game" do

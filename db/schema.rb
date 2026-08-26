@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_25_231340) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_26_004250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_231340) do
     t.string "player_name", null: false
     t.string "player_nfl_team", null: false
     t.string "player_positions", default: [], null: false, array: true
-    t.decimal "points", precision: 6, scale: 1, null: false
+    t.decimal "points", precision: 6, scale: 2, null: false
     t.integer "sequence", null: false
     t.integer "slot", default: 0, null: false
     t.datetime "updated_at", null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_25_231340) do
     t.datetime "created_at", null: false
     t.bigint "game_id", null: false
     t.bigint "owner_id", null: false
-    t.decimal "points", precision: 6, scale: 1, null: false
+    t.decimal "points", precision: 6, scale: 2, null: false
     t.datetime "updated_at", null: false
     t.index ["game_id", "owner_id"], name: "index_performances_on_game_id_and_owner_id", unique: true
     t.index ["game_id"], name: "index_performances_on_game_id"

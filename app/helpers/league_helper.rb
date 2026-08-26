@@ -6,12 +6,14 @@ module LeagueHelper
   MOVEMENT_LABELS = { promoted: "UP", relegated: "DOWN", held: "HELD" }.freeze
   MOVEMENT_TAG_CLASSES = { promoted: "tag-accent", relegated: "tag-neutral", held: "tag-outline" }.freeze
 
+  # Scores are kept to a hundredth, the way the league has always scored
+  # them, so a lineup's starters read as adding up to the score beside them.
   def points_display(value)
-    format("%.1f", value)
+    format("%.2f", value)
   end
 
   def signed_points_display(value)
-    format("%+.1f", value)
+    format("%+.2f", value)
   end
 
   def win_percentage_display(value)

@@ -6,15 +6,15 @@ class LeagueHelperTest < ActionView::TestCase
     def empty? = false
   end
 
-  test "points_display formats to one decimal" do
-    assert_equal "110.0", points_display(110)
-    assert_equal "93.3", points_display(BigDecimal("280") / 3)
+  test "points_display formats to two decimals" do
+    assert_equal "110.00", points_display(110)
+    assert_equal "93.33", points_display(BigDecimal("280") / 3)
   end
 
   test "signed_points_display keeps the sign" do
-    assert_equal "+5.0", signed_points_display(5)
-    assert_equal "-4.1", signed_points_display(-4.08)
-    assert_equal "+0.0", signed_points_display(0)
+    assert_equal "+5.00", signed_points_display(5)
+    assert_equal "-4.08", signed_points_display(-4.08)
+    assert_equal "+0.00", signed_points_display(0)
   end
 
   test "win_percentage_display shows a percentage" do

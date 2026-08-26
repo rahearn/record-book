@@ -30,20 +30,20 @@ class MatchupsControllerTest < ActionDispatch::IntegrationTest
     assert_select "td", text: "RB/WR"
     # An injured player is still listed, marked, and left out of the total.
     assert_select "td", html: %r{Vance Ibarra .*<span class="tag tag-outline ml-1">IR</span>}m
-    assert_match "9.0 left on the bench", response.body
-    assert_no_match(/24\.0 left on the bench/, response.body)
+    assert_match "9.00 left on the bench", response.body
+    assert_no_match(/24\.00 left on the bench/, response.body)
     assert_select ".blueprint", count: 4 # scoreboard, lineups, two benches
-    assert_match "9.0 left on the bench", response.body
-    assert_match "0.0 left on the bench", response.body
+    assert_match "9.00 left on the bench", response.body
+    assert_match "0.00 left on the bench", response.body
   end
 
   test "sets each side's season context" do
     get matchup_url(games(:g2023_w1_ab), owner: owners(:alice).id)
     assert_response :success
 
-    # Alice went 2–0 in 2023 averaging 105.0; this 100.0 was 5.0 under.
-    assert_match "2–0 that year · season avg 105.0 (-5.0 this week)", response.body
-    assert_match "0–2 that year · season avg 87.5 (+2.5 this week)", response.body
+    # Alice went 2–0 in 2023 averaging 105.00; this 100.00 was 5.00 under.
+    assert_match "2–0 that year · season avg 105.00 (-5.00 this week)", response.body
+    assert_match "0–2 that year · season avg 87.50 (+2.50 this week)", response.body
   end
 
   test "the owner parameter chooses the left-hand side" do
