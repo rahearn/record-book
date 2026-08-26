@@ -54,6 +54,16 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_no_match "130.0", response.body
   end
 
+  test "playoff rounds link to their week's matchups" do
+    get season_url(2024)
+    assert_response :success
+    assert_select "a[href=?]", week_path(2024, 2, tier: "premier"), text: "W2"
+
+    get season_url(2024, tier: "challenger")
+    assert_response :success
+    assert_select "a[href=?]", week_path(2024, 3, tier: "challenger"), text: "W3"
+  end
+
   test "seasons without playoff games have no playoff section" do
     get season_url(2023)
     assert_response :success

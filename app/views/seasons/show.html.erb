@@ -90,7 +90,9 @@
             <%= blueprint_corners %>
             <div class="mb-2.5 flex items-baseline justify-between">
               <h4 class="font-heading text-xl font-semibold uppercase tracking-[.06em]"><%= round_name %></h4>
-              <span class="text-[11px] text-ink/55">W<%= week %></span>
+              <%= link_to "W#{week}",
+                    week_path(@year, week, tier: (@tier unless @tier == :unified)),
+                    class: "text-[11px] text-ink/55 hover:text-ink" %>
             </div>
             <div class="flex flex-col">
               <% games.each do |game| %>
