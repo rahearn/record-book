@@ -183,18 +183,53 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
     LineupSlot.insert_all!(rows) if rows.any?
   end
 
+  # Yahoo records the week a game was played, never the round it was, so the
+  # rounds count back from the last week on record: a final, a semifinal
+  # before it, a quarterfinal before that. A season that ever runs a longer
+  # bracket numbers its earlier weeks rather than guess at them.
+  rounds_back_from_the_final = [ Game::CHAMPIONSHIP, Game::SEMIFINAL, "Quarterfinal" ].freeze
+
+  # The final week holds two games, and who reached them is what tells them
+  # apart: the semifinal's winners play for the title, its losers for third
+  # place. A drawn semifinal places neither side, so a game it fed keeps the
+  # name of its week — the record book would rather leave a title uncrowned
+  # than hand it to the wrong team.
+  name_playoff_rounds = lambda do |matchups, start_week|
+    weeks = matchups.filter_map { |game| game[:week] if game[:week] >= start_week }.uniq.sort
+    weeks.reverse.each_with_index do |week, back|
+      name = rounds_back_from_the_final[back] || "Round #{weeks.size - back}"
+      matchups.each { |game| game[:round_name] = name if game[:week] == week }
+    end
+    return matchups unless weeks.size > 1
+
+    beaten = matchups.filter_map { |game| game[:loser] if game[:week] == weeks[-2] }
+    matchups.each do |game|
+      next unless game[:week] == weeks.last
+
+      game[:round_name] = Game::THIRD_PLACE if beaten.include?(game[:home]) && beaten.include?(game[:away])
+    end
+    matchups
+  end
+
   (2005..2024).each do |year|
     season = Season.find_by(year:)
     owners = season.teams.includes(:owner).to_h { |team| [ team.name, team.owner ] }
-    playoff_start = year <= 2020 ? 14 : 15
+    start_week = season.playoff_format_for(:unified).start_week
 
     # A row is a matchup, and a week holds as many of them as the league has
-    # pairs — so every row is its own game.
-    CSV.foreach(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")) do |row|
-      week = row[0].to_i
-      game = season.games.create!(week:, round_name: week >= playoff_start ? "TKTK" : nil)
-      game.performances.create!(owner: owners.fetch(row[1]), points: row[2])
-      game.performances.create!(owner: owners.fetch(row[3]), points: row[4])
+    # pairs — so every row is its own game. Scores stay as they were written
+    # down, so the decimal they were kept to survives the trip.
+    matchups = CSV.read(Rails.root.join("docs", "yahoo", "matchups_#{year}.csv")).map do |row|
+      home, home_points, away, away_points = row[1], row[2], row[3], row[4]
+      loser = away if home_points.to_f > away_points.to_f
+      loser = home if home_points.to_f < away_points.to_f
+      { week: row[0].to_i, home:, home_points:, away:, away_points:, loser: }
+    end
+
+    name_playoff_rounds.call(matchups, start_week).each do |matchup|
+      game = season.games.create!(week: matchup[:week], round_name: matchup[:round_name])
+      game.performances.create!(owner: owners.fetch(matchup[:home]), points: matchup[:home_points])
+      game.performances.create!(owner: owners.fetch(matchup[:away]), points: matchup[:away_points])
     end
     import_lineups.call(season)
   end
