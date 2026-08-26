@@ -132,6 +132,13 @@ class Almanac
     all_time_standings.find { |career| career.owner == owner }
   end
 
+  # All-time standings restricted to owners who fielded a team in the most
+  # recent season: the league page's "Current" scope, and the pool the
+  # owner and head-to-head pages default into.
+  def current_standings
+    all_time_standings.select { |career| career.owner.current_in?(latest_year) }
+  end
+
   # League position by career points for per game (1 = highest scoring).
   def points_for_rank(career)
     all_time_standings.sort_by { |other| -other.points_for_per_game }.index(career) + 1

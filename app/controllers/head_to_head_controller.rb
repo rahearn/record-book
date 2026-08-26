@@ -3,8 +3,8 @@ class HeadToHeadController < ApplicationController
     @almanac = Almanac.new
     return if @almanac.empty?
 
-    @owner_a = find_owner(params[:a]) { @almanac.all_time_standings.first.owner }
-    @owner_b = find_owner(params[:b]) { @almanac.all_time_standings.second.owner }
+    @owner_a = find_owner(params[:a]) { @almanac.current_standings.first.owner }
+    @owner_b = find_owner(params[:b]) { @almanac.current_standings.second.owner }
     @career_a = career_for!(@owner_a)
     @career_b = career_for!(@owner_b)
     @series = @almanac.series_between(@owner_a, @owner_b)

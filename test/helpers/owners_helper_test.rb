@@ -5,6 +5,33 @@ class OwnersHelperTest < ActionView::TestCase
 
   FakeScore = Struct.new(:result)
 
+  test "owner_select_options groups current owners ahead of former ones, alphabetical within each group" do
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 50)
+    Performance.create!(game: game, owner: frank, points: 40)
+
+    groups = owner_select_options(Almanac.new)
+    current_label, current_options = groups[0]
+    former_label, former_options = groups[1]
+
+    assert_equal "Current", current_label
+    assert_equal [ "Alice Anders — Anders Aces", "Bob Barker — Barker Bandits",
+      "Carol Chen — Chen Chargers", "Dan Diaz — Diaz Dynamo" ], current_options.map(&:first)
+
+    assert_equal "Former", former_label
+    assert_equal [ "Eve Ellis — Ellis Eagles", "Frank Ford — Ford Falcons" ], former_options.map(&:first)
+  end
+
+  test "owner_select_options omits a group with no owners in it" do
+    groups = owner_select_options(Almanac.new)
+    assert_equal [ "Current" ], groups.map(&:first)
+  end
+
   test "finish_display stars first place" do
     assert_equal "1st ★", finish_display(1)
     assert_equal "2nd", finish_display(2)

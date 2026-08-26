@@ -3,7 +3,7 @@ class OwnersController < ApplicationController
     @almanac = Almanac.new
     return if @almanac.empty?
 
-    @owner = params[:id] ? Owner.find(params[:id]) : @almanac.all_time_standings.first.owner
+    @owner = params[:id] ? Owner.find(params[:id]) : @almanac.current_standings.first.owner
     @career = @almanac.career_for(@owner)
     unless @career
       raise ActiveRecord::RecordNotFound, "No games on record for #{@owner.name}"

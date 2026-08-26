@@ -20,8 +20,7 @@ class LeagueController < ApplicationController
   def sorted_standings
     value = SORTS[@sort] ||
       ->(career) { @almanac.playoff_history_for(career.owner).runner_up_finishes }
-    standings = @almanac.all_time_standings
-    standings = standings.select { |career| career.owner.current_in?(@almanac.latest_year) } if @scope == "current"
+    standings = @scope == "current" ? @almanac.current_standings : @almanac.all_time_standings
     standings.sort_by do |career|
       [ @direction == "asc" ? value.call(career) : -value.call(career), career.rank ]
     end

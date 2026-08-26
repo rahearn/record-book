@@ -13,6 +13,26 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
     assert_match "Every meeting", response.body
   end
 
+  test "defaults skip a higher-ranked former owner in favor of the top two current owners" do
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 999)
+    Performance.create!(game: game, owner: frank, points: 1)
+
+    almanac = Almanac.new
+    assert_equal eve, almanac.all_time_standings.first.owner # outranks Alice and Carol all time...
+
+    get head_to_head_url
+    assert_response :success
+    # ...but neither fielded a 2024 team, so Alice and Carol default in instead.
+    assert_select "#owner_a option[selected]", text: "Alice Anders — Anders Aces"
+    assert_select "#owner_b option[selected]", text: "Carol Chen — Chen Chargers"
+  end
+
   test "compares the requested owners with a full meeting log" do
     get head_to_head_url(a: owners(:alice).id, b: owners(:bob).id)
     assert_response :success

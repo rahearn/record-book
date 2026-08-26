@@ -15,6 +15,24 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "2–0", response.body # series vs Bob
   end
 
+  test "defaults to the current leader, skipping a higher-ranked former owner" do
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 999)
+    Performance.create!(game: game, owner: frank, points: 1)
+
+    almanac = Almanac.new
+    assert_equal eve, almanac.all_time_standings.first.owner # outranks Alice all time...
+
+    get owners_url
+    assert_response :success
+    assert_select "h1", text: "Alice Anders" # ...but Eve fielded no 2024 team.
+  end
+
   test "shows playoff history stats" do
     get owners_url # Alice
     assert_response :success

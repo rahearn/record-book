@@ -1,8 +1,13 @@
 module OwnersHelper
+  # Current owners (a team in the most recent season) first, then everyone
+  # else, alphabetical by name within each group.
   def owner_select_options(almanac)
-    almanac.all_time_standings
+    current, former = almanac.all_time_standings
       .sort_by { |career| career.owner.name }
-      .map { |career| [ "#{career.owner.name} — #{career.owner.team_name}", career.owner.id ] }
+      .partition { |career| career.owner.current_in?(almanac.latest_year) }
+
+    [ [ "Current", owner_option_pairs(current) ], [ "Former", owner_option_pairs(former) ] ]
+      .reject { |_label, pairs| pairs.empty? }
   end
 
   def finish_display(rank)
@@ -43,5 +48,11 @@ module OwnersHelper
 
   def week_result_tag_class(score)
     { win: "tag-accent", loss: "tag-neutral", tie: "tag-outline" }.fetch(score.result)
+  end
+
+  private
+
+  def owner_option_pairs(careers)
+    careers.map { |career| [ "#{career.owner.name} — #{career.owner.team_name}", career.owner.id ] }
   end
 end

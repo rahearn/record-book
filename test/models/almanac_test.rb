@@ -32,6 +32,23 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal [ 1, 2, 3, 4 ], standings.map(&:rank)
   end
 
+  test "current_standings keeps only owners with a team in the most recent season" do
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 999)
+    Performance.create!(game: game, owner: frank, points: 1)
+
+    book = Almanac.new
+    assert_includes book.all_time_standings.map(&:owner), eve
+    assert_not_includes book.current_standings.map(&:owner), eve
+    assert_equal [ owners(:alice), owners(:carol), owners(:dan), owners(:bob) ],
+      book.current_standings.map(&:owner)
+  end
+
   test "career aggregates for an unbeaten owner" do
     alice = career_for(:alice)
     assert_equal 2, alice.seasons_played
