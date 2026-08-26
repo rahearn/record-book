@@ -65,6 +65,11 @@ class LeagueHelperTest < ActionView::TestCase
     assert_includes flipped, "direction=desc"
   end
 
+  test "sortable_header carries the active scope along" do
+    link = sortable_header("PF/g", "pfg", active_sort: "win_pct", direction: "desc", scope: "all")
+    assert_includes link, "scope=all"
+  end
+
   test "league_tagline covers the recorded era" do
     assert_equal "Record book", league_tagline(Almanac.new(games: []))
     assert_equal "Record book · 2011—2025", league_tagline(FakeBook.new(2011, 2025))

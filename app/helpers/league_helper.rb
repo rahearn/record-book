@@ -49,11 +49,11 @@ module LeagueHelper
 
   # A column header that sorts the all-time table: first click descending,
   # clicking the active column again flips the direction.
-  def sortable_header(label, column, active_sort:, direction:)
+  def sortable_header(label, column, active_sort:, direction:, scope: nil)
     active = active_sort == column
     next_direction = active && direction == "desc" ? "asc" : "desc"
     caption = active ? "#{label} #{direction == 'asc' ? '▲' : '▼'}" : label
-    link_to caption, root_path(sort: column, direction: next_direction), class: "hover:text-ink"
+    link_to caption, root_path(sort: column, direction: next_direction, scope: scope), class: "hover:text-ink"
   end
 
   # When a single-game record was set: "2024 · Week 7".

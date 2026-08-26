@@ -25,6 +25,12 @@
         Records and scoring cover regular-season games only; titles and
         runner-up finishes come from the playoffs.
       </span>
+      <div class="seg ml-auto">
+        <%= link_to "Current", root_path(sort: @sort, direction: @direction, scope: "current"),
+              class: "seg-opt #{'seg-on' if @scope == 'current'}" %>
+        <%= link_to "All", root_path(sort: @sort, direction: @direction, scope: "all"),
+              class: "seg-opt #{'seg-on' if @scope == 'all'}" %>
+      </div>
     </div>
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
@@ -36,11 +42,11 @@
               <th>Owner</th>
               <th>Sea</th>
               <th>W–L</th>
-              <th><%= sortable_header "Win%", "win_pct", active_sort: @sort, direction: @direction %></th>
-              <th><%= sortable_header "PF/g", "pfg", active_sort: @sort, direction: @direction %></th>
-              <th><%= sortable_header "PA/g", "pag", active_sort: @sort, direction: @direction %></th>
-              <th><%= sortable_header "Titles", "titles", active_sort: @sort, direction: @direction %></th>
-              <th><%= sortable_header "Runner-up", "runner_up", active_sort: @sort, direction: @direction %></th>
+              <th><%= sortable_header "Win%", "win_pct", active_sort: @sort, direction: @direction, scope: @scope %></th>
+              <th><%= sortable_header "PF/g", "pfg", active_sort: @sort, direction: @direction, scope: @scope %></th>
+              <th><%= sortable_header "PA/g", "pag", active_sort: @sort, direction: @direction, scope: @scope %></th>
+              <th><%= sortable_header "Titles", "titles", active_sort: @sort, direction: @direction, scope: @scope %></th>
+              <th><%= sortable_header "Runner-up", "runner_up", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <% if @almanac.ladder %>
                 <th><%= @almanac.ladder.year %></th>
               <% end %>

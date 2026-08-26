@@ -11,6 +11,7 @@ class LeagueController < ApplicationController
     @almanac = Almanac.new
     @sort = SORTS.key?(params[:sort]) ? params[:sort] : "win_pct"
     @direction = params[:direction] == "asc" ? "asc" : "desc"
+    @scope = params[:scope] == "all" ? "all" : "current"
     @standings = sorted_standings
   end
 
@@ -19,7 +20,9 @@ class LeagueController < ApplicationController
   def sorted_standings
     value = SORTS[@sort] ||
       ->(career) { @almanac.playoff_history_for(career.owner).runner_up_finishes }
-    @almanac.all_time_standings.sort_by do |career|
+    standings = @almanac.all_time_standings
+    standings = standings.select { |career| career.owner.current_in?(@almanac.latest_year) } if @scope == "current"
+    standings.sort_by do |career|
       [ @direction == "asc" ? value.call(career) : -value.call(career), career.rank ]
     end
   end

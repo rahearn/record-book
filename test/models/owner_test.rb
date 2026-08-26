@@ -34,4 +34,11 @@ class OwnerTest < ActiveSupport::TestCase
     assert_equal "Anders Aces", owners(:alice).team_name_in(2024)
     assert_equal "Anders Aces", owners(:alice).team_name_in(1999)
   end
+
+  test "current_in? checks whether the owner fielded a team that season" do
+    assert owners(:alice).current_in?(2024)
+    assert owners(:alice).current_in?(2023)
+    assert_not owners(:alice).current_in?(1999)
+    assert_not Owner.new(name: "Nameless").current_in?(2024)
+  end
 end

@@ -18,4 +18,9 @@ class Owner < ApplicationRecord
   def team_name_in(year)
     teams.joins(:season).where(season: { year: }).first&.name || team_name
   end
+
+  # Whether this owner fielded a team in the given season.
+  def current_in?(year)
+    teams.joins(:season).where(season: { year: }).exists?
+  end
 end

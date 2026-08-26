@@ -49,6 +49,32 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_operator response.body.index("Alice Anders"), :<, response.body.index("Bob Barker")
   end
 
+  test "defaults to showing current owners, with the Current filter marked active" do
+    get root_url
+    assert_response :success
+    assert_select ".seg-on", text: "Current"
+  end
+
+  test "an owner without a team in the most recent season is hidden by default and shown under All" do
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 50)
+    Performance.create!(game: game, owner: frank, points: 40)
+
+    get root_url
+    assert_response :success
+    assert_no_match "Eve Ellis", response.body
+
+    get root_url(scope: "all")
+    assert_response :success
+    assert_select ".seg-on", text: "All"
+    assert_match "Eve Ellis", response.body
+  end
+
   test "unknown sort parameters fall back to the default order" do
     get root_url(sort: "hacked")
     assert_response :success
