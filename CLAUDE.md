@@ -84,7 +84,37 @@ because autosaving a whole lineup validates every persisted slot at once and a r
 per-performance `sequence` uniqueness — lineup slots are edited through their own resource.
 
 `db/seeds.rb` generates a deterministic demo league (20 owners, 2011–2025) matching the design
-mockup's data; it skips seeding when games already exist, and CI replants it in the test env.
+mockup's data; it skips seeding when games already exist, and CI replants it in the test env. Its
+`USE_PROD_DATA_SEED` branch loads 2005–2024 from the Yahoo exports in `docs/yahoo/`.
+
+Seasons from 2025 on were played on MyFantasyLeague and are loaded by `MyFantasyLeague::Import`
+(`lib/my_fantasy_league/`), driven by `config/mfl.yml`. Adding a season is a config edit and nothing
+else. The pieces:
+
+- `Client` — the export API, one league at a time. A league's requests belong on the `wwwNN` host
+  its own record names, so that host is read once from `TYPE=league` and reused; requests are spaced
+  a second apart and 429s are retried, which is what MFL asks of clients. Single-element payloads
+  arrive as objects where pairs arrive as arrays, so everything is unwrapped through `Array.wrap`.
+- `Configuration` — `config/mfl.yml`: the league id, the roster the season was played with, and each
+  tier's MFL division and playoff brackets. Since 2025 both tiers are **divisions of one MFL league**
+  (Premier is `00`, and MFL's "Relegation" is the record book's `challenger`, `01`), scheduling and
+  playing playoffs independently. MFL only shows owner names to a commissioner's own session, so the
+  franchise → owner map is written down per season; the importer refuses to invent an owner.
+- `Schedule` — regular-season games come off `TYPE=schedule` (every matchup is intra-division, so the
+  division settles the tier); playoff games come off the brackets instead, because the schedule lists
+  a playoff week without saying which bracket a game belongs to. Rounds are named counting back from
+  the final, whose week is derived from the bracket's size rather than from the rounds played so far.
+  A third-place game is a bracket of its own.
+- `PlayerDirectory` — MFL names players "Kamara, Alvin" and defenses "Bills, Buffalo", and uses its
+  own team codes (`SFO`, `KCC`); both are translated so 2025 on reads like the Yahoo-loaded seasons.
+- `Import` — writes the season, roster format, playoff formats, teams, games, performances and
+  lineups. **Re-importing a week is the supported way to pick up a scoring adjustment**: a game is
+  recognised by the pair of owners who played it, its scores are updated in place (so links to
+  matchup pages survive), lineups are rewritten whole, and a game MFL no longer has is dropped.
+
+MFL records that a player started, not the slot they filled, so the slot is worked back out of what
+they were eligible for by `RosterFormat#seat_starters` — a backtracking search shared with the Yahoo
+import in `db/seeds.rb`.
 
 ## Stack
 
@@ -130,6 +160,16 @@ CI:
   bundler-audit, importmap audit, brakeman, `bin/rails test`, and a test-env seed replant. Defined in
   `config/ci.rb` using `ActiveSupport::ContinuousIntegration` — edit that file to add/reorder steps
   rather than editing `.github/workflows/ci.yml` directly (CI runs the equivalent steps as separate jobs).
+
+Loading seasons from MyFantasyLeague (2025 on; needs network access to `myfantasyleague.com`):
+- `bin/rails "mfl:preview[2025]"` — show what MFL has for a season without writing any of it down.
+  Run this first: it lists the franchise ids and team names that `config/mfl.yml` needs owners for,
+  and it works before that map is filled in.
+- `bin/rails "mfl:import[2025]"` — import every week on record
+- `bin/rails "mfl:import[2025,7]"` — import one week, re-importing it if it is already loaded
+- `bin/rails "mfl:import[2025,7,premier]"` — one week of one tier
+- Quote the bracketed arguments, or use `YEAR=`/`WEEK=`/`TIER=` instead. The whole run is one
+  transaction, so a failure leaves the record book exactly as it was.
 
 Database:
 - `bin/rails db:prepare` — create/migrate the dev database (idempotent)

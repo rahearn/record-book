@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "playoffBracket": {
+    "playoffRound": {
+      "playoffGame": {
+        "home": {
+          "bracket": "1",
+          "loser_of_game": "4",
+          "franchise_id": "0004",
+          "points": "91.28"
+        },
+        "away": {
+          "points": "138",
+          "loser_of_game": "3",
+          "franchise_id": "0005",
+          "bracket": "1"
+        },
+        "game_id": "1"
+      },
+      "week": "17"
+    },
+    "bracket_id": "2"
+  },
+  "encoding": "utf-8"
+}

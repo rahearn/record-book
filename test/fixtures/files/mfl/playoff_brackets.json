@@ -1,0 +1,40 @@
+{
+  "playoffBrackets": {
+    "playoffBracket": [
+      {
+        "teamsInvolved": "6",
+        "bracketWinnerTitle": "Champion",
+        "name": "Championship",
+        "startWeekGames": "2",
+        "startWeek": "15",
+        "id": "1"
+      },
+      {
+        "id": "2",
+        "name": "3rd Place Game",
+        "startWeekGames": "1",
+        "startWeek": "17",
+        "bracketWinnerTitle": "Premier 3rd Place",
+        "teamsInvolved": "2"
+      },
+      {
+        "startWeek": "15",
+        "startWeekGames": "2",
+        "name": "Relegation",
+        "id": "3",
+        "teamsInvolved": "4",
+        "bracketWinnerTitle": "Intercontinental"
+      },
+      {
+        "id": "4",
+        "startWeekGames": "1",
+        "name": "3rd Place Game",
+        "startWeek": "16",
+        "bracketWinnerTitle": "Relegation 3rd Place",
+        "teamsInvolved": "2"
+      }
+    ]
+  },
+  "version": "1.0",
+  "encoding": "utf-8"
+}

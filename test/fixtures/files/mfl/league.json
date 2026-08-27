@@ -1,0 +1,129 @@
+{
+  "version": "1.0",
+  "encoding": "utf-8",
+  "league": {
+    "name": "ATΩ Delta 25",
+    "baseURL": "https://www47.myfantasyleague.com",
+    "startWeek": "1",
+    "lastRegularSeasonWeek": "14",
+    "endWeek": "17",
+    "divisions": {
+      "division": [
+        {
+          "name": "Premier",
+          "id": "00"
+        },
+        {
+          "name": "Relegation",
+          "id": "01"
+        }
+      ],
+      "count": "2"
+    },
+    "franchises": {
+      "count": "20",
+      "franchise": [
+        {
+          "id": "0001",
+          "name": "Always a McBridesmaid",
+          "division": "01"
+        },
+        {
+          "id": "0002",
+          "name": "Dart Hard",
+          "division": "00"
+        },
+        {
+          "id": "0003",
+          "name": "Perplexed",
+          "division": "00"
+        },
+        {
+          "id": "0004",
+          "name": "Tatt",
+          "division": "00"
+        },
+        {
+          "id": "0005",
+          "name": "Fuzz",
+          "division": "00"
+        },
+        {
+          "id": "0006",
+          "name": "John-O",
+          "division": "00"
+        },
+        {
+          "id": "0007",
+          "name": "Viva",
+          "division": "00"
+        },
+        {
+          "id": "0008",
+          "name": "Great Jean-tys",
+          "division": "00"
+        },
+        {
+          "id": "0009",
+          "name": "The Four Faces of Relegation",
+          "division": "00"
+        },
+        {
+          "id": "0010",
+          "name": "Iron Jayden",
+          "division": "00"
+        },
+        {
+          "id": "0011",
+          "name": "Jaxson Smith-Njigbas Never Age",
+          "division": "00"
+        },
+        {
+          "id": "0012",
+          "name": "imdrunkrightnow",
+          "division": "00"
+        },
+        {
+          "id": "0013",
+          "name": "Ian",
+          "division": "00"
+        },
+        {
+          "id": "0014",
+          "name": "Chili con cussion",
+          "division": "01"
+        },
+        {
+          "id": "0015",
+          "name": "Goldberg",
+          "division": "01"
+        },
+        {
+          "id": "0016",
+          "name": "Dewis",
+          "division": "01"
+        },
+        {
+          "id": "0017",
+          "name": "Tua Daze",
+          "division": "01"
+        },
+        {
+          "id": "0018",
+          "name": "Schenk",
+          "division": "01"
+        },
+        {
+          "id": "0019",
+          "name": "Jenn-O",
+          "division": "01"
+        },
+        {
+          "id": "0020",
+          "name": "Mikey-J",
+          "division": "01"
+        }
+      ]
+    }
+  }
+}

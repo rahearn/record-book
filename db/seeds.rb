@@ -85,37 +85,12 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
       .map { |token| token == "DEF" ? "dst" : token.downcase }
   end
 
-  # Seat every starter in a slot they were eligible for. A player eligible
-  # at two positions can be the only one who fits somewhere else, so this
-  # searches for a seating that takes everyone rather than filling slots in
-  # order. Returns the slot index each player took, or nil if one is left
-  # standing. Slots nobody fills stay empty.
-  seat_starters = lambda do |positions, slots|
-    taken = Array.new(slots.size)
-    seat = lambda do |player, tried|
-      slots.each_with_index do |slot, index|
-        next if tried.include?(index)
-        next unless LineupSlot::ELIGIBLE_POSITIONS.fetch(slot).intersect?(positions[player])
-
-        tried << index
-        if taken[index].nil? || seat.call(taken[index], tried)
-          taken[index] = player
-          return true
-        end
-      end
-      false
-    end
-
-    positions.each_index { |player| return nil unless seat.call(player, Set.new) }
-    taken
-  end
-
   # Seasons with an injured-reserve spot exported it as though its occupant
   # had started, so a lineup can arrive one "starter" too deep. The odd one
   # out is whoever the recorded score leaves out: the rest of the lineup
   # adds back up to it exactly.
-  injured_reserve = lambda do |starters, recorded, slots|
-    return if starters.size <= slots.size
+  injured_reserve = lambda do |starters, recorded, format|
+    return if starters.size <= format.starting_slots.size
 
     without = lambda { |entry| starters.reject { |other| other.equal?(entry) } }
     candidates = starters.select do |entry|
@@ -124,7 +99,7 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
     candidates = starters if candidates.empty?
     # Several may have scored the same, and nothing but the seating tells
     # them apart: take one the rest of the lineup can be seated around.
-    candidates.find { |entry| seat_starters.call(without.call(entry).pluck(:positions), slots) } ||
+    candidates.find { |entry| format.seat_starters(without.call(entry).pluck(:positions)) } ||
       candidates.last
   end
 
@@ -140,10 +115,10 @@ if Rails.env.production? || ENV["USE_PROD_DATA_SEED"]
     started, reserves = entries.partition { |entry| entry[:started] }
 
     starting = format.starting_slots
-    injured = format.injured_reserve? ? injured_reserve.call(started, recorded, starting) : nil
+    injured = format.injured_reserve? ? injured_reserve.call(started, recorded, format) : nil
     started = started.reject { |entry| entry.equal?(injured) } if injured
 
-    taken = seat_starters.call(started.pluck(:positions), starting)
+    taken = format.seat_starters(started.pluck(:positions))
     return unless taken
 
     lineup = starting.each_with_index.filter_map do |slot, index|

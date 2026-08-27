@@ -1,0 +1,71 @@
+# Where the record book finds a season on MyFantasyLeague, and who it is
+# looking at when it gets there.
+#
+# Since 2025 the league has run as a single MFL league split into two
+# divisions that schedule and play their playoffs independently: Premier, and
+# the one MFL calls "Relegation" and the record book has always called
+# Challenger. A tier is therefore a division id, plus the brackets its
+# playoffs were played in.
+#
+# MFL hands out franchise ids per league and only shows owner names to a
+# commissioner's own session, so who sat behind each franchise is written
+# down here. Promotion and relegation move owners across the divisions every
+# year, so that map belongs to a season rather than to the league. Names have
+# to match the record book's own spelling — the importer will not invent an
+# owner it cannot find.
+#
+# Adding a season means copying the block below, and nothing else.
+
+# Sent on every request. MFL throttles unregistered clients harder than
+# registered ones, so register this name at
+# https://api.myfantasyleague.com/2025/csetup?C=APICLI to raise the ceiling.
+# MFL_USER_AGENT overrides it.
+user_agent: ato-delta-record-book
+
+seasons:
+  2025:
+    league_id: "70967"
+
+    # Eight starters — a quarterback, two backs, two receivers, a tight end,
+    # a flex and a defense — over a four-deep bench.
+    roster: [ qb, wr, wr, rb, rb, te, wr_rb_te, dst, bench, bench, bench, bench ]
+
+    tiers:
+      premier:
+        division: "00"
+        playoffs:
+          # Six teams: two quarterfinals in week 15, semifinals in 16, the
+          # final in 17. The third-place game is a bracket of its own.
+          bracket: "1"
+          third_place: "2"
+      challenger:
+        division: "01"
+        playoffs:
+          # Four teams: semifinals in week 15, the final in 16.
+          bracket: "3"
+          third_place: "4"
+
+    # Franchise id => the owner behind it. The name after each id is the team
+    # name MFL had on file when this block was written, as a reminder of who
+    # is who; the record book takes team names from MFL on every import.
+    franchises:
+      "0001": # Always a McBridesmaid
+      "0002": # Dart Hard
+      "0003": # Perplexed
+      "0004": Matt Terry # Tatt
+      "0005": Fuzz Otto # Fuzz
+      "0006": John Wells # John-O
+      "0007": Andy Velarde # Viva
+      "0008": # Great Jean-tys
+      "0009": Chris Insolera # The Four Faces of Relegation
+      "0010": # Iron Jayden
+      "0011": # Jaxson Smith-Njigbas Never Age
+      "0012": Ryan Ahearn # imdrunkrightnow
+      "0013": Ian Solla-Yates # Ian
+      "0014": Matt Peterson # Chili con cussion
+      "0015": Adam Goldberg # Goldberg
+      "0016": Chris Lewis # Dewis
+      "0017": # Tua Daze
+      "0018": Tim Schenk # Schenk
+      "0019": Matt Jennings # Jenn-O
+      "0020": Mike Jennings # Mikey-J
