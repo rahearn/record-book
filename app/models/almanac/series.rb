@@ -1,5 +1,6 @@
 class Almanac
-  # Every meeting between two owners, viewed from owner A's side.
+  # Every meeting between two owners, playoffs included, viewed from owner
+  # A's side.
   class Series
     Meeting = Data.define(:game, :points_a, :points_b) do
       def year
@@ -12,6 +13,14 @@ class Almanac
 
       def tier
         game.tier
+      end
+
+      def round_name
+        game.round_name
+      end
+
+      def playoff?
+        game.playoff?
       end
 
       def margin
@@ -41,6 +50,10 @@ class Almanac
 
     def wins_b
       meetings.count { |meeting| meeting.points_b > meeting.points_a }
+    end
+
+    def playoff_meetings
+      meetings.count(&:playoff?)
     end
 
     def ties

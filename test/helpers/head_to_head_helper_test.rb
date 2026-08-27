@@ -9,15 +9,17 @@ class HeadToHeadHelperTest < ActionView::TestCase
 
   test "series_display shows wins and any ties" do
     series = @almanac.series_between(owners(:alice), owners(:bob))
-    assert_equal "2–0", series_display(series)
+    assert_equal "3–0", series_display(series)
 
     with_ties = Struct.new(:wins_a, :wins_b, :ties).new(3, 2, 1)
     assert_equal "3–2–1", series_display(with_ties)
   end
 
-  test "series_note counts meetings" do
-    assert_equal "2 regular-season meetings since 2023",
+  test "series_note counts meetings and calls out the playoff ones" do
+    assert_equal "3 meetings since 2023 · 1 in the playoffs",
       series_note(@almanac.series_between(owners(:alice), owners(:bob)))
+    assert_equal "1 meeting since 2023",
+      series_note(@almanac.series_between(owners(:alice), owners(:carol)))
     assert_equal "These owners have never met.",
       series_note(@almanac.series_between(owners(:alice), owners(:dan)))
   end

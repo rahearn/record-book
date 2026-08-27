@@ -4,8 +4,9 @@
 #
 # All statistics cover regular-season games only, and "luck" is the average
 # number of points an opponent scored below (+) or above (−) their own
-# season average. The exception is titles, which count playoff
-# championships won in the unified league or the Premier tier.
+# season average. The exceptions are titles, which count playoff
+# championships won in the unified league or the Premier tier, and the
+# head-to-head records, which count every meeting two owners played.
 class Almanac
   PROMOTION_COUNT = 4
   RELEGATION_COUNT = 4
@@ -149,10 +150,11 @@ class Almanac
     all_time_standings.sort_by(&:points_against_per_game).index(career) + 1
   end
 
-  # All-time record against every opponent faced, best series first.
+  # All-time record against every opponent faced, playoffs included, best
+  # series first.
   def head_to_head_for(owner)
     totals = Hash.new { |hash, opponent| hash[opponent] = { wins: 0, losses: 0, ties: 0 } }
-    each_matchup do |_game, side_a, side_b|
+    each_meeting do |_game, side_a, side_b|
       mine, theirs = if side_a.owner == owner
         [ side_a, side_b ]
       elsif side_b.owner == owner
@@ -176,7 +178,7 @@ class Almanac
   def series_between(owner_a, owner_b)
     meetings = []
     if owner_a != owner_b
-      each_matchup do |game, side_a, side_b|
+      each_meeting do |game, side_a, side_b|
         sides = { side_a.owner => side_a, side_b.owner => side_b }
         mine = sides[owner_a]
         theirs = sides[owner_b]
@@ -281,11 +283,17 @@ class Almanac
     end
   end
 
-  def each_matchup
-    @games.each do |game|
+  def each_matchup(games = @games)
+    games.each do |game|
       side_a, side_b = game.performances.to_a
       yield game, side_a, side_b
     end
+  end
+
+  # Head-to-head records are a record of what two owners played, so unlike
+  # the season statistics they count playoff meetings too.
+  def each_meeting(&block)
+    each_matchup(@games + @playoff_games, &block)
   end
 
   def build_game_records

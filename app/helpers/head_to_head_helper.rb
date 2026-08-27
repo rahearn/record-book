@@ -8,11 +8,12 @@ module HeadToHeadHelper
   end
 
   def series_note(series)
-    if series.games_played.zero?
-      "These owners have never met."
-    else
-      "#{pluralize(series.games_played, 'regular-season meeting')} since #{series.first_year}"
-    end
+    return "These owners have never met." if series.games_played.zero?
+
+    note = "#{pluralize(series.games_played, 'meeting')} since #{series.first_year}"
+    return note unless series.playoff_meetings.positive?
+
+    "#{note} · #{series.playoff_meetings} in the playoffs"
   end
 
   def h2h_comparison_rows(series, career_a, career_b)

@@ -40,6 +40,8 @@ layer will import historical data into it:
   and reserves behind them; `Performance` holds a recorded lineup to its shape.
 
 All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
+The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
+record of what two owners played, so it counts playoff meetings too.
 
 All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` — that constant is the
 application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).

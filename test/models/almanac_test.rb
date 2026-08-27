@@ -176,37 +176,46 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal %i[loss loss], bob.weekly_scores.map(&:result)
   end
 
-  test "head_to_head_for aggregates series records, best first" do
+  test "head_to_head_for aggregates series records, playoffs included, best first" do
+    # Alice beat Bob twice in the regular season and again in the 2024 final.
     alice = @book.head_to_head_for(owners(:alice))
-    assert_equal [ [ owners(:bob), 2, 0 ], [ owners(:carol), 1, 0 ] ],
+    assert_equal [ [ owners(:bob), 3, 0 ], [ owners(:carol), 1, 0 ] ],
       alice.map { |series| [ series.opponent, series.wins, series.losses ] }
 
     dan = @book.head_to_head_for(owners(:dan))
-    assert_equal [ [ owners(:bob), 1, 0 ], [ owners(:carol), 0, 2 ] ],
+    assert_equal [ [ owners(:bob), 1, 0 ], [ owners(:carol), 0, 3 ] ],
       dan.map { |series| [ series.opponent, series.wins, series.losses ] }
 
     assert_empty @book.head_to_head_for(Owner.new(name: "Outsider"))
   end
 
-  test "series_between logs every meeting, newest first" do
+  test "series_between logs every meeting, playoffs included, newest first" do
     series = @book.series_between(owners(:alice), owners(:bob))
-    assert_equal 2, series.games_played
-    assert_equal 2, series.wins_a
+    assert_equal 3, series.games_played
+    assert_equal 3, series.wins_a
     assert_equal 0, series.wins_b
+    assert_equal 1, series.playoff_meetings
     assert_equal 2023, series.first_year
-    assert_in_delta 110.0, series.average_points_a
-    assert_in_delta 92.5, series.average_points_b
+    assert_in_delta 116.67, series.average_points_a, 0.01
+    assert_in_delta 95.0, series.average_points_b
 
     newest = series.meetings.first
-    assert_equal [ 2024, 1, "premier" ], [ newest.year, newest.week, newest.tier ]
-    assert_in_delta 25.0, newest.margin
+    assert_equal [ 2024, 2, "premier" ], [ newest.year, newest.week, newest.tier ]
+    assert_equal "Championship", newest.round_name
+    assert newest.playoff?
+    assert_in_delta 30.0, newest.margin
     assert_equal owners(:alice), series.winner_of(newest)
+
+    regular = series.meetings.second
+    assert_equal [ 2024, 1 ], [ regular.year, regular.week ]
+    assert_not regular.playoff?
+    assert_nil regular.round_name
   end
 
   test "series_between is directional" do
     series = @book.series_between(owners(:dan), owners(:carol))
     assert_equal 0, series.wins_a
-    assert_equal 2, series.wins_b
+    assert_equal 3, series.wins_b
     assert_equal owners(:carol), series.winner_of(series.meetings.first)
   end
 
@@ -221,14 +230,14 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, @book.series_between(owners(:alice), owners(:alice)).games_played
   end
 
-  test "playoff games are excluded from every statistic" do
+  test "playoff games are excluded from every season statistic" do
     # The fixtures include 2024 Championship games — Alice 130.0 over Bob,
     # Carol 99.0 over Dan — none of which may leak into regular-season stats.
+    # Head-to-head records are the deliberate exception; see the series tests.
     assert_equal 6, @book.game_count
     assert_equal 3, career_for(:alice).games_played
     assert_equal 2, @book.weeks_per_season
     assert_in_delta 120.0, @book.game_records.highest_score.points
-    assert_equal 2, @book.series_between(owners(:alice), owners(:bob)).games_played
     assert_equal [ 1 ], @book.week_matrix(2024, :premier).weeks
   end
 

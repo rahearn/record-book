@@ -9,7 +9,7 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
     assert_match "Alice Anders", response.body
     assert_match "Carol Chen", response.body
     assert_match "1–0", response.body
-    assert_match "1 regular-season meeting since 2023", response.body
+    assert_match "1 meeting since 2023", response.body
     assert_match "Every meeting", response.body
   end
 
@@ -37,12 +37,16 @@ class HeadToHeadControllerTest < ActionDispatch::IntegrationTest
     get head_to_head_url(a: owners(:alice).id, b: owners(:bob).id)
     assert_response :success
 
-    assert_match "2–0", response.body
-    assert_match "2 regular-season meetings since 2023", response.body
-    assert_select "tbody tr", count: 2
+    assert_match "3–0", response.body
+    assert_match "3 meetings since 2023 · 1 in the playoffs", response.body
+    assert_select "tbody tr", count: 3
     # Each meeting row is addressable so week-by-week chart links can target it.
     assert_select "tr#meeting-2024-w1"
     assert_select "tr#meeting-2023-w1"
+    # The playoff meeting names its round; regular-season weeks carry no tag.
+    assert_select "tr#meeting-2024-w2 td", text: /W2/
+    assert_select "tr#meeting-2024-w2 .tag-outline", text: "Championship"
+    assert_select "tr#meeting-2024-w1 .tag-outline", count: 0
     # Every meeting opens on its own matchup page, from owner A's side.
     assert_select "a[href=?]",
       "/matchups/#{games(:g2023_w1_ab).id}?owner=#{owners(:alice).id}", text: "Matchup"

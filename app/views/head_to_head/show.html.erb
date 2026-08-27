@@ -64,7 +64,7 @@
       <div class="blueprint px-4 py-3.5">
         <%= blueprint_corners %>
         <div class="overflow-x-auto">
-          <table class="table min-w-[620px]">
+          <table class="table min-w-[700px]">
             <thead>
               <tr>
                 <th>Season</th>
@@ -81,7 +81,12 @@
               <% @series.meetings.each do |meeting| %>
                 <tr id="meeting-<%= meeting.year %>-w<%= meeting.week %>">
                   <td><%= meeting.year %></td>
-                  <td class="text-ink/55">W<%= meeting.week %></td>
+                  <td class="whitespace-nowrap text-ink/55">
+                    W<%= meeting.week %>
+                    <% if meeting.playoff? %>
+                      <span class="tag tag-outline ml-1"><%= meeting.round_name %></span>
+                    <% end %>
+                  </td>
                   <td><span class="tag <%= tier_tag_class(meeting.tier) %>"><%= tier_label(meeting.tier) %></span></td>
                   <td><%= points_display(meeting.points_a) %></td>
                   <td><%= points_display(meeting.points_b) %></td>
