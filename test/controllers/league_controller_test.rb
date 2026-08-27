@@ -55,6 +55,32 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_select ".seg-on", text: "Current"
   end
 
+  test "rows number 1-n over the rows actually shown, not by all-time rank" do
+    # A former owner who outranks everyone all time: without him the four
+    # current owners still number 1..4 rather than starting at 2.
+    eve = Owner.create!(name: "Eve Ellis")
+    frank = Owner.create!(name: "Frank Ford")
+    past_season = Season.create!(year: 2010)
+    Team.create!(owner: eve, season: past_season, name: "Ellis Eagles")
+    Team.create!(owner: frank, season: past_season, name: "Ford Falcons")
+    game = Game.create!(season: past_season, week: 1)
+    Performance.create!(game: game, owner: eve, points: 999)
+    Performance.create!(game: game, owner: frank, points: 1)
+
+    get root_url
+    assert_response :success
+    assert_equal %w[1 2 3 4], css_select("tbody tr td:first-child").map(&:text)
+
+    # And the numbering follows the rows as sorted, staying 1..n.
+    get root_url(sort: "pag", direction: "asc")
+    assert_response :success
+    assert_equal %w[1 2 3 4], css_select("tbody tr td:first-child").map(&:text)
+
+    get root_url(scope: "all")
+    assert_response :success
+    assert_equal %w[1 2 3 4 5 6], css_select("tbody tr td:first-child").map(&:text)
+  end
+
   test "an owner without a team in the most recent season is hidden by default and shown under All" do
     eve = Owner.create!(name: "Eve Ellis")
     frank = Owner.create!(name: "Frank Ford")

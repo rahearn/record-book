@@ -53,9 +53,9 @@
             </tr>
           </thead>
           <tbody>
-            <% @standings.each do |career| %>
+            <% @standings.each_with_index do |career, index| %>
               <tr>
-                <td class="text-ink/55"><%= career.rank %></td>
+                <td class="text-ink/55"><%= index + 1 %></td>
                 <td>
                   <div class="flex items-center gap-2.5">
                     <span class="blueprint grid h-[26px] w-[26px] flex-none place-items-center font-heading text-[11px] tracking-[.04em] text-accent-700">
