@@ -4,6 +4,19 @@ class AdminConsoleTest < ActionDispatch::IntegrationTest
   RESOURCES = %w[owners seasons teams games performances playoff_formats roster_formats
                  lineup_slots].freeze
 
+  CREDENTIALS = { username: "admin", password: "s3cret" }.freeze
+
+  # The console's one login lives in the encrypted credentials, which need the
+  # master key to read — a key CI and a fresh checkout don't have. Stand a known
+  # pair in front of them so the gate is exercised without it.
+  def run(...)
+    credentials = Rails.application.credentials
+    credentials.define_singleton_method(:active_admin) { CREDENTIALS }
+    super
+  ensure
+    credentials.singleton_class.remove_method(:active_admin)
+  end
+
   test "the console is closed without credentials" do
     get admin_root_path
 
@@ -116,9 +129,8 @@ class AdminConsoleTest < ActionDispatch::IntegrationTest
   private
 
   def auth_header(username: nil, password: nil)
-    credentials = Rails.application.credentials.active_admin
     encoded = ActionController::HttpAuthentication::Basic.encode_credentials(
-      username || credentials[:username], password || credentials[:password])
+      username || CREDENTIALS[:username], password || CREDENTIALS[:password])
     { "HTTP_AUTHORIZATION" => encoded }
   end
 end
