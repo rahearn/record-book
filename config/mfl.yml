@@ -23,12 +23,12 @@
 user_agent: ato-delta-record-book
 
 seasons:
-  2025:
+  2025: &defaults
     league_id: "70967"
 
     # Eight starters — a quarterback, two backs, two receivers, a tight end,
     # a flex and a defense — over a four-deep bench.
-    roster: [ qb, wr, wr, rb, rb, te, wr_rb_te, dst, bench, bench, bench, bench ]
+    roster: [ qb, wr, wr, rb, rb, te, wr_rb_te, dst, bench, bench, bench, bench, ir ]
 
     tiers:
       premier:
@@ -49,23 +49,23 @@ seasons:
     # name MFL had on file when this block was written, as a reminder of who
     # is who; the record book takes team names from MFL on every import.
     franchises:
-      "0001": # Always a McBridesmaid
-      "0002": # Dart Hard
-      "0003": # Perplexed
+      "0001": Ben Verley # Always a McBridesmaid
+      "0002": Chris Insolera # Dart Hard
+      "0003": Tim Switzer # Perplexed
       "0004": Matt Terry # Tatt
       "0005": Fuzz Otto # Fuzz
       "0006": John Wells # John-O
       "0007": Andy Velarde # Viva
-      "0008": # Great Jean-tys
-      "0009": Chris Insolera # The Four Faces of Relegation
-      "0010": # Iron Jayden
-      "0011": # Jaxson Smith-Njigbas Never Age
+      "0008": Jason Jennings # Great Jean-tys
+      "0009": Chris Schilling # The Four Faces of Relegation
+      "0010": Matt Megas # Iron Jayden
+      "0011": Chris Tate # Jaxson Smith-Njigbas Never Age
       "0012": Ryan Ahearn # imdrunkrightnow
       "0013": Ian Solla-Yates # Ian
       "0014": Matt Peterson # Chili con cussion
       "0015": Adam Goldberg # Goldberg
       "0016": Chris Lewis # Dewis
-      "0017": # Tua Daze
+      "0017": Kenny Merrill # Tua Daze
       "0018": Tim Schenk # Schenk
       "0019": Matt Jennings # Jenn-O
       "0020": Mike Jennings # Mikey-J
