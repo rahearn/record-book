@@ -13,11 +13,16 @@
         class: "btn btn-secondary ml-auto" %>
 </section>
 
-<section class="blueprint grid grid-cols-[1fr_auto_1fr] items-center gap-5 px-6 py-6">
+<section class="blueprint grid grid-cols-1 gap-3 px-6 py-6 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-5">
   <%= blueprint_corners %>
   <%= render "score_side", side: @matchup.side_a, matchup: @matchup, align: "items-start text-left" %>
-  <div class="text-center font-heading text-[15px] tracking-[.14em] text-ink/55">VS</div>
-  <%= render "score_side", side: @matchup.side_b, matchup: @matchup, align: "items-end text-right" %>
+  <div class="flex items-center gap-3 font-heading text-[15px] tracking-[.14em] text-ink/55 sm:justify-center">
+    <span class="h-px flex-1 bg-ink/15 sm:hidden"></span>
+    VS
+    <span class="h-px flex-1 bg-ink/15 sm:hidden"></span>
+  </div>
+  <%= render "score_side", side: @matchup.side_b, matchup: @matchup,
+        align: "items-start text-left sm:items-end sm:text-right" %>
 </section>
 
 <section>

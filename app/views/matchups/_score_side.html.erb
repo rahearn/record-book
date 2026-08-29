@@ -1,8 +1,14 @@
+<%# On a phone the score sits on the owner's line; from `sm` up the row
+    dissolves (`contents`) and the parts take their places in the column. %>
 <div class="flex min-w-0 flex-col gap-0.5 <%= align %>">
-  <span class="card-kicker"><%= side.owner.team_name_in(matchup.year) %></span>
-  <%= link_to side.owner.name, owner_path(side.owner),
-        class: "font-heading text-[26px] font-semibold leading-[1.1] text-accent" %>
-  <span class="text-[11px] text-ink/55"><%= season_context_note(side) %></span>
-  <span class="font-heading text-[54px] font-semibold leading-none"><%= points_display(side.points) %></span>
-  <span class="text-[11px] text-ink/55"><%= bench_note(side) %></span>
+  <span class="card-kicker sm:order-1"><%= side.owner.team_name_in(matchup.year) %></span>
+  <span class="flex w-full items-baseline justify-between gap-3 sm:contents">
+    <%= link_to side.owner.name, owner_path(side.owner),
+          class: "font-heading text-[26px] font-semibold leading-[1.1] text-accent sm:order-2" %>
+    <span class="font-heading text-[38px] font-semibold leading-none sm:order-4 sm:text-[54px]">
+      <%= points_display(side.points) %>
+    </span>
+  </span>
+  <span class="text-[11px] text-ink/55 sm:order-3"><%= season_context_note(side) %></span>
+  <span class="text-[11px] text-ink/55 sm:order-5"><%= bench_note(side) %></span>
 </div>
