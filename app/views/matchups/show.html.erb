@@ -34,33 +34,37 @@
       <%= blueprint_corners %>
       <% @matchup.slot_rows.each do |row| %>
         <div class="grid grid-cols-[1fr_46px_1fr] items-center gap-3 border-t border-ink/10 py-2">
-          <div class="grid min-w-0 grid-cols-[1fr_92px_46px] items-center gap-2">
-            <span class="truncate text-right text-[13px]">
+          <div class="flex min-w-0 flex-col items-end gap-1 sm:grid sm:grid-cols-[1fr_92px_46px] sm:items-center sm:gap-2">
+            <span class="min-w-0 max-w-full text-right text-[13px] sm:truncate">
               <%= player_with_team(row.entry_a) if row.entry_a %>
             </span>
-            <span class="relative h-2.5 bg-ink/5">
-              <% if row.entry_a %>
-                <span class="absolute inset-y-0 right-0 <%= lineup_bar_class(row.a_leads?) %>"
-                      style="width: <%= lineup_bar_percent(row.entry_a.points, @matchup.best_starter_points) %>"></span>
-              <% end %>
-            </span>
-            <span class="text-right font-heading text-base">
-              <%= points_display(row.entry_a.points) if row.entry_a %>
+            <span class="flex w-full items-center gap-2 sm:contents">
+              <span class="relative h-2.5 flex-1 bg-ink/5">
+                <% if row.entry_a %>
+                  <span class="absolute inset-y-0 right-0 <%= lineup_bar_class(row.a_leads?) %>"
+                        style="width: <%= lineup_bar_percent(row.entry_a.points, @matchup.best_starter_points) %>"></span>
+                <% end %>
+              </span>
+              <span class="w-11 shrink-0 text-right font-heading text-base sm:w-auto">
+                <%= points_display(row.entry_a.points) if row.entry_a %>
+              </span>
             </span>
           </div>
           <span class="tag tag-outline justify-center"><%= slot_label(row.slot) %></span>
-          <div class="grid min-w-0 grid-cols-[46px_92px_1fr] items-center gap-2">
-            <span class="font-heading text-base">
-              <%= points_display(row.entry_b.points) if row.entry_b %>
-            </span>
-            <span class="relative h-2.5 bg-ink/5">
-              <% if row.entry_b %>
-                <span class="absolute inset-y-0 left-0 <%= lineup_bar_class(row.b_leads?) %>"
-                      style="width: <%= lineup_bar_percent(row.entry_b.points, @matchup.best_starter_points) %>"></span>
-              <% end %>
-            </span>
-            <span class="truncate text-[13px]">
+          <div class="flex min-w-0 flex-col items-start gap-1 sm:grid sm:grid-cols-[46px_92px_1fr] sm:items-center sm:gap-2">
+            <span class="min-w-0 max-w-full text-[13px] sm:order-3 sm:truncate">
               <%= player_with_team(row.entry_b) if row.entry_b %>
+            </span>
+            <span class="flex w-full items-center gap-2 sm:contents">
+              <span class="w-11 shrink-0 font-heading text-base sm:order-1 sm:w-auto">
+                <%= points_display(row.entry_b.points) if row.entry_b %>
+              </span>
+              <span class="relative h-2.5 flex-1 bg-ink/5 sm:order-2">
+                <% if row.entry_b %>
+                  <span class="absolute inset-y-0 left-0 <%= lineup_bar_class(row.b_leads?) %>"
+                        style="width: <%= lineup_bar_percent(row.entry_b.points, @matchup.best_starter_points) %>"></span>
+                <% end %>
+              </span>
             </span>
           </div>
         </div>
