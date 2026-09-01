@@ -10,5 +10,8 @@
     </span>
   </span>
   <span class="text-[11px] text-ink/55 sm:order-3"><%= season_context_note(side) %></span>
-  <span class="text-[11px] text-ink/55 sm:order-5"><%= bench_note(side) %></span>
+  <% if (all_play_note = matchup_all_play_note(side)) %>
+    <span class="text-[11px] text-ink/55 sm:order-5"><%= all_play_note %></span>
+  <% end %>
+  <span class="text-[11px] text-ink/55 sm:order-6"><%= bench_note(side) %></span>
 </div>

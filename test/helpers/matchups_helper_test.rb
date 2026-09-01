@@ -51,6 +51,16 @@ class MatchupsHelperTest < ActionView::TestCase
     assert_equal "—", vs_season_average_display(tied_matchup.side_a)
   end
 
+  test "matchup_all_play_note reads the week's field, and skips playoff games" do
+    matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
+    assert_equal "All-play 3–0 that week", matchup_all_play_note(matchup.side_a)
+    assert_equal "All-play 2–1 that week", matchup_all_play_note(matchup.side_b)
+
+    playoff = @book.matchup_for(games(:g2024_final_premier))
+    assert_nil matchup_all_play_note(playoff.side_a)
+    assert_nil matchup_all_play_note(tied_matchup.side_a)
+  end
+
   test "bench_note reports what a better lineup was worth" do
     matchup = @book.matchup_for(games(:g2023_w1_ab), first_owner: owners(:alice))
     assert_equal "9.00 left on the bench", bench_note(matchup.side_a)

@@ -16,6 +16,23 @@ module LeagueHelper
     format("%+.2f", value)
   end
 
+  # Expected wins and luck are counted in wins, to a hundredth, so a
+  # season's schedule reads beside its record.
+  def wins_display(value)
+    format("%.2f", value)
+  end
+
+  def signed_wins_display(value)
+    format("%+.2f", value)
+  end
+
+  # An all-play record, the way a week's scoreboard reads it: "9–6".
+  def all_play_display(all_play)
+    parts = [ all_play.wins, all_play.losses ]
+    parts << all_play.ties if all_play.ties.positive?
+    parts.join("–")
+  end
+
   def win_percentage_display(value)
     format("%.1f%%", value * 100)
   end

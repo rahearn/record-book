@@ -22,7 +22,8 @@ module HeadToHeadHelper
       comparison_row("Career PF/g", career_a.points_for_per_game, career_b.points_for_per_game) { |value| points_display(value) },
       comparison_row("Career PA/g", career_a.points_against_per_game, career_b.points_against_per_game) { |value| points_display(value) },
       comparison_row("Career win%", career_a.win_percentage * 100, career_b.win_percentage * 100) { |value| format("%.1f%%", value) },
-      comparison_row("Luck", career_a.luck_per_game, career_b.luck_per_game) { |value| signed_points_display(value) }
+      comparison_row("Luck", career_a.all_play_luck, career_b.all_play_luck) { |value| signed_wins_display(value) },
+      comparison_row("Opp ±", career_a.opponent_shortfall_per_game, career_b.opponent_shortfall_per_game) { |value| signed_points_display(value) }
     ]
   end
 

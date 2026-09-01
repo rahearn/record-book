@@ -4,8 +4,10 @@ class Almanac
   # by slot the way the matchup page reads them.
   class Matchup
     # One owner's side of the matchup. The season record is absent when the
-    # owner has no regular-season games on record for that year.
-    Side = Data.define(:performance, :season_record) do
+    # owner has no regular-season games on record for that year, and the
+    # weekly score with it — playoff games are not part of a season record,
+    # so they carry no all-play line.
+    Side = Data.define(:performance, :season_record, :weekly_score) do
       def owner
         performance.owner
       end
@@ -38,6 +40,12 @@ class Almanac
       # score was, or nil without a season on record.
       def points_vs_average
         points - season_record.average_points if season_record
+      end
+
+      # The score's record against every other score in the same week, or
+      # nil for a game that is not part of the regular season.
+      def all_play
+        weekly_score&.all_play
       end
     end
 

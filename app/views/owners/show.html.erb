@@ -31,8 +31,8 @@
           note: league_rank_note(@almanac.points_for_rank(@career), @almanac.owner_count) %>
     <%= render "plate", kicker: "Points against / game", value: points_display(@career.points_against_per_game),
           note: league_rank_note(@almanac.points_against_rank(@career), @almanac.owner_count) %>
-    <%= render "plate", kicker: "Luck", value: signed_points_display(@career.luck_per_game),
-          note: luck_note(@career.luck_per_game) %>
+    <%= render "plate", kicker: "Luck", value: signed_wins_display(@career.all_play_luck),
+          note: luck_note(@career) %>
   </section>
 
   <section>
@@ -63,7 +63,7 @@
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
       <div class="overflow-x-auto">
-        <table class="table min-w-[760px]">
+        <table class="table min-w-[880px]">
           <thead>
             <tr>
               <th>Year</th>
@@ -72,7 +72,9 @@
               <th>W–L</th>
               <th>PF/g</th>
               <th>PA/g</th>
+              <th>xW</th>
               <th>Luck</th>
+              <th>Opp ±</th>
               <th>High</th>
               <th>Low</th>
               <th></th>
@@ -91,7 +93,9 @@
                 <td><%= record_display(record) %></td>
                 <td><%= points_display(record.average_points) %></td>
                 <td><%= points_display(record.average_points_against) %></td>
-                <td><%= signed_points_display(record.luck_per_game) %></td>
+                <td><%= wins_display(record.expected_wins) %></td>
+                <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
+                <td class="text-ink/55"><%= signed_points_display(record.opponent_shortfall_per_game) %></td>
                 <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
                 <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
                 <td class="text-right">
@@ -111,7 +115,9 @@
       <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">
         <%= @chart_record.year %> week by week · <%= tier_label(@chart_record.tier) %>
       </h2>
-      <span class="text-xs text-ink/55">Bar is points for; the tick is the opponent.</span>
+      <span class="text-xs text-ink/55">
+        Bar is points for; the tick is the opponent. The middle figure is that week's all-play record.
+      </span>
     </div>
     <div class="blueprint flex flex-col gap-[7px] px-4.5 py-4">
       <%= blueprint_corners %>
@@ -128,12 +134,18 @@
                   style="left: <%= bar_percent(score.opponent_points, @chart_max) %>"></span>
           </span>
           <span class="tag <%= week_result_tag_class(score) %> w-8 flex-none justify-center"><%= week_result_label(score) %></span>
+          <% if score.against_the_field? %>
+            <span class="tag tag-outline w-[46px] flex-none justify-center"><%= all_play_display(score.all_play) %></span>
+          <% else %>
+            <span class="w-[46px] flex-none text-xs text-ink/55"><%= all_play_display(score.all_play) %></span>
+          <% end %>
           <span class="flex min-w-0 flex-[1_1_150px] items-baseline gap-2">
             <span class="flex-none text-ink/55"><%= points_display(score.opponent_points) %></span>
             <span class="min-w-0 flex-1 truncate"><%= score.opponent.name %></span>
           </span>
         </a>
       <% end %>
+      <div class="mt-1 border-t border-ink/10 pt-2 text-[11px] text-ink/55"><%= week_luck_note(@chart_record) %></div>
     </div>
   </section>
 

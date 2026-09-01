@@ -43,13 +43,30 @@ All `Almanac` statistics cover regular-season games only — playoff games are f
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
 record of what two owners played, so it counts playoff meetings too.
 
+Luck is three related figures, computed together and shown together (the design spec is the
+canvas at <https://claude.ai/code/artifact/72169663-bda1-4d49-9240-30fbf4c0e000>):
+
+- **`expected_wins`** — each week, a score is played against every *other* score in the same season
+  and tier (`Almanac#all_play_records` builds this `AllPlay` record per performance; the tiers are
+  separate fields, since they play separate weeks). The share of the field a score beat is the win
+  that week earned.
+- **`all_play_luck`** — wins above that: `W + T/2 − xW`. This is what the record book calls "Luck",
+  and it is counted in wins, so seasons and careers add up.
+- **`opponent_shortfall_total`** — the older reading, kept as the "Opp ±" column: how far opponents
+  scored below (+) or above (−) their own season average. It needs season averages, so it is a
+  second pass over the games, and `swing_wins` (results that would have gone the other way had the
+  opponent scored their average) is computed there too.
+
+`SeasonRecord::WeeklyScore#against_the_field?` marks the weeks where the result disagreed with the
+all-play majority — a win with a losing all-play record, or the reverse — which is what the owner
+page outlines and the matchup/scoreboard pages spell out.
+
 All derived statistics live in `app/models/almanac.rb` (**not** `RecordBook` — that constant is the
 application's own namespace from `config/application.rb`, so the stats facade is named `Almanac`).
 `Almanac` loads every game once and computes: per-season standings (`standings_for`: wins desc,
 points-for tiebreak — the order relegation and the zone shading are judged on) and final standings
 (`final_standings_for`: the playoff finishers take the top four spots, everyone else follows in
-regular-season order — this is what the season page shows), career aggregates, "luck" (average
-points opponents scored below/above their own season average), titles (playoff championships won in
+regular-season order — this is what the season page shows), career aggregates, luck, titles (playoff championships won in
 the unified league or Premier tier — the single game winner of the "Championship"-round game; tied
 or ambiguous finals crown no one), single-game
 extremes, and the next season's promotion/relegation ladder. Relegation: bottom 4 of Premier by

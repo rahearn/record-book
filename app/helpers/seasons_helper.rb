@@ -28,6 +28,12 @@ module SeasonsHelper
     "#{ordering} #{zone}"
   end
 
+  # What the three luck columns mean, under the standings table.
+  def luck_column_note
+    "xW is the record a week's score earned against the whole field; Luck is wins above it. " \
+      "Opp ± is how far opponents scored below (+) or above (−) their own season average."
+  end
+
   def season_zone_class(almanac, record)
     if almanac.relegation_zone?(record)
       "zone-down"

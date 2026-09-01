@@ -17,6 +17,17 @@ class LeagueHelperTest < ActionView::TestCase
     assert_equal "+0.00", signed_points_display(0)
   end
 
+  test "wins_display counts expected wins and luck in wins" do
+    assert_equal "6.53", wins_display(6.5333)
+    assert_equal "+4.47", signed_wins_display(4.4667)
+    assert_equal "-0.73", signed_wins_display(-0.7333)
+  end
+
+  test "all_play_display reads like a record, ties only when there are any" do
+    assert_equal "9–6", all_play_display(Almanac::AllPlay.new(wins: 9, losses: 6, ties: 0))
+    assert_equal "9–5–1", all_play_display(Almanac::AllPlay.new(wins: 9, losses: 5, ties: 1))
+  end
+
   test "win_percentage_display shows a percentage" do
     assert_equal "100.0%", win_percentage_display(1.0)
     assert_equal "66.7%", win_percentage_display(2.0 / 3)

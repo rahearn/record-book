@@ -36,7 +36,7 @@
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
       <div class="overflow-x-auto">
-        <table id="standings" class="table min-w-[800px]">
+        <table id="standings" class="table min-w-[900px]">
           <thead>
             <tr>
               <th class="w-[34px]">#</th>
@@ -46,7 +46,9 @@
               <th>PA</th>
               <th>PF/g</th>
               <th>PA/g</th>
+              <th>xW</th>
               <th>Luck</th>
+              <th>Opp ±</th>
               <th>High</th>
               <th>Low</th>
             </tr>
@@ -64,7 +66,9 @@
                 <td><%= points_display(record.points_against) %></td>
                 <td><%= points_display(record.average_points) %></td>
                 <td><%= points_display(record.average_points_against) %></td>
-                <td><%= signed_points_display(record.luck_per_game) %></td>
+                <td><%= wins_display(record.expected_wins) %></td>
+                <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
+                <td class="text-ink/55"><%= signed_points_display(record.opponent_shortfall_per_game) %></td>
                 <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
                 <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
               </tr>
@@ -72,7 +76,10 @@
           </tbody>
         </table>
       </div>
-      <div class="mt-2.5 text-[11px] text-ink/55"><%= season_zone_note(@almanac, @year, @tier) %></div>
+      <div class="mt-2.5 text-[11px] text-ink/55">
+        <%= season_zone_note(@almanac, @year, @tier) %>
+        <%= luck_column_note %>
+      </div>
     </div>
   </section>
 
