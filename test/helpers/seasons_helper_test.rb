@@ -29,6 +29,12 @@ class SeasonsHelperTest < ActionView::TestCase
       season_zone_note(Almanac.new(games: []), 2023, :unified)
   end
 
+  test "luck_column_note explains the three luck columns" do
+    assert_equal "xW is the record a week's score earned against the whole field; Luck is wins " \
+      "above it. Opp ± is how far opponents scored below (+) or above (−) their own season average.",
+      luck_column_note
+  end
+
   test "season_zone_class shades relegation and promotion" do
     premier = @almanac.standings_for(2024, :premier)
     assert_nil season_zone_class(@almanac, premier.first)

@@ -15,6 +15,22 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_match "2–0", response.body # series vs Bob
   end
 
+  test "the luck plate and week rows read the all-play schedule" do
+    get owner_url(owners(:carol))
+    assert_response :success
+
+    assert_match "2–1 against a 1.67-win schedule", response.body
+    assert_select "table th", text: "xW"
+    assert_select "table th", text: "Opp ±"
+
+    get owner_url(owners(:carol), season: 2023)
+    assert_response :success
+    # Carol beat Dan in week 1 while scoring third of four: the week went
+    # against the field, so it is called out.
+    assert_match "went against the all-play field", response.body
+    assert_select "span.tag.tag-outline", text: "1–2"
+  end
+
   test "defaults to the current leader, skipping a higher-ranked former owner" do
     eve = Owner.create!(name: "Eve Ellis")
     frank = Owner.create!(name: "Frank Ford")

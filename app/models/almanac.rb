@@ -2,9 +2,12 @@
 # presents: per-season standings, all-time career records, single-game
 # extremes, and the promotion/relegation ladder for the upcoming season.
 #
-# All statistics cover regular-season games only, and "luck" is the average
-# number of points an opponent scored below (+) or above (−) their own
-# season average. The exceptions are titles, which count playoff
+# All statistics cover regular-season games only. "Luck" is wins above the
+# all-play record — the record a week's score earned against the whole
+# field, which is what separates a schedule from a season. The opponent
+# shortfall (how far opponents scored below their own season average) and
+# the swing wins (results that turn on that shortfall) sit beside it as the
+# points-scaled reading. The exceptions are titles, which count playoff
 # championships won in the unified league or the Premier tier, and the
 # head-to-head records, which count every meeting two owners played.
 class Almanac
@@ -12,6 +15,21 @@ class Almanac
   RELEGATION_COUNT = 4
 
   HeadToHead = Data.define(:opponent, :wins, :losses, :ties)
+
+  # One owner's score measured against every other score in the same week,
+  # tier and season: the record the week itself earned them.
+  AllPlay = Data.define(:wins, :losses, :ties) do
+    def field_size
+      wins + losses + ties
+    end
+
+    # The share of the field the score beat — the win it was worth.
+    def expected_wins
+      return 0.0 if field_size.zero?
+
+      (wins + ties * 0.5) / field_size
+    end
+  end
 
   # Every single-game record keeps the game it was set in, so the record
   # book can date it and link back to the matchup.
@@ -234,8 +252,9 @@ class Almanac
   end
 
   def matchup_side(game, performance)
-    Matchup::Side.new(performance: performance,
-                      season_record: season_records[[ game.season.year, performance.owner ]])
+    record = season_records[[ game.season.year, performance.owner ]]
+    Matchup::Side.new(performance: performance, season_record: record,
+                      weekly_score: record&.score_for(game))
   end
 
   def season_records
@@ -244,22 +263,48 @@ class Almanac
 
   def build_season_records
     records = {}
+    field = all_play_records
     each_matchup do |game, side_a, side_b|
       record_for(records, game, side_a.owner).record_result(
-        game: game, points: side_a.points,
-        opponent: side_b.owner, opponent_points: side_b.points)
+        game: game, points: side_a.points, opponent: side_b.owner,
+        opponent_points: side_b.points, all_play: field[[ game, side_a.owner ]])
       record_for(records, game, side_b.owner).record_result(
-        game: game, points: side_b.points,
-        opponent: side_a.owner, opponent_points: side_a.points)
+        game: game, points: side_b.points, opponent: side_a.owner,
+        opponent_points: side_a.points, all_play: field[[ game, side_b.owner ]])
     end
+    # Season averages only exist once every game is recorded, so how an
+    # opponent scored against their own year is a second pass.
     each_matchup do |game, side_a, side_b|
       year = game.season.year
-      records[[ year, side_a.owner ]].add_luck(records[[ year, side_b.owner ]].average_points - side_b.points)
-      records[[ year, side_b.owner ]].add_luck(records[[ year, side_a.owner ]].average_points - side_a.points)
+      records[[ year, side_a.owner ]].record_opponent_context(
+        points: side_a.points, opponent_points: side_b.points,
+        opponent_average: records[[ year, side_b.owner ]].average_points)
+      records[[ year, side_b.owner ]].record_opponent_context(
+        points: side_b.points, opponent_points: side_a.points,
+        opponent_average: records[[ year, side_a.owner ]].average_points)
     end
     rank_by_season(records.values)
     assign_final_ranks(records.values)
     records
+  end
+
+  # Every owner's all-play record, keyed by the game it was played in. The
+  # field is the week's other scores in the same season and tier — Premier
+  # and Challenger play separate weeks, so they are scored separately.
+  def all_play_records
+    field = {}
+    @games.group_by { |game| [ game.season.year, game.tier, game.week ] }.each_value do |games|
+      sides = games.flat_map { |game| game.performances.map { |performance| [ game, performance ] } }
+      points = sides.map { |_game, performance| performance.points }
+      sides.each_with_index do |(game, performance), index|
+        others = points.reject.with_index { |_score, other| other == index }
+        field[[ game, performance.owner ]] = AllPlay.new(
+          wins: others.count { |score| performance.points > score },
+          losses: others.count { |score| performance.points < score },
+          ties: others.count { |score| performance.points == score })
+      end
+    end
+    field
   end
 
   def record_for(records, game, owner)

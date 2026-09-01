@@ -17,6 +17,21 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_select "th", text: "W2", count: 0
   end
 
+  test "standings carry the schedule beside the record" do
+    get season_url(2023)
+    assert_response :success
+
+    assert_select "#standings th", text: "xW"
+    assert_select "#standings th", text: "Luck"
+    assert_select "#standings th", text: "Opp ±"
+    assert_match "Luck is wins above it", response.body
+
+    # Alice outscored the field in both weeks, so her two wins were the
+    # two her scores earned.
+    alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
+    assert_equal [ "2.00", "+0.00" ], alice.css("td")[7, 2].map(&:text)
+  end
+
   test "shows the challenger tier when requested" do
     get season_url(2024, tier: "challenger")
     assert_response :success

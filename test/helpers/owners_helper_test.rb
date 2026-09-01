@@ -65,9 +65,16 @@ class OwnersHelperTest < ActionView::TestCase
     assert_equal "Best finish: 2nd", best_finish_note(almanac.career_for(owners(:dan)))
   end
 
-  test "luck_note direction" do
-    assert_equal "Opponents underperform vs. me", luck_note(3.2)
-    assert_equal "Opponents get up for me", luck_note(-1.5)
+  test "luck_note reads the record against the schedule that earned it" do
+    career = Almanac.new.career_for(owners(:alice))
+    assert_equal "3–0 against a 3.00-win schedule", luck_note(career)
+  end
+
+  test "week_luck_note counts the results that turned on the opponent" do
+    record = Almanac.new.standings_for(2023, :unified).find { |row| row.owner == owners(:carol) }
+    assert_equal "1–1 against a 0.67-win schedule · 1 win needed an opponent scoring below " \
+      "their own season average, 0 losses came against one who beat theirs. " \
+      "Outlined weeks went against the all-play field.", week_luck_note(record)
   end
 
   test "year_or_dash shows the year or an em dash" do

@@ -26,8 +26,18 @@ module OwnersHelper
     "League rank #{rank} of #{total}"
   end
 
-  def luck_note(luck_per_game)
-    luck_per_game >= 0 ? "Opponents underperform vs. me" : "Opponents get up for me"
+  # The luck plate reads as the record against the schedule that earned it.
+  def luck_note(career)
+    "#{record_display(career)} against a #{wins_display(career.expected_wins)}-win schedule"
+  end
+
+  # Under the week-by-week chart: the season's schedule, and the results
+  # that turned on how the opponent scored against their own year.
+  def week_luck_note(record)
+    "#{record_display(record)} against a #{wins_display(record.expected_wins)}-win schedule · " \
+      "#{pluralize(record.swing_wins_gained.round, 'win')} needed an opponent scoring below their own " \
+      "season average, #{pluralize(record.swing_wins_lost.round, 'loss', plural: 'losses')} came against " \
+      "one who beat theirs. Outlined weeks went against the all-play field."
   end
 
   def best_finish_note(career)

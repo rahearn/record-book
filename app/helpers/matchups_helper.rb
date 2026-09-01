@@ -54,6 +54,14 @@ module MatchupsHelper
       "#{points_display(side.average_points)} (#{vs_season_average_display(side)} this week)"
   end
 
+  # A side's record against every other score in the same week, or nothing
+  # for a playoff game, which is not part of the regular-season field.
+  def matchup_all_play_note(side)
+    return unless side.all_play
+
+    "All-play #{all_play_display(side.all_play)} that week"
+  end
+
   def bench_note(side)
     "#{points_display(side.points_left_on_bench)} left on the bench"
   end

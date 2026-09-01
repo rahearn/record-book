@@ -5,7 +5,9 @@ require "test_helper"
 # 2023 (unified): W1 Alice 100.0 def. Bob 90.0, Carol 80.0 def. Dan 70.5
 #                 W2 Alice 110.0 def. Carol 95.0, Dan 105.0 def. Bob 85.0
 #   Standings: Alice 2-0 (pf 210), Dan 1-1 (pf 175.5), Carol 1-1 (pf 175), Bob 0-2 (pf 175)
-#   Luck totals: Alice -10, Bob -12.25, Carol +12.25, Dan +10
+#   Opponent shortfall totals: Alice -10, Bob -12.25, Carol +12.25, Dan +10
+#   All-play (field of 3 each week): W1 Alice 3-0, Bob 2-1, Carol 1-2, Dan 0-3
+#                                    W2 Alice 3-0, Dan 2-1, Carol 1-2, Bob 0-3
 #
 # 2024: Premier W1 Alice 120.0 def. Bob 95.0; Challenger W1 Carol 90.0 def. Dan 80.0
 class AlmanacTest < ActiveSupport::TestCase
@@ -59,7 +61,7 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_in_delta 1.0, alice.win_percentage
     assert_in_delta 110.0, alice.points_for_per_game
     assert_in_delta 93.33, alice.points_against_per_game, 0.01
-    assert_in_delta(-3.33, alice.luck_per_game, 0.01)
+    assert_in_delta(-3.33, alice.opponent_shortfall_per_game, 0.01)
     assert_equal 1, alice.titles
   end
 
@@ -76,12 +78,68 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 2, carol.wins
     assert_equal 1, carol.losses
     assert_equal 0, carol.titles # won the 2024 Challenger final
-    assert_in_delta 4.08, carol.luck_per_game, 0.01
+    assert_in_delta 4.08, carol.opponent_shortfall_per_game, 0.01
   end
 
-  test "luck measures opponent under- and over-performance" do
-    assert_in_delta(-4.08, career_for(:bob).luck_per_game, 0.01)
-    assert_in_delta 3.33, career_for(:dan).luck_per_game, 0.01
+  test "opponent shortfall measures opponent under- and over-performance" do
+    assert_in_delta(-4.08, career_for(:bob).opponent_shortfall_per_game, 0.01)
+    assert_in_delta 3.33, career_for(:dan).opponent_shortfall_per_game, 0.01
+  end
+
+  test "expected wins score every week against the whole field" do
+    alice, bob, carol, dan = %i[alice bob carol dan].map { |name| career_for(name) }
+
+    # Alice outscored the league in all three of her weeks; Bob was second
+    # in one and last in two.
+    assert_in_delta 3.0, alice.expected_wins, 0.01
+    assert_in_delta 0.67, bob.expected_wins, 0.01
+    assert_in_delta 1.67, carol.expected_wins, 0.01
+    assert_in_delta 0.67, dan.expected_wins, 0.01
+  end
+
+  test "luck is wins above the all-play record" do
+    assert_in_delta 0.0, career_for(:alice).all_play_luck, 0.01
+    assert_in_delta(-0.67, career_for(:bob).all_play_luck, 0.01)
+    assert_in_delta 0.33, career_for(:carol).all_play_luck, 0.01
+    assert_in_delta 0.33, career_for(:dan).all_play_luck, 0.01
+  end
+
+  test "all-play fields are scored within a tier" do
+    # 2024 is split, so each tier's week is a field of one opponent.
+    premier = @book.standings_for(2024, :premier).find { |record| record.owner == owners(:alice) }
+    challenger = @book.standings_for(2024, :challenger).find { |record| record.owner == owners(:carol) }
+
+    assert_equal 1, premier.weekly_scores.first.all_play.field_size
+    assert_equal 1, challenger.weekly_scores.first.all_play.field_size
+    assert_in_delta 1.0, premier.expected_wins, 0.01
+    assert_in_delta 1.0, challenger.expected_wins, 0.01
+  end
+
+  test "swing wins count the results that turned on the opponent's shortfall" do
+    # Carol's week 1 win came against a Dan scoring below his own average;
+    # every other 2023 result would have gone the same way regardless.
+    carol = @book.standings_for(2023, :unified).find { |record| record.owner == owners(:carol) }
+    alice = @book.standings_for(2023, :unified).find { |record| record.owner == owners(:alice) }
+
+    assert_in_delta 1.0, carol.swing_wins_gained, 0.01
+    assert_in_delta 0.0, carol.swing_wins_lost, 0.01
+    assert_in_delta 1.0, carol.swing_wins, 0.01
+    assert_in_delta 0.0, alice.swing_wins, 0.01
+  end
+
+  test "weekly scores know when a result went against the field" do
+    dan = @book.standings_for(2023, :unified).find { |record| record.owner == owners(:dan) }
+    week_two = dan.weekly_scores.find { |score| score.week == 2 }
+
+    assert_equal 2, week_two.all_play.wins
+    assert_equal 1, week_two.all_play.losses
+    assert_not week_two.against_the_field?
+
+    carol = @book.standings_for(2023, :unified).find { |record| record.owner == owners(:carol) }
+    week_one = carol.weekly_scores.find { |score| score.week == 1 }
+
+    assert_equal 1, week_one.all_play.wins
+    assert week_one.against_the_field? # won the game, lost to the field
   end
 
   test "season standings break win ties on points for" do

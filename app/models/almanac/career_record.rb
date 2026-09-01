@@ -43,8 +43,22 @@ class Almanac
       season_records.sum(&:points_against)
     end
 
-    def luck_total
-      season_records.sum(&:luck_total)
+    def expected_wins
+      season_records.sum(&:expected_wins)
+    end
+
+    # Wins above what the weekly scores earned against the field, summed
+    # over every season played.
+    def all_play_luck
+      season_records.sum(&:all_play_luck)
+    end
+
+    def opponent_shortfall_total
+      season_records.sum(&:opponent_shortfall_total)
+    end
+
+    def swing_wins
+      season_records.sum(&:swing_wins)
     end
 
     def best_finish
@@ -63,8 +77,8 @@ class Almanac
       points_against / games_played
     end
 
-    def luck_per_game
-      luck_total / games_played
+    def opponent_shortfall_per_game
+      opponent_shortfall_total / games_played
     end
   end
 end

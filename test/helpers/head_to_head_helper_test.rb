@@ -30,7 +30,7 @@ class HeadToHeadHelperTest < ActionView::TestCase
       @almanac.career_for(owners(:alice)),
       @almanac.career_for(owners(:bob)))
 
-    assert_equal [ "Avg in series", "Career PF/g", "Career PA/g", "Career win%", "Luck" ],
+    assert_equal [ "Avg in series", "Career PF/g", "Career PA/g", "Career win%", "Luck", "Opp ±" ],
       rows.map(&:label)
 
     pf = rows.second
