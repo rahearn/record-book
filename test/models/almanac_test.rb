@@ -575,6 +575,31 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, history.active_playoff_drought
   end
 
+  test "a split season is complete only once both tiers have played their final" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Tier #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c => 100.0, d => 90.0 }),
+      build_game(year: 2030, week: 2, tier: :premier, scores: { a => 100.0, b => 90.0 },
+                 round_name: "Championship")
+    ]
+    book = Almanac.new(games: games, promotion_count: 1, relegation_count: 1)
+    assert_not book.season_complete?(2030)
+
+    # The tier column shows the season being played, not the projected ladder.
+    assert_equal 2030, book.tier_column_year
+    assert_equal :premier, book.tier_column_for(book.career_for(b))
+    assert_equal :challenger, book.tier_column_for(book.career_for(c))
+
+    final = build_game(year: 2030, week: 2, tier: :challenger, scores: { c => 100.0, d => 90.0 },
+                       round_name: "Championship")
+    book = Almanac.new(games: games + [ final ], promotion_count: 1, relegation_count: 1)
+    assert book.season_complete?(2030)
+    assert_equal 2031, book.tier_column_year
+    assert_equal :challenger, book.tier_column_for(book.career_for(b))
+    assert_equal :premier, book.tier_column_for(book.career_for(c))
+  end
+
   test "final rank places playoff finishers first, then regular-season order" do
     a, b, c, d, e, f = %w[A B C D E F].map { |n| Owner.new(name: "Final #{n}") }
     games = [

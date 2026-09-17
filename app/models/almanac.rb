@@ -111,6 +111,28 @@ class Almanac
     @latest_season_complete
   end
 
+  # The season the league table's tier column describes: next season's
+  # ladder once the latest season is finished, the latest season itself
+  # while it is still being played. Nil when neither has tiers.
+  def tier_column_year
+    return if empty?
+
+    if season_complete?(latest_year)
+      ladder&.year
+    elsif split_season?(latest_year)
+      latest_year
+    end
+  end
+
+  # An owner's tier in the season tier_column_year describes, or nil.
+  def tier_column_for(career)
+    year = tier_column_year
+    return if year.nil?
+    return career.next_tier if year > latest_year
+
+    career.season_records.find { |record| record.year == year }&.tier&.to_sym
+  end
+
   # The first year the league split into promotion/relegation tiers, or nil.
   def tiered_since
     @games.reject(&:unified?).map { |game| game.season.year }.min
