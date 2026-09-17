@@ -12,8 +12,12 @@ module SeasonsHelper
 
   # Sits under the standings table: how the rows are ordered, and what
   # the shaded promotion/relegation zones mean.
-  def season_zone_note(almanac, year, tier)
-    ordering = "Ordered by final finish — playoff finishers first, then regular-season order."
+  def season_zone_note(almanac, year, tier, sorted: false)
+    ordering = if sorted
+      "# is final finish — playoff finishers first, then regular-season order."
+    else
+      "Ordered by final finish — playoff finishers first, then regular-season order."
+    end
     zone = if almanac.split_season?(year)
       if tier.to_s == "premier"
         "Shaded: bottom #{almanac.relegation_count} relegate to Challenger for #{year + 1}."
@@ -29,6 +33,12 @@ module SeasonsHelper
   end
 
   # What the three luck columns mean, under the standings table.
+  # A standings header that re-sorts the displayed season and tier.
+  def season_sort_header(label, column)
+    sortable_header(label, column, active_sort: @sort, direction: @direction, path: :season_path,
+                    year: @year, tier: (@tier unless @tier == :unified))
+  end
+
   def luck_column_note
     "xW is the record a week's score earned against the whole field; Luck is wins above it. " \
       "Opp ± is how far opponents scored below (+) or above (−) their own season average."

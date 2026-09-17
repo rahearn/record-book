@@ -64,13 +64,14 @@ module LeagueHelper
     MOVEMENT_TAG_CLASSES.fetch(movement)
   end
 
-  # A column header that sorts the all-time table: first click descending,
-  # clicking the active column again flips the direction.
-  def sortable_header(label, column, active_sort:, direction:, scope: nil)
+  # A column header that sorts a table: first click descending, clicking
+  # the active column again flips the direction. Links to the page named by path (a route helper) with the rest of params
+  # carried along, e.g. the league scope or the season's year and tier.
+  def sortable_header(label, column, active_sort:, direction:, path: :root_path, **params)
     active = active_sort == column
     next_direction = active && direction == "desc" ? "asc" : "desc"
     caption = active ? "#{label} #{direction == 'asc' ? '▲' : '▼'}" : label
-    link_to caption, root_path(sort: column, direction: next_direction, scope: scope), class: "hover:text-ink"
+    link_to caption, public_send(path, **params, sort: column, direction: next_direction), class: "hover:text-ink"
   end
 
   # When a single-game record was set: "2024 · Week 7".

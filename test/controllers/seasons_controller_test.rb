@@ -97,6 +97,29 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_match "Ordered by final finish", response.body
   end
 
+  test "standings columns sort, keeping the season and tier" do
+    # 2023 PA: Dan 165, Carol 180.5, Alice 185, Bob 205.
+    get season_url(2023, sort: "pa", direction: "asc")
+    assert_response :success
+    assert_equal [ "Dan Diaz", "Carol Chen", "Alice Anders", "Bob Barker" ],
+      css_select("#standings tbody td:nth-child(2) a").map(&:text)
+    assert_select "#standings th a", text: "PA ▲"
+    assert_select "#standings th a[href=?]", season_path(2023, sort: "pf", direction: "desc"), text: "PF"
+    # The # column still reads final finish.
+    assert_equal %w[2 3 1 4], css_select("#standings tbody td:first-child").map { |cell| cell.text.strip }
+
+    get season_url(2024, tier: "challenger")
+    assert_select "#standings th a", text: "# ▲"
+    assert_select "#standings th a[href=?]",
+      season_path(2024, tier: "challenger", sort: "luck", direction: "desc"), text: "Luck"
+  end
+
+  test "unknown standings sorts fall back to final finish" do
+    get season_url(2023, sort: "hacked", direction: "sideways")
+    assert_response :success
+    assert_equal %w[1 2 3 4], css_select("#standings tbody td:first-child").map { |cell| cell.text.strip }
+  end
+
   test "seasons without playoff games have no playoff section" do
     get season_url(2023)
     assert_response :success
