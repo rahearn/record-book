@@ -47,8 +47,8 @@
               <th><%= sortable_header "PA/g", "pag", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "Titles", "titles", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "Runner-up", "runner_up", active_sort: @sort, direction: @direction, scope: @scope %></th>
-              <% if @almanac.ladder %>
-                <th><%= @almanac.ladder.year %></th>
+              <% if (tier_year = @almanac.tier_column_year) %>
+                <th><%= tier_year %></th>
               <% end %>
             </tr>
           </thead>
@@ -74,10 +74,10 @@
                 <td><%= points_display(career.points_against_per_game) %></td>
                 <td><%= titles_display(career.titles) %></td>
                 <td><%= titles_display(@almanac.playoff_history_for(career.owner).runner_up_finishes) %></td>
-                <% if @almanac.ladder %>
+                <% if tier_year %>
                   <td>
-                    <% if career.next_tier %>
-                      <span class="tag <%= tier_tag_class(career.next_tier) %>"><%= tier_label(career.next_tier) %></span>
+                    <% if (tier = @almanac.tier_column_for(career)) %>
+                      <span class="tag <%= tier_tag_class(tier) %>"><%= tier_label(tier) %></span>
                     <% else %>
                       <span class="text-ink/55">—</span>
                     <% end %>

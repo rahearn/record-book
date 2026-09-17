@@ -101,6 +101,18 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_match "Eve Ellis", response.body
   end
 
+  test "the tier column shows the season in progress until its finals are played" do
+    get root_url
+    assert_select "th", text: "2025"
+
+    games(:g2024_final_challenger).destroy!
+    get root_url
+    assert_select "th", text: "2025", count: 0
+    assert_select "th", text: "2024"
+    bob = css_select("tbody tr").find { |row| row.text.include?("Bob Barker") }
+    assert_match "Premier", bob.text
+  end
+
   test "unknown sort parameters fall back to the default order" do
     get root_url(sort: "hacked")
     assert_response :success

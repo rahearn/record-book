@@ -98,6 +98,41 @@ class Almanac
     (owners_in_year(first_year) & owners_in_year(latest_year)).size
   end
 
+  # Whether a season has been played out: every tier it was played in has a
+  # Championship-round game on record. Only the latest season can still be
+  # in progress; earlier seasons count as finished even when their playoff
+  # results were never recorded.
+  def season_complete?(year)
+    return true unless year == latest_year
+
+    @latest_season_complete = tiers_in(year).all? do |tier|
+      @playoff_games.any? { |game| game.season.year == year && game.tier == tier && game.championship? }
+    end if @latest_season_complete.nil?
+    @latest_season_complete
+  end
+
+  # The season the league table's tier column describes: next season's
+  # ladder once the latest season is finished, the latest season itself
+  # while it is still being played. Nil when neither has tiers.
+  def tier_column_year
+    return if empty?
+
+    if season_complete?(latest_year)
+      ladder&.year
+    elsif split_season?(latest_year)
+      latest_year
+    end
+  end
+
+  # An owner's tier in the season tier_column_year describes, or nil.
+  def tier_column_for(career)
+    year = tier_column_year
+    return if year.nil?
+    return career.next_tier if year > latest_year
+
+    career.season_records.find { |record| record.year == year }&.tier&.to_sym
+  end
+
   # The first year the league split into promotion/relegation tiers, or nil.
   def tiered_since
     @games.reject(&:unified?).map { |game| game.season.year }.min
@@ -430,7 +465,9 @@ class Almanac
                                  tied: mine.points == theirs.points)
     end
     appearance_years = results.map(&:year).uniq
-    season_flags = (career_for(owner)&.season_records || []).map do |record|
+    # A season still being played has not settled a streak either way.
+    finished = (career_for(owner)&.season_records || []).select { |record| season_complete?(record.year) }
+    season_flags = finished.map do |record|
       record.tier != "challenger" && appearance_years.include?(record.year)
     end
     PlayoffHistory.new(season_flags: season_flags, results: results)
