@@ -73,7 +73,9 @@ extremes, and the next season's promotion/relegation ladder. Relegation: bottom 
 record with total points as tiebreaker. Promotion: the Challenger regular-season points leader plus
 the next three playoff finishers (finishing order: champion, runner-up, "Third Place"-round winner,
 then its loser), with standings order filling gaps when playoff data is missing. Both tiers play a
-third-place game as part of their playoff structure. Value
+third-place game as part of their playoff structure. The latest season is in progress until every
+tier it was played in has a Championship-round game on record (`season_complete?`): until then it
+counts toward no playoff streak or drought. Value
 objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotion_count:`, and
 `relegation_count:` keywords, which tests use to build small in-memory scenarios.
 

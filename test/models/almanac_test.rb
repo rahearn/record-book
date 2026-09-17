@@ -532,8 +532,11 @@ class AlmanacTest < ActiveSupport::TestCase
       # 2033 challenger: even a championship win counts as missed playoffs.
       build_game(year: 2033, week: 1, tier: :challenger, scores: pair.(100.0, 90.0)),
       build_game(year: 2033, week: 2, tier: :challenger, scores: pair.(99.0, 90.0), round_name: "Championship"),
-      # 2034 unified: no playoff berth.
-      build_game(year: 2034, week: 1, scores: pair.(100.0, 90.0))
+      # 2034 unified: no playoff berth; two others play the final.
+      build_game(year: 2034, week: 1, scores: pair.(100.0, 90.0)),
+      build_game(year: 2034, week: 2, scores: { Owner.new(name: "Finalist C") => 90.0,
+                                                Owner.new(name: "Finalist D") => 80.0 },
+                 round_name: "Championship")
     ]
 
     history = Almanac.new(games: games).playoff_history_for(owner_a)
@@ -548,6 +551,28 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 0, history.active_playoff_streak
     assert_equal 2, history.longest_playoff_drought
     assert_equal 2, history.active_playoff_drought
+  end
+
+  test "a season still in progress counts toward neither a streak nor a drought" do
+    owner_a = Owner.new(name: "Streak A")
+    owner_b = Owner.new(name: "Streak B")
+    pair = ->(a, b) { { owner_a => a, owner_b => b } }
+    games = [
+      build_game(year: 2030, week: 1, scores: pair.(100.0, 90.0)),
+      build_game(year: 2030, week: 2, scores: pair.(95.0, 90.0), round_name: "Championship"),
+      # 2031 is under way: regular season only, no final yet.
+      build_game(year: 2031, week: 1, scores: pair.(100.0, 90.0))
+    ]
+
+    book = Almanac.new(games: games)
+    assert book.season_complete?(2030)
+    assert_not book.season_complete?(2031)
+
+    history = book.playoff_history_for(owner_a)
+    assert_equal 1, history.active_playoff_streak
+    assert_equal 1, history.longest_playoff_streak
+    assert_equal 0, history.longest_playoff_drought
+    assert_equal 0, history.active_playoff_drought
   end
 
   test "final rank places playoff finishers first, then regular-season order" do
