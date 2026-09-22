@@ -13,3 +13,16 @@ production:
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every hour at minute 12
+
+  # Tuesday morning, once Monday night's game has settled. The season is named
+  # rather than worked out: config/mfl.yml runs ahead of the league, so the
+  # latest year it holds is not the year being played, and the calendar year is
+  # the wrong answer every January. Rolling the record book over to 2027 is
+  # this line, alongside the season block it needs in config/mfl.yml anyway.
+  #
+  # The app runs on UTC, so the zone is named here rather than app-wide; fugit
+  # reads it off the end of the cron line and follows it through daylight time.
+  import_mfl_season:
+    class: MflImportJob
+    args: [ 2026 ]
+    schedule: "0 6 * * 2 America/New_York"

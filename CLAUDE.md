@@ -193,6 +193,18 @@ Loading seasons from MyFantasyLeague (2025 on; needs network access to `myfantas
 - Quote the bracketed arguments, or use `YEAR=`/`WEEK=`/`TIER=` instead. The whole run is one
   transaction, so a failure leaves the record book exactly as it was.
 
+In production the season imports itself: `MflImportJob` is the rake task's twin, and
+`config/recurring.yml` runs it over the whole season every Tuesday at 6am Eastern, once Monday
+night's game has settled. Solid Queue's supervisor runs inside the web container's Puma
+(`SOLID_QUEUE_IN_PUMA` in `config/deploy.yml`), so this needs no cron and no second machine. The
+year is named in the config rather than worked out — `config/mfl.yml` runs ahead of the league, and
+the calendar year is wrong every January — so rolling over to the next season is that one line
+alongside the season block. Out of season the job is a no-op: a matchup nobody has played carries
+no scores and never reaches the record book. After a deploy, `bin/kamal console` then
+`SolidQueue::RecurringTask.all` shows what the supervisor picked up, and
+`SolidQueue::RecurringExecution.last` what it last ran; a run that failed for good is in
+`SolidQueue::FailedExecution`.
+
 Database:
 - `bin/rails db:prepare` — create/migrate the dev database (idempotent)
 - `bin/rails db:migrate` — run pending migrations
