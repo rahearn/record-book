@@ -135,9 +135,9 @@
           </span>
           <span class="tag <%= week_result_tag_class(score) %> w-8 flex-none justify-center"><%= week_result_label(score) %></span>
           <% if score.against_the_field? %>
-            <span class="tag tag-outline w-[46px] flex-none justify-center"><%= all_play_display(score.all_play) %></span>
+            <span class="tag tag-outline w-16 flex-none justify-center whitespace-nowrap"><%= all_play_display(score.all_play) %></span>
           <% else %>
-            <span class="w-[46px] flex-none text-xs text-ink/55"><%= all_play_display(score.all_play) %></span>
+            <span class="w-16 flex-none whitespace-nowrap text-xs text-ink/55"><%= all_play_display(score.all_play) %></span>
           <% end %>
           <span class="flex min-w-0 flex-[1_1_150px] items-baseline gap-2">
             <span class="flex-none text-ink/55"><%= points_display(score.opponent_points) %></span>
