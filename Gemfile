@@ -17,7 +17,7 @@ gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
 # Admin console over the CRUD models [https://activeadmin.info]
-gem "activeadmin", "~> 4.0.0.beta22"
+gem "activeadmin", "~> 4.0.0.beta23"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
