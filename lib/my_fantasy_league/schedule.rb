@@ -34,7 +34,17 @@ module MyFantasyLeague
 
     # Every game on record, regular season and playoffs alike, in week order.
     def matchups
-      @matchups ||= (regular_season + playoffs).sort_by { |matchup| [ matchup.week, matchup.tier ] }
+      @matchups ||= (regular_season.select { |matchup| played?(matchup.sides) } + playoffs)
+        .sort_by { |matchup| [ matchup.week, matchup.tier ] }
+    end
+
+    # The regular-season matchups nobody has played yet, in week order. Who
+    # is still to be faced is what a season's strength of schedule is
+    # measured over; the playoffs are left out, since their pairings are not
+    # known until the regular season settles them.
+    def upcoming
+      @upcoming ||= regular_season.reject { |matchup| played?(matchup.sides) }
+        .sort_by { |matchup| [ matchup.week, matchup.tier ] }
     end
 
     # The playoffs each tier configured, for the record book to hold its own
@@ -83,8 +93,9 @@ module MyFantasyLeague
       end
     end
 
+    # Every regular-season matchup on the schedule, played or not.
     def regular_season
-      @client.schedule.flat_map do |week|
+      @regular_season ||= @client.schedule.flat_map do |week|
         number = week.fetch("week").to_i
         Array.wrap(week["matchup"]).filter_map do |matchup|
           sides = Array.wrap(matchup["franchise"]).map do |franchise|
@@ -93,7 +104,7 @@ module MyFantasyLeague
           tier = tier_for_sides(sides)
           next unless tier && number < playoff_start_weeks.fetch(tier)
 
-          Matchup.new(week: number, tier: tier, round_name: nil, sides: sides) if played?(sides)
+          Matchup.new(week: number, tier: tier, round_name: nil, sides: sides)
         end
       end
     end

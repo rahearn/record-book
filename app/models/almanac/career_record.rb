@@ -53,10 +53,6 @@ class Almanac
       season_records.sum(&:all_play_luck)
     end
 
-    def opponent_shortfall_total
-      season_records.sum(&:opponent_shortfall_total)
-    end
-
     def swing_wins
       season_records.sum(&:swing_wins)
     end
@@ -75,10 +71,6 @@ class Almanac
 
     def points_against_per_game
       points_against / games_played
-    end
-
-    def opponent_shortfall_per_game
-      opponent_shortfall_total / games_played
     end
   end
 end

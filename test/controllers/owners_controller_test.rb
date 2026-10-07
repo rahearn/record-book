@@ -21,7 +21,7 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
 
     assert_match "2–1 against a 1.67-win schedule", response.body
     assert_select "table th", text: "xW"
-    assert_select "table th", text: "Opp ±"
+    assert_select "table th", text: "Opp ±", count: 0
 
     get owner_url(owners(:carol), season: 2023)
     assert_response :success

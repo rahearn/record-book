@@ -1,0 +1,9 @@
+# A matchup left on the schedule of a season that has since finished: the
+# record book holds it for the admin console, and the almanac ignores it,
+# since only a season still being played has a schedule left to measure.
+s2023_w3_ad:
+  season: y2023
+  week: 3
+  tier: unified
+  owner_a: alice
+  owner_b: dan

@@ -2,7 +2,7 @@ require "test_helper"
 
 class AdminConsoleTest < ActionDispatch::IntegrationTest
   RESOURCES = %w[owners seasons teams games performances playoff_formats roster_formats
-                 lineup_slots].freeze
+                 lineup_slots scheduled_games].freeze
 
   CREDENTIALS = { username: "admin", password: "s3cret" }.freeze
 

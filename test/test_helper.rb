@@ -18,6 +18,7 @@ module ActiveSupport
       RosterFormat.delete_all
       Team.delete_all
       Game.delete_all
+      ScheduledGame.delete_all
       Season.delete_all
       Owner.delete_all
     end

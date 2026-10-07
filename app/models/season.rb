@@ -1,5 +1,6 @@
 class Season < ApplicationRecord
   has_many :games, dependent: :destroy
+  has_many :scheduled_games, dependent: :destroy
   has_many :teams, dependent: :destroy
   has_many :playoff_formats, dependent: :destroy
   has_one :roster_format, dependent: :destroy

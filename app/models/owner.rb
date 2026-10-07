@@ -2,6 +2,10 @@ class Owner < ApplicationRecord
   has_many :performances, dependent: :destroy
   has_many :games, through: :performances
   has_many :teams, dependent: :destroy
+  has_many :scheduled_games_as_a, class_name: "ScheduledGame", foreign_key: :owner_a_id,
+    dependent: :destroy, inverse_of: :owner_a
+  has_many :scheduled_games_as_b, class_name: "ScheduledGame", foreign_key: :owner_b_id,
+    dependent: :destroy, inverse_of: :owner_b
 
   validates :name, presence: true, uniqueness: true
 

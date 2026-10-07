@@ -48,7 +48,9 @@
               <th><%= season_sort_header "PA/g", "pag" %></th>
               <th><%= season_sort_header "xW", "xw" %></th>
               <th><%= season_sort_header "Luck", "luck" %></th>
-              <th><%= season_sort_header "Opp ±", "opp" %></th>
+              <% if @remaining_schedule %>
+                <th><%= season_sort_header "SOS", "sos" %></th>
+              <% end %>
               <th><%= season_sort_header "High", "high" %></th>
               <th><%= season_sort_header "Low", "low" %></th>
             </tr>
@@ -68,7 +70,9 @@
                 <td><%= points_display(record.average_points_against) %></td>
                 <td><%= wins_display(record.expected_wins) %></td>
                 <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
-                <td class="text-ink/55"><%= signed_points_display(record.opponent_shortfall_per_game) %></td>
+                <% if @remaining_schedule %>
+                  <td class="whitespace-nowrap"><%= remaining_strength_display(record) %></td>
+                <% end %>
                 <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
                 <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
               </tr>
@@ -79,6 +83,7 @@
       <div class="mt-2.5 text-[11px] text-ink/55">
         <%= season_zone_note(@almanac, @year, @tier, sorted: @sort != "rank") %>
         <%= luck_column_note %>
+        <%= remaining_schedule_note if @remaining_schedule %>
       </div>
     </div>
   </section>
