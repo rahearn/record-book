@@ -7,4 +7,14 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  private
+
+  # How one row sorts on a column. A blank (shown as a dash) sinks to the
+  # bottom whichever way the column runs.
+  def column_sort_key(value, direction)
+    return [ 1, 0 ] if value.nil?
+
+    [ 0, direction == "asc" ? value : -value ]
+  end
 end

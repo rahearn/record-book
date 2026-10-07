@@ -51,12 +51,23 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_match "SOS is the all-play win %", response.body
     alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
     # Carol (.333) and Bob (.667) still to come.
-    assert_equal "50.0%", alice.css("td")[9].text.squish
+    assert_equal "50.0%", alice.css("td")[10].text.squish
 
     get season_url(2025, sort: "sos")
     assert_response :success
     hardest = css_select("#standings tbody tr").first
     assert_match "Carol Chen", hardest.text # Alice to come, at 1.000
+  end
+
+  test "standings show clutch for playoff teams, a dash for everyone else" do
+    get seasons_url
+    assert_select "#standings th", text: "Clutch"
+    assert_match "Clutch is playoff points per game", response.body
+    alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
+    assert_equal "+10.00", alice.css("td")[9].text
+
+    get season_url(2023)
+    assert_equal [ "—" ] * 4, css_select("#standings tbody tr").map { |row| row.css("td")[9].text }
   end
 
   test "a finished season has no remaining schedule column" do

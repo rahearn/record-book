@@ -31,6 +31,16 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     assert_select "span.tag.tag-outline", text: "1–2"
   end
 
+  test "the clutch plate and season rows compare playoff scoring with the regular season" do
+    get owner_url(owners(:bob))
+    assert_response :success
+
+    assert_match "Playoff scoring vs the regular season, 1 playoff season", response.body
+    assert_select "table th", text: "Clutch"
+    cells = css_select("table tbody tr").map { |row| row.css("td")[8].text }
+    assert_equal [ "—", "+5.00" ], cells
+  end
+
   test "defaults to the current leader, skipping a higher-ranked former owner" do
     eve = Owner.create!(name: "Eve Ellis")
     frank = Owner.create!(name: "Frank Ford")

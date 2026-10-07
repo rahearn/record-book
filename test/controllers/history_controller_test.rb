@@ -29,6 +29,17 @@ class HistoryControllerTest < ActionDispatch::IntegrationTest
     assert_select "#history-seasons th a", text: "Low ▲"
   end
 
+  test "sorting on clutch leaves the seasons without one at the bottom either way" do
+    %w[desc asc].each do |direction|
+      get history_url(view: "seasons", sort: "clutch", direction: direction)
+      assert_response :success
+      rows = css_select("#history-seasons tbody tr")
+      expected = direction == "desc" ? "Alice Anders" : "Bob Barker"
+      assert_match expected, rows.first.text
+      assert_equal [ "—" ] * 4, rows.to_a.last(4).map { |row| row.css("td")[11].text }
+    end
+  end
+
   test "filters the seasons to one owner" do
     get history_url(view: "seasons", owner: owners(:bob).id)
     assert_response :success

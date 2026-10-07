@@ -35,6 +35,16 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_match "+0.33", response.body
   end
 
+  test "career clutch covers the playoff seasons only" do
+    get league_url(sort: "clutch")
+    assert_response :success
+    assert_select "th", text: /Clutch/
+
+    first = css_select("table tbody tr").first
+    assert_match "Alice Anders", first.text
+    assert_match "+10.00", first.text
+  end
+
   test "the league page lives at /league, the current season at the root" do
     get league_url
     assert_select "nav a.btn-primary", text: "League"

@@ -17,6 +17,7 @@ class HistoryController < ApplicationController
     "pag" => ->(record) { record.average_points_against },
     "xw" => ->(record) { record.expected_wins },
     "luck" => ->(record) { record.all_play_luck },
+    "clutch" => ->(record) { record.clutch },
     "high" => ->(record) { record.highest_score },
     "low" => ->(record) { record.lowest_score }
   }.freeze
@@ -87,7 +88,7 @@ class HistoryController < ApplicationController
   # Rows reordered by the chosen column, the tiebreak settling the rest.
   def sorted(rows, value, &tiebreak)
     rows.sort_by do |row|
-      [ @direction == "asc" ? value.call(row) : -value.call(row), *tiebreak.call(row) ]
+      [ *column_sort_key(value.call(row), @direction), *tiebreak.call(row) ]
     end
   end
 end

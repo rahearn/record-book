@@ -45,7 +45,14 @@ layer will import historical data into it:
 
 All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
-record of what two owners played, so it counts playoff meetings too.
+record of what two owners played, so it counts playoff meetings too. **Clutch** is the other:
+`SeasonRecord#clutch` is playoff points per game minus the regular season's (positive = scored more
+in the playoffs), recorded only for seasons `season_complete?` says are finished, and nil — a dash —
+for a team that missed the playoffs. Challenger playoff teams get one too: Clutch is about each
+tier's own playoffs, not titles. `CareerRecord#clutch` pools only the playoff seasons, game-weighted
+(every playoff game against every regular-season game of those seasons). Shown on the season
+standings, the history Seasons table, the owner page (plate and season table), and the league
+table. Sorting puts the dashes last either way (`ApplicationController#column_sort_key`).
 
 Luck is two related figures, computed together and shown together (see the design spec,
 [docs/record_book_design.html](docs/record_book_design.html)):

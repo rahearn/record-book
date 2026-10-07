@@ -20,6 +20,7 @@
             <th><%= history_sort_header "PA/g", "pag" %></th>
             <th><%= history_sort_header "xW", "xw" %></th>
             <th><%= history_sort_header "Luck", "luck" %></th>
+            <th><%= history_sort_header "Clutch", "clutch" %></th>
             <th><%= history_sort_header "High", "high" %></th>
             <th><%= history_sort_header "Low", "low" %></th>
           </tr>
@@ -44,6 +45,7 @@
               <td><%= points_display(record.average_points_against) %></td>
               <td><%= wins_display(record.expected_wins) %></td>
               <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
+              <td><%= clutch_display(record.clutch) %></td>
               <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
               <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
             </tr>

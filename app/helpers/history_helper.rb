@@ -90,7 +90,7 @@ module HistoryHelper
     unless almanac.season_complete?(almanac.latest_year)
       note += " #{almanac.latest_year} is still being played; its totals are to date."
     end
-    "#{note} #{luck_column_note}"
+    "#{note} #{luck_column_note} #{clutch_column_note}"
   end
 
   def game_history_note(sort)

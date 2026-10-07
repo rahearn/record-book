@@ -57,6 +57,21 @@ class Almanac
       season_records.sum(&:swing_wins)
     end
 
+    def playoff_seasons
+      season_records.select(&:made_playoffs?)
+    end
+
+    # Clutch across the seasons that reached the playoffs, game-weighted:
+    # every playoff game's average against every regular-season game's in
+    # those same seasons. Nil for an owner who has never made it.
+    def clutch
+      seasons = playoff_seasons
+      return if seasons.empty?
+
+      seasons.sum(&:playoff_points_for) / seasons.sum(&:playoff_games_played) -
+        seasons.sum(&:points_for) / seasons.sum(&:games_played)
+    end
+
     def best_finish
       season_records.map(&:final_rank).min
     end

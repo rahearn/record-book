@@ -8,6 +8,7 @@ class SeasonsController < ApplicationController
     "pag" => ->(record) { record.average_points_against },
     "xw" => ->(record) { record.expected_wins },
     "luck" => ->(record) { record.all_play_luck },
+    "clutch" => ->(record) { record.clutch },
     "sos" => ->(record) { record.remaining_strength_of_schedule || 0.0 },
     "high" => ->(record) { record.highest_score },
     "low" => ->(record) { record.lowest_score }
@@ -41,7 +42,7 @@ class SeasonsController < ApplicationController
   def sorted_standings
     value = SORTS.fetch(@sort)
     @almanac.final_standings_for(@year, @tier).sort_by do |record|
-      [ @direction == "asc" ? value.call(record) : -value.call(record), record.final_rank ]
+      [ *column_sort_key(value.call(record), @direction), record.final_rank ]
     end
   end
 

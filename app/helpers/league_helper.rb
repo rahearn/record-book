@@ -26,6 +26,12 @@ module LeagueHelper
     format("%+.2f", value)
   end
 
+  # Clutch is points per game, signed; a dash for a team that missed the
+  # playoffs or a season still being played.
+  def clutch_display(value)
+    value ? signed_points_display(value) : "—"
+  end
+
   # An all-play record, the way a week's scoreboard reads it: "9–6".
   def all_play_display(all_play)
     parts = [ all_play.wins, all_play.losses ]
