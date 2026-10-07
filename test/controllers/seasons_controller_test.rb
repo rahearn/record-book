@@ -23,7 +23,7 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "#standings th", text: "xW"
     assert_select "#standings th", text: "Luck"
-    assert_select "#standings th", text: "Opp ±"
+    assert_select "#standings th", text: "Opp ±", count: 0
     assert_match "Luck is wins above it", response.body
 
     # Alice outscored the field in both weeks, so her two wins were the
@@ -51,7 +51,7 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_match "SOS is the all-play win %", response.body
     alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
     # Carol (.333) and Bob (.667) still to come.
-    assert_equal "50.0%", alice.css("td")[10].text.squish
+    assert_equal "50.0%", alice.css("td")[9].text.squish
 
     get season_url(2025, sort: "sos")
     assert_response :success

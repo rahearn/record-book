@@ -4,12 +4,12 @@
 #
 # All statistics cover regular-season games only. "Luck" is wins above the
 # all-play record — the record a week's score earned against the whole
-# field, which is what separates a schedule from a season. The opponent
-# shortfall (how far opponents scored below their own season average) and
-# the swing wins (results that turn on that shortfall) sit beside it as the
-# points-scaled reading. The exceptions are titles, which count playoff
-# championships won in the unified league or the Premier tier, and the
-# head-to-head records, which count every meeting two owners played.
+# field, which is what separates a schedule from a season. The swing wins
+# (results that would have gone the other way had the opponent scored their
+# own season average) sit beside it as the points-scaled reading. The
+# exceptions are titles, which count playoff championships won in the
+# unified league or the Premier tier, and the head-to-head records, which
+# count every meeting two owners played.
 class Almanac
   PROMOTION_COUNT = 4
   RELEGATION_COUNT = 4

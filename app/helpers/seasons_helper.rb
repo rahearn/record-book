@@ -32,16 +32,15 @@ module SeasonsHelper
     "#{ordering} #{zone}"
   end
 
-  # What the three luck columns mean, under the standings table.
   # A standings header that re-sorts the displayed season and tier.
   def season_sort_header(label, column)
     sortable_header(label, column, active_sort: @sort, direction: @direction, path: :season_path,
                     year: @year, tier: (@tier unless @tier == :unified))
   end
 
+  # What the luck columns mean, under the standings table.
   def luck_column_note
-    "xW is the record a week's score earned against the whole field; Luck is wins above it. " \
-      "Opp ± is how far opponents scored below (+) or above (−) their own season average."
+    "xW is the record a week's score earned against the whole field; Luck is wins above it."
   end
 
   def remaining_schedule_note

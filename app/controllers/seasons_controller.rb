@@ -8,7 +8,6 @@ class SeasonsController < ApplicationController
     "pag" => ->(record) { record.average_points_against },
     "xw" => ->(record) { record.expected_wins },
     "luck" => ->(record) { record.all_play_luck },
-    "opp" => ->(record) { record.opponent_shortfall_per_game },
     "sos" => ->(record) { record.remaining_strength_of_schedule || 0.0 },
     "high" => ->(record) { record.highest_score },
     "low" => ->(record) { record.lowest_score }

@@ -26,8 +26,7 @@ class Almanac
     end
 
     attr_reader :owner, :year, :tier, :games_played, :wins, :losses, :ties,
-      :points_for, :points_against, :expected_wins, :opponent_shortfall_total,
-      :swing_wins_gained, :swing_wins_lost, :remaining_games
+      :points_for, :points_against, :expected_wins, :swing_wins_gained, :swing_wins_lost, :remaining_games
     # rank orders the regular season (and drives relegation and zone
     # shading); final_rank folds the playoffs in — finishers take the top
     # spots, everyone else keeps their regular-season order.
@@ -44,7 +43,6 @@ class Almanac
       @points_for = 0
       @points_against = 0
       @expected_wins = 0.0
-      @opponent_shortfall_total = 0
       @swing_wins_gained = 0
       @swing_wins_lost = 0
       @weekly_scores = []
@@ -68,11 +66,10 @@ class Almanac
       end
     end
 
-    # One game measured against the season the opponent was having: how far
-    # they fell short of their own average, and whether the result would
-    # have gone the other way had they played to it.
+    # One game measured against the season the opponent was having: whether
+    # the result would have gone the other way had they played to their own
+    # average.
     def record_opponent_context(points:, opponent_points:, opponent_average:)
-      @opponent_shortfall_total += opponent_average - opponent_points
       actual = result_value(points, opponent_points)
       expected = result_value(points, opponent_average)
       @swing_wins_gained += actual - expected if actual > expected
@@ -117,10 +114,6 @@ class Almanac
     # Wins above the record the weekly scores earned against the field.
     def all_play_luck
       wins + ties * 0.5 - expected_wins
-    end
-
-    def opponent_shortfall_per_game
-      opponent_shortfall_total / games_played
     end
 
     # Results that turn on the opponent's shortfall: wins that needed one,

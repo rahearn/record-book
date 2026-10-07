@@ -48,7 +48,6 @@
               <th><%= season_sort_header "PA/g", "pag" %></th>
               <th><%= season_sort_header "xW", "xw" %></th>
               <th><%= season_sort_header "Luck", "luck" %></th>
-              <th><%= season_sort_header "Opp ±", "opp" %></th>
               <% if @remaining_schedule %>
                 <th><%= season_sort_header "SOS", "sos" %></th>
               <% end %>
@@ -71,7 +70,6 @@
                 <td><%= points_display(record.average_points_against) %></td>
                 <td><%= wins_display(record.expected_wins) %></td>
                 <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
-                <td class="text-ink/55"><%= signed_points_display(record.opponent_shortfall_per_game) %></td>
                 <% if @remaining_schedule %>
                   <td class="whitespace-nowrap"><%= remaining_strength_display(record) %></td>
                 <% end %>

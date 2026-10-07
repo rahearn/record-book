@@ -61,7 +61,6 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_in_delta 1.0, alice.win_percentage
     assert_in_delta 110.0, alice.points_for_per_game
     assert_in_delta 93.33, alice.points_against_per_game, 0.01
-    assert_in_delta(-3.33, alice.opponent_shortfall_per_game, 0.01)
     assert_equal 1, alice.titles
   end
 
@@ -78,12 +77,6 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal 2, carol.wins
     assert_equal 1, carol.losses
     assert_equal 0, carol.titles # won the 2024 Challenger final
-    assert_in_delta 4.08, carol.opponent_shortfall_per_game, 0.01
-  end
-
-  test "opponent shortfall measures opponent under- and over-performance" do
-    assert_in_delta(-4.08, career_for(:bob).opponent_shortfall_per_game, 0.01)
-    assert_in_delta 3.33, career_for(:dan).opponent_shortfall_per_game, 0.01
   end
 
   test "expected wins score every week against the whole field" do

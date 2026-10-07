@@ -46,7 +46,7 @@ All `Almanac` statistics cover regular-season games only — playoff games are f
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
 record of what two owners played, so it counts playoff meetings too.
 
-Luck is three related figures, computed together and shown together (the design spec is the
+Luck is two related figures, computed together and shown together (the design spec is the
 canvas at <https://claude.ai/code/artifact/72169663-bda1-4d49-9240-30fbf4c0e000>):
 
 - **`expected_wins`** — each week, a score is played against every *other* score in the same season
@@ -55,10 +55,11 @@ canvas at <https://claude.ai/code/artifact/72169663-bda1-4d49-9240-30fbf4c0e000>
   that week earned.
 - **`all_play_luck`** — wins above that: `W + T/2 − xW`. This is what the record book calls "Luck",
   and it is counted in wins, so seasons and careers add up.
-- **`opponent_shortfall_total`** — the older reading, kept as the "Opp ±" column: how far opponents
-  scored below (+) or above (−) their own season average. It needs season averages, so it is a
-  second pass over the games, and `swing_wins` (results that would have gone the other way had the
-  opponent scored their average) is computed there too.
+
+`swing_wins` — results that would have gone the other way had the opponent scored their own season
+average — is the older, points-scaled reading, kept for the owner page's week-by-week note. It needs
+season averages, so it is a second pass over the games. (The "Opp ±" column — how far opponents
+scored below or above their average — was removed: PA/g and Luck already tell that story.)
 
 While a season is in progress (`season_complete?` false) and still has `ScheduledGame`s,
 the season page adds a **SOS** column: `SeasonRecord#remaining_strength_of_schedule` averages,
