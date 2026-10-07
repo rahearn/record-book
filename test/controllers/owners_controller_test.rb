@@ -71,10 +71,21 @@ class OwnersControllerTest < ActionDispatch::IntegrationTest
     get owners_url # Alice: 2023 unified, 2024 premier
     assert_response :success
     assert_select "a[href=?]", "/seasons/2023", text: "2023"
-    assert_select "a[href=?]", "/seasons/2024?tier=premier", text: "2024"
+    # 2024 is the current season, which is the front page.
+    assert_select "a[href=?]", "/?tier=premier", text: "2024"
 
     get owner_url(owners(:dan))
-    assert_select "a[href=?]", "/seasons/2024?tier=challenger", text: "2024"
+    assert_select "a[href=?]", "/?tier=challenger", text: "2024"
+  end
+
+  test "the week-by-week chart comes before the season-by-season table" do
+    get owners_url
+    assert_response :success
+
+    headings = css_select("h2").map { |heading| heading.text.squish }
+    week_by_week = headings.index { |text| text.include?("week by week") }
+    assert week_by_week, headings.inspect
+    assert_operator week_by_week, :<, headings.index("Season by season")
   end
 
   test "shows a requested owner" do

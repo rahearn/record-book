@@ -10,7 +10,7 @@
     <div class="text-[13px] text-ink/55"><%= week_summary(@scoreboard, split: @split) %></div>
   </div>
   <%= link_to "#{@year} season",
-        season_path(@year, tier: (@tier unless @tier == :unified)),
+        season_page_path(@year, tier: (@tier unless @tier == :unified)),
         class: "btn btn-ghost ml-auto" %>
   <% if @split %>
     <div class="seg">

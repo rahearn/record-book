@@ -3,6 +3,9 @@ require "application_system_test_case"
 class NavigationTest < ApplicationSystemTestCase
   test "the nav moves between the record book's pages" do
     visit root_path
+    assert_selector "h1", text: "2024"
+
+    click_on "League"
     assert_selector "h2", text: "All-time by owner"
 
     click_on "Owners"
@@ -10,6 +13,11 @@ class NavigationTest < ApplicationSystemTestCase
 
     click_on "Seasons"
     assert_selector "h1", text: "2024"
+
+    click_on "History"
+    assert_selector "h1", text: "Seasons"
+    click_on "Players"
+    assert_selector "h2", text: "Player careers"
 
     click_on "League"
     assert_selector "h2", text: "All-time by owner"

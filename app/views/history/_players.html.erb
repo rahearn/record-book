@@ -1,0 +1,97 @@
+<section>
+  <div class="mb-3 flex flex-wrap items-baseline gap-3.5">
+    <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]"><%= player_history_heading(@player_scope) %></h2>
+    <% if @ledger.empty? %>
+      <span class="text-xs text-ink/55">No lineups on record<%= " for #{@owner.name}" if @owner %>.</span>
+    <% else %>
+      <span class="text-xs text-ink/55">
+        <%= player_count_note((@player_lines || @player_starts).size, @player_total, @player_scope) %>
+      </span>
+    <% end %>
+    <div class="seg ml-auto">
+      <% player_scope_labels.each do |scope, label| %>
+        <%= link_to label, history_tab_path(view: "players", by: scope),
+              class: "seg-opt #{'seg-on' if scope == @player_scope}" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="blueprint px-4 py-3.5">
+    <%= blueprint_corners %>
+    <div class="overflow-x-auto">
+      <% if @player_scope == "game" %>
+        <table id="history-players" class="table min-w-[800px]">
+          <thead>
+            <tr>
+              <th class="w-[34px]">#</th>
+              <th>Year</th>
+              <th>Week</th>
+              <th>Player</th>
+              <th>Pos</th>
+              <th>Slot</th>
+              <th>Owner</th>
+              <th><%= history_sort_header "Pts", "points" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @player_starts.each.with_index(1) do |entry, index| %>
+              <% performance = entry.performance %>
+              <tr>
+                <td class="text-ink/55"><%= index %></td>
+                <td class="font-medium"><%= performance.game.season.year %></td>
+                <td>
+                  <%= link_to "W#{performance.game.week}", matchup_path(performance.game, owner: performance.owner_id),
+                        class: "text-accent" %>
+                </td>
+                <td class="whitespace-nowrap"><%= player_with_team(entry) %></td>
+                <td class="text-ink/55"><%= player_positions_label(entry) %></td>
+                <td><span class="tag tag-outline"><%= slot_label(entry.slot) %></span></td>
+                <td class="whitespace-nowrap">
+                  <%= link_to performance.owner.name, owner_path(performance.owner, season: performance.game.season.year),
+                        class: "text-accent" %>
+                </td>
+                <td class="font-medium"><%= points_display(entry.points) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <table id="history-players" class="table min-w-[900px]">
+          <thead>
+            <tr>
+              <th class="w-[34px]">#</th>
+              <th>Player</th>
+              <th>Pos</th>
+              <th><%= @player_scope == "season" ? "Year" : "Seasons" %></th>
+              <th><%= history_sort_header "Starts", "starts" %></th>
+              <th><%= history_sort_header "Pts", "points" %></th>
+              <th><%= history_sort_header "Pts/start", "ppg" %></th>
+              <th><%= history_sort_header "Best", "best" %></th>
+              <th><%= history_sort_header "Bench", "bench" %></th>
+              <th><%= history_sort_header "Owners", "owners" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @player_lines.each.with_index(1) do |line, index| %>
+              <tr>
+                <td class="text-ink/55"><%= index %></td>
+                <td class="whitespace-nowrap">
+                  <span class="font-medium"><%= line.name %></span>
+                  <span class="text-ink/55"><%= line.nfl_team %></span>
+                </td>
+                <td class="text-ink/55"><%= position_label(line.position) %></td>
+                <td><%= @player_scope == "season" ? line.year : player_years_display(line) %></td>
+                <td><%= line.starts %></td>
+                <td class="font-medium"><%= points_display(line.points) %></td>
+                <td><%= points_per_start_display(line) %></td>
+                <td class="text-ink/55"><%= best_start_display(line) %></td>
+                <td class="text-ink/55"><%= points_display(line.bench_points) %></td>
+                <td><%= line.owner_count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <div class="mt-2.5 text-[11px] text-ink/55"><%= player_history_note(@ledger, @player_scope, @sort) %></div>
+  </div>
+</section>

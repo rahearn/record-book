@@ -8,7 +8,8 @@ Record Book is the official history book of the ATO Delta fantasy football leagu
 stats and records across every era of the league and every backend it has run on. The intended design
 is documented in [docs/record_book_design.html](docs/record_book_design.html), a self-contained, JS-rendered
 mockup with mock data illustrating the target screens (home/league overview, per-owner profile,
-per-season view, head-to-head comparisons, standings with "luck" and tier indicators). Open it in a
+per-season view, head-to-head comparisons, sortable all-years history tables, standings with "luck"
+and tier indicators). Open it in a
 browser to see the UI direction — it is not wired to real data or to this Rails app.
 
 Treat `docs/record_book_design.html` as the spec for screens not yet built. New features not run through
@@ -90,12 +91,26 @@ tiers rather than next year's ladder (`tier_column_year`/`tier_column_for`). Val
 objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotion_count:`, and
 `relegation_count:` keywords, which tests use to build small in-memory scenarios.
 
-The League home page is `league#show` (root route), rendered from partials in `app/views/league/`.
-The Seasons page is `seasons#show` (`/seasons` and `/seasons/:year`, with a `tier` query param for
-split seasons). The Owners page is `owners#show` (`/owners` defaults to the all-time leader,
+The front page (root route) is `seasons#show`, showing the current season. It is also reached at
+`/seasons`, and at `/seasons/:year` or `/seasons?year=` for any year, with a `tier` query param for
+split seasons. Link to a season with `season_page_path(year)` (in `ApplicationHelper`): it points
+the current season at `/` and other years at `/seasons/:year`. The League page is `league#show`
+(`/league`), rendered from partials in `app/views/league/`; its all-time table carries career Luck. The Owners page is `owners#show` (`/owners` defaults to the all-time leader,
 `/owners/:id`, with a `season` query param selecting the week-by-week chart). The Head-to-head page
-is `head_to_head#show` (`/head-to-head?a=&b=`, defaulting to the top two all-time owners). These
-pages navigate via GET forms whose selects auto-submit through the `autosubmit` Stimulus
+is `head_to_head#show` (`/head-to-head?a=&b=`, defaulting to the top two all-time owners). The
+History page is `history#show` (`/history/seasons`, `/history/games`, `/history/players`), sorting
+across every year by `sort`/`direction` and narrowed by an `owner` filter (players also take
+`position` and `by=career|season|game`):
+
+- Seasons — every owner-season (`Almanac#season_history`), shown whole.
+- Games — every regular-season score read from its owner's side (`Almanac#game_history`, an
+  `Almanac::GameLine` each), top 50. Sorting on combined score lists each game once.
+- Players — `PlayerLedger`, which totals lineup slots in SQL rather than in memory (there are tens
+  of thousands of them). With no `Player` model, a player is a name at a primary position
+  (`player_positions[1]`). Regular-season starts only; bench points are kept apart, and a
+  points-per-start table only counts players with `QUALIFYING_STARTS`.
+
+These pages navigate via GET forms whose selects auto-submit through the `autosubmit` Stimulus
 controller. Design tokens and component classes (`.blueprint`, `.tag-*`, `.btn`, `.seg`, `.table`,
 zone shading) translated from the design doc live in `app/assets/tailwind/application.css`.
 Avoid Tailwind arbitrary-value classes inside ERB expressions (e.g. `bg-[#hex]` in a ternary) —

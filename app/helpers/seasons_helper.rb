@@ -34,7 +34,7 @@ module SeasonsHelper
 
   # A standings header that re-sorts the displayed season and tier.
   def season_sort_header(label, column)
-    sortable_header(label, column, active_sort: @sort, direction: @direction, path: :season_path,
+    sortable_header(label, column, active_sort: @sort, direction: @direction, path: :season_page_path,
                     year: @year, tier: (@tier unless @tier == :unified))
   end
 
