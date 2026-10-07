@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Record Book is the official history book of the ATO Delta fantasy football league — it will collect
 stats and records across every era of the league and every backend it has run on. The intended design
-is documented in [docs/initial_design.html](docs/initial_design.html), a self-contained, JS-rendered
+is documented in [docs/record_book_design.html](docs/record_book_design.html), a self-contained, JS-rendered
 mockup with mock data illustrating the target screens (home/league overview, per-owner profile,
 per-season view, head-to-head comparisons, standings with "luck" and tier indicators). Open it in a
 browser to see the UI direction — it is not wired to real data or to this Rails app.
@@ -46,8 +46,8 @@ All `Almanac` statistics cover regular-season games only — playoff games are f
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
 record of what two owners played, so it counts playoff meetings too.
 
-Luck is two related figures, computed together and shown together (the design spec is the
-canvas at <https://claude.ai/code/artifact/72169663-bda1-4d49-9240-30fbf4c0e000>):
+Luck is two related figures, computed together and shown together (see the design spec,
+[docs/record_book_design.html](docs/record_book_design.html)):
 
 - **`expected_wins`** — each week, a score is played against every *other* score in the same season
   and tier (`Almanac#all_play_records` builds this `AllPlay` record per performance; the tiers are
