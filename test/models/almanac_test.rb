@@ -156,6 +156,27 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_in_delta 70.5, dan.lowest_score
   end
 
+  test "season history holds every owner's season in every year" do
+    history = @book.season_history
+
+    assert_equal 8, history.size
+    assert_equal [ 2023, 2024 ], history.map(&:year).uniq.sort
+  end
+
+  test "game history reads every regular-season score from its owner's side" do
+    lines = @book.game_history
+
+    assert_equal 12, lines.size
+    # Dan's 70.5 lost to Carol by 9.5 in 2023's first week, the field's low.
+    dan = lines.find { |line| line.owner == owners(:dan) && line.week == 1 && line.year == 2023 }
+    assert_equal owners(:carol), dan.opponent
+    assert_equal(-9.5, dan.margin)
+    assert_equal 150.5, dan.combined
+    assert_equal 0, dan.all_play.wins
+    assert_equal(-17.25, dan.versus_average) # season average 87.75
+    assert_equal :loss, dan.result
+  end
+
   test "split_season? detects tiered years" do
     assert_not @book.split_season?(2023)
     assert @book.split_season?(2024)

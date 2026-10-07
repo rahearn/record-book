@@ -1,0 +1,50 @@
+<section>
+  <div class="mb-3 flex flex-wrap items-baseline gap-3.5">
+    <h2 class="font-heading text-[32px] font-semibold leading-tight tracking-[-0.015em]">
+      <%= game_history_heading(@sort, @direction) %>
+    </h2>
+    <span class="text-xs text-ink/55"><%= history_count_note(@game_lines.size, @game_total, @sort == "combined" ? "game" : "score") %></span>
+  </div>
+  <div class="blueprint px-4 py-3.5">
+    <%= blueprint_corners %>
+    <div class="overflow-x-auto">
+      <table id="history-games" class="table min-w-[1000px]">
+        <thead>
+          <tr>
+            <th class="w-[34px]">#</th>
+            <th>Year</th>
+            <th>Week</th>
+            <th>League</th>
+            <th>Owner</th>
+            <th><%= history_sort_header "Pts", "points" %></th>
+            <th>Opponent</th>
+            <th><%= history_sort_header "Opp", "opp_points" %></th>
+            <th><%= history_sort_header "Margin", "margin" %></th>
+            <th><%= history_sort_header "Comb.", "combined" %></th>
+            <th><%= history_sort_header "All-play", "all_play" %></th>
+            <th><%= history_sort_header "vs avg", "vs_avg" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @game_lines.each.with_index(1) do |line, index| %>
+            <tr>
+              <td class="text-ink/55"><%= index %></td>
+              <td class="font-medium"><%= line.year %></td>
+              <td><%= link_to "W#{line.week}", matchup_path(line.game, owner: line.owner.id), class: "text-accent" %></td>
+              <td><span class="tag <%= tier_tag_class(line.tier) %>"><%= tier_label(line.tier) %></span></td>
+              <td class="whitespace-nowrap"><%= link_to line.owner.name, owner_path(line.owner, season: line.year), class: "font-medium text-accent" %></td>
+              <td class="font-medium"><%= points_display(line.points) %></td>
+              <td class="whitespace-nowrap"><%= link_to line.opponent.name, owner_path(line.opponent, season: line.year), class: "text-ink/70 hover:text-ink" %></td>
+              <td class="text-ink/55"><%= points_display(line.opponent_points) %></td>
+              <td><%= signed_points_display(line.margin) %></td>
+              <td><%= points_display(line.combined) %></td>
+              <td><%= all_play_display(line.all_play) %></td>
+              <td><%= signed_points_display(line.versus_average) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-2.5 text-[11px] text-ink/55"><%= game_history_note(@sort) %></div>
+  </div>
+</section>

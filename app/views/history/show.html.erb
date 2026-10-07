@@ -1,0 +1,41 @@
+<% content_for :title, "ATO Delta · History" %>
+<% content_for :tagline, league_tagline(@almanac) %>
+
+<% if @almanac.empty? %>
+  <p class="text-ink/55">No games on record yet.</p>
+<% else %>
+  <section class="flex flex-wrap items-end gap-4.5">
+    <div class="mr-auto">
+      <div class="card-kicker">History</div>
+      <h1 class="font-heading text-[52px] font-semibold leading-tight tracking-[-0.015em]"><%= history_view_label(@view) %></h1>
+      <div class="text-[13px] text-ink/55"><%= history_summary(@almanac, @view) %></div>
+    </div>
+    <%= form_with url: history_path(view: @view), method: :get, class: "flex flex-wrap items-end gap-3",
+          data: { controller: "autosubmit" } do |form| %>
+      <%= hidden_field_tag :sort, @sort %>
+      <%= hidden_field_tag :direction, @direction %>
+      <% if @view == "players" %>
+        <%= hidden_field_tag :by, @player_scope %>
+        <div class="min-w-[120px]">
+          <%= form.label :position, "Position", for: "history_position", class: "mb-1 block text-xs text-ink/70" %>
+          <%= form.select :position, position_options, { include_blank: "All", selected: @position },
+                id: "history_position", class: "input", data: { action: "change->autosubmit#submit" } %>
+        </div>
+      <% end %>
+      <div class="min-w-[220px]">
+        <%= form.label :owner, "Owner", for: "history_owner", class: "mb-1 block text-xs text-ink/70" %>
+        <%= form.select :owner, owner_select_options(@almanac), { include_blank: "All owners", selected: @owner&.id },
+              id: "history_owner", class: "input", data: { action: "change->autosubmit#submit" } %>
+      </div>
+      <noscript><%= form.submit "View", class: "btn btn-secondary" %></noscript>
+    <% end %>
+    <nav class="seg" aria-label="History sections">
+      <% HistoryController::VIEWS.each do |view| %>
+        <%= link_to history_view_label(view), history_tab_path(view: view),
+              class: "seg-opt #{'seg-on' if view == @view}" %>
+      <% end %>
+    </nav>
+  </section>
+
+  <%= render @view %>
+<% end %>

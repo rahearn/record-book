@@ -184,6 +184,20 @@ class Almanac
     WeekMatrix.new(records: standings_for(year, tier))
   end
 
+  # Every owner's regular season in every year and tier: the rows the
+  # history page sorts across eras.
+  def season_history
+    season_records.values
+  end
+
+  # Every regular-season score on record, each with the game's other side,
+  # the week's field, and the season its owner was having.
+  def game_history
+    @game_history ||= season_records.values.flat_map do |record|
+      record.weekly_scores.map { |score| GameLine.new(season_record: record, score: score) }
+    end
+  end
+
   def all_time_standings
     @all_time_standings ||= season_records.values.group_by(&:owner).map do |owner, records|
       CareerRecord.new(owner: owner, season_records: records, next_tier: ladder&.tier_for(owner),

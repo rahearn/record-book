@@ -24,5 +24,8 @@ Rails.application.routes.draw do
 
   get "head-to-head", to: "head_to_head#show", as: :head_to_head
 
+  get "history(/:view)", to: "history#show", as: :history,
+    constraints: { view: /seasons|games|players/ }
+
   get "matchups/:id", to: "matchups#show", as: :matchup, constraints: { id: /\d+/ }
 end
