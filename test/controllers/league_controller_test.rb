@@ -39,6 +39,7 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     get league_url
     assert_select "nav a.btn-primary", text: "League"
     assert_select "nav a[href=?]", root_path, text: "Seasons"
+    assert_equal %w[Seasons League Owners Head-to-head History], css_select("header nav a").map(&:text)
 
     get root_url
     assert_response :success
