@@ -67,7 +67,7 @@ module LeagueHelper
   # A column header that sorts a table: first click descending, clicking
   # the active column again flips the direction. Links to the page named by path (a route helper) with the rest of params
   # carried along, e.g. the league scope or the season's year and tier.
-  def sortable_header(label, column, active_sort:, direction:, path: :root_path, **params)
+  def sortable_header(label, column, active_sort:, direction:, path: :league_path, **params)
     active = active_sort == column
     next_direction = active && direction == "desc" ? "asc" : "desc"
     caption = active ? "#{label} #{direction == 'asc' ? '▲' : '▼'}" : label

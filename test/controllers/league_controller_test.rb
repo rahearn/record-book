@@ -2,15 +2,15 @@ require "test_helper"
 
 class LeagueControllerTest < ActionDispatch::IntegrationTest
   test "renders the league page" do
-    get root_url
+    get league_url
     assert_response :success
 
     assert_select "h2", text: "All-time by owner"
     assert_match "Alice Anders", response.body
     assert_match "Anders Aces", response.body
 
-    # Luck left the table; Runner-up sits to the right of Titles.
-    assert_select "th", text: "Luck", count: 0
+    # Career luck sits before Titles; Runner-up to the right of Titles.
+    assert_select "th", text: "Luck"
     assert_select "th", text: "Titles"
     assert_select "th", text: "Runner-up"
 
@@ -23,8 +23,31 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     assert_match "2025 ladder", response.body
   end
 
-  test "record cards link to the matchup that set them" do
+  test "career luck is wins above the all-play record, summed over every season" do
+    # Bob went 0–2 in 2023 against a schedule worth two-thirds of a win;
+    # Carol and Dan each won one game their scores were worth a third less than.
+    get league_url(sort: "luck", direction: "asc")
+    assert_response :success
+
+    first = css_select("table tbody tr").first
+    assert_match "Bob Barker", first.text
+    assert_match "-0.67", first.text
+    assert_match "+0.33", response.body
+  end
+
+  test "the league page lives at /league, the current season at the root" do
+    get league_url
+    assert_select "nav a.btn-primary", text: "League"
+    assert_select "nav a[href=?]", root_path, text: "Seasons"
+
     get root_url
+    assert_response :success
+    assert_select "h1", text: "2024"
+    assert_select "nav a.btn-primary", text: "Seasons"
+  end
+
+  test "record cards link to the matchup that set them" do
+    get league_url
     assert_response :success
 
     # Highest score, biggest blowout, and highest combined all come from
@@ -35,22 +58,22 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
 
   test "sortable columns reorder the all-time table" do
     # Ascending PA/g puts Dan (85.0) ahead of Bob (108.3).
-    get root_url(sort: "pag", direction: "asc")
+    get league_url(sort: "pag", direction: "asc")
     assert_response :success
     assert_operator response.body.index("Dan Diaz"), :<, response.body.index("Bob Barker")
     assert_match "PA/g ▲", response.body
 
     # Runner-up finishes: Bob (1) rises to the top.
-    get root_url(sort: "runner_up")
+    get league_url(sort: "runner_up")
     assert_operator response.body.index("Bob Barker"), :<, response.body.index("Alice Anders")
     assert_match "Runner-up ▼", response.body
 
-    get root_url(sort: "titles")
+    get league_url(sort: "titles")
     assert_operator response.body.index("Alice Anders"), :<, response.body.index("Bob Barker")
   end
 
   test "defaults to showing current owners, with the Current filter marked active" do
-    get root_url
+    get league_url
     assert_response :success
     assert_select ".seg-on", text: "Current"
   end
@@ -67,16 +90,16 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     Performance.create!(game: game, owner: eve, points: 999)
     Performance.create!(game: game, owner: frank, points: 1)
 
-    get root_url
+    get league_url
     assert_response :success
     assert_equal %w[1 2 3 4], css_select("tbody tr td:first-child").map(&:text)
 
     # And the numbering follows the rows as sorted, staying 1..n.
-    get root_url(sort: "pag", direction: "asc")
+    get league_url(sort: "pag", direction: "asc")
     assert_response :success
     assert_equal %w[1 2 3 4], css_select("tbody tr td:first-child").map(&:text)
 
-    get root_url(scope: "all")
+    get league_url(scope: "all")
     assert_response :success
     assert_equal %w[1 2 3 4 5 6], css_select("tbody tr td:first-child").map(&:text)
   end
@@ -91,22 +114,22 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
     Performance.create!(game: game, owner: eve, points: 50)
     Performance.create!(game: game, owner: frank, points: 40)
 
-    get root_url
+    get league_url
     assert_response :success
     assert_no_match "Eve Ellis", response.body
 
-    get root_url(scope: "all")
+    get league_url(scope: "all")
     assert_response :success
     assert_select ".seg-on", text: "All"
     assert_match "Eve Ellis", response.body
   end
 
   test "the tier column shows the season in progress until its finals are played" do
-    get root_url
+    get league_url
     assert_select "th", text: "2025"
 
     games(:g2024_final_challenger).destroy!
-    get root_url
+    get league_url
     assert_select "th", text: "2025", count: 0
     assert_select "th", text: "2024"
     bob = css_select("tbody tr").find { |row| row.text.include?("Bob Barker") }
@@ -114,7 +137,7 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "unknown sort parameters fall back to the default order" do
-    get root_url(sort: "hacked")
+    get league_url(sort: "hacked")
     assert_response :success
     assert_operator response.body.index("Alice Anders"), :<, response.body.index("Bob Barker")
     assert_match "Win% ▼", response.body
@@ -123,7 +146,7 @@ class LeagueControllerTest < ActionDispatch::IntegrationTest
   test "renders an empty state when no games are on record" do
     wipe_league_data
 
-    get root_url
+    get league_url
     assert_response :success
     assert_match "No games on record yet", response.body
   end

@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-  # Defines the root path route ("/")
-  root "league#show"
+  # The current season is the front page; the league's all-time view has its own.
+  root "seasons#show"
+  get "league", to: "league#show", as: :league
 
   get "seasons", to: "seasons#show", as: :seasons
   get "seasons/:year", to: "seasons#show", as: :season, constraints: { year: /\d{4}/ }

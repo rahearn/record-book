@@ -3,6 +3,7 @@ class LeagueController < ApplicationController
     "win_pct" => ->(career) { career.win_percentage },
     "pfg" => ->(career) { career.points_for_per_game },
     "pag" => ->(career) { career.points_against_per_game },
+    "luck" => ->(career) { career.all_play_luck },
     "titles" => ->(career) { career.titles },
     "runner_up" => nil # needs the almanac; see sorted_standings
   }.freeze

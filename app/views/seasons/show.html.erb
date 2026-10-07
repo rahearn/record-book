@@ -21,9 +21,9 @@
     <% end %>
     <% if @split %>
       <div class="seg">
-        <%= link_to "Premier", season_path(@year, tier: :premier),
+        <%= link_to "Premier", season_page_path(@year, tier: :premier),
               class: "seg-opt #{'seg-on' if @tier == :premier}" %>
-        <%= link_to "Challenger", season_path(@year, tier: :challenger),
+        <%= link_to "Challenger", season_page_path(@year, tier: :challenger),
               class: "seg-opt #{'seg-on' if @tier == :challenger}" %>
       </div>
     <% end %>

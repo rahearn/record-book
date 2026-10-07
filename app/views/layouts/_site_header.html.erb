@@ -7,10 +7,10 @@
       </span>
     </div>
     <nav class="flex flex-wrap gap-1.5">
-      <%= nav_button "League", root_path, active: controller_name == "league" %>
+      <%= nav_button "League", league_path, active: controller_name == "league" %>
       <%= nav_button "Owners", owners_path, active: controller_name == "owners" %>
       <%= nav_button "Head-to-head", head_to_head_path, active: controller_name == "head_to_head" %>
-      <%= nav_button "Seasons", seasons_path, active: controller_name == "seasons" %>
+      <%= nav_button "Seasons", root_path, active: controller_name == "seasons" %>
       <%= nav_button "History", history_path, active: controller_name == "history" %>
     </nav>
   </div>

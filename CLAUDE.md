@@ -91,9 +91,11 @@ tiers rather than next year's ladder (`tier_column_year`/`tier_column_for`). Val
 objects live in `app/models/almanac/`. `Almanac.new` accepts `games:`, `promotion_count:`, and
 `relegation_count:` keywords, which tests use to build small in-memory scenarios.
 
-The League home page is `league#show` (root route), rendered from partials in `app/views/league/`.
-The Seasons page is `seasons#show` (`/seasons` and `/seasons/:year`, with a `tier` query param for
-split seasons). The Owners page is `owners#show` (`/owners` defaults to the all-time leader,
+The front page (root route) is `seasons#show`, showing the current season. It is also reached at
+`/seasons`, and at `/seasons/:year` or `/seasons?year=` for any year, with a `tier` query param for
+split seasons. Link to a season with `season_page_path(year)` (in `ApplicationHelper`): it points
+the current season at `/` and other years at `/seasons/:year`. The League page is `league#show`
+(`/league`), rendered from partials in `app/views/league/`; its all-time table carries career Luck. The Owners page is `owners#show` (`/owners` defaults to the all-time leader,
 `/owners/:id`, with a `season` query param selecting the week-by-week chart). The Head-to-head page
 is `head_to_head#show` (`/head-to-head?a=&b=`, defaulting to the top two all-time owners). The
 History page is `history#show` (`/history/seasons`, `/history/games`, `/history/players`), sorting

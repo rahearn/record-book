@@ -75,7 +75,11 @@ class WeeksControllerTest < ActionDispatch::IntegrationTest
   test "links back to the season" do
     get week_url(2024, 1, tier: :challenger)
     assert_response :success
-    assert_select "a[href=?]", "/seasons/2024?tier=challenger", text: "2024 season"
+    # 2024 is the current season, which is the front page.
+    assert_select "a[href=?]", "/?tier=challenger", text: "2024 season"
+
+    get week_url(2023, 1)
+    assert_select "a[href=?]", "/seasons/2023", text: "2023 season"
   end
 
   test "the season page's week columns open the scoreboard" do

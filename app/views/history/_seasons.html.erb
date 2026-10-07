@@ -28,7 +28,7 @@
           <% @season_records.each do |record| %>
             <tr>
               <td class="font-medium">
-                <%= link_to record.year, season_path(record.year, tier: (record.tier unless record.tier == "unified")),
+                <%= link_to record.year, season_page_path(record.year, tier: (record.tier unless record.tier == "unified")),
                       class: "hover:text-accent" %>
               </td>
               <td><span class="tag <%= tier_tag_class(record.tier) %>"><%= tier_label(record.tier) %></span></td>

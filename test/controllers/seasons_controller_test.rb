@@ -145,7 +145,7 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     get season_url(2024, tier: "challenger")
     assert_select "#standings th a", text: "# ▲"
     assert_select "#standings th a[href=?]",
-      season_path(2024, tier: "challenger", sort: "luck", direction: "desc"), text: "Luck"
+      root_path(tier: "challenger", sort: "luck", direction: "desc"), text: "Luck"
   end
 
   test "unknown standings sorts fall back to final finish" do
@@ -188,6 +188,15 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     get seasons_url(year: 2023)
     assert_response :success
     assert_select "h1", text: "2023"
+  end
+
+  test "links to the current season point at the root; earlier seasons keep their path" do
+    get season_url(2023)
+    assert_select ".seg-opt", count: 0 # unified season, no tier tabs
+    assert_select "#standings th a[href=?]", season_path(2023, sort: "pf", direction: "desc")
+
+    get root_url
+    assert_select "a.seg-opt[href=?]", root_path(tier: :challenger), text: "Challenger"
   end
 
   test "unknown years 404" do
