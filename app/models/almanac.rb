@@ -51,10 +51,12 @@ class Almanac
   attr_reader :promotion_count, :relegation_count
 
   def initialize(games: Game.includes(:season, performances: { owner: { teams: :season } }).to_a,
+                 scheduled_games: ScheduledGame.includes(:season, :owner_a, :owner_b).to_a,
                  promotion_count: PROMOTION_COUNT, relegation_count: RELEGATION_COUNT)
     playable = games.select { |game| game.performances.size == 2 }
     @games = playable.select(&:regular_season?)
     @playoff_games = playable.select(&:playoff?)
+    @scheduled_games = scheduled_games
     @promotion_count = promotion_count
     @relegation_count = relegation_count
   end
@@ -168,6 +170,14 @@ class Almanac
   def promotion_zone?(record)
     record.tier == "challenger" && split_season?(record.year) &&
       record.rank <= promotion_count
+  end
+
+  # Whether a season and tier still have regular-season games to play —
+  # the only time a remaining strength of schedule means anything.
+  def remaining_schedule?(year, tier)
+    !season_complete?(year) && @scheduled_games.any? do |scheduled|
+      scheduled.season.year == year && scheduled.tier == tier.to_s
+    end
   end
 
   def week_matrix(year, tier)
@@ -320,7 +330,23 @@ class Almanac
     end
     rank_by_season(records.values)
     assign_final_ranks(records.values)
+    record_remaining_schedules(records)
     records
+  end
+
+  # The games each owner has left in a season still being played, against
+  # the season each opponent has had so far. An opponent who has yet to
+  # play a game has no record to measure, but the game still counts.
+  def record_remaining_schedules(records)
+    @scheduled_games.each do |scheduled|
+      year = scheduled.season.year
+      next if season_complete?(year)
+
+      scheduled.owners.each do |owner|
+        records[[ year, owner ]]&.schedule_game(
+          opponent_record: records[[ year, scheduled.opponent_of(owner) ]])
+      end
+    end
   end
 
   # Every owner's all-play record, keyed by the game it was played in. The

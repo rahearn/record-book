@@ -600,6 +600,64 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal :premier, book.tier_column_for(book.career_for(c))
   end
 
+  test "remaining strength of schedule averages the all-play record of opponents still to come" do
+    a, b, c, d, e = %w[A B C D E].map { |n| Owner.new(name: "Schedule #{n}") }
+    # All-play to date (a field of three each week): A 6–0, B 4–2, C 2–4, D 0–6.
+    games = [
+      build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, scores: { c => 80.0, d => 70.0 }),
+      build_game(year: 2030, week: 2, scores: { a => 110.0, c => 95.0 }),
+      build_game(year: 2030, week: 2, scores: { b => 105.0, d => 85.0 })
+    ]
+    scheduled = [
+      build_scheduled_game(year: 2030, week: 3, owners: [ a, b ]),
+      build_scheduled_game(year: 2030, week: 3, owners: [ c, d ]),
+      build_scheduled_game(year: 2030, week: 4, owners: [ a, d ]),
+      build_scheduled_game(year: 2030, week: 4, owners: [ b, c ]),
+      # E has yet to play, so the game counts but there is no record to measure.
+      build_scheduled_game(year: 2030, week: 5, owners: [ a, e ])
+    ]
+
+    book = Almanac.new(games: games, scheduled_games: scheduled)
+    assert book.remaining_schedule?(2030, :unified)
+    records = book.standings_for(2030, :unified).index_by(&:owner)
+
+    assert_in_delta 2 / 3.0, records[b].all_play_percentage
+    assert_equal 3, records[a].remaining_games
+    assert_in_delta 1 / 3.0, records[a].remaining_strength_of_schedule # B .667, D .000
+    assert_in_delta 2 / 3.0, records[b].remaining_strength_of_schedule # A 1.000, C .333
+    assert_in_delta 1 / 3.0, records[c].remaining_strength_of_schedule # D .000, B .667
+    assert_in_delta 2 / 3.0, records[d].remaining_strength_of_schedule # C .333, A 1.000
+  end
+
+  test "a finished season has no remaining schedule to measure" do
+    a, b = %w[A B].map { |n| Owner.new(name: "Finished #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 2, scores: { a => 100.0, b => 90.0 }, round_name: "Championship")
+    ]
+    leftover = [ build_scheduled_game(year: 2030, week: 3, owners: [ a, b ]) ]
+
+    book = Almanac.new(games: games, scheduled_games: leftover)
+    assert_not book.remaining_schedule?(2030, :unified)
+    record = book.standings_for(2030, :unified).first
+    assert_equal 0, record.remaining_games
+    assert_nil record.remaining_strength_of_schedule
+  end
+
+  test "the remaining schedule is kept to its own tier" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Split #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c => 100.0, d => 90.0 })
+    ]
+    scheduled = [ build_scheduled_game(year: 2030, week: 2, tier: :premier, owners: [ a, b ]) ]
+
+    book = Almanac.new(games: games, scheduled_games: scheduled)
+    assert book.remaining_schedule?(2030, :premier)
+    assert_not book.remaining_schedule?(2030, :challenger)
+  end
+
   test "final rank places playoff finishers first, then regular-season order" do
     a, b, c, d, e, f = %w[A B C D E F].map { |n| Owner.new(name: "Final #{n}") }
     games = [
@@ -809,6 +867,11 @@ class AlmanacTest < ActiveSupport::TestCase
 
   def career_for(fixture_name)
     @book.all_time_standings.find { |career| career.owner == owners(fixture_name) }
+  end
+
+  def build_scheduled_game(year:, week:, owners:, tier: :unified)
+    ScheduledGame.new(season: Season.new(year: year), week: week, tier: tier,
+                      owner_a: owners.first, owner_b: owners.last)
   end
 
   def build_game(year:, week:, scores:, tier: :unified, round_name: nil)

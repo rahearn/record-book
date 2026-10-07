@@ -44,6 +44,16 @@ module SeasonsHelper
       "Opp ± is how far opponents scored below (+) or above (−) their own season average."
   end
 
+  def remaining_schedule_note
+    "SOS is the all-play win % to date of the opponents still to come — higher is harder."
+  end
+
+  # A remaining strength of schedule, or a dash when there is nothing left to measure.
+  def remaining_strength_display(record)
+    strength = record.remaining_strength_of_schedule
+    strength ? win_percentage_display(strength) : "—"
+  end
+
   def season_zone_class(almanac, record)
     if almanac.relegation_zone?(record)
       "zone-down"

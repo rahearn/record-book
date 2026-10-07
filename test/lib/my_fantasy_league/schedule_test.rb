@@ -32,6 +32,19 @@ class MyFantasyLeague::ScheduleTest < ActiveSupport::TestCase
                  matchup.sides.to_h { |side| [ side.franchise_id, side.points ] })
   end
 
+  test "a season part-way through has the rest of its regular season still to come" do
+    @client.unplay_from(12)
+
+    assert_equal (1..11).to_a, regular_season.map(&:week).uniq.sort
+    assert_equal (12..14).to_a, @schedule.upcoming.map(&:week).uniq.sort
+    assert_equal 30, @schedule.upcoming.size
+    assert @schedule.upcoming.all? { |matchup| matchup.round_name.nil? && matchup.sides.size == 2 }
+  end
+
+  test "a season played out has nothing still to come" do
+    assert_empty @schedule.upcoming
+  end
+
   test "the playoffs count their rounds back from the final" do
     assert_equal({ [ 15, "Quarterfinal" ] => 2, [ 16, Game::SEMIFINAL ] => 2,
                    [ 17, Game::CHAMPIONSHIP ] => 1, [ 17, Game::THIRD_PLACE ] => 1 },

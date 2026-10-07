@@ -32,6 +32,40 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_equal [ "2.00", "+0.00" ], alice.css("td")[7, 2].map(&:text)
   end
 
+  test "a season still being played measures what is left of each schedule" do
+    season = Season.create!(year: 2025)
+    [ [ :alice, 100, :bob, 90 ], [ :carol, 80, :dan, 70 ] ].each do |owner_a, points_a, owner_b, points_b|
+      game = Game.create!(season: season, week: 1)
+      game.performances.create!(owner: owners(owner_a), points: points_a)
+      game.performances.create!(owner: owners(owner_b), points: points_b)
+    end
+    # Week 1 all-play, a field of three: Alice 3–0, Bob 2–1, Carol 1–2, Dan 0–3.
+    season.scheduled_games.create!(week: 2, owner_a: owners(:alice), owner_b: owners(:carol))
+    season.scheduled_games.create!(week: 2, owner_a: owners(:bob), owner_b: owners(:dan))
+    season.scheduled_games.create!(week: 3, owner_a: owners(:alice), owner_b: owners(:bob))
+
+    get season_url(2025)
+    assert_response :success
+
+    assert_select "#standings th", text: "SOS"
+    assert_match "SOS is the all-play win %", response.body
+    alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
+    # Carol (.333) and Bob (.667) still to come.
+    assert_equal "50.0%", alice.css("td")[10].text.squish
+
+    get season_url(2025, sort: "sos")
+    assert_response :success
+    hardest = css_select("#standings tbody tr").first
+    assert_match "Carol Chen", hardest.text # Alice to come, at 1.000
+  end
+
+  test "a finished season has no remaining schedule column" do
+    get season_url(2023)
+    assert_response :success
+
+    assert_select "#standings th", text: "SOS", count: 0
+  end
+
   test "shows the challenger tier when requested" do
     get season_url(2024, tier: "challenger")
     assert_response :success

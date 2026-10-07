@@ -38,6 +38,9 @@ layer will import historical data into it:
   takes another slot and asks whether this one could have taken that player.
 - `RosterFormat` (season, slots) — the lineup a season was played with, starters in reading order
   and reserves behind them; `Performance` holds a recorded lineup to its shape.
+- `ScheduledGame` (season, week, tier, owner_a, owner_b) — a regular-season matchup not played
+  yet. It has no scores, so it lives apart from `Game` (whose performances always have them); the
+  MFL importer rewrites these each run and a week drops out once it is played.
 
 All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
@@ -56,6 +59,12 @@ canvas at <https://claude.ai/code/artifact/72169663-bda1-4d49-9240-30fbf4c0e000>
   scored below (+) or above (−) their own season average. It needs season averages, so it is a
   second pass over the games, and `swing_wins` (results that would have gone the other way had the
   opponent scored their average) is computed there too.
+
+While a season is in progress (`season_complete?` false) and still has `ScheduledGame`s,
+the season page adds a **SOS** column: `SeasonRecord#remaining_strength_of_schedule` averages,
+game by game, each remaining opponent's `all_play_percentage` to date (`expected_wins / games_played`).
+`Almanac#remaining_schedule?(year, tier)` decides whether the column shows; leftover scheduled games
+in a finished season are ignored. `Almanac.new` takes `scheduled_games:` for in-memory tests.
 
 `SeasonRecord::WeeklyScore#against_the_field?` marks the weeks where the result disagreed with the
 all-play majority — a win with a losing all-play record, or the reverse — which is what the owner
@@ -129,9 +138,10 @@ else. The pieces:
   A third-place game is a bracket of its own.
 - `PlayerDirectory` — MFL names players "Kamara, Alvin" and defenses "Bills, Buffalo", and uses its
   own team codes (`SFO`, `KCC`); both are translated so 2025 on reads like the Yahoo-loaded seasons.
-- `Import` — writes the season, roster format, playoff formats, teams, games, performances and
-  lineups. **Re-importing a week is the supported way to pick up a scoring adjustment**: a game is
-  recognised by the pair of owners who played it, its scores are updated in place (so links to
+- `Import` — writes the season, roster format, playoff formats, teams, games, performances,
+  lineups, and the unplayed remainder of the regular season (`Schedule#upcoming` → `ScheduledGame`).
+  **Re-importing a week is the supported way to pick up a scoring adjustment**: a game is recognised
+  by the pair of owners who played it, its scores are updated in place (so links to
   matchup pages survive), lineups are rewritten whole, and a game MFL no longer has is dropped.
 
 MFL records that a player started, not the slot they filled, so the slot is worked back out of what

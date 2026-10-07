@@ -27,7 +27,7 @@ class Almanac
 
     attr_reader :owner, :year, :tier, :games_played, :wins, :losses, :ties,
       :points_for, :points_against, :expected_wins, :opponent_shortfall_total,
-      :swing_wins_gained, :swing_wins_lost
+      :swing_wins_gained, :swing_wins_lost, :remaining_games
     # rank orders the regular season (and drives relegation and zone
     # shading); final_rank folds the playoffs in — finishers take the top
     # spots, everyone else keeps their regular-season order.
@@ -48,6 +48,8 @@ class Almanac
       @swing_wins_gained = 0
       @swing_wins_lost = 0
       @weekly_scores = []
+      @remaining_opponents = []
+      @remaining_games = 0
     end
 
     def record_result(game:, points:, opponent:, opponent_points:, all_play:)
@@ -75,6 +77,13 @@ class Almanac
       expected = result_value(points, opponent_average)
       @swing_wins_gained += actual - expected if actual > expected
       @swing_wins_lost += expected - actual if expected > actual
+    end
+
+    # One game still to be played this season. The opponent's record is
+    # theirs to date, and nil when they have yet to play.
+    def schedule_game(opponent_record:)
+      @remaining_games += 1
+      @remaining_opponents << opponent_record if opponent_record
     end
 
     def weekly_scores
@@ -122,6 +131,21 @@ class Almanac
 
     def win_percentage
       (wins + ties * 0.5) / games_played
+    end
+
+    # The share of the field the week's scores have beaten, on average: the
+    # all-play record as a winning percentage.
+    def all_play_percentage
+      expected_wins / games_played
+    end
+
+    # How hard the games still to play look: the remaining opponents'
+    # all-play percentage to date, averaged game by game, so an opponent
+    # faced twice counts twice. Nil when there is nothing left to measure.
+    def remaining_strength_of_schedule
+      return if @remaining_opponents.empty?
+
+      @remaining_opponents.sum(&:all_play_percentage) / @remaining_opponents.size
     end
 
     private

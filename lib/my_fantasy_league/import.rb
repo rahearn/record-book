@@ -41,6 +41,7 @@ module MyFantasyLeague
         selected(week, wanted).each do |(tier, number), matchups|
           store(tier, number, matchups, lineups.fetch(number, {}))
         end
+        store_upcoming(week, wanted)
       end
     end
 
@@ -140,6 +141,24 @@ module MyFantasyLeague
       kept.each { |game| game.performances.each { |performance| record_lineup(performance, lineups) } }
       @report.call("#{@year} week #{week} #{tier}: #{kept.size} #{"game".pluralize(kept.size)}" \
                    "#{", #{existing.size} dropped" if existing.any?}")
+    end
+
+    # The rest of the schedule, rewritten whole for the weeks and tiers being
+    # imported. A week that has since been played is in the games table
+    # instead, so it simply drops out of here.
+    def store_upcoming(week, tiers)
+      scope = @record.scheduled_games.where(tier: tiers)
+      scope = scope.where(week: week) if week
+      scope.delete_all
+
+      upcoming = schedule.upcoming
+        .select { |matchup| tiers.include?(matchup.tier) && (week.nil? || matchup.week == week) }
+      upcoming.each do |matchup|
+        owner_a, owner_b = matchup.sides.map { |side| owner_for(side.franchise_id) }
+        @record.scheduled_games.create!(week: matchup.week, tier: matchup.tier,
+                                        owner_a: owner_a, owner_b: owner_b)
+      end
+      @report.call("#{@year}: #{upcoming.size} #{"game".pluralize(upcoming.size)} still to play") if upcoming.any?
     end
 
     def write(matchup, sides)

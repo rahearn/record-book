@@ -50,6 +50,16 @@ class MflStubClient
     payload("players")["players"]["player"].select { |player| ids.include?(player["id"]) }
   end
 
+  # Turns the clock back to before the given week was played: MFL lists a
+  # matchup nobody has played yet with no score on either side.
+  def unplay_from(week)
+    schedule.select { |scheduled| scheduled["week"].to_i >= week }.each do |scheduled|
+      Array.wrap(scheduled["matchup"]).each do |matchup|
+        Array.wrap(matchup["franchise"]).each { |franchise| franchise.delete("score") }
+      end
+    end
+  end
+
   # The matchup a week was played over, for a test that wants to adjust it.
   def scheduled_matchup(week, franchise_id)
     weekly = schedule.find { |scheduled| scheduled["week"].to_i == week }

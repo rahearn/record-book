@@ -134,6 +134,32 @@ class MyFantasyLeague::ImportTest < ActiveSupport::TestCase
     assert_empty games_for(1, "premier").select { |game| game.owners.include?(owner("0002")) }
   end
 
+  test "the weeks nobody has played yet are kept as the schedule still to come" do
+    @client.unplay_from(12)
+    import
+
+    season = Season.find_by!(year: 2025)
+    assert_equal (1..11).to_a, season.games.regular_season.distinct.pluck(:week).sort
+    assert_equal 30, season.scheduled_games.count
+    assert_equal({ "premier" => 18, "challenger" => 12 }, season.scheduled_games.group(:tier).count)
+    assert_includes @reported, "2025: 30 games still to play"
+  end
+
+  test "a week drops off the schedule once it has been played" do
+    @client.unplay_from(12)
+    import
+
+    scores = JSON.parse(Rails.root.join(MflStubClient::ROOT, "schedule.json").read)
+      .dig("schedule", "weeklySchedule").find { |week| week["week"] == "12" }
+    @client.schedule.find { |week| week["week"] == "12" }["matchup"] = scores["matchup"]
+    import(week: 12)
+
+    season = Season.find_by!(year: 2025)
+    assert_equal 10, season.games.where(week: 12).count
+    assert_equal [ 13, 14 ], season.scheduled_games.distinct.pluck(:week).sort
+    assert_equal 20, season.scheduled_games.count
+  end
+
   test "one tier can be imported without touching the other" do
     import(week: 1, tiers: [ "premier" ])
 
