@@ -181,6 +181,15 @@ class Almanac
     end
   end
 
+  # Whether a season and tier have reached the playoffs: a finished season,
+  # or one with a playoff game on record. Until then a season is still in
+  # its regular season, and Clutch has nothing to measure.
+  def playoffs_reached?(year, tier)
+    season_complete?(year) || @playoff_games.any? do |game|
+      game.season.year == year && game.tier == tier.to_s
+    end
+  end
+
   def week_matrix(year, tier)
     WeekMatrix.new(records: standings_for(year, tier))
   end
@@ -350,13 +359,10 @@ class Almanac
     records
   end
 
-  # Playoff scoring, for Clutch. A season still being played has not
-  # settled its playoffs, so it records none.
+  # Playoff scoring, for Clutch — to date while the playoffs are on.
   def record_playoff_scores(records)
     each_matchup(@playoff_games) do |game, side_a, side_b|
       year = game.season.year
-      next unless season_complete?(year)
-
       [ side_a, side_b ].each do |side|
         records[[ year, side.owner ]]&.record_playoff_score(points: side.points)
       end

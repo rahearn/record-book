@@ -29,7 +29,10 @@ class SeasonsController < ApplicationController
     @direction = params[:direction].presence_in(%w[asc desc]) || (@sort == "rank" ? "asc" : "desc")
     @standings = sorted_standings
     @matrix = @almanac.week_matrix(@year, @tier)
-    @remaining_schedule = @almanac.remaining_schedule?(@year, @tier)
+    # A season in progress shows SOS through the regular season and Clutch
+    # once the playoffs begin; a finished season shows Clutch.
+    @playoffs_reached = @almanac.playoffs_reached?(@year, @tier)
+    @remaining_schedule = !@playoffs_reached && @almanac.remaining_schedule?(@year, @tier)
 
     season = Season.find_by(year: @year)
     @playoff_format = season&.playoff_format_for(@tier)

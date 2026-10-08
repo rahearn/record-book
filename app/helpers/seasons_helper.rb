@@ -44,7 +44,7 @@ module SeasonsHelper
   end
 
   def clutch_column_note
-    "Clutch is playoff points per game above the regular season's — playoff teams in finished seasons only."
+    "Clutch is playoff points per game above the regular season's — playoff teams only, to date while the playoffs are on."
   end
 
   def remaining_schedule_note

@@ -48,10 +48,12 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     assert_select "#standings th", text: "SOS"
+    assert_select "#standings th", text: "Clutch", count: 0
     assert_match "SOS is the all-play win %", response.body
+    assert_no_match "Clutch is", response.body
     alice = css_select("#standings tbody tr").find { |row| row.text.include?("Alice Anders") }
     # Carol (.333) and Bob (.667) still to come.
-    assert_equal "50.0%", alice.css("td")[10].text.squish
+    assert_equal "50.0%", alice.css("td")[9].text.squish
 
     get season_url(2025, sort: "sos")
     assert_response :success
@@ -68,6 +70,28 @@ class SeasonsControllerTest < ActionDispatch::IntegrationTest
 
     get season_url(2023)
     assert_equal [ "—" ] * 4, css_select("#standings tbody tr").map { |row| row.css("td")[9].text }
+  end
+
+  test "a season in its playoffs trades SOS for clutch to date" do
+    season = Season.create!(year: 2025)
+    [ [ 1, nil, :alice, 100, :bob, 90 ], [ 1, nil, :carol, 80, :dan, 70 ],
+      [ 2, "Semifinal", :alice, 120, :bob, 100 ] ].each do |week, round_name, owner_a, points_a, owner_b, points_b|
+      game = Game.create!(season: season, week: week, round_name: round_name)
+      game.performances.create!(owner: owners(owner_a), points: points_a)
+      game.performances.create!(owner: owners(owner_b), points: points_b)
+    end
+    # A leftover the importer has yet to clear does not bring SOS back.
+    season.scheduled_games.create!(week: 3, owner_a: owners(:carol), owner_b: owners(:dan))
+
+    get season_url(2025)
+    assert_response :success
+    assert_select "#standings th", text: "SOS", count: 0
+    assert_select "#standings th", text: "Clutch"
+    clutch = css_select("#standings tbody tr").to_h do |row|
+      [ row.css("td")[1].text.squish.split.first(2).join(" "), row.css("td")[9].text ]
+    end
+    assert_equal({ "Alice Anders" => "+20.00", "Bob Barker" => "+10.00",
+                   "Carol Chen" => "—", "Dan Diaz" => "—" }, clutch)
   end
 
   test "a finished season has no remaining schedule column" do

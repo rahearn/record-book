@@ -653,16 +653,38 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_nil Almanac.new(games: games.first(4)).career_for(a).clutch
   end
 
-  test "a season still in progress has no clutch yet" do
-    a, b = %w[A B].map { |n| Owner.new(name: "Clutch #{n}") }
-    games = [
+  test "clutch runs to date while the playoffs are on" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Clutch #{n}") }
+    regular = [
       build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
-      build_game(year: 2030, week: 2, scores: { a => 120.0, b => 90.0 }, round_name: "Semifinal")
+      build_game(year: 2030, week: 1, scores: { c => 80.0, d => 70.0 })
     ]
-    book = Almanac.new(games: games)
-    assert_not book.season_complete?(2030)
-    assert_nil book.career_for(a).season_records.first.clutch
+    book = Almanac.new(games: regular)
+    assert_not book.playoffs_reached?(2030, :unified)
     assert_nil book.career_for(a).clutch
+
+    semifinal = build_game(year: 2030, week: 2, scores: { a => 120.0, b => 90.0 }, round_name: "Semifinal")
+    book = Almanac.new(games: regular + [ semifinal ])
+    assert_not book.season_complete?(2030)
+    assert book.playoffs_reached?(2030, :unified)
+    assert_in_delta 20.0, book.career_for(a).season_records.first.clutch
+    assert_in_delta 20.0, book.career_for(a).clutch
+    assert_nil book.career_for(c).clutch
+  end
+
+  test "playoffs are reached tier by tier, and by every finished season" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Tier #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c => 100.0, d => 90.0 }),
+      build_game(year: 2030, week: 2, tier: :premier, scores: { a => 100.0, b => 90.0 },
+                 round_name: "Championship")
+    ]
+    book = Almanac.new(games: games, promotion_count: 1, relegation_count: 1)
+    assert book.playoffs_reached?(2030, :premier)
+    assert_not book.playoffs_reached?(2030, :challenger)
+    # 2023 has no playoff games on record, but it is long finished.
+    assert @book.playoffs_reached?(2023, :unified)
   end
 
   test "remaining strength of schedule averages the all-play record of opponents still to come" do

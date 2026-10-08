@@ -145,8 +145,9 @@ class Almanac
     end
 
     # Points per game in the playoffs above the regular season's average —
-    # positive for a team that raised its game. Nil for a team that missed
-    # the playoffs, or whose season is still being played.
+    # positive for a team that raised its game; to date while the playoffs
+    # are on. Nil for a team that missed the playoffs, or has yet to play
+    # a playoff game.
     def clutch
       playoff_points_per_game - average_points if made_playoffs?
     end
