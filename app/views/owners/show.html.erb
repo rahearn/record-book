@@ -33,6 +33,8 @@
           note: league_rank_note(@almanac.points_against_rank(@career), @almanac.owner_count) %>
     <%= render "plate", kicker: "Luck", value: signed_wins_display(@career.all_play_luck),
           note: luck_note(@career) %>
+    <%= render "plate", kicker: "Clutch", value: clutch_display(@career.clutch),
+          note: clutch_note(@career) %>
   </section>
 
   <section>
@@ -102,7 +104,7 @@
     <div class="blueprint px-4 py-3.5">
       <%= blueprint_corners %>
       <div class="overflow-x-auto">
-        <table class="table min-w-[880px]">
+        <table class="table min-w-[940px]">
           <thead>
             <tr>
               <th>Year</th>
@@ -113,6 +115,7 @@
               <th>PA/g</th>
               <th>xW</th>
               <th>Luck</th>
+              <th>Clutch</th>
               <th>High</th>
               <th>Low</th>
               <th></th>
@@ -133,6 +136,7 @@
                 <td><%= points_display(record.average_points_against) %></td>
                 <td><%= wins_display(record.expected_wins) %></td>
                 <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
+                <td><%= clutch_display(record.clutch) %></td>
                 <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
                 <td class="text-ink/55"><%= points_display(record.lowest_score) %></td>
                 <td class="text-right">

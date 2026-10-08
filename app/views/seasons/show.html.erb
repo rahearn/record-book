@@ -48,7 +48,9 @@
               <th><%= season_sort_header "PA/g", "pag" %></th>
               <th><%= season_sort_header "xW", "xw" %></th>
               <th><%= season_sort_header "Luck", "luck" %></th>
-              <% if @remaining_schedule %>
+              <% if @playoffs_reached %>
+                <th><%= season_sort_header "Clutch", "clutch" %></th>
+              <% elsif @remaining_schedule %>
                 <th><%= season_sort_header "SOS", "sos" %></th>
               <% end %>
               <th><%= season_sort_header "High", "high" %></th>
@@ -70,7 +72,9 @@
                 <td><%= points_display(record.average_points_against) %></td>
                 <td><%= wins_display(record.expected_wins) %></td>
                 <td class="font-medium"><%= signed_wins_display(record.all_play_luck) %></td>
-                <% if @remaining_schedule %>
+                <% if @playoffs_reached %>
+                  <td><%= clutch_display(record.clutch) %></td>
+                <% elsif @remaining_schedule %>
                   <td class="whitespace-nowrap"><%= remaining_strength_display(record) %></td>
                 <% end %>
                 <td class="text-ink/55"><%= points_display(record.highest_score) %></td>
@@ -83,6 +87,7 @@
       <div class="mt-2.5 text-[11px] text-ink/55">
         <%= season_zone_note(@almanac, @year, @tier, sorted: @sort != "rank") %>
         <%= luck_column_note %>
+        <%= clutch_column_note if @playoffs_reached %>
         <%= remaining_schedule_note if @remaining_schedule %>
       </div>
     </div>

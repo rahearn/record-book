@@ -24,7 +24,9 @@
       <span class="max-w-[520px] text-xs text-ink/55">
         Records and scoring cover regular-season games only; titles and
         runner-up finishes come from the playoffs. Luck is wins above the
-        record the weekly scores earned against the whole field.
+        record the weekly scores earned against the whole field; Clutch is
+        playoff points per game above the regular season's, over the seasons
+        that reached the playoffs.
       </span>
       <div class="seg ml-auto">
         <%= link_to "Current", league_path(sort: @sort, direction: @direction, scope: "current"),
@@ -47,6 +49,7 @@
               <th><%= sortable_header "PF/g", "pfg", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "PA/g", "pag", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "Luck", "luck", active_sort: @sort, direction: @direction, scope: @scope %></th>
+              <th><%= sortable_header "Clutch", "clutch", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "Titles", "titles", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <th><%= sortable_header "Runner-up", "runner_up", active_sort: @sort, direction: @direction, scope: @scope %></th>
               <% if (tier_year = @almanac.tier_column_year) %>
@@ -75,6 +78,7 @@
                 <td><%= points_display(career.points_for_per_game) %></td>
                 <td><%= points_display(career.points_against_per_game) %></td>
                 <td class="font-medium"><%= signed_wins_display(career.all_play_luck) %></td>
+                <td><%= clutch_display(career.clutch) %></td>
                 <td><%= titles_display(career.titles) %></td>
                 <td><%= titles_display(@almanac.playoff_history_for(career.owner).runner_up_finishes) %></td>
                 <% if tier_year %>

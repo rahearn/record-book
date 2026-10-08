@@ -4,6 +4,7 @@ class LeagueController < ApplicationController
     "pfg" => ->(career) { career.points_for_per_game },
     "pag" => ->(career) { career.points_against_per_game },
     "luck" => ->(career) { career.all_play_luck },
+    "clutch" => ->(career) { career.clutch },
     "titles" => ->(career) { career.titles },
     "runner_up" => nil # needs the almanac; see sorted_standings
   }.freeze
@@ -23,7 +24,7 @@ class LeagueController < ApplicationController
       ->(career) { @almanac.playoff_history_for(career.owner).runner_up_finishes }
     standings = @scope == "current" ? @almanac.current_standings : @almanac.all_time_standings
     standings.sort_by do |career|
-      [ @direction == "asc" ? value.call(career) : -value.call(career), career.rank ]
+      [ *column_sort_key(value.call(career), @direction), career.rank ]
     end
   end
 end

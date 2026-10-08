@@ -45,7 +45,14 @@ layer will import historical data into it:
 
 All `Almanac` statistics cover regular-season games only — playoff games are filtered out at load.
 The head-to-head records (`head_to_head_for`, `series_between`) are the exception: a series is a
-record of what two owners played, so it counts playoff meetings too.
+record of what two owners played, so it counts playoff meetings too. **Clutch** is the other:
+`SeasonRecord#clutch` is playoff points per game minus the regular season's (positive = scored more
+in the playoffs), to date while a season's playoffs are on, and nil — a dash — for a team that
+missed the playoffs or has yet to play a playoff game. Challenger playoff teams get one too: Clutch is about each
+tier's own playoffs, not titles. `CareerRecord#clutch` pools only the playoff seasons, game-weighted
+(every playoff game against every regular-season game of those seasons). Shown on the season
+standings, the history Seasons table, the owner page (plate and season table), and the league
+table. Sorting puts the dashes last either way (`ApplicationController#column_sort_key`).
 
 Luck is two related figures, computed together and shown together (see the design spec,
 [docs/record_book_design.html](docs/record_book_design.html)):
@@ -67,6 +74,9 @@ the season page adds a **SOS** column: `SeasonRecord#remaining_strength_of_sched
 game by game, each remaining opponent's `all_play_percentage` to date (`expected_wins / games_played`).
 `Almanac#remaining_schedule?(year, tier)` decides whether the column shows; leftover scheduled games
 in a finished season are ignored. `Almanac.new` takes `scheduled_games:` for in-memory tests.
+The season page's Clutch column takes over from SOS once `Almanac#playoffs_reached?(year, tier)` —
+a finished season, or a playoff game on record for that tier — so the current season shows SOS
+through the regular season and Clutch through the playoffs, never both.
 
 `SeasonRecord::WeeklyScore#against_the_field?` marks the weeks where the result disagreed with the
 all-play majority — a win with a losing all-play record, or the reverse — which is what the owner

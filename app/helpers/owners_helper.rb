@@ -31,6 +31,14 @@ module OwnersHelper
     "#{record_display(career)} against a #{wins_display(career.expected_wins)}-win schedule"
   end
 
+  # The clutch plate reads as the two averages it compares.
+  def clutch_note(career)
+    seasons = career.playoff_seasons
+    return "No playoff seasons on record" if seasons.empty?
+
+    "Playoff scoring vs the regular season, #{pluralize(seasons.size, 'playoff season')}"
+  end
+
   # Under the week-by-week chart: the season's schedule, and the results
   # that turned on how the opponent scored against their own year.
   def week_luck_note(record)

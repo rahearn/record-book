@@ -43,6 +43,10 @@ module SeasonsHelper
     "xW is the record a week's score earned against the whole field; Luck is wins above it."
   end
 
+  def clutch_column_note
+    "Clutch is playoff points per game above the regular season's — playoff teams only, to date while the playoffs are on."
+  end
+
   def remaining_schedule_note
     "SOS is the all-play win % to date of the opponents still to come — higher is harder."
   end

@@ -17,6 +17,12 @@ class LeagueHelperTest < ActionView::TestCase
     assert_equal "+0.00", signed_points_display(0)
   end
 
+  test "clutch_display signs points per game, or dashes when there is none" do
+    assert_equal "+4.50", clutch_display(4.5)
+    assert_equal "-2.25", clutch_display(-2.25)
+    assert_equal "—", clutch_display(nil)
+  end
+
   test "wins_display counts expected wins and luck in wins" do
     assert_equal "6.53", wins_display(6.5333)
     assert_equal "+4.47", signed_wins_display(4.4667)

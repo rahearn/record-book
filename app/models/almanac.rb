@@ -7,7 +7,8 @@
 # field, which is what separates a schedule from a season. The swing wins
 # (results that would have gone the other way had the opponent scored their
 # own season average) sit beside it as the points-scaled reading. The
-# exceptions are titles, which count playoff championships won in the
+# exceptions are Clutch, which sets a team's playoff scoring against its
+# regular season's, titles, which count playoff championships won in the
 # unified league or the Premier tier, and the head-to-head records, which
 # count every meeting two owners played.
 class Almanac
@@ -180,6 +181,15 @@ class Almanac
     end
   end
 
+  # Whether a season and tier have reached the playoffs: a finished season,
+  # or one with a playoff game on record. Until then a season is still in
+  # its regular season, and Clutch has nothing to measure.
+  def playoffs_reached?(year, tier)
+    season_complete?(year) || @playoff_games.any? do |game|
+      game.season.year == year && game.tier == tier.to_s
+    end
+  end
+
   def week_matrix(year, tier)
     WeekMatrix.new(records: standings_for(year, tier))
   end
@@ -345,7 +355,18 @@ class Almanac
     rank_by_season(records.values)
     assign_final_ranks(records.values)
     record_remaining_schedules(records)
+    record_playoff_scores(records)
     records
+  end
+
+  # Playoff scoring, for Clutch — to date while the playoffs are on.
+  def record_playoff_scores(records)
+    each_matchup(@playoff_games) do |game, side_a, side_b|
+      year = game.season.year
+      [ side_a, side_b ].each do |side|
+        records[[ year, side.owner ]]&.record_playoff_score(points: side.points)
+      end
+    end
   end
 
   # The games each owner has left in a season still being played, against

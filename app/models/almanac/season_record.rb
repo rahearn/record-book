@@ -26,7 +26,8 @@ class Almanac
     end
 
     attr_reader :owner, :year, :tier, :games_played, :wins, :losses, :ties,
-      :points_for, :points_against, :expected_wins, :swing_wins_gained, :swing_wins_lost, :remaining_games
+      :points_for, :points_against, :expected_wins, :swing_wins_gained, :swing_wins_lost, :remaining_games,
+      :playoff_games_played, :playoff_points_for
     # rank orders the regular season (and drives relegation and zone
     # shading); final_rank folds the playoffs in — finishers take the top
     # spots, everyone else keeps their regular-season order.
@@ -48,6 +49,8 @@ class Almanac
       @weekly_scores = []
       @remaining_opponents = []
       @remaining_games = 0
+      @playoff_games_played = 0
+      @playoff_points_for = 0
     end
 
     def record_result(game:, points:, opponent:, opponent_points:, all_play:)
@@ -74,6 +77,13 @@ class Almanac
       expected = result_value(points, opponent_average)
       @swing_wins_gained += actual - expected if actual > expected
       @swing_wins_lost += expected - actual if expected > actual
+    end
+
+    # One playoff game, kept apart from every regular-season figure: only
+    # Clutch reads it.
+    def record_playoff_score(points:)
+      @playoff_games_played += 1
+      @playoff_points_for += points
     end
 
     # One game still to be played this season. The opponent's record is
@@ -124,6 +134,22 @@ class Almanac
 
     def win_percentage
       (wins + ties * 0.5) / games_played
+    end
+
+    def made_playoffs?
+      playoff_games_played.positive?
+    end
+
+    def playoff_points_per_game
+      playoff_points_for / playoff_games_played if made_playoffs?
+    end
+
+    # Points per game in the playoffs above the regular season's average —
+    # positive for a team that raised its game; to date while the playoffs
+    # are on. Nil for a team that missed the playoffs, or has yet to play
+    # a playoff game.
+    def clutch
+      playoff_points_per_game - average_points if made_playoffs?
     end
 
     # The share of the field the week's scores have beaten, on average: the

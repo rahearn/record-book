@@ -614,6 +614,79 @@ class AlmanacTest < ActiveSupport::TestCase
     assert_equal :premier, book.tier_column_for(book.career_for(c))
   end
 
+  test "clutch is playoff points per game above the regular season's" do
+    record = ->(owner, year) { career_for(owner).season_records.find { |season| season.year == year } }
+    # 2024: Alice 120 then 130 in the Premier final; Bob 95, 100; the
+    # Challenger final counts for its own tier's playoff teams.
+    assert_in_delta 10.0, record.(:alice, 2024).clutch
+    assert_in_delta 5.0, record.(:bob, 2024).clutch
+    assert_in_delta 9.0, record.(:carol, 2024).clutch
+    assert_in_delta 8.0, record.(:dan, 2024).clutch
+    # 2023 has no playoff games on record.
+    assert_nil record.(:alice, 2023).clutch
+    assert_not record.(:alice, 2023).made_playoffs?
+    assert_in_delta 10.0, career_for(:alice).clutch
+  end
+
+  test "career clutch weighs every playoff game, over playoff seasons only" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Clutch #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, scores: { c => 80.0, d => 70.0 }),
+      build_game(year: 2030, week: 2, scores: { a => 100.0, c => 90.0 }),
+      build_game(year: 2030, week: 2, scores: { b => 85.0, d => 75.0 }),
+      build_game(year: 2030, week: 3, scores: { a => 120.0, b => 110.0 }, round_name: Game::CHAMPIONSHIP),
+      build_game(year: 2030, week: 3, scores: { c => 70.0, d => 60.0 }, round_name: Game::THIRD_PLACE),
+      # A misses the 2031 playoffs; C wins the final.
+      build_game(year: 2031, week: 1, scores: { a => 50.0, b => 60.0 }),
+      build_game(year: 2031, week: 1, scores: { c => 100.0, d => 90.0 }),
+      build_game(year: 2031, week: 2, scores: { c => 110.0, d => 95.0 }, round_name: Game::CHAMPIONSHIP)
+    ]
+    book = Almanac.new(games: games)
+
+    assert_in_delta 20.0, book.career_for(a).clutch
+    assert_nil book.career_for(a).season_records.last.clutch
+    # C: -15 in 2030, +10 in 2031 — but 180 points over two playoff games
+    # against 270 over three regular-season games is level.
+    assert_equal [ -15.0, 10.0 ], book.career_for(c).season_records.map(&:clutch)
+    assert_in_delta 0.0, book.career_for(c).clutch
+    assert_nil Almanac.new(games: games.first(4)).career_for(a).clutch
+  end
+
+  test "clutch runs to date while the playoffs are on" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Clutch #{n}") }
+    regular = [
+      build_game(year: 2030, week: 1, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, scores: { c => 80.0, d => 70.0 })
+    ]
+    book = Almanac.new(games: regular)
+    assert_not book.playoffs_reached?(2030, :unified)
+    assert_nil book.career_for(a).clutch
+
+    semifinal = build_game(year: 2030, week: 2, scores: { a => 120.0, b => 90.0 }, round_name: "Semifinal")
+    book = Almanac.new(games: regular + [ semifinal ])
+    assert_not book.season_complete?(2030)
+    assert book.playoffs_reached?(2030, :unified)
+    assert_in_delta 20.0, book.career_for(a).season_records.first.clutch
+    assert_in_delta 20.0, book.career_for(a).clutch
+    assert_nil book.career_for(c).clutch
+  end
+
+  test "playoffs are reached tier by tier, and by every finished season" do
+    a, b, c, d = %w[A B C D].map { |n| Owner.new(name: "Tier #{n}") }
+    games = [
+      build_game(year: 2030, week: 1, tier: :premier, scores: { a => 100.0, b => 90.0 }),
+      build_game(year: 2030, week: 1, tier: :challenger, scores: { c => 100.0, d => 90.0 }),
+      build_game(year: 2030, week: 2, tier: :premier, scores: { a => 100.0, b => 90.0 },
+                 round_name: "Championship")
+    ]
+    book = Almanac.new(games: games, promotion_count: 1, relegation_count: 1)
+    assert book.playoffs_reached?(2030, :premier)
+    assert_not book.playoffs_reached?(2030, :challenger)
+    # 2023 has no playoff games on record, but it is long finished.
+    assert @book.playoffs_reached?(2023, :unified)
+  end
+
   test "remaining strength of schedule averages the all-play record of opponents still to come" do
     a, b, c, d, e = %w[A B C D E].map { |n| Owner.new(name: "Schedule #{n}") }
     # All-play to date (a field of three each week): A 6–0, B 4–2, C 2–4, D 0–6.
