@@ -7,7 +7,7 @@ class Almanac
     # owner has no regular-season games on record for that year, and the
     # weekly score with it — playoff games are not part of a season record,
     # so they carry no all-play line.
-    Side = Data.define(:performance, :season_record, :weekly_score) do
+    Side = Data.define(:performance, :season_record, :weekly_score, :seed) do
       def owner
         performance.owner
       end

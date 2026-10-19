@@ -271,7 +271,10 @@ class Almanac
         theirs = sides[owner_b]
         next unless mine && theirs
 
-        meetings << Series::Meeting.new(game: game, points_a: mine.points, points_b: theirs.points)
+        meetings << Series::Meeting.new(
+          game: game, points_a: mine.points, points_b: theirs.points,
+          seed_a: playoff_seed(game, owner_a), seed_b: playoff_seed(game, owner_b)
+        )
       end
     end
     Series.new(owner_a: owner_a, owner_b: owner_b, meetings: meetings)
@@ -298,6 +301,19 @@ class Almanac
     games_in(year, tier).map(&:week).uniq.sort
   end
 
+  # The seed an owner took into a playoff game: their regular-season
+  # rank, when it fell inside that tier's playoff field. Nil for a
+  # regular-season game, a season with no playoff format on record, or an
+  # owner outside the field (a consolation game).
+  def playoff_seed(game, owner)
+    return unless game.playoff?
+
+    year = game.season.year
+    field = playoff_field_size(year, game.tier)
+    rank = season_records[[ year, owner ]]&.rank
+    rank if field && rank && rank <= field
+  end
+
   def playoff_history_for(owner)
     (@playoff_histories ||= {})[owner] ||= build_playoff_history(owner)
   end
@@ -314,6 +330,13 @@ class Almanac
 
   private
 
+  def playoff_field_size(year, tier)
+    @playoff_field_sizes ||= PlayoffFormat.includes(:season).to_h do |format|
+      [ [ format.season.year, format.tier ], format.team_count ]
+    end
+    @playoff_field_sizes[[ year, tier.to_s ]]
+  end
+
   def games_in(year, tier)
     (@games + @playoff_games).select do |game|
       game.season.year == year && game.tier == tier.to_s
@@ -323,7 +346,8 @@ class Almanac
   def matchup_side(game, performance)
     record = season_records[[ game.season.year, performance.owner ]]
     Matchup::Side.new(performance: performance, season_record: record,
-                      weekly_score: record&.score_for(game))
+                      weekly_score: record&.score_for(game),
+                      seed: playoff_seed(game, performance.owner))
   end
 
   def season_records

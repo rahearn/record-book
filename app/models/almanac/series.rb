@@ -2,7 +2,7 @@ class Almanac
   # Every meeting between two owners, playoffs included, viewed from owner
   # A's side.
   class Series
-    Meeting = Data.define(:game, :points_a, :points_b) do
+    Meeting = Data.define(:game, :points_a, :points_b, :seed_a, :seed_b) do
       def year
         game.season.year
       end

@@ -3,7 +3,7 @@
 <div class="flex min-w-0 flex-col gap-0.5 <%= align %>">
   <span class="card-kicker sm:order-1"><%= side.owner.team_name_in(matchup.year) %></span>
   <span class="flex w-full items-baseline justify-between gap-3 sm:contents">
-    <%= link_to side.owner.name, owner_path(side.owner),
+    <%= link_to "#{seed_prefix(side.seed)}#{side.owner.name}", owner_path(side.owner),
           class: "font-heading text-[26px] font-semibold leading-[1.1] text-accent sm:order-2" %>
     <span class="font-heading text-[38px] font-semibold leading-none sm:order-4 sm:text-[54px]">
       <%= points_display(side.points) %>
