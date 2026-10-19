@@ -117,7 +117,7 @@
                 <div class="border-t border-ink/10 py-2 text-sm">
                   <div class="flex items-baseline justify-between gap-2">
                     <span class="flex min-w-0 items-baseline gap-2">
-                      <%= link_to winner.owner.name, owner_path(winner.owner), class: "truncate font-medium text-accent" %>
+                      <%= link_to "#{seed_prefix(@almanac.playoff_seed(game, winner.owner))}#{winner.owner.name}", owner_path(winner.owner), class: "truncate font-medium text-accent" %>
                       <% if game.championship? && games.size == 1 %>
                         <span class="tag tag-accent">CHAMPION</span>
                       <% end %>
@@ -125,7 +125,7 @@
                     <span class="font-medium"><%= points_display(winner.points) %></span>
                   </div>
                   <div class="flex items-baseline justify-between gap-2 text-ink/55">
-                    <%= link_to loser.owner.name, owner_path(loser.owner), class: "min-w-0 truncate text-ink/55" %>
+                    <%= link_to "#{seed_prefix(@almanac.playoff_seed(game, loser.owner))}#{loser.owner.name}", owner_path(loser.owner), class: "min-w-0 truncate text-ink/55" %>
                     <span><%= points_display(loser.points) %></span>
                   </div>
                 </div>

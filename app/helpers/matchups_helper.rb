@@ -16,6 +16,12 @@ module MatchupsHelper
     entry.player_positions.map { |position| position_label(position) }.join("/")
   end
 
+  # "(3) " ahead of a playoff team's name or score, or nothing for a team
+  # without a seed.
+  def seed_prefix(seed)
+    "(#{seed}) " if seed
+  end
+
   def slot_label(slot)
     SLOT_LABELS.fetch(slot.to_s)
   end

@@ -88,8 +88,8 @@
                     <% end %>
                   </td>
                   <td><span class="tag <%= tier_tag_class(meeting.tier) %>"><%= tier_label(meeting.tier) %></span></td>
-                  <td><%= points_display(meeting.points_a) %></td>
-                  <td><%= points_display(meeting.points_b) %></td>
+                  <td><%= seed_prefix(meeting.seed_a) %><%= points_display(meeting.points_a) %></td>
+                  <td><%= seed_prefix(meeting.seed_b) %><%= points_display(meeting.points_b) %></td>
                   <td class="text-ink/55"><%= points_display(meeting.margin) %></td>
                   <td class="font-medium"><%= @series.winner_of(meeting)&.name || "Tie" %></td>
                   <td class="text-right">
