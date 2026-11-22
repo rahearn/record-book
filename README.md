@@ -8,7 +8,7 @@ The design doc is given by [docs/record_book_design.html](./docs/record_book_des
 
 ## Implementation
 
-* Ruby 4.0.6
+* Ruby 4.0.10
 * Ruby on Rails 8.1
 * Server-rendered HTML, minimal javascript
 * Tailwind CSS

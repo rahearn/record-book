@@ -176,7 +176,7 @@ import in `db/seeds.rb`.
 
 ## Stack
 
-- Ruby 4.0.6, Rails 8.1
+- Ruby 4.0.10, Rails 8.1
 - PostgreSQL (via `pg`), including Solid Cache / Solid Queue / Solid Cable (DB-backed, no Redis)
 - Server-rendered HTML with Propshaft + Tailwind CSS; Hotwire (Turbo + Stimulus) for interactivity,
   minimal hand-written JavaScript, no Node/npm toolchain (JS is managed via importmap-rails)
