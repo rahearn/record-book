@@ -1,0 +1,5 @@
+[env]
+PGDATA = "/Users/rahearn/software/atoff/record-book/tmp/postgres"
+
+[tools]
+postgres = "19"
